@@ -13,6 +13,7 @@ interface OptimizedImageProps {
   priority?: boolean;
   sizes?: string;
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
+  itemProp?: string;
 }
 
 /**
@@ -28,6 +29,7 @@ const OptimizedImage = ({
   priority = false,
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
   objectFit = 'cover',
+  itemProp,
 }: OptimizedImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -79,6 +81,7 @@ const OptimizedImage = ({
         priority={priority}
         sizes={sizes}
         style={{ objectFit }}
+        itemProp={itemProp}
       />
     </div>
   );

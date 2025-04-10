@@ -1,46 +1,18 @@
 'use client';
 
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.2
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const isVisible = useScrollAnimation(sectionRef);
 
   return (
-    <section
-      id="a-propos"
+    <section 
+      id="a-propos" 
       ref={sectionRef}
-      className="section-padding bg-white"
+      className="section-padding"
       aria-labelledby="about-heading"
-      itemScope
-      itemType="https://schema.org/AboutPage"
     >
       <div className="container-custom">
         {/* Titre de section */}
@@ -49,89 +21,80 @@ const AboutSection = () => {
             id="about-heading"
             className={`inline-block relative ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
           >
-            À propos de moi
+            À Propos
             <span className="absolute -bottom-3 left-0 w-full h-1 bg-primary rounded-full"></span>
           </h2>
+          <p className={`mt-6 max-w-3xl mx-auto text-text-secondary ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
+            Découvrez mon parcours, mon expertise et ma vision en tant que gestionnaire de projet
+            et product owner spécialisé dans la transformation digitale.
+          </p>
         </div>
 
+        {/* Contenu principal */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className={`relative ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-            <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
-              {/* Remplacer par votre photo */}
-              <div className="absolute inset-0 flex items-center justify-center bg-primary-light text-primary">
-                <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+          {/* Illustration (à remplacer par votre propre image) */}
+          <div className={`${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
+            <div className="relative aspect-square max-w-md mx-auto">
+              <div className="absolute inset-0 flex items-center justify-center bg-primary-light text-primary rounded-xl">
+                <svg className="w-1/2 h-1/2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 110-12 6 6 0 010 12z" clipRule="evenodd" />
                 </svg>
               </div>
-              
-              {/* Lorsque vous aurez une photo */}
-              {/* <Image
-                src="/images/about-image.jpg"
-                alt="Votre Nom - Expert en Gestion de Projets et Product Ownership"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              /> */}
             </div>
           </div>
 
-          {/* Contenu */}
-          <div>
-            <h3 
-              className={`text-2xl font-unbounded mb-4 text-text-primary ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-              style={{ animationDelay: '300ms' }}
-              itemProp="name"
-            >
-              Expert en Gestion de Projets & Product Ownership
+          {/* Texte */}
+          <div className={`space-y-6 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+            <h3 className="text-2xl font-unbounded font-bold text-text-primary">
+              Expertise en Gestion de Projets et Product Ownership
             </h3>
             
-            <div 
-              className={`space-y-4 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-              style={{ animationDelay: '400ms' }}
-              itemProp="description"
-            >
-              <p>
-                Avec plus de X années d'expérience dans la gestion de projets digitaux, je me spécialise dans la transformation numérique 
-                des entreprises et l'optimisation des processus de développement produit. Mon approche combine rigueur méthodologique 
-                et vision centrée utilisateur.
-              </p>
-              
-              <p>
-                J'ai eu l'opportunité de travailler sur des projets stratégiques variés, allant des systèmes d'information internes 
-                aux plateformes B2B/B2C, en passant par des applications mobiles innovantes. Ma philosophie se base sur la création de valeur 
-                tangible pour les utilisateurs tout en alignant les objectifs business.
-              </p>
-              
-              <p>
-                En tant que Product Owner, je m'assure que chaque fonctionnalité répond à un besoin réel, est développée avec efficacité, 
-                et s'intègre dans une vision cohérente du produit. Je suis particulièrement à l'aise avec les méthodologies Agile/Scrum 
-                et les approches Lean.
-              </p>
-            </div>
+            <p className="text-text-secondary">
+              Fort d'une expérience de plus de 5 ans dans la gestion de projets digitaux, j'accompagne les entreprises
+              dans leur transformation numérique avec une approche centrée sur l'utilisateur et les résultats.
+            </p>
             
-            {/* Chiffres clés */}
-            <div 
-              className={`grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-              style={{ animationDelay: '500ms' }}
-            >
-              <div className="text-center">
-                <div className="text-4xl font-unbounded text-primary font-bold">X+</div>
-                <div className="text-text-secondary mt-1">Années d'expérience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-unbounded text-primary font-bold">XX+</div>
-                <div className="text-text-secondary mt-1">Projets réalisés</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-unbounded text-primary font-bold">X</div>
-                <div className="text-text-secondary mt-1">Certifications</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-unbounded text-primary font-bold">XX+</div>
-                <div className="text-text-secondary mt-1">Clients satisfaits</div>
-              </div>
+            <p className="text-text-secondary">
+              Ma méthodologie s'articule autour de trois principes fondamentaux : l'écoute active des besoins utilisateurs,
+              l'itération rapide et la prise de décision basée sur les données.
+            </p>
+            
+            <h4 className="text-xl font-unbounded font-semibold text-text-primary mt-8">
+              Ma vision
+            </h4>
+            
+            <p className="text-text-secondary">
+              Je crois fermement que la technologie doit être au service de l'humain, et non l'inverse. C'est pourquoi
+              je m'attache à concevoir des produits digitaux intuitifs, accessibles et créateurs de valeur réelle.
+            </p>
+            
+            <div className="pt-4">
+              <a href="/a-propos" className="btn-secondary">
+                En savoir plus
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
             </div>
+          </div>
+        </div>
+        
+        {/* Statistiques / Points forts */}
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
+          <div className="text-center p-6 rounded-xl bg-white shadow-sm">
+            <div className="text-4xl font-unbounded font-bold text-primary mb-3">+50</div>
+            <p className="text-text-secondary">Projets livrés avec succès dans divers secteurs d'activité</p>
+          </div>
+          
+          <div className="text-center p-6 rounded-xl bg-white shadow-sm">
+            <div className="text-4xl font-unbounded font-bold text-primary mb-3">95%</div>
+            <p className="text-text-secondary">Satisfaction client grâce à une méthodologie axée sur la valeur</p>
+          </div>
+          
+          <div className="text-center p-6 rounded-xl bg-white shadow-sm">
+            <div className="text-4xl font-unbounded font-bold text-primary mb-3">+20</div>
+            <p className="text-text-secondary">Équipes accompagnées dans l'adoption de méthodes agiles</p>
           </div>
         </div>
       </div>

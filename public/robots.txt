@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.monportfolio.fr/sitemap.xml 
+Sitemap: https://moamen.fr/sitemap.xml 
