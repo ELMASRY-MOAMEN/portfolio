@@ -1,104 +1,22 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
-
-// Type pour les projets
-interface Project {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  imageUrl: string;
-  technologies: string[];
-  category: string;
-  link: string;
-}
-
-// Données des projets (à remplacer par vos propres projets)
-const projects: Project[] = [
-  {
-    id: 'yvea',
-    title: 'YVEA',
-    subtitle: 'Plateforme d\'Intelligence Artificielle',
-    description: 'Gestion de projet et product ownership pour une plateforme innovante d\'IA destinée à optimiser les processus métier.',
-    imageUrl: '/images/projects/yvea.jpg', // À remplacer par les images de vos projets
-    technologies: ['Product Ownership', 'Gestion Agile', 'UX/UI', 'Intelligence Artificielle'],
-    category: 'Product Management',
-    link: '/projets/yvea'
-  },
-  {
-    id: 'may',
-    title: 'MAY',
-    subtitle: 'Consultant Virtuel Export EMEA',
-    description: 'Développement d\'un assistant virtuel pour faciliter l\'exportation sur les marchés EMEA, utilisant des technologies de pointe.',
-    imageUrl: '/images/projects/may.jpg',
-    technologies: ['Gestion de Projet', 'Internationalisation', 'NLP', 'Conseil Stratégique'],
-    category: 'Transformation Digitale',
-    link: '/projets/may'
-  },
-  {
-    id: 'sgs',
-    title: 'SGS',
-    subtitle: 'Refonte de Plateforme de Services',
-    description: 'Pilotage de la refonte complète d\'une plateforme de services en ligne, avec focus sur l\'expérience utilisateur et la performance.',
-    imageUrl: '/images/projects/sgs.jpg',
-    technologies: ['Product Management', 'UX Design', 'Performance', 'API'],
-    category: 'Refonte Web',
-    link: '/projets/sgs'
-  },
-  {
-    id: 'samsung',
-    title: 'Samsung',
-    subtitle: 'Optimisation de Parcours Client',
-    description: 'Analyse et optimisation des parcours clients sur les plateformes digitales de Samsung, avec une approche data-driven.',
-    imageUrl: '/images/projects/samsung.jpg',
-    technologies: ['CX', 'Analyse de Données', 'A/B Testing', 'Optimisation de Conversion'],
-    category: 'Expérience Client',
-    link: '/projets/samsung'
-  }
-];
+import { useState, useRef } from 'react';
+import OptimizedImage from './OptimizedImage';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Project } from '@/types/project';
+import { projects, getProjectCategories, filterProjectsByCategory } from '@/data/projects';
 
 const ProjectsSection = () => {
   const [filter, setFilter] = useState('all');
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const isVisible = useScrollAnimation(sectionRef);
 
-  // Observer pour les animations au scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      }
-    );
+  // Filtrer les projets par catégorie en utilisant la fonction utilitaire
+  const filteredProjects = filterProjectsByCategory(filter);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Filtrer les projets par catégorie
-  const filteredProjects = filter === 'all'
-    ? projects
-    : projects.filter(project => project.category === filter);
-
-  // Générer la liste des catégories uniques - sans utiliser le spread operator avec Set
-  const uniqueCategories = Array.from(new Set(projects.map(project => project.category)));
+  // Générer la liste des catégories uniques
+  const uniqueCategories = getProjectCategories();
   const categories = ['all'].concat(uniqueCategories);
 
   return (
@@ -152,22 +70,14 @@ const ProjectsSection = () => {
               itemType="https://schema.org/CreativeWork"
             >
               <div className="relative h-60">
-                {/* Placeholder pour l'image du projet */}
-                <div className="absolute inset-0 flex items-center justify-center bg-primary-light text-primary">
-                  <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                
-                {/* Lorsque vous aurez des images */}
-                {/* <Image
+                <OptimizedImage
                   src={project.imageUrl}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                   itemProp="image"
-                /> */}
+                />
               </div>
               
               <div className="p-6">
@@ -175,6 +85,11 @@ const ProjectsSection = () => {
                   <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary-light text-primary">
                     {project.category}
                   </span>
+                  {project.client && (
+                    <span className="ml-2 text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-text-secondary">
+                      {project.client}
+                    </span>
+                  )}
                 </div>
                 
                 <h3 className="text-xl font-unbounded font-bold mb-2 text-text-primary" itemProp="name">
@@ -209,8 +124,8 @@ const ProjectsSection = () => {
                 </Link>
                 
                 {/* Données structurées SEO (invisibles) */}
-                <meta itemProp="author" content="Votre Nom" />
-                <meta itemProp="datePublished" content="2023-01-01" /> {/* À remplacer par la date réelle */}
+                <meta itemProp="author" content="Moamen Elmasry" />
+                <meta itemProp="datePublished" content={project.date || '2023-01-01'} />
               </div>
             </div>
           ))}

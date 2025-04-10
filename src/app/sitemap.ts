@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.monportfolio.fr';
+  const baseUrl = 'https://moamen.fr';
   
   // Liste des projets (à mettre à jour avec vos vrais projets)
   const projects = [

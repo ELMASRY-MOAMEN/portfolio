@@ -2,8 +2,6 @@
 
 Un portfolio personnel moderne et élégant pour mettre en avant l'expertise en gestion de projets et product ownership, avec une optimisation SEO complète.
 
-> ⚡ Test de déploiement Netlify CI/CD
-
 ## Technologies utilisées
 
 - **Next.js**: Framework React pour le rendu côté serveur et les performances optimales
@@ -57,6 +55,8 @@ Portfolio/
   ├── tsconfig.json       (Configuration TypeScript)
   ├── tailwind.config.js  (Configuration Tailwind)
   ├── postcss.config.js   (Configuration PostCSS)
+  ├── next.config.js      (Configuration Next.js pour export statique)
+  ├── netlify.toml        (Configuration de déploiement Netlify)
   └── README.md           (Documentation)
 ```
 
@@ -86,11 +86,34 @@ npm run start
 
 # Linter
 npm run lint
+
+# Déploiement sur Netlify
+netlify deploy --prod
 ```
 
-## Déploiement
+## Configuration du déploiement
 
-Ce projet est configuré pour être déployé sur Netlify via une intégration CI/CD avec GitHub.
+### Export statique avec Next.js
+
+Le projet est configuré pour générer un site statique avec Next.js en utilisant le paramètre `output: 'export'` dans `next.config.js`.
+
+### Déploiement sur Netlify
+
+Ce projet est déployé sur Netlify avec les configurations suivantes :
+
+- **Fichier `netlify.toml`** : Définit les paramètres de build et de déploiement
+- **Dossier de publication** : `out` (généré par Next.js lors du build)
+- **Commande de build** : `npm run build`
+- **Redirections** : Configuration pour une SPA (Single Page Application)
+- **Headers sécurisés** : X-Frame-Options, Content-Security-Policy, etc.
+
+Pour déployer manuellement :
+1. `npm run build` pour générer le dossier `out`
+2. `netlify deploy --prod` pour déployer sur Netlify
+
+### Compatibilité navigateurs
+
+Le code est optimisé pour être compatible avec une large gamme de navigateurs, en évitant des fonctionnalités ES6+ problématiques comme l'utilisation du spread operator avec les objets Set.
 
 ## Accessibilité et performance
 

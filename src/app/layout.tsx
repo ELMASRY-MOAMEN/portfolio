@@ -1,38 +1,49 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
+import { generatePersonSchema } from '@/utils/seo';
+
+// Configuration des données personnelles pour les métadonnées
+const personalInfo = {
+  name: 'Moamen Elmasry',
+  title: 'Expert en Gestion de Projets & Product Ownership',
+  description: 'Expert en gestion de projets et product ownership, spécialisé dans la transformation digitale et la livraison de projets à forte valeur ajoutée.',
+  domain: 'https://moamen.fr',
+  twitterHandle: '@moamenelmasry', // À remplacer par votre vrai handle Twitter
+  company: 'Votre Entreprise Actuelle' // À remplacer
+};
 
 // SEO metadata configuration
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.monportfolio.fr'), // Remplacer par votre domaine
+  metadataBase: new URL(personalInfo.domain),
   title: {
-    default: 'Portfolio | Expert en Gestion de Projets & Product Ownership',
-    template: '%s | Portfolio Professionnel'
+    default: `${personalInfo.title} | ${personalInfo.name}`,
+    template: '%s | Portfolio de ' + personalInfo.name
   },
-  description: 'Expert en gestion de projets et product ownership, spécialisé dans la transformation digitale et la livraison de projets à forte valeur ajoutée.',
+  description: personalInfo.description,
   keywords: ['gestion de projets', 'product ownership', 'transformation digitale', 'expert digital', 'product manager', 'portfolio'],
-  authors: [{ name: 'Votre Nom', url: 'https://www.monportfolio.fr' }],
-  creator: 'Votre Nom',
+  authors: [{ name: personalInfo.name, url: personalInfo.domain }],
+  creator: personalInfo.name,
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://www.monportfolio.fr',
-    title: 'Portfolio | Expert en Gestion de Projets & Product Ownership',
-    description: 'Expert en gestion de projets et product ownership, spécialisé dans la transformation digitale et la livraison de projets à forte valeur ajoutée.',
-    siteName: 'Portfolio Professionnel',
+    url: personalInfo.domain,
+    title: `${personalInfo.title} | ${personalInfo.name}`,
+    description: personalInfo.description,
+    siteName: `Portfolio de ${personalInfo.name}`,
     images: [
       {
         url: '/images/og-image.jpg', // À créer dans /public/images/
         width: 1200,
         height: 630,
-        alt: 'Aperçu du Portfolio Professionnel'
+        alt: `Portfolio de ${personalInfo.name}`
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio | Expert en Gestion de Projets & Product Ownership',
-    description: 'Expert en gestion de projets et product ownership, spécialisé dans la transformation digitale.',
-    creator: '@votrecompte', // Votre compte Twitter
+    title: `${personalInfo.title} | ${personalInfo.name}`,
+    description: personalInfo.description,
+    creator: personalInfo.twitterHandle,
     images: ['/images/twitter-image.jpg'], // À créer dans /public/images/
   },
   robots: {
@@ -46,10 +57,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.monportfolio.fr', // URL canonique
+    canonical: personalInfo.domain,
     languages: {
-      'fr-FR': 'https://www.monportfolio.fr',
-      'en-US': 'https://www.monportfolio.fr/en', // Si vous avez une version anglaise
+      'fr-FR': personalInfo.domain,
     },
   },
   verification: {
@@ -58,24 +68,19 @@ export const metadata: Metadata = {
 };
 
 // Schema.org JSON-LD pour une personne (SEO structured data)
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Votre Nom',
-  url: 'https://www.monportfolio.fr',
-  image: 'https://www.monportfolio.fr/images/photo-profil.jpg',
-  jobTitle: 'Expert en Gestion de Projets & Product Ownership',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Votre Entreprise Actuelle'
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/votre-profil/',
-    'https://github.com/votre-profil',
-    'https://twitter.com/votre-profil'
+const personSchema = generatePersonSchema({
+  name: personalInfo.name,
+  jobTitle: personalInfo.title,
+  url: personalInfo.domain,
+  image: `${personalInfo.domain}/images/photo-profil.jpg`,
+  company: personalInfo.company,
+  socialLinks: [
+    `https://www.linkedin.com/in/${personalInfo.name.toLowerCase().replace(' ', '-')}/`,
+    `https://github.com/${personalInfo.name.toLowerCase().replace(' ', '-')}`,
+    `https://twitter.com/${personalInfo.twitterHandle.replace('@', '')}`
   ],
-  description: 'Expert en gestion de projets et product ownership avec plus de X années d\'expérience dans la transformation digitale et la livraison de produits innovants.'
-};
+  description: personalInfo.description
+});
 
 export default function RootLayout({
   children,
