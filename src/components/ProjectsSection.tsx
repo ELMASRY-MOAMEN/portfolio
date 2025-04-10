@@ -97,8 +97,9 @@ const ProjectsSection = () => {
     ? projects
     : projects.filter(project => project.category === filter);
 
-  // Générer la liste des catégories uniques
-  const categories = ['all', ...new Set(projects.map(project => project.category))];
+  // Générer la liste des catégories uniques - sans utiliser le spread operator avec Set
+  const uniqueCategories = Array.from(new Set(projects.map(project => project.category)));
+  const categories = ['all'].concat(uniqueCategories);
 
   return (
     <section
