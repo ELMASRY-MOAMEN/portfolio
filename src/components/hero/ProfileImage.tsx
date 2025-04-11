@@ -1,10 +1,11 @@
 'use client';
 
 import { useLoadAnimation } from '@/hooks/useLoadAnimation';
-import OptimizedImage from '../OptimizedImage';
+import { ImageManager } from '@/components/ui/image-manager';
 
 interface ProfileImageProps {
-  src: string;
+  imageId?: string;
+  src?: string;
   alt: string;
   badges: {
     certified: string;
@@ -16,7 +17,7 @@ interface ProfileImageProps {
 /**
  * Composant pour l'image de profil avec les badges flottants
  */
-export default function ProfileImage({ src, alt, badges, locale }: ProfileImageProps) {
+export default function ProfileImage({ imageId, src, alt, badges, locale }: ProfileImageProps) {
   const isLoaded = useLoadAnimation();
 
   return (
@@ -27,10 +28,12 @@ export default function ProfileImage({ src, alt, badges, locale }: ProfileImageP
       <div className="relative w-80 h-80 md:w-96 md:h-96">
         <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
         <div className="absolute inset-4 rounded-full overflow-hidden shadow-xl border-4 border-white">
-          {/* Image de profil */}
-          <OptimizedImage
+          {/* Image de profil - Maintenant utilise ImageManager */}
+          <ImageManager
+            imageId={imageId}
             src={src}
             alt={alt}
+            locale={locale}
             fill
             priority
             sizes="(max-width: 768px) 20rem, 24rem"
