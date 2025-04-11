@@ -10,7 +10,6 @@
   --primary-light: #EBF1FF;
   --text-primary: #1E293B;
   --text-secondary: #64748B;
-  --background: #FFFFFF;
 }
 
 @layer base {
@@ -20,7 +19,7 @@
   }
   
   body {
-    @apply text-text-primary bg-background;
+    @apply text-text-primary bg-white;
     font-family: 'Bricolage Grotesque', sans-serif;
   }
   
