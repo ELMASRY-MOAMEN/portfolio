@@ -29,11 +29,11 @@ export default function ScrollingText({
   return (
     <div 
       ref={containerRef}
-      className={`w-full overflow-hidden py-8 bg-gray-50 ${className}`}
+      className={`w-full overflow-hidden py-8 bg-white ${className}`}
     >
       <div className="container-custom">
         <div className="text-center">
-          <h2 className={`text-primary text-3xl md:text-4xl font-unbounded font-bold ${textClassName}`}>
+          <h2 className={`text-gray-800 text-3xl md:text-4xl font-unbounded font-bold ${textClassName}`}>
             {text}
           </h2>
         </div>

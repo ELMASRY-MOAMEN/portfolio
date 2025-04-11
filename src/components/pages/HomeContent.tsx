@@ -42,7 +42,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       profileBadges: {
         certifications: "Expert Certifié PMP",
         experience: "9 ans d'excellence",
-        projects: "50+ projets réussis"
+        projects: "20% croissance"
       },
       stats: [
         { value: "80%", label: "Réduction des délais de projets" },
@@ -75,7 +75,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           link: "/fr/contact"
         }
       ],
-      scrollingText: "Résultats • Innovation • ROI • Expertise • Leadership • Excellence"
+      scrollingText: "Résultats"
     },
     en: {
       heroTitle: "Moamen Elmasry",
@@ -90,7 +90,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       profileBadges: {
         certifications: "PMP Certified Expert",
         experience: "9 years of excellence",
-        projects: "50+ successful projects"
+        projects: "20% growth"
       },
       stats: [
         { value: "80%", label: "Reduction in project timelines" },
@@ -123,7 +123,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           link: "/en/contact"
         }
       ],
-      scrollingText: "Results • Innovation • ROI • Expertise • Leadership • Excellence"
+      scrollingText: "Results"
     }
   };
   
@@ -366,7 +366,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* Scrolling text in opposite direction */}
       <ScrollingText 
-        text={content.scrollingText}
+        text={locale === 'fr' ? "Vente B2B tech, pilotage stratégique, digitalisation des processus et conduite du changement" : "B2B tech sales, strategic management, process digitalization and change management"}
         direction="ltr"
       />
       

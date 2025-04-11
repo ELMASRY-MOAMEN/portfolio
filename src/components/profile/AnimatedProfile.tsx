@@ -182,7 +182,7 @@ export default function AnimatedProfile({
               </svg>
             </div>
             <div>
-              <div className="text-xs text-black font-medium">{locale === 'fr' ? 'Projets' : 'Projects'}</div>
+              <div className="text-xs text-black font-medium">{locale === 'fr' ? 'Impact Business' : 'Business Impact'}</div>
               <div className="font-bold text-black">{badges.projects}</div>
             </div>
           </div>
