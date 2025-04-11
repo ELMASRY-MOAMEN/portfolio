@@ -6,7 +6,7 @@ import translations from '@/data/translations.json';
 import { useTranslation } from '@/hooks/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LangProvider } from '@/components/LangProvider';
+import LangProvider from '@/components/LangProvider';
 
 export async function generateMetadata({ params }: { params: { lang: Lang } }): Promise<Metadata> {
   const t = translations[params.lang].meta;
