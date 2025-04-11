@@ -59,9 +59,9 @@ export default function AnimatedProfile({
       }
     }
   };
-
+  
   return (
-    <motion.div
+    <motion.div 
       className="relative w-80 h-80 md:w-96 md:h-96"
       variants={containerVariants}
       initial="hidden"
@@ -87,7 +87,7 @@ export default function AnimatedProfile({
         whileHover={{ scale: 1.03 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <Image
+        <Image 
           src={src}
           alt={alt}
           fill

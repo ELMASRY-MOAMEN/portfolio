@@ -12,6 +12,7 @@ import AnimatedProfile from '@/components/profile/AnimatedProfile';
 import AnimatedStatsCard from '@/components/stats/AnimatedStatsCard';
 import AnimatedSection from '@/components/layout/AnimatedSection';
 import ScrollingText from '@/components/effects/ScrollingText';
+import Image from 'next/image';
 
 interface HomeContentProps {
   params: {
@@ -33,7 +34,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       heroTitle: "Moamen Elmasry",
       heroRole: "Project Manager",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je recherche activement un poste en CDI ou CDD. Ex-entrepreneur ayant conçu et développé une plateforme SaaS (GED, Agentic IA, automatisation), j'allie vision stratégique, développement business et expertise technique pour générer un fort ROI.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je permets une croissance stratégique et opérationnelle. Ex-entrepreneur ayant conçu et développé une plateforme SaaS innovante, je combine vision stratégique, expertise technique et leadership pour générer un ROI mesurable.",
       jobStatus: "En recherche active d'un poste en CDI ou CDD",
       ctaProjects: "Voir mes réalisations",
       ctaDownload: "Télécharger mon CV",
@@ -51,8 +52,8 @@ export default function HomeContent({ params }: HomeContentProps) {
         { value: "+150%", label: "Croissance du portefeuille" }
       ],
       approachTitle: "Mon expertise à votre service",
-      approachDescription1: "Je convertis des défis complexes en résultats tangibles pour votre entreprise. Grâce à mon expérience éprouvée, j'ai réduit les délais de projets jusqu'à 80% et augmenté significativement le ROI des initiatives stratégiques. Mon leadership mobilisateur et ma maîtrise des méthodologies agiles garantissent des livraisons de qualité, dans les délais impartis.",
-      approachDescription2: "Mon expertise technique (SaaS, IA, GED, OCR) combinée à mes compétences en gestion de changement me permettent d'assurer le succès de vos projets stratégiques, de la conception à l'implémentation. J'améliore les performances opérationnelles tout en accompagnant efficacement les équipes vers l'adoption des nouvelles solutions.",
+      approachDescription1: "J'ai toujours privilégié l'humain et la collaboration comme moteurs de réussite. Ma méthode repose sur une communication transparente, un esprit d'équipe solidement ancré et un leadership bienveillant. En prenant le temps de comprendre les enjeux et la culture de chaque organisation, je facilite l'adhésion et le partage de responsabilités. Ce souci du relationnel me permet de fédérer les équipes, d'anticiper les résistances au changement et de créer un climat propice à l'innovation.",
+      approachDescription2: "Sur le terrain, je déploie des méthodologies Agiles (Scrum, Kanban) et des outils techniques éprouvés (CI/CD, Docker, automatisation IA, OCR) pour garantir une exécution solide et mesurable. Qu'il s'agisse de concevoir une architecture SaaS, d'implémenter des workflows OCR complexes ou de piloter des sprints, j'aime être au contact du concret et apporter des solutions tangibles. Cette vision 'hands-on' me permet de cerner rapidement les priorités, d'optimiser les performances opérationnelles et de livrer chaque projet avec rigueur et efficacité.",
       ctaSectionTitle: "Prêt à collaborer sur vos défis digitaux?",
       ctaSectionDescription: "Je souhaite mettre mon expérience au service de votre entreprise dans le cadre d'un CDI ou CDD. Discutons de vos projets stratégiques et de comment mon expertise peut contribuer à leur réussite.",
       sections: [
@@ -443,10 +444,14 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6 }}
               >
-                <img 
+                <Image 
                   src="/images/about-preview.jpg" 
                   alt={locale === 'fr' ? "Parcours professionnel" : "Professional journey"} 
-                  className="w-full h-auto object-cover aspect-video"
+                  className="w-full h-auto object-cover"
+                  width={600}
+                  height={400}
+                  priority={false}
+                  loading="lazy"
                 />
               </motion.div>
             </div>
@@ -470,10 +475,14 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6 }}
               >
-                <img 
+                <Image 
                   src="/images/projects-preview.jpg" 
                   alt={locale === 'fr' ? "Réalisations et projets" : "Projects and achievements"} 
-                  className="w-full h-auto object-cover aspect-video"
+                  className="w-full h-auto object-cover"
+                  width={600}
+                  height={400}
+                  priority={false}
+                  loading="lazy"
                 />
               </motion.div>
             </div>
