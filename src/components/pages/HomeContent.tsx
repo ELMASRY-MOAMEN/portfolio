@@ -33,22 +33,22 @@ export default function HomeContent({ params }: HomeContentProps) {
       heroTitle: "Moamen Elmasry",
       heroRole: "Project Manager",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je recherche activement un poste en CDI ou CDD. Ex-entrepreneur ayant développé une plateforme SaaS (GED, IA, automatisation), j'allie vision stratégique et expertise technique pour générer un fort ROI.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je recherche activement un poste en CDI ou CDD. Ex-entrepreneur ayant conçu et développé une plateforme SaaS (GED, Agentic IA, automatisation), j'allie vision stratégique, développement business et expertise technique pour générer un fort ROI.",
       jobStatus: "En recherche active d'un poste en CDI ou CDD",
       ctaProjects: "Voir mes réalisations",
       ctaDownload: "Télécharger mon CV",
       ctaContact: "Me contacter",
       profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
       profileBadges: {
-        certifications: "Expert Certifié PMP",
+        certifications: "Expert Certifié Google PMP",
         experience: "9 ans d'excellence",
-        projects: "20% croissance"
+        projects: "60% croissance"
       },
       stats: [
         { value: "80%", label: "Réduction des délais de projets" },
-        { value: "200K€", label: "Financements obtenus" },
+        { value: "+200K€", label: "Financements obtenus" },
         { value: "50+", label: "Collaborateurs managés" },
-        { value: "20%", label: "Croissance du portefeuille" }
+        { value: "+150%", label: "Croissance du portefeuille" }
       ],
       approachTitle: "Mon expertise à votre service",
       approachDescription1: "Je convertis des défis complexes en résultats tangibles pour votre entreprise. Grâce à mon expérience éprouvée, j'ai réduit les délais de projets jusqu'à 80% et augmenté significativement le ROI des initiatives stratégiques. Mon leadership mobilisateur et ma maîtrise des méthodologies agiles garantissent des livraisons de qualité, dans les délais impartis.",
@@ -301,6 +301,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       <ScrollingText 
         text={content.scrollingText}
         direction="rtl"
+        mode="static"
       />
       
       {/* KEY INDICATORS SECTION (INTEREST) */}
@@ -368,6 +369,8 @@ export default function HomeContent({ params }: HomeContentProps) {
       <ScrollingText 
         text={locale === 'fr' ? "Vente B2B tech, pilotage stratégique, digitalisation des processus et conduite du changement" : "B2B tech sales, strategic management, process digitalization and change management"}
         direction="ltr"
+        mode="carousel"
+        speed={0.8}
       />
       
       {/* CALL TO ACTION SECTION (ACTION) */}
