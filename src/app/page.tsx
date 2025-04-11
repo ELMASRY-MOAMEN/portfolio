@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -18,27 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main id="content" className="flex flex-col">
-        {/* A - Attention : Captez immédiatement l'intérêt avec un Hero impactant */}
-        <HeroSection />
-        
-        {/* I - Intérêt : Présentez une proposition de valeur claire et différenciante */}
-        <SkillsSection />
-        
-        {/* D - Désir : Renforcez la crédibilité avec des exemples concrets */}
-        <ProjectsSection />
-        <TestimonialsSection />
-        
-        {/* A - Action : Incitez à prendre contact avec des CTA clairs */}
-        <ContactSection />
-        
-        {/* Section À propos maintenant secondaire, après avoir présenté l'essentiel */}
-        <AboutSection />
-      </main>
-      <Footer />
-    </>
-  );
+  redirect('/fr');
 } 

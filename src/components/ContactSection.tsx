@@ -3,10 +3,12 @@
 import { useRef } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useScrollAnimation(sectionRef);
+  const { t, locale } = useTranslation();
 
   return (
     <section
@@ -23,12 +25,11 @@ const ContactSection = () => {
               id="contact-heading"
               className={`inline-block relative ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
             >
-              Prêt à transformer vos projets ?
+              {t.contact.title}
               <span className="absolute -bottom-3 left-0 w-full h-1 bg-primary rounded-full"></span>
             </h2>
             <p className={`mt-6 max-w-3xl mx-auto text-text-secondary ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-              Que vous cherchiez à optimiser vos processus, à lancer un nouveau produit ou à trouver un leader 
-              pour votre équipe, je suis à votre disposition pour discuter de vos besoins.
+              {t.contact.description}
             </p>
           </div>
 
@@ -38,15 +39,15 @@ const ContactSection = () => {
               <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <h3 className="text-2xl font-bold mb-3">Télécharger mon CV</h3>
-              <p className="mb-6">Retrouvez l'ensemble de mon parcours et de mes compétences dans un document détaillé.</p>
+              <h3 className="text-2xl font-bold mb-3">{t.contact.downloadCV.title}</h3>
+              <p className="mb-6">{t.contact.downloadCV.description}</p>
               <a 
-                href="/cv-moamen-elmasry.pdf" 
+                href={t.about.cvPath} 
                 className="inline-flex items-center px-6 py-3 border border-white text-white rounded-md hover:bg-white hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Télécharger le CV
+                {t.contact.downloadCV.button}
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
@@ -57,13 +58,13 @@ const ContactSection = () => {
               <svg className="w-16 h-16 mb-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              <h3 className="text-2xl font-bold mb-3">Me contacter</h3>
-              <p className="mb-6">Discutons de votre projet et découvrons comment je peux vous aider à atteindre vos objectifs.</p>
+              <h3 className="text-2xl font-bold mb-3">{t.contact.contactMe.title}</h3>
+              <p className="mb-6">{t.contact.contactMe.description}</p>
               <a 
                 href="mailto:contact@moamen.fr" 
                 className="btn-primary"
               >
-                Envoyer un message
+                {t.contact.contactMe.button}
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -73,7 +74,7 @@ const ContactSection = () => {
 
           {/* Coordonnées */}
           <div className={`text-center ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
-            <h3 className="text-xl font-bold mb-6">Mes coordonnées</h3>
+            <h3 className="text-xl font-bold mb-6">{t.contact.contactInfo.title}</h3>
             <div className="flex flex-col md:flex-row justify-center gap-8 mb-8">
               <div className="flex items-center justify-center md:justify-start">
                 <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

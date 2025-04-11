@@ -5,6 +5,7 @@
 [build.environment]
   NODE_VERSION = "18.17.0"
   NEXT_PUBLIC_BASE_URL = "https://moamen.fr"
+  NEXT_PUBLIC_SITE_URL = "https://portfolio-moamen.netlify.app"
 
 # Redirection et headers personnalisés
 [[headers]]

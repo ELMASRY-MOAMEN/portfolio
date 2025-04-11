@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
+  const { t, locale } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -16,12 +18,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Présentation */}
           <div className="col-span-1 md:col-span-2 animate-fade-up">
-            <Link href="/" className="font-unbounded text-2xl font-bold text-white inline-block">
-              Portfolio
+            <Link 
+              href={t.routes.home} 
+              className="font-unbounded text-2xl font-bold text-white inline-block"
+            >
+              Moamen Elmasry
             </Link>
             <p className="font-bricolage mt-4 text-gray-300 max-w-md">
-              Expert en gestion de projets et product ownership, je vous accompagne dans la structuration et la réalisation 
-              de vos projets digitaux avec une approche centrée sur la valeur business et l'expérience utilisateur.
+              {t.footer.slogan}
             </p>
             
             {/* Réseaux sociaux */}
@@ -29,7 +33,7 @@ const Footer = () => {
               <meta itemProp="name" content="Votre Nom" />
               
               <a 
-                href="https://linkedin.com/in/votre-profil" 
+                href="https://www.linkedin.com/in/moamen-elmasry/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-300 hover:text-white transition-colors" 
@@ -42,7 +46,7 @@ const Footer = () => {
               </a>
               
               <a 
-                href="https://github.com/votre-profil" 
+                href="https://github.com/moamen-elmasry" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-300 hover:text-white transition-colors" 
@@ -55,7 +59,7 @@ const Footer = () => {
               </a>
               
               <a 
-                href="https://twitter.com/votre-profil" 
+                href="https://twitter.com/moamen_elmasry" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-300 hover:text-white transition-colors" 
@@ -63,7 +67,7 @@ const Footer = () => {
                 itemProp="sameAs"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.054 10.054 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 14-7.496 14-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59l-.047-.02z" />
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.097 10.097 0 01-3.127 1.195 4.929 4.929 0 00-8.392 4.492 13.98 13.98 0 01-10.15-5.146 4.929 4.929 0 001.525 6.573 4.88 4.88 0 01-2.23-.616v.06a4.927 4.927 0 003.95 4.83 4.898 4.898 0 01-2.224.084 4.931 4.931 0 004.6 3.42 9.88 9.88 0 01-6.114 2.107c-.398 0-.79-.023-1.175-.068a13.952 13.952 0 007.548 2.208c9.054 0 14.01-7.5 14.01-14.007 0-.213-.005-.426-.015-.637.96-.695 1.795-1.562 2.455-2.55l-.047-.02z" />
                 </svg>
               </a>
             </div>
@@ -75,28 +79,35 @@ const Footer = () => {
             <nav aria-label="Navigation du pied de page">
               <ul className="space-y-2 font-bricolage">
                 <li>
-                  <Link href="/" className="text-gray-300 hover:text-white transition-colors">
-                    Accueil
+                  <Link 
+                    href={t.routes.about} 
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.nav.about}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/a-propos" className="text-gray-300 hover:text-white transition-colors">
-                    À propos
+                  <Link 
+                    href={t.routes.skills} 
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.nav.skills}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projets" className="text-gray-300 hover:text-white transition-colors">
-                    Projets
+                  <Link 
+                    href={t.routes.projects} 
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.nav.projects}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/cv" className="text-gray-300 hover:text-white transition-colors">
-                    CV
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                    Contact
+                  <Link 
+                    href={t.routes.contact} 
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.nav.contact}
                   </Link>
                 </li>
               </ul>
@@ -145,7 +156,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-700">
           <p className="text-center text-gray-400 font-bricolage text-sm">
-            &copy; {currentYear} Portfolio Personnel. Tous droits réservés.
+            &copy; {currentYear} Moamen Elmasry. {t.footer.rights}
           </p>
         </div>
       </div>

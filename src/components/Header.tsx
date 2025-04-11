@@ -3,10 +3,13 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTranslation } from '@/hooks/useTranslation';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, locale } = useTranslation();
   
   // Effet pour détecter le scroll et changer l'apparence du header
   useEffect(() => {
@@ -27,15 +30,18 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Préfixe de langue pour les URLs
+  const langPrefix = `/${locale}`;
+
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}
-      aria-label="En-tête principal"
+      aria-label={t.navigation.ariaLabels.mainHeader}
     >
       <div className="container-custom">
-        <nav className="flex justify-between items-center" aria-label="Navigation principale">
+        <nav className="flex justify-between items-center" aria-label={t.navigation.ariaLabels.mainNavigation}>
           <div className="flex-shrink-0 animate-fade-in">
-            <Link href="/" className="font-unbounded text-2xl font-bold text-primary flex items-center" aria-label="Accueil">
+            <Link href={langPrefix} className="font-unbounded text-2xl font-bold text-primary flex items-center" aria-label={t.navigation.home}>
               {/* Logo optionnel */}
               {/* <Image src="/images/logo.svg" alt="Logo Portfolio" width={40} height={40} className="mr-2" /> */}
               Portfolio
@@ -43,31 +49,41 @@ const Header = () => {
           </div>
 
           {/* Navigation Desktop */}
-          <div className="hidden md:flex space-x-8 animate-fade-in">
-            <Link href="/" className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              Accueil
+          <div className="hidden md:flex items-center space-x-8 animate-fade-in">
+            <Link href={langPrefix} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              {t.navigation.home}
             </Link>
-            <Link href="/a-propos" className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              À propos
+            <Link href={`${langPrefix}/a-propos`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              {t.navigation.about}
             </Link>
-            <Link href="/projets" className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              Projets
+            <Link href={`${langPrefix}/realisations`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              {locale === 'fr' ? 'Réalisations' : 'Projects'}
             </Link>
-            <Link href="/cv" className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              CV
+            <Link href={`${langPrefix}/blog`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              Blog
             </Link>
-            <Link href="/contact" className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              Contact
+            <Link href={`${langPrefix}/contact`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              {t.navigation.contact}
             </Link>
+            <a 
+              href="/cv-moamen-elmasry.pdf" 
+              className="btn-sm-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.navigation.downloadCv}
+            </a>
+            <LanguageSwitcher />
           </div>
 
           {/* Bouton Menu Mobile */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-4">
+            <LanguageSwitcher />
             <button 
               onClick={toggleMobileMenu} 
               className="text-text-primary focus:outline-none"
               aria-expanded={mobileMenuOpen}
-              aria-label="Menu principal"
+              aria-label={t.navigation.ariaLabels.mainMenu}
               aria-controls="mobile-menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -87,24 +103,35 @@ const Header = () => {
             id="mobile-menu"
             className="md:hidden pt-4 pb-3 border-t border-gray-200 animate-fade-in"
             role="navigation"
-            aria-label="Menu mobile"
+            aria-label={t.navigation.ariaLabels.mobileMenu}
           >
             <div className="flex flex-col space-y-3">
-              <Link href="/" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                Accueil
+              <Link href={langPrefix} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                {t.navigation.home}
               </Link>
-              <Link href="/a-propos" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                À propos
+              <Link href={`${langPrefix}/a-propos`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                {t.navigation.about}
               </Link>
-              <Link href="/projets" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                Projets
+              <Link href={`${langPrefix}/realisations`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                {locale === 'fr' ? 'Réalisations' : 'Projects'}
               </Link>
-              <Link href="/cv" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                CV
+              <Link href={`${langPrefix}/blog`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                Blog
               </Link>
-              <Link href="/contact" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                Contact
+              <Link href={`${langPrefix}/contact`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                {t.navigation.contact}
               </Link>
+              <a 
+                href="/cv-moamen-elmasry.pdf" 
+                className="px-2 py-1 font-bricolage text-primary font-medium hover:underline transition-colors inline-flex items-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.navigation.downloadCv}
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </a>
             </div>
           </div>
         )}

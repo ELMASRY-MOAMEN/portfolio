@@ -3,46 +3,49 @@
 import { useRef } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import OptimizedImage from './OptimizedImage';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface Testimonial {
   id: string;
   name: string;
-  role: string;
+  role: 'cto' | 'marketingDirector' | 'ceo';
   company: string;
-  content: string;
+  testimonialId: 'jeanDupont' | 'sophieMartin' | 'thomasLeroy';
   image: string;
 }
-
-const testimonials: Testimonial[] = [
-  {
-    id: 'testimonial1',
-    name: 'Jean Dupont',
-    role: 'CTO',
-    company: 'TechInnovate',
-    content: 'Moamen a transformé notre vision en une solution concrète, en gérant efficacement tous les aspects du projet. Sa capacité à comprendre nos besoins métier tout en apportant une expertise technique a été déterminante dans le succès de notre produit.',
-    image: '/images/testimonials/testimonial1.jpg'
-  },
-  {
-    id: 'testimonial2',
-    name: 'Sophie Martin',
-    role: 'Directrice Marketing',
-    company: 'GlobalBrand',
-    content: 'La collaboration avec Moamen a été un véritable atout pour notre entreprise. Sa rigueur méthodologique et sa vision stratégique nous ont permis de réduire nos délais de mise sur le marché de 15 à 3 jours, un gain considérable pour notre activité.',
-    image: '/images/testimonials/testimonial2.jpg'
-  },
-  {
-    id: 'testimonial3',
-    name: 'Thomas Leroy',
-    role: 'CEO',
-    company: 'InnoStart',
-    content: 'Grâce à l\'expertise de Moamen, nous avons pu sécuriser une levée de fonds significative. Son approche méthodique, sa capacité à fédérer les équipes et à livrer dans les délais ont été des facteurs clés de notre succès.',
-    image: '/images/testimonials/testimonial3.jpg'
-  }
-];
 
 const TestimonialsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useScrollAnimation(sectionRef);
+  const { t, locale } = useTranslation();
+
+  // Témoignages avec traductions
+  const testimonials: Testimonial[] = [
+    {
+      id: 'testimonial1',
+      name: 'Jean Dupont',
+      role: 'cto',
+      company: 'TechInnovate',
+      testimonialId: 'jeanDupont',
+      image: '/images/testimonials/testimonial1.jpg'
+    },
+    {
+      id: 'testimonial2',
+      name: 'Sophie Martin',
+      role: 'marketingDirector',
+      company: 'GlobalBrand',
+      testimonialId: 'sophieMartin',
+      image: '/images/testimonials/testimonial2.jpg'
+    },
+    {
+      id: 'testimonial3',
+      name: 'Thomas Leroy',
+      role: 'ceo',
+      company: 'InnoStart',
+      testimonialId: 'thomasLeroy',
+      image: '/images/testimonials/testimonial3.jpg'
+    }
+  ];
 
   return (
     <section
@@ -58,12 +61,11 @@ const TestimonialsSection = () => {
             id="testimonials-heading"
             className={`inline-block relative ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
           >
-            Ce que disent mes clients
+            {t.testimonials.title}
             <span className="absolute -bottom-3 left-0 w-full h-1 bg-primary rounded-full"></span>
           </h2>
           <p className={`mt-6 max-w-3xl mx-auto text-text-secondary ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-            La satisfaction des clients et des équipes est au cœur de ma démarche.
-            Découvrez ce que pensent ceux avec qui j'ai eu le plaisir de collaborer.
+            {t.testimonials.description}
           </p>
         </div>
 
@@ -89,7 +91,7 @@ const TestimonialsSection = () => {
                 <div>
                   <h3 className="text-lg font-bold text-text-primary" itemProp="author">{testimonial.name}</h3>
                   <p className="text-sm text-text-secondary" itemProp="jobTitle">
-                    {testimonial.role}, <span itemProp="publisher">{testimonial.company}</span>
+                    {t.testimonials.roles[testimonial.role]}, <span itemProp="publisher">{testimonial.company}</span>
                   </p>
                 </div>
               </div>
@@ -99,7 +101,7 @@ const TestimonialsSection = () => {
                 </svg>
               </div>
               <p className="text-text-secondary mb-6" itemProp="reviewBody">
-                {testimonial.content}
+                {t.testimonials.content[testimonial.testimonialId]}
               </p>
               <div className="flex justify-end">
                 <div className="flex">
@@ -117,7 +119,9 @@ const TestimonialsSection = () => {
 
         {/* Clients */}
         <div className={`mt-20 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '500ms' }}>
-          <h3 className="text-xl font-bold text-center mb-10">Ils m'ont fait confiance</h3>
+          <h3 className="text-xl font-bold text-center mb-10">
+            {t.testimonials.trustedBy}
+          </h3>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             <div className="w-32 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-400">Logo Client 1</div>
             <div className="w-32 h-12 bg-gray-100 rounded flex items-center justify-center text-gray-400">Logo Client 2</div>

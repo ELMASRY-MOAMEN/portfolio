@@ -8,6 +8,7 @@ Un portfolio personnel moderne et élégant pour mettre en avant l'expertise en 
 - **TypeScript**: Pour un code typé et robuste
 - **Tailwind CSS**: Pour une interface utilisateur réactive et moderne
 - **ESLint**: Pour assurer la qualité du code
+- **Internationalisation**: Support multilingue (français et anglais)
 
 ## Caractéristiques SEO
 
@@ -18,6 +19,22 @@ Un portfolio personnel moderne et élégant pour mettre en avant l'expertise en 
 - **Balises sémantiques HTML5**: Architecture respectant les standards du web pour une meilleure accessibilité
 - **Images optimisées**: Attributs alt, dimensions et préchargement définis
 - **Performance optimisée**: Animations légères et chargements optimisés
+- **Routes localisées**: URLs optimisées pour chaque langue (/fr/, /en/)
+
+## Internationalisation (i18n)
+
+Le site est entièrement disponible en français et en anglais avec:
+
+- **Détection automatique de la langue** du navigateur
+- **Sélecteur de langue** dans l'en-tête permettant de basculer entre les langues
+- **URLs localisées** pour chaque contenu (/fr/projets, /en/projects, etc.)
+- **Métadonnées SEO** adaptées à chaque langue
+- **Structure modulaire** des fichiers de traduction pour faciliter la maintenance
+
+Configuration :
+- Langue par défaut : Français
+- Langues supportées : Français, Anglais
+- Fichiers de traduction : `/src/data/translations.json`
 
 ## Palette de couleurs
 
@@ -38,15 +55,24 @@ Un portfolio personnel moderne et élégant pour mettre en avant l'expertise en 
 Portfolio/
   ├── src/
   │    ├── app/           (Pages de l'application avec le routage Next.js)
-  │    │    ├── page.tsx  (Page d'accueil)
-  │    │    ├── layout.tsx (Layout principal avec méta-données SEO)
+  │    │    ├── page.tsx  (Redirection vers la langue par défaut)
+  │    │    ├── [lang]/   (Pages spécifiques à chaque langue)
+  │    │    │    ├── page.tsx  (Page d'accueil)
+  │    │    │    ├── layout.tsx (Layout spécifique à chaque langue)
+  │    │    │    ├── params.ts  (Configuration des langues)
+  │    │    │    └── a-propos/  (Pages de contenu localisées)
   │    │    └── sitemap.ts (Générateur de sitemap dynamique)
   │    ├── components/    (Composants réutilisables optimisés SEO)
   │    │    ├── Header.tsx
   │    │    ├── Footer.tsx
+  │    │    ├── LanguageSwitcher.tsx (Sélecteur de langue)
   │    │    ├── HeroSection.tsx
-  │    │    ├── AboutSection.tsx
   │    │    └── ProjectsSection.tsx
+  │    ├── data/
+  │    │    └── translations.json (Fichier de traductions)
+  │    ├── hooks/
+  │    │    └── useTranslation.ts (Hook personnalisé pour les traductions)
+  │    ├── middleware.ts  (Middleware pour la redirection linguistique)
   │    └── styles/        (Fichiers CSS globaux)
   ├── public/             (Assets et images)
   │    ├── images/        (Images optimisées pour le web)
@@ -56,6 +82,7 @@ Portfolio/
   ├── tailwind.config.js  (Configuration Tailwind)
   ├── postcss.config.js   (Configuration PostCSS)
   ├── next.config.js      (Configuration Next.js pour export statique)
+  ├── next-i18next.config.js (Configuration i18n)
   ├── netlify.toml        (Configuration de déploiement Netlify)
   └── README.md           (Documentation)
 ```
@@ -68,6 +95,7 @@ Chaque page inclut:
 - Balises Twitter Card pour le partage sur Twitter
 - URLs canoniques pour éviter le contenu dupliqué
 - Balisage Schema.org approprié
+- Alternatives linguistiques avec balises hreflang
 
 ## Commandes disponibles
 
@@ -121,3 +149,13 @@ Le code est optimisé pour être compatible avec une large gamme de navigateurs,
 - Animations légères pour une expérience fluide sans impact sur la performance
 - Architecture modulaire pour une maintenance facile
 - Responsive design pour tous les appareils
+- Support multilingue pour une portée internationale
+
+## Extension du support linguistique
+
+Pour ajouter une nouvelle langue au site:
+
+1. Ajouter le code de langue dans `src/app/[lang]/params.ts`
+2. Ajouter les traductions dans `src/data/translations.json`
+3. Mettre à jour la configuration dans `next-i18next.config.js`
+4. Adapter les redirections dans `src/middleware.ts` si nécessaire

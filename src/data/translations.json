@@ -1,0 +1,392 @@
+{
+  "fr": {
+    "meta": {
+      "title": "Moamen Elmasry | Expert en Gestion de Projets & Product Ownership",
+      "description": "Expert en gestion de projets et product ownership avec plus de 9 ans d'expérience, spécialisé dans la transformation digitale, l'innovation et le déploiement de solutions SaaS & IA en environnement international.",
+      "keywords": ["moamen elmasry", "gestion de projets", "product ownership", "transformation digitale", "PMP", "Prince2", "produits digitaux", "SaaS", "IA", "portfolio"]
+    },
+    "navigation": {
+      "home": "Accueil",
+      "about": "À propos",
+      "skills": "Compétences",
+      "projects": "Projets",
+      "testimonials": "Témoignages",
+      "contact": "Contact",
+      "downloadCv": "Télécharger CV",
+      "blog": "Blog",
+      "realisations": "Réalisations",
+      "ariaLabels": {
+        "mainHeader": "En-tête principal",
+        "mainNavigation": "Navigation principale",
+        "mainMenu": "Menu principal",
+        "mobileMenu": "Menu mobile"
+      }
+    },
+    "hero": {
+      "title": "Moamen Elmasry – Project Manager & Product Owner",
+      "subtitle": "Transformer les idées en solutions digitales concrètes pour un ROI mesurable",
+      "tagline": "Expert Digital",
+      "description": "Fort de plus de 9 ans d'expérience en gestion de projets digitaux et product ownership, j'accompagne les entreprises dans leur transformation numérique en alliant vision stratégique et exécution opérationnelle.",
+      "keyPoints": {
+        "title": "Points clés",
+        "certification": "Certifié PMP et PRINCE2",
+        "agile": "Méthodologies Agile & Lean",
+        "international": "Expérience internationale"
+      },
+      "cta": {
+        "consultation": "Planifier un appel",
+        "portfolio": "Voir mon portfolio",
+        "aboutMe": "À propos de moi",
+        "viewProjects": "Voir mes réalisations",
+        "downloadCV": "Télécharger CV"
+      }
+    },
+    "about": {
+      "title": "À propos",
+      "subtitle": "Mon parcours",
+      "description": "Passionné par l'innovation et la transformation digitale, j'ai consacré ma carrière à faire le pont entre la vision stratégique et l'exécution opérationnelle pour livrer des produits qui apportent une réelle valeur ajoutée.",
+      "experience": {
+        "title": "Experience",
+        "years": "9+ ans",
+        "description": "En gestion de projets et produits digitaux"
+      },
+      "projects": {
+        "title": "Projets",
+        "count": "50+",
+        "description": "Projets délivrés avec succès"
+      },
+      "international": {
+        "title": "International",
+        "count": "6+",
+        "description": "Pays où j'ai travaillé et collaboré"
+      },
+      "expertise": {
+        "title": "Expertise en Gestion de Projets et Product Ownership",
+        "paragraph1": "Fort de plus de 9 ans d'expérience dans la gestion de projets et le product ownership, j'ai développé une expertise reconnue dans la transformation des idées en solutions concrètes et performantes.",
+        "paragraph2": "J'accompagne les entreprises dans leur transformation digitale en mettant l'accent sur la création de valeur, l'optimisation des processus et l'amélioration continue."
+      },
+      "vision": {
+        "title": "Ma vision",
+        "paragraph": "Je crois fermement que la réussite d'un projet repose sur une vision claire, une exécution rigoureuse et une collaboration fluide entre toutes les parties prenantes."
+      },
+      "paragraphs": [
+        "Avec plus de 9 ans d'expérience en gestion de projets et product ownership, j'ai eu l'opportunité de travailler avec diverses entreprises, des startups aux grands groupes internationaux.",
+        "Ma spécialité est de transformer des idées complexes en solutions concrètes, en alliant vision stratégique et exécution opérationnelle pour maximiser la valeur business.",
+        "Mon approche combine rigueur méthodologique, leadership bienveillant et adaptabilité, ce qui me permet de piloter efficacement des projets dans des environnements variés et en constante évolution."
+      ],
+      "downloadCV": "Télécharger mon CV",
+      "cvPath": "/cv-moamen-elmasry.pdf",
+      "imageAlt": "Photo de Moamen Elmasry",
+      "cta": "En savoir plus"
+    },
+    "skills": {
+      "title": "Mes compétences",
+      "subtitle": "Expertise",
+      "description": "Une combinaison unique de compétences techniques, managériales et humaines qui me permettent de piloter efficacement les projets digitaux les plus complexes.",
+      "projectManagement": {
+        "title": "Gestion de Projets",
+        "description": "Maîtrise des méthodologies Agile (Scrum, Kanban), Waterfall et hybrides. Certification PMP et PRINCE2. Expert en planification stratégique, budgétisation, gestion des risques et reporting."
+      },
+      "productOwnership": {
+        "title": "Product Ownership",
+        "description": "Expertise en vision produit, définition de roadmap, priorisation backlog, user stories et analyse de la valeur. Approche data-driven et centrée utilisateur."
+      },
+      "technical": {
+        "title": "Compétences Techniques",
+        "description": "Connaissance approfondie des écosystèmes SaaS, IA, et plateformes digitales. Maîtrise des outils de gestion de projet (Jira, Monday, etc.) et d'analyse (PowerBI, Tableau)."
+      },
+      "softSkills": {
+        "title": "Soft Skills",
+        "description": "Leadership, communication interculturelle, négociation, gestion d'équipes multidisciplinaires, résolution de problèmes complexes et adaptabilité."
+      },
+      "achievements": {
+        "title": "Résultats concrets",
+        "timeReduction": {
+          "title": "Réduction des délais",
+          "description": "Réduction du temps de mise sur le marché de 15 à 3 jours pour un client e-commerce majeur"
+        },
+        "clientSatisfaction": {
+          "title": "Satisfaction client",
+          "description": "Taux de satisfaction client moyen sur l'ensemble des projets livrés"
+        },
+        "funding": {
+          "title": "Financement",
+          "description": "Contribution à la sécurisation d'une levée de fonds significative pour une startup"
+        },
+        "deployment": {
+          "title": "Déploiement",
+          "description": "Pays où j'ai déployé des solutions à l'international"
+        }
+      },
+      "valueProposition": {
+        "title": "Ma proposition de valeur",
+        "description": "Je transforme des idées complexes en solutions concrètes, en alliant vision stratégique, expertise technique et leadership, pour vous aider à atteindre vos objectifs d'affaires tout en optimisant votre ROI."
+      }
+    },
+    "projects": {
+      "title": "Projets réalisés",
+      "subtitle": "Portfolio",
+      "description": "Une sélection de projets représentatifs qui illustrent mon expertise et mon approche en gestion de projets et product ownership.",
+      "viewProject": "Voir le projet",
+      "allProjects": "Tous les projets",
+      "allProjectsFilter": "Tous les projets"
+    },
+    "testimonials": {
+      "title": "Ce que disent mes clients",
+      "subtitle": "Témoignages",
+      "description": "Découvrez les retours d'expérience de personnes avec qui j'ai eu le plaisir de collaborer.",
+      "trustedBy": "Ils m'ont fait confiance",
+      "roles": {
+        "cto": "CTO",
+        "marketingDirector": "Directrice Marketing",
+        "ceo": "CEO"
+      },
+      "content": {
+        "jeanDupont": "Moamen a transformé notre vision en une solution concrète, en gérant efficacement tous les aspects du projet. Sa capacité à comprendre nos besoins métier tout en apportant une expertise technique a été déterminante dans le succès de notre produit.",
+        "sophieMartin": "La collaboration avec Moamen a été un véritable atout pour notre entreprise. Sa rigueur méthodologique et sa vision stratégique nous ont permis de réduire nos délais de mise sur le marché de 15 à 3 jours, un gain considérable pour notre activité.",
+        "thomasLeroy": "Grâce à l'expertise de Moamen, nous avons pu sécuriser une levée de fonds significative. Son approche méthodique, sa capacité à fédérer les équipes et à livrer dans les délais ont été des facteurs clés de notre succès."
+      }
+    },
+    "contact": {
+      "title": "Travaillons ensemble",
+      "subtitle": "Contact",
+      "description": "Vous avez un projet ou une opportunité à discuter ? N'hésitez pas à me contacter pour échanger.",
+      "downloadCV": {
+        "title": "Télécharger mon CV",
+        "description": "Découvrez mon parcours, mes compétences et mes réalisations en détail.",
+        "button": "Télécharger le CV"
+      },
+      "contactMe": {
+        "title": "Prenez contact",
+        "description": "Vous avez un projet ou une question ? N'hésitez pas à me contacter directement.",
+        "button": "Envoyer un email"
+      },
+      "form": {
+        "name": "Nom",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Envoyer le message"
+      },
+      "contactInfo": {
+        "title": "Informations de contact",
+        "email": "Email",
+        "phone": "Téléphone",
+        "location": "Localisation"
+      }
+    },
+    "footer": {
+      "copyright": "© 2023 Moamen Elmasry. Tous droits réservés.",
+      "rights": "Créé avec passion et expertise",
+      "connect": "Se connecter",
+      "slogan": "Expert en gestion de projets et product ownership, transformant des idées en solutions concrètes avec une approche centrée sur les résultats."
+    },
+    "nav": {
+      "about": "À propos",
+      "skills": "Compétences",
+      "projects": "Projets",
+      "contact": "Contact"
+    },
+    "routes": {
+      "home": "/",
+      "about": "/#a-propos",
+      "skills": "/#competences",
+      "projects": "/#projets",
+      "contact": "/#contact"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Moamen Elmasry | Project Management & Product Ownership Expert",
+      "description": "Project management and product ownership expert with over 9 years of experience, specialized in digital transformation, innovation, and deployment of SaaS & AI solutions in international environments.",
+      "keywords": ["moamen elmasry", "project management", "product ownership", "digital transformation", "PMP", "Prince2", "digital products", "SaaS", "AI", "portfolio"]
+    },
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "testimonials": "Testimonials",
+      "contact": "Contact",
+      "downloadCv": "Download CV",
+      "blog": "Blog",
+      "realisations": "Projects",
+      "ariaLabels": {
+        "mainHeader": "Main header",
+        "mainNavigation": "Main navigation",
+        "mainMenu": "Main menu",
+        "mobileMenu": "Mobile menu"
+      }
+    },
+    "hero": {
+      "title": "Moamen Elmasry – Project Manager & Product Owner",
+      "subtitle": "Transforming ideas into concrete digital solutions for measurable ROI",
+      "tagline": "Digital Expert",
+      "description": "With over 9 years of experience in digital project management and product ownership, I help companies in their digital transformation by combining strategic vision and operational execution.",
+      "keyPoints": {
+        "title": "Key points",
+        "certification": "PMP and PRINCE2 certified",
+        "agile": "Agile & Lean methodologies",
+        "international": "International experience"
+      },
+      "cta": {
+        "consultation": "Schedule a call",
+        "portfolio": "View my portfolio",
+        "aboutMe": "About me",
+        "viewProjects": "View my projects",
+        "downloadCV": "Download CV"
+      }
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "My journey",
+      "description": "Passionate about innovation and digital transformation, I've dedicated my career to bridging the gap between strategic vision and operational execution to deliver products that provide real added value.",
+      "experience": {
+        "title": "Experience",
+        "years": "9+ years",
+        "description": "In digital project and product management"
+      },
+      "projects": {
+        "title": "Projects",
+        "count": "50+",
+        "description": "Successfully delivered projects"
+      },
+      "international": {
+        "title": "International",
+        "count": "6+",
+        "description": "Countries where I've worked and collaborated"
+      },
+      "expertise": {
+        "title": "Project Management and Product Ownership Expertise",
+        "paragraph1": "With over 9 years of experience in project management and product ownership, I have developed a recognized expertise in transforming ideas into concrete and high-performing solutions.",
+        "paragraph2": "I help companies in their digital transformation by focusing on value creation, process optimization, and continuous improvement."
+      },
+      "vision": {
+        "title": "My vision",
+        "paragraph": "I firmly believe that project success is based on a clear vision, rigorous execution, and smooth collaboration between all stakeholders."
+      },
+      "paragraphs": [
+        "With over 9 years of experience in project management and product ownership, I've had the opportunity to work with various companies, from startups to large international groups.",
+        "My specialty is transforming complex ideas into concrete solutions, combining strategic vision and operational execution to maximize business value.",
+        "My approach combines methodological rigor, supportive leadership, and adaptability, enabling me to effectively lead projects in varied and constantly evolving environments."
+      ],
+      "downloadCV": "Download my CV",
+      "cvPath": "/en/cv-moamen-elmasry-en.pdf",
+      "imageAlt": "Photo of Moamen Elmasry",
+      "cta": "Learn more"
+    },
+    "skills": {
+      "title": "My skills",
+      "subtitle": "Expertise",
+      "description": "A unique combination of technical, managerial, and human skills that allow me to effectively manage the most complex digital projects.",
+      "projectManagement": {
+        "title": "Project Management",
+        "description": "Mastery of Agile (Scrum, Kanban), Waterfall, and hybrid methodologies. PMP and PRINCE2 certification. Expert in strategic planning, budgeting, risk management, and reporting."
+      },
+      "productOwnership": {
+        "title": "Product Ownership",
+        "description": "Expertise in product vision, roadmap definition, backlog prioritization, user stories, and value analysis. Data-driven and user-centered approach."
+      },
+      "technical": {
+        "title": "Technical Skills",
+        "description": "Deep knowledge of SaaS ecosystems, AI, and digital platforms. Proficiency in project management tools (Jira, Monday, etc.) and analytics tools (PowerBI, Tableau)."
+      },
+      "softSkills": {
+        "title": "Soft Skills",
+        "description": "Leadership, cross-cultural communication, negotiation, multidisciplinary team management, complex problem-solving, and adaptability."
+      },
+      "achievements": {
+        "title": "Concrete Results",
+        "timeReduction": {
+          "title": "Time Reduction",
+          "description": "Reduced time-to-market from 15 to 3 days for a major e-commerce client"
+        },
+        "clientSatisfaction": {
+          "title": "Client Satisfaction",
+          "description": "Average client satisfaction rate across all delivered projects"
+        },
+        "funding": {
+          "title": "Funding",
+          "description": "Contribution to securing significant funding for a startup"
+        },
+        "deployment": {
+          "title": "Deployment",
+          "description": "Countries where I have deployed international solutions"
+        }
+      },
+      "valueProposition": {
+        "title": "My Value Proposition",
+        "description": "I transform complex ideas into concrete solutions, combining strategic vision, technical expertise and leadership, to help you achieve your business goals while optimizing your ROI."
+      }
+    },
+    "projects": {
+      "title": "Completed projects",
+      "subtitle": "Portfolio",
+      "description": "A selection of representative projects that illustrate my expertise and approach to project management and product ownership.",
+      "viewProject": "View project",
+      "allProjects": "All projects",
+      "allProjectsFilter": "All projects"
+    },
+    "testimonials": {
+      "title": "What my clients say",
+      "subtitle": "Testimonials",
+      "description": "Discover feedback from people I've had the pleasure of collaborating with.",
+      "trustedBy": "They trusted me",
+      "roles": {
+        "cto": "CTO",
+        "marketingDirector": "Marketing Director",
+        "ceo": "CEO"
+      },
+      "content": {
+        "jeanDupont": "Moamen transformed our vision into a concrete solution, efficiently managing all aspects of the project. His ability to understand our business needs while providing technical expertise was crucial to the success of our product.",
+        "sophieMartin": "Collaboration with Moamen has been a real asset for our company. His methodological rigor and strategic vision allowed us to reduce our time-to-market from 15 to 3 days, a considerable gain for our business.",
+        "thomasLeroy": "Thanks to Moamen's expertise, we were able to secure significant funding. His methodical approach, ability to unite teams and deliver on time were key factors in our success."
+      }
+    },
+    "contact": {
+      "title": "Let's work together",
+      "subtitle": "Contact",
+      "description": "Do you have a project or opportunity to discuss? Feel free to contact me to exchange ideas.",
+      "downloadCV": {
+        "title": "Download my CV",
+        "description": "Discover my background, skills, and achievements in detail.",
+        "button": "Download CV"
+      },
+      "contactMe": {
+        "title": "Get in touch",
+        "description": "Do you have a project or a question? Feel free to contact me directly.",
+        "button": "Send an email"
+      },
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Send message"
+      },
+      "contactInfo": {
+        "title": "Contact information",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "Location"
+      }
+    },
+    "footer": {
+      "copyright": "© 2023 Moamen Elmasry. All rights reserved.",
+      "rights": "Created with passion and expertise",
+      "connect": "Connect",
+      "slogan": "Project management and product ownership expert, transforming ideas into concrete solutions with a results-oriented approach."
+    },
+    "nav": {
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "routes": {
+      "home": "/en",
+      "about": "/en#about",
+      "skills": "/en#skills",
+      "projects": "/en#projects",
+      "contact": "/en#contact"
+    }
+  }
+} 

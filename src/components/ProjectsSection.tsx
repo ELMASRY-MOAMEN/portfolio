@@ -6,11 +6,16 @@ import OptimizedImage from './OptimizedImage';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Project } from '@/types/project';
 import { projects, getProjectCategories, filterProjectsByCategory } from '@/data/projects';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const ProjectsSection = () => {
   const [filter, setFilter] = useState('all');
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useScrollAnimation(sectionRef);
+  const { t, locale } = useTranslation();
+
+  // Préfixe de langue pour les URLs
+  const langPrefix = `/${locale}`;
 
   // Filtrer les projets par catégorie en utilisant la fonction utilitaire
   const filteredProjects = filterProjectsByCategory(filter);
@@ -33,12 +38,11 @@ const ProjectsSection = () => {
             id="projects-heading"
             className={`inline-block relative ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
           >
-            Mes Projets
+            {t.projects.title}
             <span className="absolute -bottom-3 left-0 w-full h-1 bg-primary rounded-full"></span>
           </h2>
           <p className={`mt-6 max-w-3xl mx-auto text-text-secondary ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '100ms' }}>
-            Découvrez une sélection de projets sur lesquels j'ai travaillé en tant que gestionnaire de projet 
-            et product owner. Chaque projet illustre mon approche centrée sur les résultats et l'expérience utilisateur.
+            {t.projects.description}
           </p>
         </div>
 
@@ -54,7 +58,7 @@ const ProjectsSection = () => {
                   : 'bg-white text-text-secondary hover:bg-gray-100'
               }`}
             >
-              {category === 'all' ? 'Tous les projets' : category}
+              {category === 'all' ? t.projects.allProjectsFilter : category}
             </button>
           ))}
         </div>
@@ -113,11 +117,11 @@ const ProjectsSection = () => {
                 </div>
                 
                 <Link
-                  href={project.link}
+                  href={`${langPrefix}${project.link}`}
                   className="btn-primary text-sm"
                   itemProp="url"
                 >
-                  Voir le projet
+                  {t.projects.viewProject}
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
@@ -133,8 +137,8 @@ const ProjectsSection = () => {
         
         {/* Bouton voir tous les projets */}
         <div className={`mt-16 text-center ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '700ms' }}>
-          <Link href="/projets" className="btn-secondary">
-            Voir tous les projets
+          <Link href={`${langPrefix}/projets`} className="btn-secondary">
+            {t.projects.allProjects}
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
