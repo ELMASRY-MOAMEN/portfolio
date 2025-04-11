@@ -367,13 +367,175 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* Scrolling text in opposite direction */}
       <ScrollingText 
-        text={locale === 'fr' ? "Vente B2B tech, pilotage stratégique, digitalisation des processus et conduite du changement" : "B2B tech sales, strategic management, process digitalization and change management"}
+        text={locale === 'fr' ? "Vente B2B tech • Pilotage stratégique • Digitalisation des processus • Conduite du changement" : "B2B tech sales • Strategic management • Process digitalization • Change management"}
         direction="ltr"
         mode="carousel"
         speed={0.8}
       />
       
-      {/* CALL TO ACTION SECTION (ACTION) */}
+      {/* MINI SECTION: À PROPOS (using AIDA) */}
+      <AnimatedSection 
+        className="py-16 bg-white"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <motion.span
+                className="inline-block px-3 py-1 bg-primary/10 text-primary font-medium rounded-full mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                {locale === 'fr' ? 'Qui suis-je?' : 'Who am I?'}
+              </motion.span>
+              
+              <motion.h2 
+                className="text-3xl font-unbounded font-bold mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {locale === 'fr' ? 'Un profil hybride entre business et tech' : 'A hybrid profile between business and tech'}
+              </motion.h2>
+              
+              <motion.p 
+                className="text-lg mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {locale === 'fr' 
+                  ? 'Ex-entrepreneur et expert en transformation digitale, j\'ai piloté des projets stratégiques dans des environnements B2B exigeants. Mon parcours unique combine développement commercial, leadership et expertise technique.' 
+                  : 'Former entrepreneur and digital transformation expert, I\'ve led strategic projects in demanding B2B environments. My unique background combines business development, leadership, and technical expertise.'}
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <AnimatedButton 
+                  href={`${langPrefix}/a-propos`}
+                  variant="outline"
+                  size="lg"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  }
+                >
+                  {locale === 'fr' ? 'En savoir plus sur mon parcours' : 'Learn more about my journey'}
+                </AnimatedButton>
+              </motion.div>
+            </div>
+            
+            <div className="order-1 md:order-2">
+              <motion.div
+                className="rounded-2xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                <img 
+                  src="/images/about-preview.jpg" 
+                  alt={locale === 'fr' ? "Parcours professionnel" : "Professional journey"} 
+                  className="w-full h-auto object-cover aspect-video"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+      
+      {/* MINI SECTION: RÉALISATIONS (using AIDA) */}
+      <AnimatedSection 
+        className="py-16"
+        bgClassName="bg-gradient-to-br from-primary-light to-primary-light/70"
+        direction="up"
+      >
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <motion.div
+                className="rounded-2xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                <img 
+                  src="/images/projects-preview.jpg" 
+                  alt={locale === 'fr' ? "Réalisations et projets" : "Projects and achievements"} 
+                  className="w-full h-auto object-cover aspect-video"
+                />
+              </motion.div>
+            </div>
+            
+            <div>
+              <motion.span
+                className="inline-block px-3 py-1 bg-white/20 text-white font-medium rounded-full mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                {locale === 'fr' ? 'Réalisations concrètes' : 'Concrete achievements'}
+              </motion.span>
+              
+              <motion.h2 
+                className="text-3xl font-unbounded font-bold mb-4 text-white"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {locale === 'fr' ? 'Des résultats mesurables et impactants' : 'Measurable and impactful results'}
+              </motion.h2>
+              
+              <motion.p 
+                className="text-lg mb-6 text-white"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {locale === 'fr' 
+                  ? 'De la réduction des délais de 80% à l\'obtention de 200K€ de financement, chaque projet reflète ma capacité à générer des résultats concrets. Découvrez comment j\'ai transformé des défis complexes en opportunités de croissance et d\'efficacité opérationnelle.' 
+                  : 'From reducing timelines by 80% to securing €200K in funding, each project reflects my ability to generate concrete results. Discover how I transformed complex challenges into opportunities for growth and operational efficiency.'}
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <AnimatedButton 
+                  href={`${langPrefix}/realisations`}
+                  variant="secondary"
+                  size="lg"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  }
+                >
+                  {locale === 'fr' ? 'Explorer mes réalisations' : 'Explore my achievements'}
+                </AnimatedButton>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+      
+      {/* CALL TO ACTION SECTION (Updated with warmer tone) */}
       <AnimatedSection 
         className="py-16 bg-white"
         direction="up"
@@ -387,7 +549,9 @@ export default function HomeContent({ params }: HomeContentProps) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
           >
-            {content.ctaSectionTitle}
+            {locale === 'fr' 
+              ? 'Prenons un café virtuel pour discuter des plus-values que je peux apporter à votre organisation ?' 
+              : 'Let\'s have a virtual coffee to discuss the value I can bring to your organization?'}
           </motion.h2>
           
           <motion.p 
@@ -397,39 +561,29 @@ export default function HomeContent({ params }: HomeContentProps) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {content.ctaSectionDescription}
+            {locale === 'fr'
+              ? 'Je souhaite mettre mon expertise, mon expérience et mon énergie au service de votre entreprise dans le cadre d\'un CDI ou CDD. Échangeons sur vos enjeux et découvrons comment je peux contribuer au succès de vos projets.'
+              : 'I want to put my expertise, experience, and energy at the service of your company through a permanent or fixed-term position. Let\'s discuss your challenges and discover how I can contribute to the success of your projects.'}
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <AnimatedButton 
-              href={`${langPrefix}/realisations`}
+              href={`${langPrefix}/contact`}
               variant="primary"
               size="lg"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              }
             >
-              {content.ctaProjects}
-            </AnimatedButton>
-            
-            <AnimatedButton 
-              href="/cv-moamen-elmasry.pdf"
-              variant="outline"
-              size="lg"
-              isExternal
-            >
-              {content.ctaDownload}
-            </AnimatedButton>
-            
-            <AnimatedButton 
-              href={`${langPrefix}/contact`}
-              variant="secondary"
-              size="lg"
-            >
-              {content.ctaContact}
+              {locale === 'fr' ? 'Me contacter' : 'Contact me'}
             </AnimatedButton>
           </motion.div>
         </div>
