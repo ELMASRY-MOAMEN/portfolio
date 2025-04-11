@@ -1,10 +1,20 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 import { Lang, langs } from './params';
 import translations from '@/data/translations.json';
 import Link from 'next/link';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import ParticlesBackground from '@/components/effects/ParticlesBackground';
+import TypeWriter from '@/components/effects/TypeWriter';
+import AnimatedButton from '@/components/ui/animated-button';
+import AnimatedProfile from '@/components/profile/AnimatedProfile';
+import AnimatedStatsCard from '@/components/stats/AnimatedStatsCard';
+import AnimatedSection from '@/components/layout/AnimatedSection';
+import ScrollingText from '@/components/effects/ScrollingText';
 
 export async function generateMetadata({ params }: { params: { lang: Lang } }): Promise<Metadata> {
   const t = translations[params.lang].meta;
@@ -28,6 +38,7 @@ export async function generateStaticParams() {
 }
 
 export default function Home({ params }: { params: { lang: Lang } }) {
+  const [isLoaded, setIsLoaded] = useState(false);
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
@@ -37,13 +48,19 @@ export default function Home({ params }: { params: { lang: Lang } }) {
   // Content based on language
   const pageContent = {
     fr: {
-      heroTitle: "Moamen Elmasry – Project Manager & Product Owner",
-      heroSubtitle: "Transformer des idées ambitieuses en solutions digitales concrètes",
+      heroTitle: "Moamen Elmasry",
+      heroRole: "Project Manager & Product Owner",
+      heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
       heroDescription: "Fort de 9 ans d'expérience en transformation digitale, j'allie vision stratégique et excellence opérationnelle. Ex-entrepreneur ayant vendu une plateforme SaaS, je crée des solutions innovantes à fort ROI.",
       ctaProjects: "Voir mes réalisations",
       ctaDownload: "Télécharger mon CV",
       ctaContact: "Me contacter",
       profileAlt: "Moamen Elmasry - Expert en Gestion de Projets et Product Ownership",
+      profileBadges: {
+        certifications: "PMP & PRINCE2",
+        experience: "9+ ans",
+        projects: "50+"
+      },
       stats: [
         { value: "80%", label: "Réduction des délais sur projets SaaS" },
         { value: "200K€", label: "Financements obtenus" },
@@ -74,16 +91,23 @@ export default function Home({ params }: { params: { lang: Lang } }) {
           cta: "Me contacter",
           link: "/fr/contact"
         }
-      ]
+      ],
+      scrollingText: "Transformation Digitale • Innovation • ROI • Gestion de Projet • Leadership • Excellence Opérationnelle"
     },
     en: {
-      heroTitle: "Moamen Elmasry – Project Manager & Product Owner",
-      heroSubtitle: "Transforming ambitious ideas into concrete digital solutions",
+      heroTitle: "Moamen Elmasry",
+      heroRole: "Project Manager & Product Owner",
+      heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
       heroDescription: "With 9 years of experience in digital transformation, I combine strategic vision and operational excellence. Former entrepreneur who sold a SaaS platform, I create innovative solutions with high ROI.",
       ctaProjects: "View my projects",
       ctaDownload: "Download my CV",
       ctaContact: "Contact me",
       profileAlt: "Moamen Elmasry - Project Management and Product Ownership Expert",
+      profileBadges: {
+        certifications: "PMP & PRINCE2",
+        experience: "9+ years",
+        projects: "50+"
+      },
       stats: [
         { value: "80%", label: "Reduction in SaaS project timelines" },
         { value: "200K€", label: "Funding secured" },
@@ -114,179 +138,351 @@ export default function Home({ params }: { params: { lang: Lang } }) {
           cta: "Contact me",
           link: "/en/contact"
         }
-      ]
+      ],
+      scrollingText: "Digital Transformation • Innovation • ROI • Project Management • Leadership • Operational Excellence"
     }
   };
   
   // Select content based on current language
   const content = locale === 'en' ? pageContent.en : pageContent.fr;
   
+  // Set loaded state after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: custom * 0.1,
+        duration: 0.8,
+        ease: [0.215, 0.61, 0.355, 1]
+      }
+    })
+  };
+
   return (
     <>
       <Header />
       <main id="content" className="flex flex-col">
+        {/* Particles background */}
+        <ParticlesBackground />
+        
         {/* HERO SECTION (ATTENTION) */}
-        <section className="pt-32 pb-16 md:pt-40 md:pb-28 bg-primary-light relative overflow-hidden">
+        <section className="pt-36 pb-20 md:pt-48 md:pb-32 bg-primary-light/80 relative overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary opacity-5 -translate-y-1/2 translate-x-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary opacity-5 translate-y-1/3 -translate-x-1/4"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary opacity-5 blur-2xl -translate-y-1/2 translate-x-1/3"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary opacity-5 blur-xl translate-y-1/3 -translate-x-1/4"></div>
+          <div className="absolute inset-0 grain-bg"></div>
           
           <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12 items-center">
               {/* Main content */}
               <div className="order-2 md:order-1">
-                <h1 
-                  id="hero-heading"
-                  className="font-unbounded text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-text-primary"
-                  itemProp="headline"
+                <motion.div 
+                  className="mb-6"
+                  initial="hidden"
+                  animate={isLoaded ? "visible" : "hidden"}
+                  custom={0}
+                  variants={fadeInUp}
                 >
-                  {content.heroTitle}
-                </h1>
+                  <span className="inline-block px-4 py-1 bg-primary/10 text-primary font-bold rounded-full animate-pulse">
+                    {content.heroRole}
+                  </span>
+                </motion.div>
                 
-                <h2 className="font-bricolage text-2xl md:text-3xl text-text-primary font-medium mb-6">
-                  {content.heroSubtitle}
-                </h2>
+                <motion.h1 
+                  className="font-unbounded text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-text-primary"
+                  initial="hidden"
+                  animate={isLoaded ? "visible" : "hidden"}
+                  custom={1}
+                  variants={fadeInUp}
+                >
+                  <span className="gradient-text">{content.heroTitle}</span>
+                </motion.h1>
                 
-                <p 
+                <motion.div
+                  className="font-bricolage text-xl md:text-2xl text-text-primary font-medium mb-6 h-12"
+                  initial="hidden"
+                  animate={isLoaded ? "visible" : "hidden"}
+                  custom={2}
+                  variants={fadeInUp}
+                >
+                  <TypeWriter 
+                    texts={content.heroSubtitle}
+                    className="text-primary"
+                  />
+                </motion.div>
+                
+                <motion.p 
                   className="font-bricolage text-lg text-text-secondary mb-8 max-w-2xl"
-                  itemProp="description"
+                  initial="hidden"
+                  animate={isLoaded ? "visible" : "hidden"}
+                  custom={3}
+                  variants={fadeInUp}
                 >
                   {content.heroDescription}
-                </p>
+                </motion.p>
                 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-4 mb-10">
-                  <Link 
-                    href={`${langPrefix}/realisations`} 
-                    className="btn-primary"
-                    role="button"
-                    aria-label={content.ctaProjects}
+                <motion.div 
+                  className="flex flex-wrap gap-4 mb-10"
+                  initial="hidden"
+                  animate={isLoaded ? "visible" : "hidden"}
+                  custom={4}
+                  variants={fadeInUp}
+                >
+                  <AnimatedButton 
+                    href={`${langPrefix}/realisations`}
+                    variant="primary"
+                    size="lg"
+                    ariaLabel={content.ctaProjects}
+                    icon={
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    }
                   >
                     {content.ctaProjects}
-                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
-                  <Link 
-                    href="/cv-moamen-elmasry.pdf" 
-                    className="btn-outline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    role="button"
-                    aria-label={content.ctaDownload}
+                  </AnimatedButton>
+                  
+                  <AnimatedButton 
+                    href="/cv-moamen-elmasry.pdf"
+                    variant="outline"
+                    size="lg"
+                    isExternal
+                    ariaLabel={content.ctaDownload}
+                    icon={
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                    }
                   >
                     {content.ctaDownload}
-                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                  </Link>
-                </div>
+                  </AnimatedButton>
+                </motion.div>
               </div>
               
-              {/* Profile image - Using Next.js Image component */}
+              {/* Profile image with enhanced animations */}
               <div className="order-1 md:order-2 flex justify-center">
-                <div className="relative w-80 h-80 md:w-96 md:h-96">
-                  <div className="absolute inset-0 rounded-full bg-primary/10"></div>
-                  <div className="absolute inset-4 rounded-full overflow-hidden shadow-xl border-4 border-white">
-                    <Image
-                      src="/images/profile.jpg"
-                      alt={content.profileAlt}
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 20rem, 24rem"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                </div>
+                <AnimatedProfile 
+                  src="/images/profile.jpg"
+                  alt={content.profileAlt}
+                  badges={content.profileBadges}
+                  locale={locale}
+                />
               </div>
             </div>
           </div>
+          
+          {/* Scroll indicator */}
+          <motion.div 
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            animate={{ 
+              y: [0, 10, 0],
+              opacity: [0.3, 1, 0.3]
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut" 
+            }}
+          >
+            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </motion.div>
         </section>
         
+        {/* Scrolling text section */}
+        <ScrollingText 
+          text={content.scrollingText}
+          direction="rtl"
+        />
+        
         {/* KEY INDICATORS SECTION (INTEREST) */}
-        <section className="py-16 bg-white">
+        <AnimatedSection 
+          className="py-16 bg-white"
+          direction="up"
+          withGrain={true}
+        >
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {content.stats.map((stat, index) => (
-                <div key={index} className="bg-primary-light p-6 rounded-xl text-center">
-                  <div className="text-4xl font-unbounded font-bold text-primary mb-2">{stat.value}</div>
-                  <div className="text-text-secondary">{stat.label}</div>
-                </div>
+                <AnimatedStatsCard
+                  key={index}
+                  value={stat.value}
+                  label={stat.label}
+                  delay={index * 0.1}
+                />
               ))}
             </div>
           </div>
-        </section>
+        </AnimatedSection>
         
         {/* VALUE PROPOSITION SECTION (DESIRE) */}
-        <section className="py-16 bg-primary-light">
+        <AnimatedSection 
+          className="py-16"
+          bgClassName="bg-gradient-to-br from-primary-light to-primary-light/70"
+          direction="up"
+        >
           <div className="container-custom">
-            <h2 className="text-3xl font-unbounded font-bold mb-8 text-center">{content.approachTitle}</h2>
+            <motion.h2 
+              className="text-3xl font-unbounded font-bold mb-8 text-center text-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              {content.approachTitle}
+            </motion.h2>
+            
             <div className="max-w-3xl mx-auto">
-              <p className="text-lg mb-6">
+              <motion.p 
+                className="text-lg mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 {content.approachDescription1}
-              </p>
-              <p className="text-lg mb-8">
+              </motion.p>
+              
+              <motion.p 
+                className="text-lg mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {content.approachDescription2}
-              </p>
+              </motion.p>
             </div>
           </div>
-        </section>
+        </AnimatedSection>
+        
+        {/* Scrolling text in opposite direction */}
+        <ScrollingText 
+          text={content.scrollingText}
+          direction="ltr"
+        />
         
         {/* CALL TO ACTION SECTION (ACTION) */}
-        <section className="py-16 bg-white">
+        <AnimatedSection 
+          className="py-16 bg-white"
+          direction="up"
+          withGrain={true}
+        >
           <div className="container-custom text-center">
-            <h2 className="text-3xl font-unbounded font-bold mb-8">{content.ctaSectionTitle}</h2>
-            <p className="text-xl mb-10 max-w-2xl mx-auto">
+            <motion.h2 
+              className="text-3xl font-unbounded font-bold mb-8 gradient-text"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              {content.ctaSectionTitle}
+            </motion.h2>
+            
+            <motion.p 
+              className="text-xl mb-10 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               {content.ctaSectionDescription}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`${langPrefix}/realisations`} className="btn-primary">
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <AnimatedButton 
+                href={`${langPrefix}/realisations`}
+                variant="primary"
+                size="lg"
+              >
                 {content.ctaProjects}
-              </Link>
-              <Link href="/cv-moamen-elmasry.pdf" className="btn-outline" target="_blank" rel="noopener noreferrer">
+              </AnimatedButton>
+              
+              <AnimatedButton 
+                href="/cv-moamen-elmasry.pdf"
+                variant="outline"
+                size="lg"
+                isExternal
+              >
                 {content.ctaDownload}
-              </Link>
-              <Link href={`${langPrefix}/contact`} className="btn-secondary">
+              </AnimatedButton>
+              
+              <AnimatedButton 
+                href={`${langPrefix}/contact`}
+                variant="secondary"
+                size="lg"
+              >
                 {content.ctaContact}
-              </Link>
-            </div>
+              </AnimatedButton>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedSection>
         
         {/* SECTIONS GRID - Visual gateway to different sections */}
-        <section className="py-16 bg-gray-50">
+        <AnimatedSection 
+          className="py-16 bg-gray-50"
+          direction="up"
+          delay={0.2}
+        >
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {content.sections.map((section, index) => (
-                <Link 
+                <motion.div
                   key={index}
-                  href={section.link}
-                  className="card bg-white p-6 hover:shadow-lg transition-all hover:-translate-y-1"
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
                 >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
-                        index === 0 ? "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" :
-                        index === 1 ? "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" :
-                        "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      } />
-                    </svg>
-                  </div>
-                  <h3 className="font-unbounded text-xl font-bold mb-2">{section.title}</h3>
-                  <p className="text-text-secondary mb-4">
-                    {section.description}
-                  </p>
-                  <div className="text-primary font-medium inline-flex items-center">
-                    {section.cta}
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
-                </Link>
+                  <Link 
+                    href={section.link}
+                    className="card-hover glassmorphism block p-8 rounded-2xl h-full"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+                      <svg className="w-6 h-6 svg-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
+                          index === 0 ? "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" :
+                          index === 1 ? "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" :
+                          "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        } />
+                      </svg>
+                    </div>
+                    <h3 className="font-unbounded text-xl font-bold mb-2">{section.title}</h3>
+                    <p className="text-text-secondary mb-6">
+                      {section.description}
+                    </p>
+                    <div className="text-primary font-medium inline-flex items-center animated-border">
+                      {section.cta}
+                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </AnimatedSection>
       </main>
       <Footer />
     </>
