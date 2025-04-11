@@ -31,97 +31,99 @@ export default function HomeContent({ params }: HomeContentProps) {
   const pageContent = {
     fr: {
       heroTitle: "Moamen Elmasry",
-      heroRole: "Project Manager & Product Owner",
+      heroRole: "Project Manager",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale, j'allie vision stratégique et excellence opérationnelle. Ex-entrepreneur ayant vendu une plateforme SaaS, je crée des solutions innovantes à fort ROI.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je recherche activement un poste en CDI ou CDD. Ex-entrepreneur ayant développé une plateforme SaaS (GED, IA, automatisation), j'allie vision stratégique et expertise technique pour générer un fort ROI.",
+      jobStatus: "En recherche active d'un poste en CDI ou CDD",
       ctaProjects: "Voir mes réalisations",
       ctaDownload: "Télécharger mon CV",
       ctaContact: "Me contacter",
-      profileAlt: "Moamen Elmasry - Expert en Gestion de Projets et Product Ownership",
+      profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
       profileBadges: {
-        certifications: "PMP & PRINCE2",
-        experience: "9+ ans",
-        projects: "50+"
+        certifications: "Expert Certifié PMP",
+        experience: "9 ans d'excellence",
+        projects: "50+ projets réussis"
       },
       stats: [
-        { value: "80%", label: "Réduction des délais sur projets SaaS" },
+        { value: "80%", label: "Réduction des délais de projets" },
         { value: "200K€", label: "Financements obtenus" },
-        { value: "50+", label: "Taille de l'équipe pilotée" },
-        { value: "20%", label: "Déploiement à l'international" }
+        { value: "50+", label: "Collaborateurs managés" },
+        { value: "20%", label: "Croissance du portefeuille" }
       ],
-      approachTitle: "Mon approche: Excellence et ROI mesurable",
-      approachDescription1: "Je transforme les défis digitaux complexes en opportunités concrètes, générant un retour sur investissement mesurable. Mon approche combine leadership mobilisateur, méthodologies agiles et vision data-driven pour orchestrer efficacement la transformation digitale dans divers environnements.",
-      approachDescription2: "Spécialisé dans les technologies SaaS, l'IA, la GED et l'OCR, je pilote des projets stratégiques de bout en bout, du cadrage à l'implémentation, en assurant une conduite du changement optimale.",
+      approachTitle: "Mon expertise à votre service",
+      approachDescription1: "Je convertis des défis complexes en résultats tangibles pour votre entreprise. Grâce à mon expérience éprouvée, j'ai réduit les délais de projets jusqu'à 80% et augmenté significativement le ROI des initiatives stratégiques. Mon leadership mobilisateur et ma maîtrise des méthodologies agiles garantissent des livraisons de qualité, dans les délais impartis.",
+      approachDescription2: "Mon expertise technique (SaaS, IA, GED, OCR) combinée à mes compétences en gestion de changement me permettent d'assurer le succès de vos projets stratégiques, de la conception à l'implémentation. J'améliore les performances opérationnelles tout en accompagnant efficacement les équipes vers l'adoption des nouvelles solutions.",
       ctaSectionTitle: "Prêt à collaborer sur vos défis digitaux?",
-      ctaSectionDescription: "Discutons de vos enjeux et voyons ensemble comment je peux contribuer à votre succès.",
+      ctaSectionDescription: "Je souhaite mettre mon expérience au service de votre entreprise dans le cadre d'un CDI ou CDD. Discutons de vos projets stratégiques et de comment mon expertise peut contribuer à leur réussite.",
       sections: [
         {
           title: "À Propos",
-          description: "Découvrez mon parcours, mes valeurs et ma vision professionnelle.",
+          description: "Découvrez mon parcours, mes compétences et mon expertise en gestion de projets.",
           cta: "En savoir plus",
           link: "/fr/a-propos"
         },
         {
           title: "Réalisations",
-          description: "Consultez mes projets clés et leurs résultats concrets.",
+          description: "Consultez mes projets clés et leurs résultats quantifiables.",
           cta: "Voir les projets",
           link: "/fr/realisations"
         },
         {
           title: "Contact",
-          description: "Discutons de vos besoins en gestion de projets ou product ownership.",
+          description: "Échangeons sur vos opportunités en gestion de projets et transformation digitale.",
           cta: "Me contacter",
           link: "/fr/contact"
         }
       ],
-      scrollingText: "Transformation Digitale • Innovation • ROI • Gestion de Projet • Leadership • Excellence Opérationnelle"
+      scrollingText: "Résultats • Innovation • ROI • Expertise • Leadership • Excellence"
     },
     en: {
       heroTitle: "Moamen Elmasry",
-      heroRole: "Project Manager & Product Owner",
+      heroRole: "Project Manager",
       heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
-      heroDescription: "With 9 years of experience in digital transformation, I combine strategic vision and operational excellence. Former entrepreneur who sold a SaaS platform, I create innovative solutions with high ROI.",
+      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm actively seeking a permanent or fixed-term position. Former entrepreneur who developed a SaaS platform (ECM, AI, automation), I combine strategic vision and technical expertise to generate strong ROI.",
+      jobStatus: "Actively seeking a permanent or fixed-term position",
       ctaProjects: "View my projects",
       ctaDownload: "Download my CV",
       ctaContact: "Contact me",
-      profileAlt: "Moamen Elmasry - Project Management and Product Ownership Expert",
+      profileAlt: "Moamen Elmasry - Project Manager specialized in digital transformation",
       profileBadges: {
-        certifications: "PMP & PRINCE2",
-        experience: "9+ years",
-        projects: "50+"
+        certifications: "PMP Certified Expert",
+        experience: "9 years of excellence",
+        projects: "50+ successful projects"
       },
       stats: [
-        { value: "80%", label: "Reduction in SaaS project timelines" },
+        { value: "80%", label: "Reduction in project timelines" },
         { value: "200K€", label: "Funding secured" },
-        { value: "50+", label: "Team size managed" },
-        { value: "20%", label: "International deployment" }
+        { value: "50+", label: "Team members managed" },
+        { value: "20%", label: "Portfolio growth" }
       ],
-      approachTitle: "My approach: Excellence and measurable ROI",
-      approachDescription1: "I transform complex digital challenges into concrete opportunities, generating measurable return on investment. My approach combines mobilizing leadership, agile methodologies, and data-driven vision to effectively orchestrate digital transformation in various environments.",
-      approachDescription2: "Specialized in SaaS technologies, AI, ECM, and OCR, I lead strategic projects from end to end, from framing to implementation, ensuring optimal change management.",
-      ctaSectionTitle: "Ready to collaborate on your digital challenges?",
-      ctaSectionDescription: "Let's discuss your issues and see together how I can contribute to your success.",
+      approachTitle: "My expertise at your service",
+      approachDescription1: "I convert complex challenges into tangible results for your business. Through my proven experience, I've reduced project timelines by up to 80% and significantly increased the ROI of strategic initiatives. My mobilizing leadership and mastery of agile methodologies ensure quality deliveries, on time.",
+      approachDescription2: "My technical expertise (SaaS, AI, ECM, OCR) combined with my change management skills enable me to ensure the success of your strategic projects, from design to implementation. I improve operational performance while effectively guiding teams toward adopting new solutions.",
+      ctaSectionTitle: "Ready to discuss your next digital project?",
+      ctaSectionDescription: "I wish to put my experience at the service of your company through a permanent or fixed-term position. Let's discuss your strategic projects and how my expertise can contribute to their success.",
       sections: [
         {
           title: "About",
-          description: "Discover my journey, values, and professional vision.",
+          description: "Discover my background, skills, and expertise in project management.",
           cta: "Learn more",
           link: "/en/a-propos"
         },
         {
           title: "Projects",
-          description: "Check out my key projects and their concrete results.",
+          description: "Check out my key projects and their quantifiable results.",
           cta: "View projects",
           link: "/en/realisations"
         },
         {
           title: "Contact",
-          description: "Let's discuss your project management or product ownership needs.",
+          description: "Let's discuss your opportunities in project management and digital transformation.",
           cta: "Contact me",
           link: "/en/contact"
         }
       ],
-      scrollingText: "Digital Transformation • Innovation • ROI • Project Management • Leadership • Operational Excellence"
+      scrollingText: "Results • Innovation • ROI • Expertise • Leadership • Excellence"
     }
   };
   
@@ -188,6 +190,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               >
                 <span className="gradient-text">{content.heroTitle}</span>
               </motion.h1>
+              
+              {/* Statut de recherche d'emploi */}
+              <motion.div
+                className="mb-4"
+                initial="hidden"
+                animate={isLoaded ? "visible" : "hidden"}
+                custom={1.5}
+                variants={fadeInUp}
+              >
+                <span className="inline-block px-4 py-1 bg-green-500/20 text-green-700 font-bold rounded-full text-sm">
+                  {content.jobStatus}
+                </span>
+              </motion.div>
               
               <motion.div
                 className="font-bricolage text-xl md:text-2xl text-text-primary font-medium mb-6 h-12"

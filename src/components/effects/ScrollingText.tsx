@@ -1,7 +1,8 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useScroll, useTransform } from 'framer-motion';
 
 interface ScrollingTextProps {
   text: string;
@@ -20,38 +21,23 @@ export default function ScrollingText({
   textClassName = '',
   speed = 1
 }: ScrollingTextProps) {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
-  // Create an array of repeated text
+  // Generate repeated text with separators
   const repeatedText = Array(repeat).fill(text).join(' • ');
-  
-  // Animation properties based on scroll
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-  
-  // Transform the X position based on scroll progress
-  const baseVelocity = direction === 'ltr' ? -5 * speed : 5 * speed;
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['0%', `${baseVelocity * 100}%`]
-  );
 
   return (
     <div 
       ref={containerRef}
-      className={`w-full overflow-hidden py-4 ${className}`}
+      className={`w-full overflow-hidden py-8 bg-gray-50 ${className}`}
     >
-      <motion.div
-        className="whitespace-nowrap flex items-center"
-        style={{ x }}
-      >
-        <span className={`text-primary-dark text-opacity-10 text-6xl font-unbounded font-bold ${textClassName}`}>
-          {repeatedText}
-        </span>
-      </motion.div>
+      <div className="container-custom">
+        <div className="text-center">
+          <h2 className={`text-primary text-3xl md:text-4xl font-unbounded font-bold ${textClassName}`}>
+            {text}
+          </h2>
+        </div>
+      </div>
     </div>
   );
 } 
