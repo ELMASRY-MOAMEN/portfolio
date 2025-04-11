@@ -5,6 +5,8 @@ import { Lang, langs } from './params';
 import translations from '@/data/translations.json';
 import { useTranslation } from '@/hooks/useTranslation';
 import Link from 'next/link';
+import Image from 'next/image';
+import { LangProvider } from '@/components/LangProvider';
 
 export async function generateMetadata({ params }: { params: { lang: Lang } }): Promise<Metadata> {
   const t = translations[params.lang].meta;
@@ -28,12 +30,11 @@ export async function generateStaticParams() {
 }
 
 export default function Home({ params }: { params: { lang: Lang } }) {
-  const t = useTranslation(params.lang);
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
   return (
-    <>
+    <LangProvider lang={locale}>
       <Header />
       <main id="content" className="flex flex-col">
         {/* HERO SECTION (ATTENTION) */}
@@ -95,15 +96,18 @@ export default function Home({ params }: { params: { lang: Lang } }) {
                 </div>
               </div>
               
-              {/* Profile image - Simplified placeholder */}
+              {/* Profile image - Using Next.js Image component */}
               <div className="order-1 md:order-2 flex justify-center">
                 <div className="relative w-80 h-80 md:w-96 md:h-96">
                   <div className="absolute inset-0 rounded-full bg-primary/10"></div>
                   <div className="absolute inset-4 rounded-full overflow-hidden shadow-xl border-4 border-white">
-                    <img
+                    <Image
                       src="/images/profile.jpg"
                       alt="Moamen Elmasry - Expert en Gestion de Projets et Product Ownership"
-                      className="w-full h-full object-cover"
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 20rem, 24rem"
+                      style={{ objectFit: 'cover' }}
                     />
                   </div>
                 </div>
@@ -253,6 +257,6 @@ export default function Home({ params }: { params: { lang: Lang } }) {
         </section>
       </main>
       <Footer />
-    </>
+    </LangProvider>
   );
 } 
