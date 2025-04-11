@@ -66,12 +66,30 @@ Portfolio/
   │    │    ├── Header.tsx
   │    │    ├── Footer.tsx
   │    │    ├── LanguageSwitcher.tsx (Sélecteur de langue)
-  │    │    ├── HeroSection.tsx
+  │    │    ├── hero/      (Composants modulaires pour la section héro)
+  │    │    │    ├── GatewayCard.tsx
+  │    │    │    ├── GatewayGrid.tsx
+  │    │    │    ├── HeroCTA.tsx
+  │    │    │    ├── HeroHeader.tsx
+  │    │    │    ├── HeroLink.tsx
+  │    │    │    ├── HeroSection.tsx (Composition des sous-composants)
+  │    │    │    ├── HeroStatistics.tsx
+  │    │    │    ├── ProfileImage.tsx
+  │    │    │    └── index.ts
+  │    │    ├── ui/        (Composants d'interface réutilisables)
+  │    │    │    └── button.tsx
+  │    │    ├── HeroSection.tsx (Ancien composant maintenu pour compatibilité)
   │    │    └── ProjectsSection.tsx
   │    ├── data/
   │    │    └── translations.json (Fichier de traductions)
   │    ├── hooks/
-  │    │    └── useTranslation.ts (Hook personnalisé pour les traductions)
+  │    │    ├── useTranslation.ts (Hook personnalisé pour les traductions)
+  │    │    ├── useTypingEffect.ts (Effet de frappe pour les textes)
+  │    │    └── useLoadAnimation.ts (Animation au chargement des éléments)
+  │    ├── types/
+  │    │    └── hero.ts   (Types TypeScript pour les composants héro)
+  │    ├── utils/
+  │    │    └── cn.ts     (Utilitaire pour la fusion de classes Tailwind)
   │    ├── middleware.ts  (Middleware pour la redirection linguistique)
   │    └── styles/        (Fichiers CSS globaux)
   ├── public/             (Assets et images)
@@ -96,6 +114,21 @@ Chaque page inclut:
 - URLs canoniques pour éviter le contenu dupliqué
 - Balisage Schema.org approprié
 - Alternatives linguistiques avec balises hreflang
+
+## Architecture des composants
+
+Le projet utilise une architecture modulaire pour optimiser la maintenabilité et la réutilisabilité:
+
+- **Composants modulaires**: La section héro est divisée en sous-composants spécialisés 
+  (HeroHeader, HeroStatistics, ProfileImage, etc.) pour une meilleure organisation du code
+- **Composants UI réutilisables**: Boutons, cartes et autres éléments d'interface standardisés
+- **Types TypeScript**: Interfaces dédiées pour garantir la cohérence des données
+- **Hooks personnalisés**: 
+  - `useTranslation`: Gestion des traductions
+  - `useTypingEffect`: Animation d'écriture pour les textes
+  - `useLoadAnimation`: Animations au chargement des éléments
+- **Utilitaires**:
+  - `cn`: Fonction pour fusionner et gérer les classes Tailwind de manière conditionnelle
 
 ## Commandes disponibles
 
