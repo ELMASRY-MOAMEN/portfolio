@@ -44,7 +44,7 @@ const Header = () => {
             <Link href={langPrefix} className="font-unbounded text-2xl font-bold text-primary flex items-center" aria-label={t.navigation.home}>
               {/* Logo optionnel */}
               {/* <Image src="/images/logo.svg" alt="Logo Portfolio" width={40} height={40} className="mr-2" /> */}
-              Portfolio
+              Moamen Elmasry
             </Link>
           </div>
 
@@ -53,11 +53,8 @@ const Header = () => {
             <Link href={langPrefix} className="font-bricolage text-text-primary hover:text-primary transition-colors">
               {t.navigation.home}
             </Link>
-            <Link href={`${langPrefix}/a-propos`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              {t.navigation.about}
-            </Link>
-            <Link href={`${langPrefix}/realisations`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              {locale === 'fr' ? 'Réalisations' : 'Projects'}
+            <Link href={`${langPrefix}/#projets`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+              {locale === 'fr' ? 'Projets' : 'Projects'}
             </Link>
             <Link href={`${langPrefix}/blog`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
               Blog
@@ -109,11 +106,8 @@ const Header = () => {
               <Link href={langPrefix} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {t.navigation.home}
               </Link>
-              <Link href={`${langPrefix}/a-propos`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                {t.navigation.about}
-              </Link>
-              <Link href={`${langPrefix}/realisations`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                {locale === 'fr' ? 'Réalisations' : 'Projects'}
+              <Link href={`${langPrefix}/#projets`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+                {locale === 'fr' ? 'Projets' : 'Projects'}
               </Link>
               <Link href={`${langPrefix}/blog`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 Blog

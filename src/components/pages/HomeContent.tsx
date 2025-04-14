@@ -31,12 +31,12 @@ export default function HomeContent({ params }: HomeContentProps) {
   // Content based on language
   const pageContent = {
     fr: {
-      heroTitle: "Moamen Elmasry",
+      heroTitle: "Bienvenue sur mon site web",
       heroRole: "Project Manager",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je permets une croissance stratégique et opérationnelle. Ex-entrepreneur ayant conçu et développé une plateforme SaaS innovante, je combine vision stratégique, expertise technique et leadership pour générer un ROI mesurable.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Fondateur d'une solution SaaS innovante vendue à une multinationale, je combine vision produit, expertise technique et leadership pour générer un ROI mesurable.",
       jobStatus: "En recherche active d'un poste en CDI ou CDD",
-      ctaProjects: "Voir mes réalisations",
+      ctaProjects: "Voir mes projets",
       ctaDownload: "Télécharger mon CV",
       ctaContact: "Me contacter",
       profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
@@ -64,10 +64,10 @@ export default function HomeContent({ params }: HomeContentProps) {
           link: "/fr/a-propos"
         },
         {
-          title: "Réalisations",
+          title: "Projets",
           description: "Consultez mes projets clés et leurs résultats quantifiables.",
           cta: "Voir les projets",
-          link: "/fr/realisations"
+          link: "/fr/projets"
         },
         {
           title: "Contact",
@@ -79,10 +79,10 @@ export default function HomeContent({ params }: HomeContentProps) {
       scrollingText: "Résultats"
     },
     en: {
-      heroTitle: "Moamen Elmasry",
+      heroTitle: "Welcome to my website",
       heroRole: "Project Manager",
       heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
-      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm actively seeking a permanent or fixed-term position. Former entrepreneur who developed a SaaS platform (ECM, AI, automation), I combine strategic vision and technical expertise to generate strong ROI.",
+      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Founder of an innovative SaaS solution sold to a multinational, I combine product vision, technical expertise, and leadership to generate measurable ROI.",
       jobStatus: "Actively seeking a permanent or fixed-term position",
       ctaProjects: "View my projects",
       ctaDownload: "Download my CV",
@@ -109,13 +109,13 @@ export default function HomeContent({ params }: HomeContentProps) {
           title: "About",
           description: "Discover my background, skills, and expertise in project management.",
           cta: "Learn more",
-          link: "/en/a-propos"
+          link: "/en/about"
         },
         {
           title: "Projects",
           description: "Check out my key projects and their quantifiable results.",
           cta: "View projects",
-          link: "/en/realisations"
+          link: "/en/projects"
         },
         {
           title: "Contact",
