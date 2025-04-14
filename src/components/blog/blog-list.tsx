@@ -138,7 +138,7 @@ export function BlogList({ category, tag, limit }: BlogListProps) {
           <div className="relative h-48 w-full">
             <ImageManager
               src={post.coverImage}
-              alt={post.title[locale] || post.title.fr}
+              alt={post.title[locale as keyof typeof post.title] || post.title.fr}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -158,13 +158,13 @@ export function BlogList({ category, tag, limit }: BlogListProps) {
               </span>
             </div>
             <h2 className="font-unbounded text-xl font-bold mb-3 line-clamp-2">
-              {post.title[locale] || post.title.fr}
+              {post.title[locale as keyof typeof post.title] || post.title.fr}
             </h2>
             <p className="text-text-secondary mb-4 line-clamp-3">
-              {post.description[locale] || post.description.fr}
+              {post.description[locale as keyof typeof post.description] || post.description.fr}
             </p>
             <Link 
-              href={`/${locale}/blog/${post.slug[locale] || post.slug.fr}`}
+              href={`/${locale}/blog/${post.slug[locale as keyof typeof post.slug] || post.slug.fr}`}
               className="text-primary font-medium hover:underline inline-flex items-center"
             >
               {locale === 'fr' ? 'Lire l\'article' : 'Read article'}

@@ -12,7 +12,7 @@ const headers = {
 };
 
 // Middleware de vérification d'authentification
-const isAuthenticated = (event) => {
+const isAuthenticated = (event: { headers: { authorization?: string } }) => {
   const authHeader = event.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return null;

@@ -32,7 +32,7 @@ export default function ScrollingText({
     return (
       <div 
         ref={containerRef}
-        className={`w-full overflow-hidden py-8 bg-white ${className}`}
+        className={`w-full overflow-hidden py-5 bg-white ${className}`}
       >
         <div className="container-custom">
           <div className="text-center">

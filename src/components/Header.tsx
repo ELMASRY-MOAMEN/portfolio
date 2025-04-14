@@ -56,9 +56,6 @@ const Header = () => {
             <Link href={`${langPrefix}/#projets`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
               {locale === 'fr' ? 'Projets' : 'Projects'}
             </Link>
-            <Link href={`${langPrefix}/blog`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
-              Blog
-            </Link>
             <Link href={`${langPrefix}/contact`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
               {t.navigation.contact}
             </Link>
@@ -108,9 +105,6 @@ const Header = () => {
               </Link>
               <Link href={`${langPrefix}/#projets`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {locale === 'fr' ? 'Projets' : 'Projects'}
-              </Link>
-              <Link href={`${langPrefix}/blog`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
-                Blog
               </Link>
               <Link href={`${langPrefix}/contact`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {t.navigation.contact}

@@ -135,7 +135,7 @@ export async function findBlogPostBySlug(slug: string, locale: string = 'fr'): P
     const posts = await fetchBlogPosts();
     
     return posts.find(post => 
-      post.slug[locale] === slug || 
+      post.slug[locale as keyof typeof post.slug] === slug || 
       post.slug.fr === slug || 
       post.slug.en === slug
     ) || null;

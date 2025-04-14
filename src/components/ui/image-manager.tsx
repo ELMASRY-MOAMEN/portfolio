@@ -91,7 +91,7 @@ export function ImageManager({
         
         if (image) {
           setImageSrc(image.path);
-          setImageAlt(image.alt[locale] || image.alt.fr || '');
+          setImageAlt(image.alt[locale as keyof typeof image.alt] || image.alt.fr || '');
         } else {
           console.warn(`Image with id "${imageId}" not found`);
           setHasError(true);

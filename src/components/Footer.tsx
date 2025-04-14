@@ -80,26 +80,18 @@ const Footer = () => {
               <ul className="space-y-2 font-bricolage">
                 <li>
                   <Link 
-                    href={t.routes.about} 
+                    href={t.routes.home} 
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {t.nav.about}
+                    {locale === 'fr' ? 'Accueil' : 'Home'}
                   </Link>
                 </li>
                 <li>
                   <Link 
-                    href={t.routes.skills} 
+                    href={locale === 'fr' ? '/fr/#projets' : '/en/#projets'} 
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {t.nav.skills}
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href={t.routes.projects} 
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {t.nav.projects}
+                    {locale === 'fr' ? 'Projets' : 'Projects'}
                   </Link>
                 </li>
                 <li>
@@ -124,11 +116,11 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a 
-                  href="mailto:contact@monportfolio.fr" 
+                  href="mailto:elmasrymoamen@hotmail.fr" 
                   className="text-gray-300 hover:text-white transition-colors"
                   itemProp="email"
                 >
-                  contact@monportfolio.fr
+                  elmasrymoamen@hotmail.fr
                 </a>
               </li>
               <li className="flex items-start">
@@ -136,7 +128,7 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span className="text-gray-300" itemProp="telephone">
-                  +33 (0)6 00 00 00 00
+                  +33 (0)6 58 43 10 89
                 </span>
               </li>
               <li className="flex items-start" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
@@ -145,7 +137,8 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-gray-300">
-                  <span itemProp="addressLocality">Paris</span>, 
+                  <span itemProp="addressLocality">Clamart</span> 
+                  <span itemProp="postalCode">92140</span>, 
                   <span itemProp="addressCountry">France</span>
                 </span>
               </li>

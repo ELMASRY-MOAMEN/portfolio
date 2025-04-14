@@ -22,6 +22,7 @@ interface HomeContentProps {
 
 export default function HomeContent({ params }: HomeContentProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selectedProject, setSelectedProject] = useState("YVEA");
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
@@ -32,12 +33,12 @@ export default function HomeContent({ params }: HomeContentProps) {
   const pageContent = {
     fr: {
       heroTitle: "Bienvenue sur mon site web",
-      heroRole: "Project Manager",
+      heroRole: "Project Manager & Product Owner en transformation digitale",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Fondateur d'une solution SaaS innovante vendue à une multinationale, je combine vision produit, expertise technique et leadership pour générer un ROI mesurable.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Ancien entrepreneur ayant conçu et développé une plateforme SaaS innovante vendue à une multinationale, j'allie vision stratégique et exécution opérationnelle pour transformer chaque défi en opportunité concrète.",
       jobStatus: "En recherche active d'un poste en CDI ou CDD",
       ctaProjects: "Voir mes projets",
-      ctaDownload: "Télécharger mon CV",
+      ctaBookMeeting: "Réserver un échange",
       ctaContact: "Me contacter",
       profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
       profileBadges: {
@@ -49,7 +50,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         { value: "80%", label: "Réduction des délais de projets" },
         { value: "+200K€", label: "Financements obtenus" },
         { value: "50+", label: "Collaborateurs managés" },
-        { value: "+150%", label: "Croissance du portefeuille" }
+        { value: "20+", label: "Pays - Déploiements internationaux" }
       ],
       approachTitle: "Mon expertise à votre service",
       approachDescription1: "J'ai toujours privilégié l'humain et la collaboration comme moteurs de réussite. Ma méthode repose sur une communication transparente, un esprit d'équipe solidement ancré et un leadership bienveillant. En prenant le temps de comprendre les enjeux et la culture de chaque organisation, je facilite l'adhésion et le partage de responsabilités. Ce souci du relationnel me permet de fédérer les équipes, d'anticiper les résistances au changement et de créer un climat propice à l'innovation.",
@@ -80,12 +81,12 @@ export default function HomeContent({ params }: HomeContentProps) {
     },
     en: {
       heroTitle: "Welcome to my website",
-      heroRole: "Project Manager",
+      heroRole: "Project Manager & Product Owner in digital transformation",
       heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
-      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Founder of an innovative SaaS solution sold to a multinational, I combine product vision, technical expertise, and leadership to generate measurable ROI.",
+      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Former entrepreneur who designed and developed an innovative SaaS platform sold to a multinational, I combine strategic vision and operational execution to transform every challenge into a concrete opportunity.",
       jobStatus: "Actively seeking a permanent or fixed-term position",
       ctaProjects: "View my projects",
-      ctaDownload: "Download my CV",
+      ctaBookMeeting: "Book a meeting",
       ctaContact: "Contact me",
       profileAlt: "Moamen Elmasry - Project Manager specialized in digital transformation",
       profileBadges: {
@@ -97,7 +98,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         { value: "80%", label: "Reduction in project timelines" },
         { value: "200K€", label: "Funding secured" },
         { value: "50+", label: "Team members managed" },
-        { value: "20%", label: "Portfolio growth" }
+        { value: "20+", label: "Countries - International deployments" }
       ],
       approachTitle: "My expertise at your service",
       approachDescription1: "I convert complex challenges into tangible results for your business. Through my proven experience, I've reduced project timelines by up to 80% and significantly increased the ROI of strategic initiatives. My mobilizing leadership and mastery of agile methodologies ensure quality deliveries, on time.",
@@ -183,7 +184,7 @@ export default function HomeContent({ params }: HomeContentProps) {
               </motion.div>
               
               <motion.h1 
-                className="font-unbounded text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-text-primary"
+                className="font-unbounded text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-text-primary"
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
                 custom={1}
@@ -237,7 +238,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 variants={fadeInUp}
               >
                 <AnimatedButton 
-                  href={`${langPrefix}/realisations`}
+                  href="#projets"
                   variant="primary"
                   size="lg"
                   ariaLabel={content.ctaProjects}
@@ -251,18 +252,17 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </AnimatedButton>
                 
                 <AnimatedButton 
-                  href="/cv-moamen-elmasry.pdf"
+                  href={`${langPrefix}/contact`}
                   variant="outline"
                   size="lg"
-                  isExternal
-                  ariaLabel={content.ctaDownload}
+                  ariaLabel={content.ctaBookMeeting}
                   icon={
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   }
                 >
-                  {content.ctaDownload}
+                  {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
                 </AnimatedButton>
               </motion.div>
             </div>
@@ -307,7 +307,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* KEY INDICATORS SECTION (INTEREST) */}
       <AnimatedSection 
-        className="py-16 bg-white"
+        className="py-10 bg-white"
         direction="up"
         withGrain={true}
       >
@@ -321,47 +321,6 @@ export default function HomeContent({ params }: HomeContentProps) {
                 delay={index * 0.1}
               />
             ))}
-          </div>
-        </div>
-      </AnimatedSection>
-      
-      {/* VALUE PROPOSITION SECTION (DESIRE) */}
-      <AnimatedSection 
-        className="py-16"
-        bgClassName="bg-gradient-to-br from-primary-light to-primary-light/70"
-        direction="up"
-      >
-        <div className="container-custom">
-          <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-8 text-center text-shadow"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-          >
-            {content.approachTitle}
-          </motion.h2>
-          
-          <div className="max-w-3xl mx-auto">
-            <motion.p 
-              className="text-lg mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {content.approachDescription1}
-            </motion.p>
-            
-            <motion.p 
-              className="text-lg mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              {content.approachDescription2}
-            </motion.p>
           </div>
         </div>
       </AnimatedSection>
@@ -411,8 +370,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 {locale === 'fr' 
-                  ? 'Ex-entrepreneur et expert en transformation digitale, j\'ai piloté des projets stratégiques dans des environnements B2B exigeants. Mon parcours unique combine développement commercial, leadership et expertise technique.' 
-                  : 'Former entrepreneur and digital transformation expert, I\'ve led strategic projects in demanding B2B environments. My unique background combines business development, leadership, and technical expertise.'}
+                  ? "Au-delà des chiffres, je suis animé par l'impact concret des solutions digitales. Mon parcours dans des environnements B2B m'a appris que le vrai succès réside dans la capacité à fédérer les équipes autour d'une vision commune. Aujourd'hui, je souhaite mettre mes 9 ans d'expertise au service d'une organisation ambitieuse, où l'innovation et le leadership se conjuguent pour transformer les défis en opportunités."
+                  : "Beyond the numbers, I am driven by the concrete impact of digital solutions. My journey in B2B environments has taught me that true success lies in the ability to unite teams around a shared vision. Today, I wish to put my 9 years of expertise to work for an ambitious organization where innovation and leadership combine to transform challenges into opportunities."}
               </motion.p>
               
               <motion.div
@@ -422,16 +381,16 @@ export default function HomeContent({ params }: HomeContentProps) {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <AnimatedButton 
-                  href={`${langPrefix}/a-propos`}
+                  href={`${langPrefix}/contact`}
                   variant="outline"
                   size="lg"
                   icon={
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   }
                 >
-                  {locale === 'fr' ? 'En savoir plus sur mon parcours' : 'Learn more about my journey'}
+                  {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
                 </AnimatedButton>
               </motion.div>
             </div>
@@ -459,87 +418,287 @@ export default function HomeContent({ params }: HomeContentProps) {
         </div>
       </AnimatedSection>
       
-      {/* MINI SECTION: RÉALISATIONS (using AIDA) */}
+      {/* PROJETS SECTION */}
       <AnimatedSection 
-        className="py-16"
-        bgClassName="bg-gradient-to-br from-primary-light to-primary-light/70"
+        className="py-16 bg-gray-50"
         direction="up"
+        withGrain={true}
+        data-id="projets"
       >
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <motion.div
-                className="rounded-2xl overflow-hidden shadow-lg"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image 
-                  src="/images/projects-preview.jpg" 
-                  alt={locale === 'fr' ? "Réalisations et projets" : "Projects and achievements"} 
-                  className="w-full h-auto object-cover"
-                  width={600}
-                  height={400}
-                  priority={false}
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
+          <motion.h2 
+            className="text-3xl font-unbounded font-bold mb-3 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            {locale === 'fr' ? 'Mes Projets' : 'My Projects'}
+          </motion.h2>
+          
+          <motion.p 
+            className="text-lg mb-12 text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {locale === 'fr' 
+              ? "Découvrez comment mes expériences se traduisent en projets concrets. Cette section présente, sous forme de carte interactive, les différentes initiatives majeures de mon parcours."
+              : "Discover how my experiences translate into concrete projects. This section presents, in an interactive card format, the major initiatives from my career."}
+          </motion.p>
+          
+          {(() => {
+            const projects = [
+              {
+                id: "YVEA",
+                title: "YVEA – SaaS export IA",
+                img: "/placeholder.jpg",
+                tags: ["SaaS", "IA", "Export"],
+                description: locale === 'fr' 
+                  ? "Face à la complexité des certifications export vers l'Afrique et le Moyen-Orient, j'ai développé une plateforme SaaS IA fluidifiant les procédures, réduisant de 80 % les délais et générant 200K€ de financements."
+                  : "Faced with the complexity of export certifications to Africa and the Middle East, I developed an AI SaaS platform streamlining procedures, reducing delays by 80% and generating €200K in funding."
+              },
+              {
+                id: "MAY",
+                title: "MAY – Formateur export IA",
+                img: "/placeholder.jpg",
+                tags: ["GPT-4", "Azure", "Formation"],
+                description: locale === 'fr' 
+                  ? "Constatant le manque d'expertise sur l'export EMEA, j'ai lancé MAY, une IA générative (GPT-4) testée par 50 utilisateurs, accélérant l'apprentissage et simplifiant les formalités administratives."
+                  : "Noticing the lack of expertise in EMEA exports, I launched MAY, a generative AI (GPT-4) tested by 50 users, accelerating learning and simplifying administrative formalities."
+              },
+              {
+                id: "SAMSUNG",
+                title: "Samsung – Événementiel retail",
+                img: "/placeholder.jpg",
+                tags: ["Événementiel", "Retail", "Coordination"],
+                description: locale === 'fr' 
+                  ? "Face à l'afflux massif de visiteurs lors des JO 2024, j'ai supervisé un pop-up store Samsung avec 50+ collaborateurs, fluidifiant l'expérience de 17 000 visiteurs/jour dans un environnement à haute contrainte."
+                  : "Facing a massive influx of visitors during the 2024 Olympics, I supervised a Samsung pop-up store with 50+ employees, streamlining the experience of 17,000 visitors/day in a high-constraint environment."
+              },
+              {
+                id: "SGS",
+                title: "SGS – Transformation OCR",
+                img: "/placeholder.jpg",
+                tags: ["OCR", "Digitalisation", "Business-Tech"],
+                description: locale === 'fr' 
+                  ? "Confronté à la lourdeur des process administratifs, j'ai implanté des workflows OCR complexes chez SGS, réduisant de 60 % les délais et générant +20 % de croissance sur un portefeuille de 2M€."
+                  : "Faced with cumbersome administrative processes, I implemented complex OCR workflows at SGS, reducing delays by 60% and generating +20% growth on a €2M portfolio."
+              },
+              {
+                id: "XEROX",
+                title: "Xerox – Solutions digitales",
+                img: "/placeholder.jpg",
+                tags: ["B2B", "Digitalisation", "Pilotage"],
+                description: locale === 'fr' 
+                  ? "Voyant la fragmentation des projets B2B, j'ai coordonné plusieurs déploiements digitaux sur 200 sites, améliorant nettement l'efficacité opérationnelle et la performance globale."
+                  : "Seeing the fragmentation of B2B projects, I coordinated multiple digital deployments across 200 sites, significantly improving operational efficiency and overall performance."
+              },
+              {
+                id: "FRANCIS",
+                title: "Francis Lefebvre – Solutions juridiques",
+                img: "/placeholder.jpg",
+                tags: ["Juridique", "Transformation", "Formation"],
+                description: locale === 'fr' 
+                  ? "Face à la modernisation croissante des directions juridiques, j'ai conduit le déploiement de solutions digitales et formé les équipes, accélérant ainsi la transformation et l'efficience de leurs processus."
+                  : "Facing the increasing modernization of legal departments, I led the deployment of digital solutions and trained teams, accelerating the transformation and efficiency of their processes."
+              },
+              {
+                id: "DA",
+                title: "DA Int. – Expansion internationale",
+                img: "/placeholder.jpg",
+                tags: ["Stratégie", "Roadmap", "B2B"],
+                description: locale === 'fr' 
+                  ? "Confronté au besoin d'ouvrir le marché européen pour Technlink (Chine), j'ai élaboré un business plan B2B et géré les chiffrages techniques, assurant la réussite d'une expansion multiculturelle."
+                  : "Facing the need to open the European market for Technlink (China), I developed a B2B business plan and managed technical estimates, ensuring the success of a multicultural expansion."
+              }
+            ];
             
-            <div>
-              <motion.span
-                className="inline-block px-3 py-1 bg-white/20 text-white font-medium rounded-full mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                {locale === 'fr' ? 'Réalisations concrètes' : 'Concrete achievements'}
-              </motion.span>
+            // Obtenir le projet sélectionné
+            const currentProject = projects.find(p => p.id === selectedProject) || projects[0];
+            
+            return (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* Menu latéral à gauche */}
+                <div className="lg:col-span-4">
+                  <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                    <h3 className="font-medium mb-4 text-primary">
+                      {locale === 'fr' ? 'Naviguer par projet' : 'Navigate by project'}
+                    </h3>
+                    <ul className="space-y-2">
+                      {projects.map((project, index) => (
+                        <li key={index}>
+                          <button 
+                            className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                              selectedProject === project.id 
+                                ? 'bg-primary/10 text-primary font-medium' 
+                                : 'hover:bg-primary/5 text-gray-700'
+                            }`}
+                            onClick={() => setSelectedProject(project.id)}
+                          >
+                            <div className="font-medium">{project.title}</div>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                {/* Carte du projet sélectionné à droite */}
+                <div className="lg:col-span-8">
+                  <motion.div
+                    key={currentProject.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 h-full"
+                  >
+                    <div className="aspect-video relative bg-gray-200">
+                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-bold text-xl mb-3">
+                        {currentProject.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {currentProject.tags.map((tag, idx) => (
+                          <span key={idx} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                      <p className="text-gray-700 mb-6">
+                        {currentProject.description}
+                      </p>
+                      <AnimatedButton 
+                        href={`${langPrefix}/projets/${currentProject.id.toLowerCase()}`}
+                        variant="primary"
+                        size="md"
+                        icon={
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        }
+                      >
+                        {locale === 'fr' ? 'En savoir plus' : 'Learn more'}
+                      </AnimatedButton>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            );
+          })()}
+          
+          <div className="mt-12 text-center">
+            <AnimatedButton 
+              href={`${langPrefix}/contact`}
+              variant="primary"
+              size="lg"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              }
+            >
+              {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
+            </AnimatedButton>
+          </div>
+        </div>
+      </AnimatedSection>
+      
+      {/* COMPETENCES SECTION */}
+      <AnimatedSection 
+        className="py-16 bg-white"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <motion.h2 
+            className="text-3xl font-unbounded font-bold mb-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            {locale === 'fr' ? 'Mes Compétences' : 'My Skills'}
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* Soft Skills */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </span>
+                {locale === 'fr' ? 'Soft Skills' : 'Soft Skills'}
+              </h3>
               
-              <motion.h2 
-                className="text-3xl font-unbounded font-bold mb-4 text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                {locale === 'fr' ? 'Des résultats mesurables et impactants' : 'Measurable and impactful results'}
-              </motion.h2>
-              
-              <motion.p 
-                className="text-lg mb-6 text-white"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {locale === 'fr' 
-                  ? 'De la réduction des délais de 80% à l\'obtention de 200K€ de financement, chaque projet reflète ma capacité à générer des résultats concrets. Découvrez comment j\'ai transformé des défis complexes en opportunités de croissance et d\'efficacité opérationnelle.' 
-                  : 'From reducing timelines by 80% to securing €200K in funding, each project reflects my ability to generate concrete results. Discover how I transformed complex challenges into opportunities for growth and operational efficiency.'}
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <AnimatedButton 
-                  href={`${langPrefix}/realisations`}
-                  variant="secondary"
-                  size="lg"
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <div className="space-y-5">
+                {['Leadership', 'Communication', 'Adaptabilité', 'Gestion de crise', 'Prise de décision', 'Intelligence émotionnelle'].map((skill, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                  }
-                >
-                  {locale === 'fr' ? 'Explorer mes réalisations' : 'Explore my achievements'}
-                </AnimatedButton>
-              </motion.div>
-            </div>
+                    <span className="font-medium">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            
+            {/* Hard Skills */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                {locale === 'fr' ? 'Hard Skills' : 'Hard Skills'}
+              </h3>
+              
+              <div className="space-y-4">
+                {[
+                  { skill: 'Agile/SCRUM', level: 90 },
+                  { skill: 'SaaS', level: 85 },
+                  { skill: 'IA/OCR', level: 75 },
+                  { skill: 'CI/CD', level: 65 },
+                  { skill: 'Docker', level: 70 }
+                ].map((item, index) => (
+                  <div key={index} className="space-y-1">
+                    <div className="flex justify-between">
+                      <span className="font-medium">{item.skill}</span>
+                      <span className="text-gray-500 text-sm">{item.level}%</span>
+                    </div>
+                    <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-primary rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${item.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: index * 0.1 }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </AnimatedSection>
@@ -559,8 +718,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6 }}
           >
             {locale === 'fr' 
-              ? 'Prenons un café virtuel pour discuter des plus-values que je peux apporter à votre organisation ?' 
-              : 'Let\'s have a virtual coffee to discuss the value I can bring to your organization?'}
+              ? 'Prenons un café virtuel' 
+              : 'Let\'s have a virtual coffee'}
           </motion.h2>
           
           <motion.p 
@@ -571,8 +730,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {locale === 'fr'
-              ? 'Je souhaite mettre mon expertise, mon expérience et mon énergie au service de votre entreprise dans le cadre d\'un CDI ou CDD. Échangeons sur vos enjeux et découvrons comment je peux contribuer au succès de vos projets.'
-              : 'I want to put my expertise, experience, and energy at the service of your company through a permanent or fixed-term position. Let\'s discuss your challenges and discover how I can contribute to the success of your projects.'}
+              ? "Discutons de vos défis digitaux et explorons ensemble comment transformer vos idées en succès concrets. Prenons un café virtuel pour échanger !"
+              : "Let's discuss your digital challenges and explore together how to transform your ideas into concrete success. Let's have a virtual coffee to exchange!"}
           </motion.p>
           
           <motion.div 
@@ -595,53 +754,6 @@ export default function HomeContent({ params }: HomeContentProps) {
               {locale === 'fr' ? 'Me contacter' : 'Contact me'}
             </AnimatedButton>
           </motion.div>
-        </div>
-      </AnimatedSection>
-      
-      {/* SECTIONS GRID - Visual gateway to different sections */}
-      <AnimatedSection 
-        className="py-16 bg-gray-50"
-        direction="up"
-        delay={0.2}
-      >
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {content.sections.map((section, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
-              >
-                <Link 
-                  href={section.link}
-                  className="card-hover glassmorphism block p-8 rounded-2xl h-full"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                    <svg className="w-6 h-6 svg-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
-                        index === 0 ? "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" :
-                        index === 1 ? "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" :
-                        "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      } />
-                    </svg>
-                  </div>
-                  <h3 className="font-unbounded text-xl font-bold mb-2">{section.title}</h3>
-                  <p className="text-text-secondary mb-6">
-                    {section.description}
-                  </p>
-                  <div className="text-primary font-medium inline-flex items-center animated-border">
-                    {section.cta}
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </AnimatedSection>
     </main>
