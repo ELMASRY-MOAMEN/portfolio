@@ -359,20 +359,32 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {locale === 'fr' ? 'Un profil hybride entre business et tech' : 'A hybrid profile between business and tech'}
+                {locale === 'fr' ? 'Allier leadership humain, vision business et innovation technologique' : 'A hybrid profile between business and tech'}
               </motion.h2>
               
               <motion.p 
-                className="text-lg mb-6"
+                className="text-lg mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 {locale === 'fr' 
-                  ? "Au-delà des chiffres, je suis animé par l'impact concret des solutions digitales. Mon parcours dans des environnements B2B m'a appris que le vrai succès réside dans la capacité à fédérer les équipes autour d'une vision commune. Aujourd'hui, je souhaite mettre mes 9 ans d'expertise au service d'une organisation ambitieuse, où l'innovation et le leadership se conjuguent pour transformer les défis en opportunités."
+                  ? "Passionné par l'impact concret du digital, je transforme les défis complexes en opportunités grâce à une vision stratégique et à un leadership humain. Fort de 9 ans d'expérience dans des environnements B2B exigeants, j'ai débuté en développant des compétences commerciales solides avant d'acquérir une expertise technique poussée – expérience qui m'a conduit à orchestrer d'importantes transformations digitales. Mon parcours m'a appris que la réussite d'un projet repose sur la capacité à fédérer des équipes autour d'une vision commune et à mettre la technologie au service du business."
                   : "Beyond the numbers, I am driven by the concrete impact of digital solutions. My journey in B2B environments has taught me that true success lies in the ability to unite teams around a shared vision. Today, I wish to put my 9 years of expertise to work for an ambitious organization where innovation and leadership combine to transform challenges into opportunities."}
               </motion.p>
+              
+              {locale === 'fr' && (
+                <motion.p 
+                  className="text-lg mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  En fondant YVEA, j'ai combiné innovation et exécution opérationnelle pour lancer une plateforme SaaS dédiée à la certification export, soutenue par une IA générative (MAY) qui redéfinit la formation aux procédures internationales. Aujourd'hui, je souhaite intégrer une organisation ambitieuse où mes compétences en développement commercial et en transformation digitale se conjuguent pour générer un impact durable, en alignant la stratégie, la technologie et l'humain.
+                </motion.p>
+              )}
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
