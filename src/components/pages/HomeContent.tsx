@@ -23,6 +23,7 @@ interface HomeContentProps {
 export default function HomeContent({ params }: HomeContentProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedProject, setSelectedProject] = useState("YVEA");
+  const [selectedSkillTab, setSelectedSkillTab] = useState('soft');
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
@@ -570,7 +571,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                     <div className="aspect-video relative bg-gray-200">
                       <div className="absolute inset-0 flex items-center justify-center text-gray-400">
                         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </div>
                     </div>
@@ -630,7 +631,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       >
         <div className="container-custom">
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-8 text-center"
+            className="text-3xl font-unbounded font-bold mb-6 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -639,79 +640,303 @@ export default function HomeContent({ params }: HomeContentProps) {
             {locale === 'fr' ? 'Mes Compétences' : 'My Skills'}
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Soft Skills */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+          {/* Tabs Navigation */}
+          <div className="max-w-3xl mx-auto mb-10">
+            <motion.div 
+              className="flex justify-center border-b border-gray-200 mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </span>
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'soft' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedSkillTab('soft')}
+              >
                 {locale === 'fr' ? 'Soft Skills' : 'Soft Skills'}
-              </h3>
-              
-              <div className="space-y-5">
-                {['Leadership', 'Communication', 'Adaptabilité', 'Gestion de crise', 'Prise de décision', 'Intelligence émotionnelle'].map((skill, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="font-medium">{skill}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            
-            {/* Hard Skills */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </span>
+              </button>
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'hard' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedSkillTab('hard')}
+              >
                 {locale === 'fr' ? 'Hard Skills' : 'Hard Skills'}
-              </h3>
-              
-              <div className="space-y-4">
-                {[
-                  { skill: 'Agile/SCRUM', level: 90 },
-                  { skill: 'SaaS', level: 85 },
-                  { skill: 'IA/OCR', level: 75 },
-                  { skill: 'CI/CD', level: 65 },
-                  { skill: 'Docker', level: 70 }
-                ].map((item, index) => (
-                  <div key={index} className="space-y-1">
-                    <div className="flex justify-between">
-                      <span className="font-medium">{item.skill}</span>
-                      <span className="text-gray-500 text-sm">{item.level}%</span>
-                    </div>
-                    <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
-                      <motion.div 
-                        className="h-full bg-primary rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              </button>
             </motion.div>
           </div>
+          
+          {/* Soft Skills Content */}
+          {selectedSkillTab === 'soft' && (
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Leadership Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Leadership inspirant' : 'Inspiring Leadership'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Fédération des équipes multiculturelles autour d'une vision commune, favorisant l'innovation et la performance collective."
+                    : "Uniting multicultural teams around a shared vision, fostering innovation and collective performance."}
+                </p>
+              </motion.div>
+              
+              {/* Communication Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Communication efficace' : 'Effective Communication'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Transmission claire des objectifs, enjeux et feedbacks, facilitant l'adhésion et évitant les malentendus organisationnels."
+                    : "Clear transmission of objectives, stakes and feedback, facilitating buy-in and avoiding organizational misunderstandings."}
+                </p>
+              </motion.div>
+              
+              {/* Adaptabilité Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Adaptabilité agile' : 'Agile Adaptability'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Capacité à pivoter rapidement face aux imprévus, transformant les contraintes en opportunités d'innovation et d'optimisation."
+                    : "Ability to pivot quickly in the face of unforeseen events, transforming constraints into opportunities for innovation and optimization."}
+                </p>
+              </motion.div>
+              
+              {/* Gestion de crise Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Gestion de crise' : 'Crisis Management'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Maintien du calme et prise de décision éclairée sous pression, assurant la continuité des opérations même en environnement incertain."
+                    : "Maintaining calm and making informed decisions under pressure, ensuring continuity of operations even in uncertain environments."}
+                </p>
+              </motion.div>
+              
+              {/* Innovation Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Innovation stratégique' : 'Strategic Innovation'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Identification précoce des tendances émergentes et capacité à réinventer les processus pour maintenir un avantage compétitif durable."
+                    : "Early identification of emerging trends and ability to reinvent processes to maintain a sustainable competitive advantage."}
+                </p>
+              </motion.div>
+              
+              {/* Négociation Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Négociation & médiation' : 'Negotiation & Mediation'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Recherche d'accords gagnant-gagnant et résolution des conflits d'équipe, favorisant un environnement de travail harmonieux et productif."
+                    : "Seeking win-win agreements and resolving team conflicts, promoting a harmonious and productive work environment."}
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+          
+          {/* Hard Skills Content */}
+          {selectedSkillTab === 'hard' && (
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Agile Methodologies Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Méthodologies Agiles' : 'Agile Methodologies'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Maîtrise de Scrum, Kanban et SAFe, permettant d'optimiser la planification et d'accélérer l'exécution des projets jusqu'à 80%."
+                    : "Mastery of Scrum, Kanban and SAFe, optimizing planning and accelerating project execution by up to 80%."}
+                </p>
+              </motion.div>
+              
+              {/* SaaS & AI Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Développement SaaS & IA' : 'SaaS & AI Development'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Conception et déploiement de plateformes SaaS avec intégration IA (GPT-4, OCR), augmentant l'efficacité des processus de 60%."
+                    : "Design and deployment of SaaS platforms with AI integration (GPT-4, OCR), increasing process efficiency by 60%."}
+                </p>
+              </motion.div>
+              
+              {/* Cloud Infrastructure Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Infrastructure Cloud' : 'Cloud Infrastructure'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Mise en œuvre d'architectures cloud scalables (AWS, Azure), garantissant une disponibilité élevée et réduisant les coûts d'exploitation."
+                    : "Implementation of scalable cloud architectures (AWS, Azure), ensuring high availability and reducing operating costs."}
+                </p>
+              </motion.div>
+              
+              {/* DevOps Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'DevOps & CI/CD' : 'DevOps & CI/CD'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Automatisation des pipelines de déploiement (Docker, Kubernetes), accélérant les cycles de livraison de 70% tout en maintenant la qualité."
+                    : "Automation of deployment pipelines (Docker, Kubernetes), accelerating delivery cycles by 70% while maintaining quality."}
+                </p>
+              </motion.div>
+              
+              {/* Data Analysis Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Analyse de données' : 'Data Analysis'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Génération d'insights opérationnels à partir de données complexes, facilitant la prise de décision stratégique et l'optimisation des KPIs."
+                    : "Generating operational insights from complex data, facilitating strategic decision-making and KPI optimization."}
+                </p>
+              </motion.div>
+              
+              {/* Project Management Tools Card */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Outils de gestion de projet' : 'Project Management Tools'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Pilotage efficace via JIRA, Asana, MS Project, garantissant la visibilité, coordination et suivi précis des équipes distribuées."
+                    : "Effective management through JIRA, Asana, MS Project, ensuring visibility, coordination and precise tracking of distributed teams."}
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
         </div>
       </AnimatedSection>
       
