@@ -53,17 +53,16 @@ const Header = () => {
             <Link href={langPrefix} className="font-bricolage text-text-primary hover:text-primary transition-colors">
               {t.navigation.home}
             </Link>
-            <Link href={`${langPrefix}/#projets`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+            <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className="font-bricolage text-text-primary hover:text-primary transition-colors">
               {locale === 'fr' ? 'Projets' : 'Projects'}
             </Link>
-            <Link href={`${langPrefix}/contact`} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+            <a href="https://calendly.com/elmasrymoamen/30min" className="font-bricolage text-text-primary hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
               {t.navigation.contact}
-            </Link>
+            </a>
             <a 
-              href="/cv-moamen-elmasry.pdf" 
+              href="/cv/MOAMEN_ELMASRY_CV_Project_Manager.pdf" 
               className="btn-sm-primary"
-              target="_blank"
-              rel="noopener noreferrer"
+              download
             >
               {t.navigation.downloadCv}
             </a>
@@ -103,17 +102,16 @@ const Header = () => {
               <Link href={langPrefix} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {t.navigation.home}
               </Link>
-              <Link href={`${langPrefix}/#projets`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+              <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {locale === 'fr' ? 'Projets' : 'Projects'}
               </Link>
-              <Link href={`${langPrefix}/contact`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+              <a href="https://calendly.com/elmasrymoamen/30min" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                 {t.navigation.contact}
-              </Link>
+              </a>
               <a 
-                href="/cv-moamen-elmasry.pdf" 
+                href="/cv/MOAMEN_ELMASRY_CV_Project_Manager.pdf" 
                 className="px-2 py-1 font-bricolage text-primary font-medium hover:underline transition-colors inline-flex items-center"
-                target="_blank"
-                rel="noopener noreferrer"
+                download
               >
                 {t.navigation.downloadCv}
                 <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

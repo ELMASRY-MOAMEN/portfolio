@@ -55,11 +55,6 @@ export default function HeroSection() {
       label: locale === 'fr' ? 'À propos de moi' : 'About me',
       ariaLabel: locale === 'fr' ? 'En savoir plus sur mon parcours' : 'Learn more about my journey'
     },
-    viewProjects: {
-      href: `${langPrefix}/realisations`,
-      label: locale === 'fr' ? 'Voir mes réalisations' : 'View my projects',
-      ariaLabel: locale === 'fr' ? 'Découvrir mes réalisations' : 'Discover my projects'
-    },
     downloadCV: {
       href: '/cv-moamen-elmasry.pdf',
       label: locale === 'fr' ? 'Télécharger CV' : 'Download CV',

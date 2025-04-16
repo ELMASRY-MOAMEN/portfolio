@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
 import { useTranslation } from '@/hooks/useTranslation';
+import Script from 'next/script';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,9 +34,15 @@ const ContactSection = () => {
             </p>
           </div>
 
-          {/* Call to action */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-            <div className="card p-8 text-center flex flex-col items-center justify-center bg-primary text-white">
+          {/* Calendly Embed */}
+          <div className={`mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
+            <div className="calendly-inline-widget" data-url="https://calendly.com/elmasrymoamen/30min" style={{ minWidth: "320px", height: "700px" }}></div>
+            <Script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></Script>
+          </div>
+
+          {/* Call to action - CV */}
+          <div className={`mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`} style={{ animationDelay: '300ms' }}>
+            <div className="card p-8 text-center flex flex-col items-center justify-center bg-primary text-white max-w-md mx-auto">
               <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -50,23 +57,6 @@ const ContactSection = () => {
                 {t.contact.downloadCV.button}
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-              </a>
-            </div>
-
-            <div className="card p-8 text-center flex flex-col items-center justify-center">
-              <svg className="w-16 h-16 mb-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              <h3 className="text-2xl font-bold mb-3">{t.contact.contactMe.title}</h3>
-              <p className="mb-6">{t.contact.contactMe.description}</p>
-              <a 
-                href="mailto:elmasrymoamen@hotmail.fr" 
-                className="btn-primary"
-              >
-                {t.contact.contactMe.button}
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
             </div>
@@ -100,7 +90,7 @@ const ContactSection = () => {
             {/* Réseaux sociaux */}
             <div className="flex justify-center space-x-4">
               <a 
-                href="https://www.linkedin.com/in/moamen-elmasry/" 
+                href="https://www.linkedin.com/in/moamenelmasry/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors"

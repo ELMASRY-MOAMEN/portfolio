@@ -3,7 +3,7 @@
 import { Lang } from '@/app/[lang]/params';
 import translations from '@/data/translations.json';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import ParticlesBackground from '@/components/effects/ParticlesBackground';
 import TypeWriter from '@/components/effects/TypeWriter';
@@ -13,6 +13,10 @@ import AnimatedStatsCard from '@/components/stats/AnimatedStatsCard';
 import AnimatedSection from '@/components/layout/AnimatedSection';
 import ScrollingText from '@/components/effects/ScrollingText';
 import Image from 'next/image';
+import { MdDeveloperMode } from "react-icons/md";
+import { FaRobot, FaUsers } from "react-icons/fa";
+import ProjectModal, { ProjectDetail } from '@/components/ui/ProjectModal';
+import { FaBusinessTime, FaDatabase, FaTools } from 'react-icons/fa';
 
 interface HomeContentProps {
   params: {
@@ -20,10 +24,193 @@ interface HomeContentProps {
   };
 }
 
+// Structure pour les détails des projets
+const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
+  "MAY": {
+    fr: {
+      context: "Face à un manque critique d'expertise interne sur les procédures administratives export vers l'Afrique et le Moyen-Orient (EMEA), les entreprises partenaires avaient besoin d'un outil efficace pour accélérer la formation et le partage des connaissances réglementaires.",
+      role: "Créateur et chef de projet, j'ai piloté le développement d'une IA générative (GPT-4 sur Azure). J'ai assuré le cadrage fonctionnel, la gestion technique et les tests utilisateurs approfondis auprès de 50 collaborateurs, en vue de maximiser la pertinence et la facilité d'utilisation de la solution.",
+      results: [
+        "Réduction de 70 % du temps nécessaire à la formation initiale sur les procédures export",
+        "Adoption immédiate par 50 utilisateurs test, avec un taux de satisfaction utilisateur très élevé",
+        "Standardisation des connaissances métier et simplification des processus internes"
+      ],
+      lessons: "Importance critique d'une UX intuitive pour l'adoption d'outils complexes. La combinaison IA / génération contextuelle permet une appropriation rapide des procédures complexes par les équipes opérationnelles.",
+      skills: {
+        soft: ["Innovation stratégique", "Adaptabilité agile", "Écoute utilisateur"],
+        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Prompt engineering avancé"]
+      }
+    },
+    en: {
+      context: "Faced with a critical lack of internal expertise on export administrative procedures to Africa and the Middle East (EMEA), partner companies needed an effective tool to accelerate training and sharing of regulatory knowledge.",
+      role: "As creator and project manager, I led the development of a generative AI (GPT-4 on Azure). I handled functional framing, technical management, and thorough user testing with 50 employees, to maximize the relevance and ease of use of the solution.",
+      results: [
+        "70% reduction in the time required for initial training on export procedures",
+        "Immediate adoption by 50 test users, with a very high user satisfaction rate",
+        "Standardization of business knowledge and simplification of internal processes"
+      ],
+      lessons: "Critical importance of intuitive UX for the adoption of complex tools. The combination of AI / contextual generation enables rapid appropriation of complex procedures by operational teams.",
+      skills: {
+        soft: ["Strategic innovation", "Agile adaptability", "User listening"],
+        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Advanced prompt engineering"]
+      }
+    }
+  },
+  "SAMSUNG": {
+    fr: {
+      context: "Samsung avait besoin d'assurer une expérience exceptionnelle pour un flux massif de visiteurs internationaux lors des Jeux Olympiques Paris 2024.",
+      role: "Responsable opérationnel, j'ai piloté l'organisation et la logistique du pop-up store, coordonné une équipe terrain de 50 collaborateurs, et optimisé chaque aspect du parcours visiteur pour gérer efficacement des pics quotidiens d'affluence.",
+      results: [
+        "Expérience fluide garantie pour 17 000 visiteurs par jour",
+        "Taux de satisfaction client mesuré à 90 %",
+        "Exécution sans faille sous contrainte opérationnelle majeure (JO 2024)"
+      ],
+      lessons: "Importance d'une communication proactive et d'une coordination sans faille en gestion de crise. Valeur de l'adaptabilité et du leadership terrain pour maintenir une haute qualité de service malgré l'affluence.",
+      skills: {
+        soft: ["Leadership terrain", "Gestion de crise", "Communication efficace"],
+        hard: ["Coordination événementielle", "Gestion des flux visiteurs", "Logistique opérationnelle complexe"]
+      }
+    },
+    en: {
+      context: "Samsung needed to ensure an exceptional experience for a massive flow of international visitors during the Paris 2024 Olympic Games.",
+      role: "As operations manager, I directed the organization and logistics of the pop-up store, coordinated a field team of 50 staff members, and optimized every aspect of the visitor journey to efficiently manage daily peaks in attendance.",
+      results: [
+        "Smooth experience guaranteed for 17,000 visitors per day",
+        "Customer satisfaction rate measured at 90%",
+        "Flawless execution under major operational constraints (2024 Olympics)"
+      ],
+      lessons: "Importance of proactive communication and seamless coordination in crisis management. Value of adaptability and field leadership to maintain high service quality despite high attendance.",
+      skills: {
+        soft: ["Field leadership", "Crisis management", "Effective communication"],
+        hard: ["Event coordination", "Visitor flow management", "Complex operational logistics"]
+      }
+    }
+  },
+  "SGS": {
+    fr: {
+      context: "SGS faisait face à des processus administratifs manuels lourds, impactant négativement les délais de traitement export et la satisfaction client sur un portefeuille stratégique de 2M€.",
+      role: "Chef de projet transverse, j'ai piloté l'intégration de workflows OCR complexes, assuré la coordination entre les équipes techniques et métier, tout en conduisant une stratégie commerciale proactive pour maximiser l'adoption client.",
+      results: [
+        "Réduction des délais opérationnels de 40 %",
+        "Hausse du CA du portefeuille stratégique (+20 %)",
+        "Taux de satisfaction client porté à 95 % sur 150 comptes majeurs"
+      ],
+      lessons: "L'importance d'une collaboration étroite entre équipes business et techniques pour la réussite des projets digitaux. Efficacité d'une approche combinant automatisation technique et suivi commercial personnalisé.",
+      skills: {
+        soft: ["Collaboration transverse", "Pilotage stratégique", "Communication proactive"],
+        hard: ["OCR avancé (Tesseract, automatisation)", "Salesforce (gestion pipeline commercial)", "Analyse des besoins clients"]
+      }
+    },
+    en: {
+      context: "SGS was facing heavy manual administrative processes, negatively impacting export processing times and customer satisfaction on a strategic portfolio of €2M.",
+      role: "As a cross-functional project manager, I led the integration of complex OCR workflows, ensured coordination between technical and business teams, while conducting a proactive commercial strategy to maximize customer adoption.",
+      results: [
+        "40% reduction in operational processing times",
+        "Increase in strategic portfolio revenue (+20%)",
+        "Customer satisfaction rate raised to 95% across 150 major accounts"
+      ],
+      lessons: "The importance of close collaboration between business and technical teams for the success of digital projects. Effectiveness of an approach combining technical automation and personalized commercial follow-up.",
+      skills: {
+        soft: ["Cross-functional collaboration", "Strategic management", "Proactive communication"],
+        hard: ["Advanced OCR (Tesseract, automation)", "Salesforce (commercial pipeline management)", "Client needs analysis"]
+      }
+    }
+  },
+  "XEROX": {
+    fr: {
+      context: "Xerox souhaitait améliorer sa pénétration marché sur un parc multisite fragmenté de 200 clients, avec des offres technologiques combinées hardware/SaaS dans un secteur IT très concurrentiel.",
+      role: "Responsable du développement commercial, j'ai mis en place une stratégie commerciale from scratch, géré intégralement 5 cycles de vente complexes, et assuré la coordination avec les équipes techniques pour garantir une implémentation optimale.",
+      results: [
+        "Augmentation de 45 % de l'efficacité opérationnelle des déploiements",
+        "Renforcement significatif de la notoriété de Xerox auprès des décideurs IT",
+        "Structuration d'un process commercial et technique durable"
+      ],
+      lessons: "L'importance d'une approche consultative et orientée solution dans la vente complexe. Nécessité de synchroniser étroitement les équipes commerciales et techniques pour maximiser l'efficacité des déploiements digitaux.",
+      skills: {
+        soft: ["Vente consultative", "Négociation complexe", "Coordination inter-équipes"],
+        hard: ["Gestion pipeline Salesforce", "Implémentation GED & Cloud Azure", "Intégration technique hybride (hardware & software)"]
+      }
+    },
+    en: {
+      context: "Xerox wanted to improve its market penetration across a fragmented multi-site park of 200 clients, with combined hardware/SaaS technology offerings in a highly competitive IT sector.",
+      role: "As commercial development manager, I implemented a from-scratch commercial strategy, fully managed 5 complex sales cycles, and ensured coordination with technical teams to guarantee optimal implementation.",
+      results: [
+        "45% increase in operational efficiency of deployments",
+        "Significant strengthening of Xerox's reputation among IT decision-makers",
+        "Structuring of a sustainable commercial and technical process"
+      ],
+      lessons: "The importance of a consultative and solution-oriented approach in complex sales. Need to closely synchronize sales and technical teams to maximize the effectiveness of digital deployments.",
+      skills: {
+        soft: ["Consultative selling", "Complex negotiation", "Inter-team coordination"],
+        hard: ["Salesforce pipeline management", "ECM & Azure Cloud implementation", "Hybrid technical integration (hardware & software)"]
+      }
+    }
+  },
+  "FRANCIS": {
+    fr: {
+      context: "Francis Lefebvre cherchait à dynamiser son portefeuille clients B2B et augmenter ses parts de marché sur un segment très concurrentiel et peu actif.",
+      role: "Chargé de développement commercial, j'ai mené une prospection intensive (jusqu'à 150 appels/jour), mis en place des stratégies de cross-selling, négocié des solutions sur-mesure et accompagné les clients dans l'adoption de nouvelles offres.",
+      results: [
+        "Développement significatif du portefeuille clients et augmentation du taux de conversion",
+        "Renforcement des liens commerciaux et fidélisation dans un secteur difficile"
+      ],
+      lessons: "Importance d'une prospection ciblée et de stratégies commerciales personnalisées pour optimiser la conversion client. Valeur d'une écoute active pour répondre précisément aux enjeux métier des clients.",
+      skills: {
+        soft: ["Négociation efficace", "Écoute active", "Orientation client"],
+        hard: ["CRM avancé (Salesforce)", "Techniques de prospection intensive", "Approche commerciale sectorielle"]
+      }
+    },
+    en: {
+      context: "Francis Lefebvre was looking to energize its B2B client portfolio and increase market share in a highly competitive and relatively inactive segment.",
+      role: "As a commercial development manager, I conducted intensive prospecting (up to 150 calls/day), implemented cross-selling strategies, negotiated tailored solutions, and supported clients in adopting new offerings.",
+      results: [
+        "Significant development of the client portfolio and increase in conversion rate",
+        "Strengthened commercial relationships and loyalty in a challenging sector"
+      ],
+      lessons: "Importance of targeted prospecting and personalized commercial strategies to optimize customer conversion. Value of active listening to respond precisely to clients' business challenges.",
+      skills: {
+        soft: ["Effective negotiation", "Active listening", "Customer orientation"],
+        hard: ["Advanced CRM (Salesforce)", "Intensive prospecting techniques", "Sectoral commercial approach"]
+      }
+    }
+  },
+  "DA": {
+    fr: {
+      context: "DA Int. accompagnait Technlink, une entreprise chinoise en produits industriels, désireuse de pénétrer le marché européen avec une offre B2B innovante, mais sans base de clientèle locale initiale.",
+      role: "Responsable développement marché Europe, j'ai structuré une stratégie de pénétration complète, prospecté activement distributeurs et clients potentiels européens, et assuré l'adaptation technique et commerciale aux normes locales.",
+      results: [
+        "Obtention des premiers contrats européens en 6 mois",
+        "Croissance de 120 % du chiffre d'affaires en 18 mois",
+        "Établissement d'un réseau européen de distributeurs qualifiés"
+      ],
+      lessons: "Crucialité de l'adaptation interculturelle pour réussir un développement international. Importance d'une stratégie commerciale clairement structurée et d'une gestion précise des spécifications techniques locales.",
+      skills: {
+        soft: ["Adaptabilité interculturelle", "Développement stratégique", "Gestion relations internationales"],
+        hard: ["Élaboration roadmap commerciale", "Conformité technique B2B", "Gestion des distributeurs européens"]
+      }
+    },
+    en: {
+      context: "DA Int. was supporting Technlink, a Chinese industrial products company, seeking to enter the European market with an innovative B2B offering, but without an initial local customer base.",
+      role: "As European market development manager, I structured a comprehensive penetration strategy, actively prospected European distributors and potential customers, and ensured technical and commercial adaptation to local standards.",
+      results: [
+        "Securing first European contracts within 6 months",
+        "120% growth in revenue over 18 months",
+        "Establishment of a European network of qualified distributors"
+      ],
+      lessons: "Crucial importance of intercultural adaptation for successful international development. Importance of a clearly structured commercial strategy and precise management of local technical specifications.",
+      skills: {
+        soft: ["Intercultural adaptability", "Strategic development", "International relationship management"],
+        hard: ["Commercial roadmap development", "B2B technical compliance", "European distributor management"]
+      }
+    }
+  }
+};
+
 export default function HomeContent({ params }: HomeContentProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedProject, setSelectedProject] = useState("YVEA");
   const [selectedSkillTab, setSelectedSkillTab] = useState('soft');
+  const [selectedDetailProject, setSelectedDetailProject] = useState<string | null>(null);
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
@@ -36,7 +223,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       heroTitle: "Bienvenue sur mon site web",
       heroRole: "Project Manager & Product Owner en transformation digitale",
       heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Ancien entrepreneur ayant conçu et développé une plateforme SaaS innovante vendue à une multinationale, j'allie vision stratégique et exécution opérationnelle pour transformer chaque défi en opportunité concrète.",
+      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Ancien fondateur ayant conçu et développé une plateforme SaaS innovante, j'allie vision stratégique et exécution opérationnelle pour transformer chaque défi en opportunité concrète.",
       jobStatus: "En recherche active d'un poste en CDI ou CDD",
       ctaProjects: "Voir mes projets",
       ctaBookMeeting: "Réserver un échange",
@@ -44,7 +231,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
       profileBadges: {
         certifications: "Expert Certifié Google PMP",
-        experience: "9 ans d'excellence",
+        experience: "9 ans d'expertise",
         projects: "60% croissance"
       },
       stats: [
@@ -84,16 +271,16 @@ export default function HomeContent({ params }: HomeContentProps) {
       heroTitle: "Welcome to my website",
       heroRole: "Project Manager & Product Owner in digital transformation",
       heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
-      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Former entrepreneur who designed and developed an innovative SaaS platform sold to a multinational, I combine strategic vision and operational execution to transform every challenge into a concrete opportunity.",
+      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Former entrepreneur who designed and developed an innovative SaaS platform, I combine strategic vision and operational execution to transform every challenge into a concrete opportunity.",
       jobStatus: "Actively seeking a permanent or fixed-term position",
       ctaProjects: "View my projects",
       ctaBookMeeting: "Book a meeting",
       ctaContact: "Contact me",
       profileAlt: "Moamen Elmasry - Project Manager specialized in digital transformation",
       profileBadges: {
-        certifications: "PMP Certified Expert",
-        experience: "9 years of excellence",
-        projects: "20% growth"
+        certifications: "Google PMP Certified Expert",
+        experience: "9 years of expertise",
+        projects: "60% growth"
       },
       stats: [
         { value: "80%", label: "Reduction in project timelines" },
@@ -239,7 +426,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 variants={fadeInUp}
               >
                 <AnimatedButton 
-                  href="#projets"
+                  href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export"
                   variant="primary"
                   size="lg"
                   ariaLabel={content.ctaProjects}
@@ -253,10 +440,11 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </AnimatedButton>
                 
                 <AnimatedButton 
-                  href={`${langPrefix}/contact`}
-                  variant="outline"
+                  href="https://calendly.com/elmasrymoamen/30min"
+                  variant="primary"
                   size="lg"
-                  ariaLabel={content.ctaBookMeeting}
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   icon={
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -360,7 +548,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {locale === 'fr' ? 'Allier leadership humain, vision business et innovation technologique' : 'A hybrid profile between business and tech'}
+                {locale === 'fr' ? 'Allier leadership humain, vision business et innovation technologique' : 'Combining human leadership, business vision and technological innovation'}
               </motion.h2>
               
               <motion.p 
@@ -372,7 +560,7 @@ export default function HomeContent({ params }: HomeContentProps) {
               >
                 {locale === 'fr' 
                   ? "Passionné par l'impact concret du digital, je transforme les défis complexes en opportunités grâce à une vision stratégique et à un leadership humain. Fort de 9 ans d'expérience dans des environnements B2B exigeants, j'ai débuté en développant des compétences commerciales solides avant d'acquérir une expertise technique poussée – expérience qui m'a conduit à orchestrer d'importantes transformations digitales. Mon parcours m'a appris que la réussite d'un projet repose sur la capacité à fédérer des équipes autour d'une vision commune et à mettre la technologie au service du business."
-                  : "Beyond the numbers, I am driven by the concrete impact of digital solutions. My journey in B2B environments has taught me that true success lies in the ability to unite teams around a shared vision. Today, I wish to put my 9 years of expertise to work for an ambitious organization where innovation and leadership combine to transform challenges into opportunities."}
+                  : "Passionate about the concrete impact of digital, I transform complex challenges into opportunities thanks to a strategic vision and human leadership. With 9 years of experience in demanding B2B environments, I started by developing strong commercial skills before acquiring advanced technical expertise – an experience that led me to orchestrate major digital transformations. My journey has taught me that a project's success relies on the ability to unite teams around a shared vision and to put technology at the service of business."}
               </motion.p>
               
               {locale === 'fr' && (
@@ -387,6 +575,18 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </motion.p>
               )}
               
+              {locale === 'en' && (
+                <motion.p 
+                  className="text-lg mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  By founding YVEA, I combined innovation and operational execution to launch a SaaS platform dedicated to export certification, supported by a generative AI (MAY) that redefines training for international procedures. Today, I wish to join an ambitious organization where my skills in business development and digital transformation combine to generate sustainable impact, by aligning strategy, technology and people.
+                </motion.p>
+              )}
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -394,9 +594,11 @@ export default function HomeContent({ params }: HomeContentProps) {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <AnimatedButton 
-                  href={`${langPrefix}/contact`}
-                  variant="outline"
+                  href="https://calendly.com/elmasrymoamen/30min"
+                  variant="primary"
                   size="lg"
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   icon={
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -449,168 +651,226 @@ export default function HomeContent({ params }: HomeContentProps) {
             {locale === 'fr' ? 'Mes Projets' : 'My Projects'}
           </motion.h2>
           
-          <motion.p 
+            <motion.p 
             className="text-lg mb-12 text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
             {locale === 'fr' 
               ? "Découvrez comment mes expériences se traduisent en projets concrets. Cette section présente, sous forme de carte interactive, les différentes initiatives majeures de mon parcours."
               : "Discover how my experiences translate into concrete projects. This section presents, in an interactive card format, the major initiatives from my career."}
-          </motion.p>
+            </motion.p>
           
           {(() => {
+            // Nouvelle structure enrichie des projets
             const projects = [
               {
                 id: "YVEA",
-                title: "YVEA – SaaS export IA",
-                img: "/placeholder.jpg",
-                tags: ["SaaS", "IA", "Export"],
+                title: locale === 'fr' ? "YVEA – SaaS export IA" : "YVEA – AI Export SaaS",
+                img: "/images/YVEA.jpg",
+                tags: ["SaaS", "IA", "Export", "Agile", "AWS", "React"],
                 description: locale === 'fr' 
-                  ? "Face à la complexité des certifications export vers l'Afrique et le Moyen-Orient, j'ai développé une plateforme SaaS IA fluidifiant les procédures, réduisant de 80 % les délais et générant 200K€ de financements."
-                  : "Faced with the complexity of export certifications to Africa and the Middle East, I developed an AI SaaS platform streamlining procedures, reducing delays by 80% and generating €200K in funding."
+                  ? "Fondateur d'une solution SaaS basée sur l'IA, simplifiant les processus de certification export vers l'Afrique et le Moyen-Orient, réduisant les délais opérationnels de 80 % et générant 200K€ de financements."
+                  : "Founder of an AI-based SaaS solution, simplifying export certification processes to Africa and the Middle East, reducing operational delays by 80% and generating €200K in funding.",
+                dominante: locale === 'fr' ? "Stratégie produit & Innovation technologique" : "Product Strategy & Technological Innovation",
+                isMainProject: true
               },
               {
                 id: "MAY",
-                title: "MAY – Formateur export IA",
-                img: "/placeholder.jpg",
-                tags: ["GPT-4", "Azure", "Formation"],
+                title: locale === 'fr' ? "MAY – Formateur export IA" : "MAY – AI Export trainer",
+                img: "/images/MAY.jpg",
+                tags: ["GPT-4", "Azure", "IA générative", "Formation", "RAG"],
                 description: locale === 'fr' 
-                  ? "Constatant le manque d'expertise sur l'export EMEA, j'ai lancé MAY, une IA générative (GPT-4) testée par 50 utilisateurs, accélérant l'apprentissage et simplifiant les formalités administratives."
-                  : "Noticing the lack of expertise in EMEA exports, I launched MAY, a generative AI (GPT-4) tested by 50 users, accelerating learning and simplifying administrative formalities."
+                  ? "Création et déploiement d'une IA conversationnelle basée sur GPT-4 (Azure), accélérant de 70 % la formation administrative export pour 50 utilisateurs pilotes, améliorant la performance opérationnelle et la gestion des connaissances métier."
+                  : "Creation and deployment of a GPT-4-based conversational AI (Azure), accelerating export administrative training by 70% for 50 pilot users, improving operational performance and business knowledge management.",
+                dominante: locale === 'fr' ? "Innovation technique & Gestion des connaissances" : "Technical Innovation & Knowledge Management",
+                icon: <FaRobot />
               },
               {
                 id: "SAMSUNG",
-                title: "Samsung – Événementiel retail",
-                img: "/placeholder.jpg",
-                tags: ["Événementiel", "Retail", "Coordination"],
+                title: locale === 'fr' ? "Samsung – Pop-up store JO2024" : "Samsung – Pop-up store JO2024",
+                img: "/images/Samsung.jpg",
+                tags: ["Management", "Retail", "Opérations", "Expérience client"],
                 description: locale === 'fr' 
-                  ? "Face à l'afflux massif de visiteurs lors des JO 2024, j'ai supervisé un pop-up store Samsung avec 50+ collaborateurs, fluidifiant l'expérience de 17 000 visiteurs/jour dans un environnement à haute contrainte."
-                  : "Facing a massive influx of visitors during the 2024 Olympics, I supervised a Samsung pop-up store with 50+ employees, streamlining the experience of 17,000 visitors/day in a high-constraint environment."
+                  ? "Management opérationnel direct d'une équipe de 50 collaborateurs lors des JO Paris 2024, garantissant une expérience fluide à 17 000 visiteurs quotidiens, avec un taux de satisfaction client de 90 %."
+                  : "Direct operational management of a team of 50 staff during Paris 2024 Olympics, ensuring a smooth experience for 17,000 daily visitors, with a 90% customer satisfaction rate.",
+                dominante: locale === 'fr' ? "Leadership opérationnel & Excellence terrain" : "Operational Leadership & Field Excellence",
+                icon: <FaUsers />
               },
               {
                 id: "SGS",
-                title: "SGS – Transformation OCR",
-                img: "/placeholder.jpg",
-                tags: ["OCR", "Digitalisation", "Business-Tech"],
+                title: locale === 'fr' ? "SGS – Transformation digitale" : "SGS – Digital transformation",
+                img: "/images/SGS.jpg",
+                tags: ["OCR", "Automatisation", "Digitalisation", "Salesforce"],
                 description: locale === 'fr' 
-                  ? "Confronté à la lourdeur des process administratifs, j'ai implanté des workflows OCR complexes chez SGS, réduisant de 60 % les délais et générant +20 % de croissance sur un portefeuille de 2M€."
-                  : "Faced with cumbersome administrative processes, I implemented complex OCR workflows at SGS, reducing delays by 60% and generating +20% growth on a €2M portfolio."
+                  ? "Pilotage stratégique et technique d'une transformation digitale (OCR & automatisation) sur un portefeuille B2B de 2M€, réduisant les délais de traitement export de 40 % et accroissant la satisfaction client à 95 % sur 150 comptes clés."
+                  : "Strategic and technical management of a digital transformation (OCR & automation) on a €2M B2B portfolio, reducing export processing times by 40% and increasing customer satisfaction to 95% across 150 key accounts.",
+                dominante: locale === 'fr' ? "Pilotage stratégique & Transformation digitale" : "Strategic Management & Digital Transformation",
+                icon: <FaDatabase />
               },
               {
                 id: "XEROX",
-                title: "Xerox – Solutions digitales",
-                img: "/placeholder.jpg",
-                tags: ["B2B", "Digitalisation", "Pilotage"],
+                title: locale === 'fr' ? "Xerox – Solutions digitales" : "Xerox – Digital solutions",
+                img: "/images/XEROX.jpg",
+                tags: ["B2B", "Salesforce", "Digitalisation", "Vente consultative"],
                 description: locale === 'fr' 
-                  ? "Voyant la fragmentation des projets B2B, j'ai coordonné plusieurs déploiements digitaux sur 200 sites, améliorant nettement l'efficacité opérationnelle et la performance globale."
-                  : "Seeing the fragmentation of B2B projects, I coordinated multiple digital deployments across 200 sites, significantly improving operational efficiency and overall performance."
+                  ? "Structuration d'une stratégie commerciale terrain hybride (hardware + SaaS), pilotage complet de 5 cycles de vente B2B complexes sur 200 sites, augmentant l'efficacité opérationnelle de 45 % et renforçant l'image marque auprès des décideurs IT."
+                  : "Structuring of a hybrid field commercial strategy (hardware + SaaS), complete management of 5 complex B2B sales cycles across 200 sites, increasing operational efficiency by 45% and strengthening brand image among IT decision-makers.",
+                dominante: locale === 'fr' ? "Développement commercial & Gestion de projets" : "Business Development & Project Management",
+                icon: <FaTools />
               },
               {
                 id: "FRANCIS",
-                title: "Francis Lefebvre – Solutions juridiques",
-                img: "/placeholder.jpg",
-                tags: ["Juridique", "Transformation", "Formation"],
+                title: locale === 'fr' ? "Francis Lefebvre – Solutions juridiques" : "Francis Lefebvre – Legal solutions",
+                img: "/images/FRANCIS.jpg",
+                tags: ["Vente B2B", "Fidélisation client", "Cross-selling"],
                 description: locale === 'fr' 
-                  ? "Face à la modernisation croissante des directions juridiques, j'ai conduit le déploiement de solutions digitales et formé les équipes, accélérant ainsi la transformation et l'efficience de leurs processus."
-                  : "Facing the increasing modernization of legal departments, I led the deployment of digital solutions and trained teams, accelerating the transformation and efficiency of their processes."
+                  ? "Développement commercial d'offres digitales ciblées B2B (PME, DAF, RH), augmentant significativement la conversion client grâce à une approche de prospection intensive (150 appels/jour) et négociation sur-mesure, consolidant ainsi la fidélité client dans un marché concurrentiel."
+                  : "Commercial development of targeted B2B digital offers (SMEs, CFOs, HR), significantly increasing customer conversion through an intensive prospecting approach (150 calls/day) and customized negotiation, thus consolidating customer loyalty in a competitive market.",
+                dominante: locale === 'fr' ? "Vente stratégique & Relation client" : "Strategic Sales & Customer Relationship",
+                icon: <FaUsers />
               },
               {
                 id: "DA",
-                title: "DA Int. – Expansion internationale",
-                img: "/placeholder.jpg",
-                tags: ["Stratégie", "Roadmap", "B2B"],
+                title: locale === 'fr' ? "DA Int. – Expansion internationale" : "DA Int. – International expansion",
+                img: "/images/DA.jpg",
+                tags: ["Stratégie B2B", "Interculturel", "Roadmap stratégique"],
                 description: locale === 'fr' 
-                  ? "Confronté au besoin d'ouvrir le marché européen pour Technlink (Chine), j'ai élaboré un business plan B2B et géré les chiffrages techniques, assurant la réussite d'une expansion multiculturelle."
-                  : "Facing the need to open the European market for Technlink (China), I developed a B2B business plan and managed technical estimates, ensuring the success of a multicultural expansion."
+                  ? "Structuration et exécution d'une stratégie d'entrée sur le marché européen pour un acteur industriel chinois, permettant la signature de premiers contrats B2B majeurs et générant une croissance de CA de 120 % en 18 mois grâce à une démarche interculturelle efficace."
+                  : "Structuring and execution of a European market entry strategy for a Chinese industrial player, enabling the signing of first major B2B contracts and generating 120% revenue growth in 18 months through an effective intercultural approach.",
+                dominante: locale === 'fr' ? "Développement stratégique & Adaptabilité" : "Strategic Development & Adaptability",
+                icon: <FaBusinessTime />
               }
             ];
+
+            // Déterminer si un modal doit être affiché
+            const shouldShowModal = selectedDetailProject !== null && selectedDetailProject !== "YVEA";
             
-            // Obtenir le projet sélectionné
-            const currentProject = projects.find(p => p.id === selectedProject) || projects[0];
-            
+            // Obtenir les détails du projet sélectionné
+            const currentProjectDetails = selectedDetailProject && projectDetails[selectedDetailProject] 
+              ? projectDetails[selectedDetailProject][locale === 'fr' ? 'fr' : 'en'] 
+              : null;
+              
+            // Obtenir le titre du projet sélectionné pour le modal
+            const currentProjectTitle = selectedDetailProject 
+              ? projects.find(p => p.id === selectedDetailProject)?.title || ""
+              : "";
+
             return (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Menu latéral à gauche */}
-                <div className="lg:col-span-4">
-                  <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
-                    <h3 className="font-medium mb-4 text-primary">
-                      {locale === 'fr' ? 'Naviguer par projet' : 'Navigate by project'}
-                    </h3>
-                    <ul className="space-y-2">
-                      {projects.map((project, index) => (
-                        <li key={index}>
-                          <button 
-                            className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                              selectedProject === project.id 
-                                ? 'bg-primary/10 text-primary font-medium' 
-                                : 'hover:bg-primary/5 text-gray-700'
-                            }`}
-                            onClick={() => setSelectedProject(project.id)}
-                          >
-                            <div className="font-medium">{project.title}</div>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <>
+                {/* Grille de projets */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {projects.map((project) => (
+                    <motion.div
+                      key={project.id}
+                      className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100/80 h-full flex flex-col hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <div className="aspect-video relative bg-gray-100 overflow-hidden group">
+                        {project.img ? (
+                          <>
+                            <Image
+                              src={project.img}
+                              alt={project.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"></div>
+                          </>
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        )}
+                        {/* Badge catégorie - Now positioned at bottom left for better visibility */}
+                        <div className="absolute bottom-3 right-3 bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm shadow-md flex items-center gap-1.5">
+                          {project.icon}
+                          <span>{project.dominante}</span>
+                        </div>
+                      </div>
+                      
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h3 className="font-unbounded font-bold text-xl mb-3 text-gray-900 leading-tight">
+                          {project.title}
+                        </h3>
+                        
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.tags.map((tag, idx) => (
+                            <span 
+                              key={idx} 
+                              className="text-xs px-2.5 py-1 bg-primary/5 text-primary/90 rounded-full border border-primary/10 font-medium"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <p className="text-gray-700 mb-5 flex-grow leading-relaxed">
+                          {project.description}
+                        </p>
+                        
+                        <div className="mt-auto pt-2">
+                          {project.isMainProject ? (
+                            // Bouton vers la page dédiée pour YVEA
+                            <AnimatedButton 
+                              href={`${langPrefix}/projets/yvea`}
+                              variant="primary"
+                              size="md"
+                              icon={
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                              }
+                            >
+                              {locale === 'fr' ? 'Explorer le projet' : 'Explore project'}
+                            </AnimatedButton>
+                          ) : (
+                            // Bouton pour ouvrir le modal pour les autres projets
+                            <button 
+                              onClick={() => setSelectedDetailProject(project.id)}
+                              className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-primary/5 text-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium border border-primary/10 hover:border-primary group"
+                            >
+                              {locale === 'fr' ? 'En savoir plus' : 'Learn more'}
+                              <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
                 
-                {/* Carte du projet sélectionné à droite */}
-                <div className="lg:col-span-8">
-                  <motion.div
-                    key={currentProject.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 h-full"
-                  >
-                    <div className="aspect-video relative bg-gray-200">
-                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="font-bold text-xl mb-3">
-                        {currentProject.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {currentProject.tags.map((tag, idx) => (
-                          <span key={idx} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">{tag}</span>
-                        ))}
-                      </div>
-                      <p className="text-gray-700 mb-6">
-                        {currentProject.description}
-                      </p>
-                      <AnimatedButton 
-                        href={`${langPrefix}/projets/${currentProject.id.toLowerCase()}`}
-                        variant="primary"
-                        size="md"
-                        icon={
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
-                        }
-                      >
-                        {locale === 'fr' ? 'En savoir plus' : 'Learn more'}
-                      </AnimatedButton>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
+                {/* Modal pour les détails du projet */}
+                {shouldShowModal && currentProjectDetails && (
+                  <ProjectModal 
+                    isOpen={shouldShowModal}
+                    onClose={() => setSelectedDetailProject(null)}
+                    title={currentProjectTitle}
+                    detail={currentProjectDetails}
+                    locale={locale}
+                    projectId={selectedDetailProject}
+                  />
+                )}
+              </>
             );
           })()}
           
           <div className="mt-12 text-center">
             <AnimatedButton 
-              href={`${langPrefix}/contact`}
+              href="https://calendly.com/elmasrymoamen/30min"
               variant="primary"
               size="lg"
+              target="_blank" 
+              rel="noopener noreferrer"
               icon={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -632,7 +892,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         <div className="container-custom">
           <motion.h2 
             className="text-3xl font-unbounded font-bold mb-6 text-center"
-            initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
@@ -955,8 +1215,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6 }}
           >
             {locale === 'fr' 
-              ? 'Prenons un café virtuel' 
-              : 'Let\'s have a virtual coffee'}
+              ? 'Discutons d\'un avenir commun' 
+              : 'Let\'s discuss a shared future'}
           </motion.h2>
           
           <motion.p 
@@ -967,8 +1227,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {locale === 'fr'
-              ? "Discutons de vos défis digitaux et explorons ensemble comment transformer vos idées en succès concrets. Prenons un café virtuel pour échanger !"
-              : "Let's discuss your digital challenges and explore together how to transform your ideas into concrete success. Let's have a virtual coffee to exchange!"}
+              ? "Si vous aussi vous êtes animé par un leadership humain, une vision orientée impact et l'ambition d'innover durablement, alors je serais honoré d'échanger pour explorer ensemble les prochaines étapes."
+              : "If you are also driven by human leadership, an impact-oriented vision and the ambition to innovate sustainably, then I would be honored to exchange and explore the next steps together."}
           </motion.p>
           
           <motion.div 
@@ -979,16 +1239,18 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <AnimatedButton 
-              href={`${langPrefix}/contact`}
+              href="https://calendly.com/elmasrymoamen/30min"
               variant="primary"
               size="lg"
+              target="_blank" 
+              rel="noopener noreferrer"
               icon={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               }
             >
-              {locale === 'fr' ? 'Me contacter' : 'Contact me'}
+              {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
             </AnimatedButton>
           </motion.div>
         </div>

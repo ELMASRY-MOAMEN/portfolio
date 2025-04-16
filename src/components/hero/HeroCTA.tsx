@@ -10,11 +10,6 @@ interface HeroCTAProps {
       label: string;
       ariaLabel: string;
     };
-    viewProjects: {
-      href: string;
-      label: string;
-      ariaLabel: string;
-    };
     downloadCV: {
       href: string;
       label: string;
@@ -44,13 +39,6 @@ export default function HeroCTA({ links }: HeroCTAProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         }
-      />
-      
-      <HeroLink 
-        href={links.viewProjects.href}
-        label={links.viewProjects.label}
-        ariaLabel={links.viewProjects.ariaLabel}
-        variant="secondary"
       />
       
       <HeroLink 

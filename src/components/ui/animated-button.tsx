@@ -17,6 +17,8 @@ interface AnimatedButtonProps {
   fullWidth?: boolean;
   animate?: boolean;
   ariaLabel?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function AnimatedButton({
@@ -32,6 +34,8 @@ export default function AnimatedButton({
   fullWidth = false,
   animate = true,
   ariaLabel,
+  target,
+  rel,
 }: AnimatedButtonProps) {
   // Base styles
   const baseClasses = "relative inline-flex items-center justify-center rounded-lg font-bricolage font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
@@ -100,7 +104,8 @@ export default function AnimatedButton({
         href={href}
         className={buttonClasses}
         aria-label={ariaLabel}
-        {...linkProps}
+        target={target}
+        rel={rel}
       >
         {content}
       </Link>
