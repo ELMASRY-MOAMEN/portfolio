@@ -41,7 +41,7 @@ const Header = () => {
       <div className="container-custom">
         <nav className="flex justify-between items-center" aria-label={t.navigation.ariaLabels.mainNavigation}>
           <div className="flex-shrink-0 animate-fade-in">
-            <Link href={langPrefix} className="font-unbounded text-2xl font-bold text-primary flex items-center" aria-label={t.navigation.home}>
+            <Link href={langPrefix} className={`font-unbounded text-2xl font-bold ${scrolled ? 'text-primary' : 'text-white'} flex items-center`} aria-label={t.navigation.home}>
               {/* Logo optionnel */}
               {/* <Image src="/images/logo.svg" alt="Logo Portfolio" width={40} height={40} className="mr-2" /> */}
               Moamen Elmasry
@@ -50,13 +50,13 @@ const Header = () => {
 
           {/* Navigation Desktop */}
           <div className="hidden md:flex items-center space-x-8 animate-fade-in">
-            <Link href={langPrefix} className="font-bricolage text-text-primary hover:text-primary transition-colors">
+            <Link href={langPrefix} className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`}>
               {t.navigation.home}
             </Link>
-            <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className="font-bricolage text-text-primary hover:text-primary transition-colors">
+            <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`}>
               {locale === 'fr' ? 'Projets' : 'Projects'}
             </Link>
-            <a href="https://calendly.com/elmasrymoamen/30min" className="font-bricolage text-text-primary hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendly.com/elmasrymoamen/30min" className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`} target="_blank" rel="noopener noreferrer">
               {t.navigation.contact}
             </a>
             <a 
@@ -66,15 +66,15 @@ const Header = () => {
             >
               {t.navigation.downloadCv}
             </a>
-            <LanguageSwitcher />
+            <LanguageSwitcher scrolled={scrolled} />
           </div>
 
           {/* Bouton Menu Mobile */}
           <div className="md:hidden flex items-center space-x-4">
-            <LanguageSwitcher />
+            <LanguageSwitcher scrolled={scrolled} />
             <button 
               onClick={toggleMobileMenu} 
-              className="text-text-primary focus:outline-none"
+              className={`${scrolled ? 'text-text-primary' : 'text-white'} focus:outline-none`}
               aria-expanded={mobileMenuOpen}
               aria-label={t.navigation.ariaLabels.mainMenu}
               aria-controls="mobile-menu"
@@ -94,7 +94,7 @@ const Header = () => {
         {mobileMenuOpen && (
           <div 
             id="mobile-menu"
-            className="md:hidden pt-4 pb-3 border-t border-gray-200 animate-fade-in"
+            className="md:hidden pt-4 pb-3 border-t border-gray-200 animate-fade-in bg-white"
             role="navigation"
             aria-label={t.navigation.ariaLabels.mobileMenu}
           >

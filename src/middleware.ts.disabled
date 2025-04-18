@@ -1,3 +1,12 @@
+// REMARQUE IMPORTANTE: Ce middleware est actuellement désactivé car il n'est pas compatible 
+// avec l'option "output: 'export'" dans next.config.js qui est nécessaire pour le déploiement statique sur Netlify.
+//
+// Pour utiliser ce middleware, vous devriez soit:
+// 1. Supprimer l'option "output: 'export'" dans next.config.js (mais cela nécessitera un serveur Node.js)
+// 2. Implémenter une solution côté client pour la redirection linguistique
+//
+// Le middleware suivant sert de référence pour une future implémentation serveur si nécessaire.
+
 import { NextRequest, NextResponse } from 'next/server';
 import acceptLanguage from 'accept-language';
 import { i18n } from '../next-i18next.config';

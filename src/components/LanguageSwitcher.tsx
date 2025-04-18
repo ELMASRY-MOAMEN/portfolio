@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-export default function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  scrolled?: boolean;
+}
+
+export default function LanguageSwitcher({ scrolled = true }: LanguageSwitcherProps) {
   const { locale } = useTranslation();
   const pathname = usePathname();
   
@@ -38,7 +42,7 @@ export default function LanguageSwitcher() {
       ) : (
         <Link 
           href={frHref}
-          className="flex items-center px-2 py-1 transition-colors duration-200 text-text-secondary hover:text-primary"
+          className={`flex items-center px-2 py-1 transition-colors duration-200 ${scrolled ? 'text-text-secondary' : 'text-white'} hover:text-primary`}
           aria-label="Passer en français"
           hrefLang="fr"
           locale="fr"
@@ -69,7 +73,7 @@ export default function LanguageSwitcher() {
       ) : (
         <Link 
           href={enHref}
-          className="flex items-center px-2 py-1 transition-colors duration-200 text-text-secondary hover:text-primary"
+          className={`flex items-center px-2 py-1 transition-colors duration-200 ${scrolled ? 'text-text-secondary' : 'text-white'} hover:text-primary`}
           aria-label="Switch to English"
           hrefLang="en"
           locale="en"
