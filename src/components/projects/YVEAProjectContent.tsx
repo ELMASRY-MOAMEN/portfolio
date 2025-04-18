@@ -160,8 +160,8 @@ const YVEAProjectContent = () => {
   // Content based on selected language
   const content = {
     fr: {
-      heroTitle: "YVEA – Le SaaS qui révolutionne la certification export",
-      heroSubtitle: "Transform | Automate | Scale: Réduction de 80% des délais de traitement documentaire grâce à l'IA avancée, pour une adoption par 100+ entreprises.",
+      heroTitle: "YVEA – La plateforme de certification export",
+      heroSubtitle: "Automatisation intelligente des processus de certification pour l'export vers l'Afrique et le Moyen-Orient.",
       intro: "Découvrez la première plateforme qui automatise de bout en bout la certification des marchandises destinées à l'Afrique et au Moyen-Orient, transformant des processus manuels en une expérience digitale ultra-rapide et fiable grâce à l'OCR, la GED et l'IA.",
       contextTitle: "Contexte du projet",
       beforeTitle: "BEFORE",
@@ -363,9 +363,9 @@ const YVEAProjectContent = () => {
       callToActionSubtext: "Je suis prêt à mettre cette double expertise business/tech au service de votre organisation."
     },
     en: {
-      heroTitle: "YVEA – The SaaS Revolutionizing Export Certification",
-      heroSubtitle: "Transform | Automate | Scale: 80% reduction in document processing time through advanced AI, adopted by 100+ international companies.",
-      intro: "Discover the first platform that automates end-to-end certification of goods destined for Africa and the Middle East, transforming manual processes into an ultra-fast and reliable digital experience through OCR, EDM, and AI.",
+      heroTitle: "YVEA – The export certification platform",
+      heroSubtitle: "Intelligent automation of certification processes for exports to Africa and the Middle East.",
+      intro: "Discover the first platform that fully automates the certification of goods destined for Africa and the Middle East, transforming manual processes into an ultra-fast and reliable digital experience using OCR, EDM and AI.",
       contextTitle: "Project Context",
       beforeTitle: "BEFORE",
       beforeContent: "The traditional VoC certification process is currently hampered by multiple manual tasks: repeated verifications, submissions, follow-ups, and constant back-and-forth between teams. This lack of coordination leads to processing times of 2-5 days, generating notable frustration among clients and internal efficiency loss.",
@@ -592,79 +592,17 @@ const YVEAProjectContent = () => {
                 {locale === 'fr' ? "Projet SaaS" : "SaaS Project"}
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
                 {currentContent.heroTitle}
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
+              <p className="text-lg text-gray-300 mb-4 leading-relaxed max-w-xl">
                 {currentContent.heroSubtitle}
               </p>
               
               <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
                 {currentContent.intro}
               </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <AnimatedButton 
-                  variant="primary"
-                  size="lg"
-                  href="#project-context"
-                >
-                  {locale === 'fr' ? "Découvrir le projet" : "Discover the project"}
-                </AnimatedButton>
-                
-                <motion.div 
-                  className="inline-flex items-center gap-2 cursor-pointer px-4 py-2 rounded-lg text-white hover:text-primary transition-colors"
-                  whileHover={{ x: 5 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  onClick={() => {
-                    const element = document.getElementById('project-evolution');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  <span>
-                    {locale === 'fr' ? "Voir l'évolution" : "See evolution"}
-                  </span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </motion.div>
-              </div>
-              
-              {/* Key metrics */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
-                <motion.div 
-                  className="bg-white/5 backdrop-blur-sm p-4 rounded-lg text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <div className="text-3xl font-bold text-primary mb-1">-80%</div>
-                  <div className="text-sm text-gray-400">{locale === 'fr' ? "Temps de traitement" : "Processing time"}</div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/5 backdrop-blur-sm p-4 rounded-lg text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <div className="text-3xl font-bold text-emerald-500 mb-1">200K€</div>
-                  <div className="text-sm text-gray-400">{locale === 'fr' ? "Financement" : "Funding"}</div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/5 backdrop-blur-sm p-4 rounded-lg text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <div className="text-3xl font-bold text-violet-400 mb-1">95%</div>
-                  <div className="text-sm text-gray-400">{locale === 'fr' ? "Satisfaction client" : "Client satisfaction"}</div>
-                </motion.div>
-              </div>
             </motion.div>
             
             {/* Digital Globe Column */}
