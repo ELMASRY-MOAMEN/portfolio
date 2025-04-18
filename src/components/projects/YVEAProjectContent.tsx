@@ -758,94 +758,294 @@ const YVEAProjectContent = () => {
         </div>
       </div>
       
-      {/* Project Context */}
-      <div id="project-context" className="container mx-auto px-4 py-16">
-        <AnimatedSection className="mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent z-0"></div>
+      {/* Project Context - Version GAFAM */}
+      <div id="project-context" className="container mx-auto px-4 py-24">
+        <AnimatedSection>
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-950/80 to-blue-950/90 shadow-2xl">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5 z-0"></div>
+            <div className="absolute top-0 right-0 w-1/3 h-2/3 bg-indigo-500/10 blur-[80px] rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/10 blur-[60px] rounded-full"></div>
             
-            <div className="relative z-10 max-w-4xl">
-              <h2 className="text-3xl font-bold mb-2 flex items-center text-gray-800">
-                <svg className="w-8 h-8 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                {currentContent.contextTitle}
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">{locale === 'fr' ? "Transformer un processus manuel complexe en solution digitale automatisée" : "Transforming a complex manual process into an automated digital solution"}</p>
+            {/* Header */}
+            <div className="relative z-10 p-8 md:p-12">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="max-w-4xl mx-auto text-center mb-16"
+              >
+                <div className="inline-flex items-center justify-center space-x-2 bg-indigo-500/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-500/30 mb-6">
+                  <span className="text-indigo-200 text-sm font-medium">{locale === 'fr' ? "Transformation" : "Transformation"}</span>
+                  <span className="bg-indigo-400 h-1 w-1 rounded-full"></span>
+                  <span className="text-indigo-200 text-sm font-medium">{locale === 'fr' ? "Valeur Métier" : "Business Value"}</span>
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                  {currentContent.contextTitle}
+                </h2>
+                
+                <p className="text-xl text-indigo-200/90 max-w-3xl mx-auto">
+                  {locale === 'fr' 
+                    ? "Une réinvention digitale complète du processus de certification"
+                    : "A complete digital reinvention of the certification process"}
+                </p>
+              </motion.div>
               
-              {/* BEFORE-AFTER comparison with visuals */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                {/* BEFORE side */}
-                <div className="bg-red-50 rounded-xl overflow-hidden border border-red-100">
-                  <div className="bg-red-500 text-white py-3 px-4">
-                    <h3 className="text-xl font-semibold">{currentContent.beforeTitle}</h3>
-                  </div>
+              {/* Flow comparison slider */}
+              <div className="max-w-5xl mx-auto backdrop-blur-sm bg-indigo-900/20 rounded-xl border border-indigo-500/30 overflow-hidden p-6 md:p-10">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="mb-10"
+                >
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                    <span className="w-10 h-10 rounded-full bg-indigo-500/30 flex items-center justify-center mr-4">
+                      <svg className="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      </svg>
+                    </span>
+                    {locale === 'fr' ? "Avant vs Après YVEA" : "Before vs After YVEA"}
+                  </h3>
                   
-                  <div className="p-4">
-                    <p className="text-gray-700 mb-4">{currentContent.beforeContent}</p>
+                  {/* Image comparison component */}
+                  <div className="relative h-[400px] md:h-[500px] bg-gradient-to-b from-black/50 to-indigo-950/50 rounded-lg overflow-hidden select-none">
+                    {/* Before image (full width) */}
+                    <div className="absolute inset-0 z-10">
+                      <Image 
+                        src="/downloads/Current flow.png" 
+                        alt="Current certification process flow" 
+                        fill 
+                        className="object-contain"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-indigo-950/90"></div>
+                      <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
+                        {currentContent.beforeTitle}
+                      </div>
+                    </div>
                     
-                    <div className="rounded-lg bg-white p-4 border border-red-100 mb-4 flex items-center">
-                      <div className="w-16 h-16 flex-shrink-0 rounded-full bg-red-100 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {/* After image (revealing slider) */}
+                    <motion.div 
+                      className="absolute inset-y-0 right-0 z-20 overflow-hidden"
+                      initial={{ width: "50%" }}
+                      whileInView={{ width: ["50%", "55%", "45%", "50%"] }}
+                      transition={{ duration: 3, ease: "easeInOut", delay: 1, repeat: Infinity, repeatDelay: 5 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="relative h-full w-[100vw]">
+                        <Image 
+                          src="/downloads/New flow.png" 
+                          alt="New certification process with YVEA" 
+                          fill 
+                          className="object-contain object-right" 
+                        />
+                        <div className="absolute top-4 right-4 bg-emerald-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
+                          {currentContent.afterTitle}
+                        </div>
+                      </div>
+                      
+                      {/* Slider handle */}
+                      <div className="absolute inset-y-0 left-0 w-1 bg-white shadow-[0_0_10px_rgba(255,255,255,0.7)]"></div>
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.7)] flex items-center justify-center">
+                        <svg className="w-6 h-6 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Hint text */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/80 text-sm font-medium bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm z-30">
+                      {locale === 'fr' ? "Glissez pour comparer" : "Slide to compare"}
+                    </div>
+                  </div>
+                </motion.div>
+                
+                {/* Process transformation details */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+                  {/* BEFORE section */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 rounded-full blur-xl -z-10"></div>
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-red-950/40 to-red-900/30 border border-red-500/20 h-full backdrop-blur-sm">
+                      <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
+                        <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                       </div>
-                      <div className="ml-4">
-                        <h4 className="font-bold text-gray-800">2-5 {locale === 'fr' ? "jours" : "days"}</h4>
-                        <p className="text-sm text-gray-600">{locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}</p>
+                      
+                      <h4 className="text-xl font-bold text-red-300 mb-3">{currentContent.beforeTitle}</h4>
+                      
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                        {currentContent.beforeContent}
+                      </p>
+                      
+                      <div className="mt-auto pt-4 border-t border-red-500/20">
+                        <div className="flex items-center">
+                          <div className="text-2xl font-bold text-red-300">2-5</div>
+                          <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "jours" : "days"}</div>
+                        </div>
+                        <div className="text-sm text-indigo-300/50">
+                          {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                
-                {/* AFTER side */}
-                <div className="bg-green-50 rounded-xl overflow-hidden border border-green-100">
-                  <div className="bg-green-500 text-white py-3 px-4">
-                    <h3 className="text-xl font-semibold">{currentContent.afterTitle}</h3>
-                  </div>
+                  </motion.div>
                   
-                  <div className="p-4">
-                    <p className="text-gray-700 mb-4">{currentContent.afterContent}</p>
-                    
-                    <div className="rounded-lg bg-white p-4 border border-green-100 mb-4 flex items-center">
-                      <div className="w-16 h-16 flex-shrink-0 rounded-full bg-green-100 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                  {/* BRIDGE section */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 rounded-full blur-xl -z-10"></div>
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-indigo-950/40 to-indigo-900/30 border border-indigo-500/20 h-full backdrop-blur-sm">
+                      <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4">
+                        <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
                       </div>
-                      <div className="ml-4">
-                        <h4 className="font-bold text-gray-800">4-5 {locale === 'fr' ? "heures" : "hours"}</h4>
-                        <p className="text-sm text-gray-600">{locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}</p>
+                      
+                      <h4 className="text-xl font-bold text-indigo-300 mb-3">{currentContent.bridgeTitle}</h4>
+                      
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                        {currentContent.bridgeContent}
+                      </p>
+                      
+                      <div className="mt-auto pt-4 border-t border-indigo-500/20">
+                        <div className="flex flex-wrap gap-2">
+                          {['OCR', 'GED', 'IA', 'Automation'].map((tech, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-2 py-1 bg-indigo-500/20 text-indigo-200 text-xs rounded-md border border-indigo-500/30"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
+                  
+                  {/* AFTER section */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/20 rounded-full blur-xl -z-10"></div>
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-950/40 to-emerald-900/30 border border-emerald-500/20 h-full backdrop-blur-sm">
+                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
+                        <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                      </div>
+                      
+                      <h4 className="text-xl font-bold text-emerald-300 mb-3">{currentContent.afterTitle}</h4>
+                      
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                        {currentContent.afterContent}
+                      </p>
+                      
+                      <div className="mt-auto pt-4 border-t border-emerald-500/20">
+                        <div className="flex items-center">
+                          <div className="text-2xl font-bold text-emerald-300">4-5</div>
+                          <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "heures" : "hours"}</div>
+                        </div>
+                        <div className="text-sm text-indigo-300/50">
+                          {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-              
-              {/* BRIDGE section */}
-              <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-10">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 rounded-lg p-3 mr-4">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                
+                {/* Interactive visualization reference */}
+                <motion.div 
+                  className="mt-12 p-5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-center backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ backgroundColor: "rgba(99, 102, 241, 0.15)" }}
+                >
+                  <p className="text-indigo-200 font-medium flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                     </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-800 mb-2">{currentContent.bridgeTitle}</h3>
-                    <p className="text-gray-700">{currentContent.bridgeContent}</p>
-                  </div>
-                </div>
+                    {currentContent.visualizationText}
+                  </p>
+                </motion.div>
               </div>
-              
-              <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
-                <p className="text-primary font-medium">{currentContent.visualizationText}</p>
+            </div>
+            
+            {/* Key metrics */}
+            <div className="relative z-10 bg-gradient-to-b from-blue-950/0 to-blue-950/80 p-8 md:p-12">
+              <div className="max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="text-4xl font-bold text-white mb-2">90%</div>
+                    <div className="text-indigo-300 text-sm">{locale === 'fr' ? "Amélioration de la précision" : "Accuracy improvement"}</div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="text-4xl font-bold text-white mb-2">40%</div>
+                    <div className="text-indigo-300 text-sm">{locale === 'fr' ? "Coûts opérationnels réduits" : "Reduced operational costs"}</div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="text-4xl font-bold text-white mb-2">95%</div>
+                    <div className="text-indigo-300 text-sm">{locale === 'fr' ? "Réduction des erreurs" : "Error reduction"}</div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="text-4xl font-bold text-white mb-2">85%</div>
+                    <div className="text-indigo-300 text-sm">{locale === 'fr' ? "Efficacité des processus" : "Process efficiency"}</div>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </div>
         </AnimatedSection>
-        
-        {/* Project Evolution Timeline */}
+      </div>
+      
+      {/* Project Evolution Timeline */}
+      <div id="project-evolution" className="container mx-auto px-4 py-16">
         <AnimatedSection className="mb-16">
           <div id="project-evolution" className="bg-white rounded-xl shadow-lg p-8 overflow-hidden">
             <div className="mb-8">
