@@ -12,38 +12,134 @@ import ParticleFlowAnimation from './ParticleFlowAnimation';
 
 // EnhancedTimeline component for project phases
 const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const { locale } = useTranslation();
+
   return (
-    <div className="mt-12">
-      <div className="relative border-l-2 border-primary/20 ml-6 pl-10 pb-8">
-        {phases.map((phase, index) => (
-          <div key={index} className="mb-10 relative">
-            {/* Icon circle */}
-            <div className="absolute -left-16 top-0 bg-gradient-to-br from-primary to-primary/70 w-10 h-10 rounded-full flex items-center justify-center text-white shadow-lg">
-              {phase.icon}
-            </div>
-            
-            {/* Year badge */}
-            <div className="absolute -left-32 top-1 bg-gray-100 px-2 py-1 rounded text-sm font-semibold text-gray-600">
-              {phase.year}
-            </div>
-            
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+    <div className="mt-8">
+      {/* Timeline horizontal (toujours visible) */}
+      <div className="relative mb-10">
+        {/* Ligne de temps */}
+        <div className="absolute h-1 bg-primary/20 top-6 left-0 right-0 z-0"></div>
+        
+        {/* Timeline nodes */}
+        <div className="flex justify-between relative z-10">
+          {phases.map((phase, index) => (
+            <div 
+              key={index} 
+              className={`cursor-pointer transition-all duration-300 flex flex-col items-center`}
+              onClick={() => setActiveStep(activeStep === index ? null : index)}
             >
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{phase.title}</h3>
-              <p className="text-gray-700 mb-3">{phase.description}</p>
-              
-              {/* Impact badge */}
-              <div className="bg-primary/10 px-3 py-2 rounded-lg inline-block">
-                <span className="font-medium text-primary">Impact: </span>
-                <span className="text-gray-700">{phase.impact}</span>
+              <div 
+                className={`w-12 h-12 rounded-full flex items-center justify-center shadow-md transition-all duration-300 ${
+                  activeStep === index 
+                    ? 'bg-primary text-white scale-110' 
+                    : 'bg-white border-2 border-primary/40 text-primary hover:border-primary'
+                }`}
+              >
+                {phase.icon}
               </div>
-            </motion.div>
-          </div>
+              <span className="text-xs font-semibold mt-2 bg-gray-100 px-2 py-1 rounded">
+                {phase.year}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contenu collapsed pour chaque étape */}
+      <div className="grid grid-cols-1 gap-6 my-8">
+        {phases.map((phase, index) => (
+          <motion.div 
+            key={index}
+            initial={{ height: activeStep === index ? 'auto' : '124px' }}
+            animate={{ height: activeStep === index ? 'auto' : '124px' }}
+            className={`relative overflow-hidden border rounded-xl transition-all duration-300 ${
+              activeStep === index 
+                ? 'bg-white shadow-lg border-primary' 
+                : 'bg-white/50 border-gray-200 hover:border-primary/30'
+            }`}
+          >
+            {/* Collapsed view */}
+            <div className="p-6">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2 flex items-center">
+                    <span className="mr-2">{phase.icon}</span>
+                    {locale === 'fr' ? `Étape ${index + 1}: ` : `Phase ${index + 1}: `}{phase.title}
+                  </h3>
+                  <div className="text-sm text-gray-600 mb-3">
+                    {locale === 'fr' ? 'Période: ' : 'Period: '}{phase.year}
+                  </div>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {phase.tags?.map((tag: string, tagIndex: number) => (
+                      <span key={tagIndex} className="inline-block bg-gray-100 text-gray-600 px-2 py-1 rounded-md text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-700 font-medium">
+                    {phase.impact}
+                  </p>
+                </div>
+                
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveStep(activeStep === index ? null : index);
+                  }}
+                  className={`px-3 py-1 text-sm rounded-lg transition-colors flex items-center ${
+                    activeStep === index 
+                      ? 'bg-primary/10 text-primary' 
+                      : 'bg-gray-100 text-gray-600 hover:bg-primary/5 hover:text-primary'
+                  }`}
+                >
+                  {activeStep === index ? (
+                    <>{locale === 'fr' ? 'Réduire' : 'Collapse'} <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg></>
+                  ) : (
+                    <>{locale === 'fr' ? 'En savoir plus' : 'Learn more'} <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg></>
+                  )}
+                </button>
+              </div>
+              
+              {/* Expanded view */}
+              {activeStep === index && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-6 pt-4 border-t border-gray-100"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-2">{locale === 'fr' ? 'Objectif:' : 'Objective:'}</h4>
+                      <p className="text-gray-700 mb-4">{phase.objective || phase.description}</p>
+                      
+                      <h4 className="font-bold text-gray-800 mb-2">{locale === 'fr' ? 'Démarche:' : 'Approach:'}</h4>
+                      <p className="text-gray-700 mb-4">{phase.approach || (locale === 'fr' 
+                         ? "Approche itérative centrée sur les besoins utilisateurs, avec des cycles de feedback réguliers."
+                         : "Iterative approach centered on user needs, with regular feedback cycles.")}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-2">{locale === 'fr' ? 'Moyens:' : 'Resources:'}</h4>
+                      <p className="text-gray-700 mb-4">{phase.resources || (locale === 'fr'
+                         ? "Ressources techniques et humaines dédiées, outils collaboratifs, et méthodologies agiles."
+                         : "Dedicated technical and human resources, collaborative tools, and agile methodologies.")}</p>
+                      
+                      <h4 className="font-bold text-gray-800 mb-2">{locale === 'fr' ? 'Impact:' : 'Impact:'}</h4>
+                      <div className="bg-primary/10 p-3 rounded-lg">
+                        <p className="text-gray-800 font-medium">{phase.impact}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -75,42 +171,66 @@ const YVEAProjectContent = () => {
           title: "Cahier des Charges & Recherche de Financements",
           description: "Validation du concept de YVEA et démonstration de sa viabilité économique en définissant précisément les besoins du marché de la certification export.",
           impact: "Validation de la vision du projet et obtention d'un financement initial de 40K€ auprès de BNP Paribas",
-          icon: <HiDocumentText size={20} />
+          icon: <HiDocumentText size={20} />,
+          tags: ["#BusinessModel", "#PitchDeck", "#Financement"],
+          objective: "Valider le concept de YVEA et démontrer sa viabilité économique en définissant précisément les besoins du marché de la certification export.",
+          approach: "Réalisation d'un Business Model Canvas, élaboration d'un business plan complet, création d'un pitch deck et constitution d'un cahier des charges détaillé, intégrant des prévisions financières et une estimation du retour sur investissement.",
+          resources: "Collecte d'informations de marché, collaboration avec des experts sectoriels et financiers, et rédaction de documents stratégiques solides pour préparer un dossier convaincant."
         },
         {
           year: "2022-Q2",
           title: "Maquettage & Incubation",
           description: "Conception d'une maquette interactive sur Figma et révision du pitch deck afin de présenter clairement la proposition de valeur aux partenaires et incubateurs.",
           impact: "Obtention d'une subvention d'innovation de 30K€ via Paris Innovation Amorçage et d'un crédit AWS de 15K$",
-          icon: <HiCurrencyDollar size={20} />
+          icon: <HiCurrencyDollar size={20} />,
+          tags: ["#Prototyping", "#UX/UI", "#Incubation"],
+          objective: "Transformer l'idée en concept visuel et tangible pour convaincre les incubateurs et obtenir de nouveaux financements.",
+          approach: "Collaboration étroite avec designers UX/UI, réalisation d'un prototype interactif complet sur Figma, et présentations aux incubateurs parisiens.",
+          resources: "Équipe design, outils de prototypage UX/UI, présentations pour incubateurs et investisseurs."
         },
         {
           year: "2022-Q3/Q4",
           title: "Développement Initial du MVP",
           description: "Développement du MVP en utilisant la stack MERN avec une organisation SCRUM en sprints de 2 semaines, incluant des phases de tests pilotes auprès d'un panel de 50 utilisateurs.",
           impact: "Lancement d'un MVP validé, démontrant la faisabilité technique et l'intérêt fonctionnel de la solution",
-          icon: <HiOfficeBuilding size={20} />
+          icon: <HiOfficeBuilding size={20} />,
+          tags: ["#MVP", "#MERN", "#SCRUM"],
+          objective: "Développer rapidement une première version fonctionnelle pour tester l'adoption par les premiers utilisateurs.",
+          approach: "Mise en place d'une organisation SCRUM avec sprints de 2 semaines, priorisation des fonctionnalités selon impact métier, et tests utilisateurs réguliers.",
+          resources: "Équipe technique de 5 développeurs, stack MERN (MongoDB, Express, React, Node.js), méthodologie SCRUM, panel de testeurs."
         },
         {
           year: "2023-Q1/Q2",
           title: "Itérations & Refactorisation",
           description: "Recueil intensif de feedbacks auprès des utilisateurs et des organismes de certification, suivi d'une refactorisation complète (passage de JavaScript à TypeScript) et d'améliorations de l'UX/UI.",
           impact: "Amélioration significative de la stabilité, de la sécurité et de la fluidité de la solution",
-          icon: <HiCode size={20} />
+          icon: <HiCode size={20} />,
+          tags: ["#Refactoring", "#TypeScript", "#UserFeedback"],
+          objective: "Stabiliser la plateforme et améliorer l'expérience utilisateur en se basant sur les retours clients.",
+          approach: "Refactorisation technique complète avec migration vers TypeScript, mise en place de tests unitaires et d'intégration, et refonte de l'UX basée sur les données d'utilisation.",
+          resources: "Équipe technique étendue, infrastructure de CI/CD, outils d'analytics pour mesurer l'utilisation et les points de friction."
         },
         {
           year: "2023-Q3/Q4",
           title: "Industrialisation & Lancement de la V1",
           description: "Levée de fonds supplémentaire (50K€ obtenus via BNP), refonte complète de l'architecture technique et amélioration de l'UI/UX, incluant l'intégration d'une marketplace de services partenaires.",
           impact: "Lancement réussi de la V1, avec une solution stable et scalable ouvrant de nouvelles opportunités internationales",
-          icon: <HiRefresh size={20} />
+          icon: <HiRefresh size={20} />,
+          tags: ["#Scaling", "#V1", "#Marketplace"],
+          objective: "Transformer le MVP en produit industriel capable de supporter une croissance rapide et d'attirer des partenaires.",
+          approach: "Réarchitecture technique pour assurer la scalabilité, optimisation des performances, renforcement de la sécurité, et développement d'interfaces partenaires.",
+          resources: "Nouvelle levée de fonds, équipe technique internationale, infrastructure cloud avancée, et partenariats stratégiques."
         },
         {
           year: "2024-2025",
           title: "Pivot Stratégique & Lancement de la V2",
           description: "Basée sur des interviews approfondies avec des organismes de certification, développement d'un moteur de pré-vérification automatique avec détection intelligente du type de document et analyse IA via GPT-4 fine-tuné.",
           impact: "Réduction drastique du temps de vérification (de plusieurs heures à moins de 5 minutes) et amélioration de la qualité documentaire",
-          icon: <HiGlobeAlt size={20} />
+          icon: <HiGlobeAlt size={20} />,
+          tags: ["#IA", "#GPT4", "#StrategicPivot"],
+          objective: "Pivotement vers un modèle B2B ciblant les organismes de certification et intégration de l'IA avancée pour automatiser les tâches complexes.",
+          approach: "Développement d'un modèle IA fine-tuné spécifiquement pour la certification documentaire, création d'APIs pour l'intégration avec les systèmes des organismes partenaires.",
+          resources: "Partenariat avec Microsoft for Startups pour l'infrastructure Azure, équipe data science dédiée, corpus de documents d'entraînement pour l'IA."
         }
       ],
       // Lessons learned section
@@ -268,42 +388,66 @@ const YVEAProjectContent = () => {
           title: "Specifications & Funding Research",
           description: "Validation of the YVEA concept and demonstration of its economic viability by precisely defining the needs of the export certification market.",
           impact: "Validation of the project vision and securing initial funding of €40K from BNP Paribas",
-          icon: <HiDocumentText size={20} />
+          icon: <HiDocumentText size={20} />,
+          tags: ["#BusinessModel", "#PitchDeck", "#Funding"],
+          objective: "Validate the YVEA concept and demonstrate its economic viability by precisely defining the needs of the export certification market.",
+          approach: "Creation of a Business Model Canvas, development of a comprehensive business plan, creation of a pitch deck and detailed specifications, including financial forecasts and ROI estimates.",
+          resources: "Market information gathering, collaboration with sector and financial experts, and drafting of solid strategic documents to prepare a convincing case."
         },
         {
           year: "2022-Q2",
           title: "Prototyping & Incubation",
           description: "Design of an interactive mockup on Figma and revision of the pitch deck to clearly present the value proposition to partners and incubators.",
           impact: "Securing a €30K innovation grant via Paris Innovation Amorçage and a $15K AWS credit",
-          icon: <HiCurrencyDollar size={20} />
+          icon: <HiCurrencyDollar size={20} />,
+          tags: ["#Prototyping", "#UX/UI", "#Incubation"],
+          objective: "Transform the idea into a visual and tangible concept to convince incubators and secure new funding.",
+          approach: "Close collaboration with UX/UI designers, creation of a complete interactive prototype on Figma, and presentations to Parisian incubators.",
+          resources: "Design team, UX/UI prototyping tools, presentations for incubators and investors."
         },
         {
           year: "2022-Q3/Q4",
           title: "Initial MVP Development",
           description: "MVP development using the MERN stack with SCRUM organization in 2-week sprints, including pilot testing phases with a panel of 50 users.",
           impact: "Launch of a validated MVP, demonstrating technical feasibility and functional interest in the solution",
-          icon: <HiOfficeBuilding size={20} />
+          icon: <HiOfficeBuilding size={20} />,
+          tags: ["#MVP", "#MERN", "#SCRUM"],
+          objective: "Rapidly develop a first functional version to test adoption by early users.",
+          approach: "Implementation of a SCRUM organization with 2-week sprints, prioritization of features according to business impact, and regular user testing.",
+          resources: "Technical team of 5 developers, MERN stack (MongoDB, Express, React, Node.js), SCRUM methodology, panel of testers."
         },
         {
           year: "2023-Q1/Q2",
           title: "Iterations & Refactoring",
-          description: "Intensive collection of feedback from users and certification bodies, followed by complete refactoring (transition from JavaScript to TypeScript) and UX/UI improvements.",
+          description: "Intensive feedback collection from users and certification bodies, followed by complete refactoring (migration from JavaScript to TypeScript) and UX/UI improvements.",
           impact: "Significant improvement in stability, security and fluidity of the solution",
-          icon: <HiCode size={20} />
+          icon: <HiCode size={20} />,
+          tags: ["#Refactoring", "#TypeScript", "#UserFeedback"],
+          objective: "Stabilize the platform and improve the user experience based on customer feedback.",
+          approach: "Complete technical refactoring with migration to TypeScript, implementation of unit and integration tests, and UX redesign based on usage data.",
+          resources: "Extended technical team, CI/CD infrastructure, analytics tools to measure usage and friction points."
         },
         {
           year: "2023-Q3/Q4",
           title: "Industrialization & V1 Launch",
-          description: "Additional fundraising (€50K obtained via BNP), complete overhaul of the technical architecture and UI/UX improvement, including the integration of a marketplace for partner services.",
+          description: "Additional fundraising (€50K obtained via BNP), complete redesign of the technical architecture and improvement of the UI/UX, including the integration of a marketplace for partner services.",
           impact: "Successful launch of V1, with a stable and scalable solution opening new international opportunities",
-          icon: <HiRefresh size={20} />
+          icon: <HiRefresh size={20} />,
+          tags: ["#Scaling", "#V1", "#Marketplace"],
+          objective: "Transform the MVP into an industrial product capable of supporting rapid growth and attracting partners.",
+          approach: "Technical rearchitecture to ensure scalability, performance optimization, security enhancement, and development of partner interfaces.",
+          resources: "New funding round, international technical team, advanced cloud infrastructure, and strategic partnerships."
         },
         {
           year: "2024-2025",
           title: "Strategic Pivot & V2 Launch",
           description: "Based on in-depth interviews with certification bodies, development of an automatic pre-verification engine with intelligent document type detection and AI analysis via fine-tuned GPT-4.",
           impact: "Drastic reduction in verification time (from several hours to less than 5 minutes) and improvement in document quality",
-          icon: <HiGlobeAlt size={20} />
+          icon: <HiGlobeAlt size={20} />,
+          tags: ["#AI", "#GPT4", "#StrategicPivot"],
+          objective: "Pivot towards a B2B model targeting certification bodies and integration of advanced AI to automate complex tasks.",
+          approach: "Development of an AI model fine-tuned specifically for document certification, creation of APIs for integration with partner organizations' systems.",
+          resources: "Partnership with Microsoft for Startups for Azure infrastructure, dedicated data science team, training document corpus for AI."
         }
       ],
       // Lessons learned section
