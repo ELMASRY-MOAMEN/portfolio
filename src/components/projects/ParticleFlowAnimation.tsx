@@ -15,8 +15,12 @@ interface Particle {
   opacity: number;
 }
 
-// Nombre de particules à générer
-const PARTICLE_COUNT = 60;
+interface ParticleFlowAnimationProps {
+  particleCount?: number;
+}
+
+// Valeur par défaut
+const DEFAULT_PARTICLE_COUNT = 60;
 
 // Couleurs des particules
 const PARTICLE_COLORS = [
@@ -27,7 +31,7 @@ const PARTICLE_COLORS = [
   'rgba(210, 210, 220, 0.5)',  // gris moyen clair
 ];
 
-const ParticleFlowAnimation: React.FC = () => {
+const ParticleFlowAnimation: React.FC<ParticleFlowAnimationProps> = ({ particleCount = DEFAULT_PARTICLE_COUNT }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number | null>(null);
@@ -36,7 +40,7 @@ const ParticleFlowAnimation: React.FC = () => {
   const initParticles = useCallback(() => {
     const particles: Particle[] = [];
     
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         id: i,
         x: Math.random() * window.innerWidth,
@@ -51,7 +55,7 @@ const ParticleFlowAnimation: React.FC = () => {
     }
     
     particlesRef.current = particles;
-  }, []);
+  }, [particleCount]);
   
   // Fonction pour dessiner les particules
   const drawParticles = useCallback((ctx: CanvasRenderingContext2D, time: number) => {
