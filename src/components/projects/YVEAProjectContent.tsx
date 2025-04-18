@@ -163,7 +163,7 @@ const YVEAProjectContent = () => {
   // Content based on selected language
   const content = {
     fr: {
-      heroTitle: "YVEA – La plateforme de certification export",
+      heroTitle: "YVEA – Le portail vers la certification export simplifiée",
       heroSubtitle: "Automatisation intelligente des processus de certification pour l'export vers l'Afrique et le Moyen-Orient.",
       intro: "Découvrez la première plateforme qui automatise de bout en bout la certification des marchandises destinées à l'Afrique et au Moyen-Orient, transformant des processus manuels en une expérience digitale ultra-rapide et fiable grâce à l'OCR, la GED et l'IA.",
       contextTitle: "Contexte du projet",
@@ -366,7 +366,7 @@ const YVEAProjectContent = () => {
       callToActionSubtext: "Je suis prêt à mettre cette double expertise business/tech au service de votre organisation."
     },
     en: {
-      heroTitle: "YVEA – The export certification platform",
+      heroTitle: "YVEA – The portal to simplified export certification",
       heroSubtitle: "Intelligent automation of certification processes for exports to Africa and the Middle East.",
       intro: "Discover the first platform that fully automates the certification of goods destined for Africa and the Middle East, transforming manual processes into an ultra-fast and reliable digital experience using OCR, EDM and AI.",
       contextTitle: "Project Context",
@@ -648,18 +648,6 @@ const YVEAProjectContent = () => {
               >
                 {currentContent.intro}
               </motion.p>
-              
-              {/* Métriques-clés */}
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                <MetricBadge value="-80%" label={locale === 'fr' ? "Temps de traitement" : "Processing time"} color="violet" />
-                <MetricBadge value="100+" label={locale === 'fr' ? "Clients" : "Clients"} color="indigo" />
-                <MetricBadge value="95%" label={locale === 'fr' ? "Satisfaction" : "Satisfaction"} color="blue" />
-              </motion.div>
             </motion.div>
             
             {/* Visualisation interactive - colonne droite */}
@@ -764,7 +752,7 @@ const YVEAProjectContent = () => {
           </div>
           
           {/* Indicateur de scroll */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 pb-2">
             <ScrollIndicator />
           </div>
         </div>

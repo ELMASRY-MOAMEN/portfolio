@@ -11,43 +11,27 @@ export default function ScrollIndicator() {
       transition={{ delay: 1, duration: 0.5 }}
     >
       <motion.div
-        className="w-6 h-10 border-2 border-indigo-300/50 rounded-full flex justify-center pt-2"
-        animate={{ y: [0, 5, 0] }}
+        className="w-6 h-10 border-2 border-indigo-300/60 rounded-full flex justify-center pt-2 backdrop-blur-sm"
+        animate={{ y: [0, 3, 0] }}
         transition={{ 
-          duration: 1.5, 
+          duration: 2, 
           repeat: Infinity, 
           repeatType: "loop" 
         }}
+        whileHover={{ scale: 1.1 }}
       >
         <motion.div 
-          className="w-1.5 h-1.5 bg-indigo-300 rounded-full"
+          className="w-2 h-2 bg-indigo-300 rounded-full"
           animate={{ 
             y: [0, 12, 0],
-            opacity: [1, 0.3, 1] 
+            opacity: [1, 0.5, 1] 
           }}
           transition={{ 
-            duration: 1.5, 
+            duration: 2, 
             repeat: Infinity, 
             repeatType: "loop" 
           }}
         />
-      </motion.div>
-      
-      <motion.div
-        className="mt-2 flex space-x-1"
-        animate={{ 
-          y: [0, 3, 0] 
-        }}
-        transition={{ 
-          duration: 1.5, 
-          repeat: Infinity, 
-          repeatType: "loop",
-          delay: 0.5
-        }}
-      >
-        <div className="w-1 h-1 bg-indigo-300/70 rounded-full" />
-        <div className="w-1 h-1 bg-indigo-300/70 rounded-full" />
-        <div className="w-1 h-1 bg-indigo-300/70 rounded-full" />
       </motion.div>
     </motion.div>
   );

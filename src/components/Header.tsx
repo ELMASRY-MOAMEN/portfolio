@@ -61,7 +61,7 @@ const Header = () => {
             </a>
             <a 
               href="/cv/MOAMEN_ELMASRY_CV_Project_Manager.pdf" 
-              className="btn-sm-primary"
+              className={`font-bricolage ${scrolled ? 'btn-sm-primary' : 'text-white border border-white hover:bg-white/10 hover:text-white px-4 py-2 rounded-md text-sm transition-colors'}`}
               download
             >
               {t.navigation.downloadCv}
