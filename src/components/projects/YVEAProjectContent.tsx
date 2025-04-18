@@ -743,38 +743,281 @@ const YVEAProjectContent = () => {
         </div>
       </div>
       
-      {/* Project Overview */}
+      {/* Project Context - Enhanced with workflow visualization */}
       <div id="project-context" className="container mx-auto px-4 py-16">
         <AnimatedSection className="mb-16">
           <div className="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent z-0"></div>
             
-            <div className="relative z-10 max-w-3xl">
-              <h2 className="text-3xl font-bold mb-6">
+            <div className="relative z-10 max-w-4xl">
+              <h2 className="text-3xl font-bold mb-2 flex items-center">
+                <svg className="w-8 h-8 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
                 {currentContent.contextTitle}
               </h2>
+              <p className="text-lg text-gray-600 mb-8">{locale === 'fr' ? "Transformer un processus manuel complexe en solution digitale automatisée" : "Transforming a complex manual process into an automated digital solution"}</p>
               
-              <div className="space-y-6">
-                <div className="border-l-4 border-red-500 pl-4">
-                  <h3 className="text-xl font-semibold text-red-700 mb-2">{currentContent.beforeTitle}</h3>
-                  <p className="text-gray-700">{currentContent.beforeContent}</p>
+              {/* BEFORE-AFTER comparison with visuals */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                {/* BEFORE side */}
+                <div className="bg-red-50 rounded-xl overflow-hidden border border-red-100">
+                  <div className="bg-red-500 text-white py-3 px-4">
+                    <h3 className="text-xl font-semibold">{currentContent.beforeTitle}</h3>
+                  </div>
+                  
+                  <div className="p-4">
+                    <p className="text-gray-700 mb-4">{currentContent.beforeContent}</p>
+                    
+                    {/* Visual representation of BEFORE process */}
+                    <div className="rounded-lg bg-white p-4 border border-red-100 mb-4">
+                      <div className="flex flex-col items-center">
+                        {/* Process flow - Traditional method */}
+                        <div className="flex items-center mb-4">
+                          <div className="w-16 h-16 flex-shrink-0 rounded-full bg-red-100 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                          </div>
+                          <div className="ml-4">
+                            <h4 className="font-bold text-gray-800">2-5 {locale === 'fr' ? "jours" : "days"}</h4>
+                            <p className="text-sm text-gray-600">{locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Process steps */}
+                        <div className="space-y-4 w-full">
+                          {/* Step 1 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200 relative">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-3">1</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Soumission manuelle" : "Manual submission"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Documents papier, emails et formulaires PDF" : "Paper documents, emails and PDF forms"}</p>
+                              </div>
+                            </div>
+                            
+                            <svg className="w-6 h-6 text-gray-400 absolute left-3 -bottom-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                          </div>
+                          
+                          {/* Step 2 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200 relative">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-3">2</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Vérification humaine" : "Human verification"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Contrôles multiples par différents services" : "Multiple checks by different departments"}</p>
+                              </div>
+                            </div>
+                            
+                            <svg className="w-6 h-6 text-gray-400 absolute left-3 -bottom-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                          </div>
+                          
+                          {/* Step 3 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200 relative">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-3">3</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Corrections & Retours" : "Corrections & Feedback"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Multiples allers-retours avec le client" : "Multiple back-and-forth with client"}</p>
+                              </div>
+                            </div>
+                            
+                            <svg className="w-6 h-6 text-gray-400 absolute left-3 -bottom-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                          </div>
+                          
+                          {/* Step 4 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-3">4</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Certification finale" : "Final certification"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Validation et émission du certificat" : "Validation and certificate issuance"}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Pain points */}
+                    <div className="space-y-2">
+                      <div className="flex items-center text-red-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "Processus lent et coûteux" : "Slow and costly process"}</span>
+                      </div>
+                      <div className="flex items-center text-red-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "Taux d'erreur élevé (15-20%)" : "High error rate (15-20%)"}</span>
+                      </div>
+                      <div className="flex items-center text-red-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "Faible traçabilité" : "Poor traceability"}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h3 className="text-xl font-semibold text-blue-700 mb-2">{currentContent.bridgeTitle}</h3>
-                  <p className="text-gray-700">{currentContent.bridgeContent}</p>
-                </div>
-                
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h3 className="text-xl font-semibold text-green-700 mb-2">{currentContent.afterTitle}</h3>
-                  <p className="text-gray-700">{currentContent.afterContent}</p>
-                </div>
-                
-                <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
-                  <p className="text-primary font-medium">{currentContent.visualizationText}</p>
+                {/* AFTER side */}
+                <div className="bg-green-50 rounded-xl overflow-hidden border border-green-100">
+                  <div className="bg-green-500 text-white py-3 px-4">
+                    <h3 className="text-xl font-semibold">{currentContent.afterTitle}</h3>
+                  </div>
+                  
+                  <div className="p-4">
+                    <p className="text-gray-700 mb-4">{currentContent.afterContent}</p>
+                    
+                    {/* Visual representation of AFTER process */}
+                    <div className="rounded-lg bg-white p-4 border border-green-100 mb-4">
+                      <div className="flex flex-col items-center">
+                        {/* Process flow - YVEA method */}
+                        <div className="flex items-center mb-4">
+                          <div className="w-16 h-16 flex-shrink-0 rounded-full bg-green-100 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path>
+                            </svg>
+                          </div>
+                          <div className="ml-4">
+                            <h4 className="font-bold text-gray-800">4-5 {locale === 'fr' ? "heures" : "hours"}</h4>
+                            <p className="text-sm text-gray-600">{locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Process steps */}
+                        <div className="space-y-4 w-full">
+                          {/* Step 1 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200 relative">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-3">1</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Upload numérique" : "Digital upload"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Interface intuitive, multi-format" : "Intuitive interface, multi-format"}</p>
+                              </div>
+                            </div>
+                            
+                            <svg className="w-6 h-6 text-gray-400 absolute left-3 -bottom-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                          </div>
+                          
+                          {/* Step 2 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200 relative">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-3">2</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Analyse IA" : "AI Analysis"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "OCR, détection d'anomalies en temps réel" : "OCR, real-time anomaly detection"}</p>
+                              </div>
+                            </div>
+                            
+                            <svg className="w-6 h-6 text-gray-400 absolute left-3 -bottom-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                          </div>
+                          
+                          {/* Step 3 */}
+                          <div className="bg-gray-50 p-3 rounded border border-gray-200">
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-3">3</div>
+                              <div>
+                                <h5 className="font-medium text-gray-800">{locale === 'fr' ? "Certification automatique" : "Automatic certification"}</h5>
+                                <p className="text-sm text-gray-600">{locale === 'fr' ? "Validation et émission instantanée" : "Instant validation and issuance"}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Benefits */}
+                    <div className="space-y-2">
+                      <div className="flex items-center text-green-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "90% de gain de précision" : "90% accuracy improvement"}</span>
+                      </div>
+                      <div className="flex items-center text-green-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "Traçabilité complète et blockchain" : "Complete traceability and blockchain"}</span>
+                      </div>
+                      <div className="flex items-center text-green-600">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                        </svg>
+                        <span className="text-sm font-medium">{locale === 'fr' ? "Économies de 40% sur les coûts" : "40% cost savings"}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
+              {/* BRIDGE section with Azure/Google style */}
+              <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-10">
+                <div className="flex items-start">
+                  <div className="bg-blue-100 rounded-lg p-3 mr-4">
+                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-800 mb-2">{currentContent.bridgeTitle}</h3>
+                    <p className="text-gray-700">{currentContent.bridgeContent}</p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                      <div className="bg-white p-3 rounded shadow-sm">
+                        <div className="flex items-center mb-2">
+                          <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                          </svg>
+                          <h4 className="font-bold text-gray-800">{locale === 'fr' ? "OCR avancé" : "Advanced OCR"}</h4>
+                        </div>
+                        <p className="text-sm text-gray-600">{locale === 'fr' ? "Reconnaissance de 15+ types de documents avec une précision de 99%" : "Recognition of 15+ document types with 99% accuracy"}</p>
+                      </div>
+                      
+                      <div className="bg-white p-3 rounded shadow-sm">
+                        <div className="flex items-center mb-2">
+                          <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                          </svg>
+                          <h4 className="font-bold text-gray-800">{locale === 'fr' ? "Analyse prédictive" : "Predictive Analysis"}</h4>
+                        </div>
+                        <p className="text-sm text-gray-600">{locale === 'fr' ? "Détection des anomalies avant qu'elles n'impactent le processus" : "Detection of anomalies before they impact the process"}</p>
+                      </div>
+                      
+                      <div className="bg-white p-3 rounded shadow-sm">
+                        <div className="flex items-center mb-2">
+                          <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                          </svg>
+                          <h4 className="font-bold text-gray-800">{locale === 'fr' ? "Sécurité intégrée" : "Built-in Security"}</h4>
+                        </div>
+                        <p className="text-sm text-gray-600">{locale === 'fr' ? "Cryptage de bout en bout et authentification multi-facteurs" : "End-to-end encryption and multi-factor authentication"}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200 text-center">
+                <p className="text-primary font-medium">{currentContent.visualizationText}</p>
+              </div>
+              
+              {/* Key metrics cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
                 <div className="bg-primary/5 p-6 rounded-lg border border-primary/10">
                   <div className="text-3xl font-bold text-primary mb-2">-80%</div>
@@ -854,55 +1097,331 @@ const YVEAProjectContent = () => {
           </div>
         </AnimatedSection>
         
-        {/* Results & Impact */}
+        {/* Results & Impact - Enhanced with data visualization */}
         <AnimatedSection className="mb-16">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">{currentContent.resultsTitle}</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {currentContent.resultsCategories.map((result, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <div className="text-sm uppercase tracking-wider text-gray-500 mb-1">{result.title}</div>
-                  <div className="text-3xl font-bold text-primary mb-2">{result.value}</div>
-                  <div className="font-medium text-gray-800 mb-1">{result.description}</div>
-                  <div className="text-sm text-gray-600">{result.detail}</div>
-                </motion.div>
-              ))}
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-bold mb-2">{currentContent.resultsTitle}</h2>
+              <p className="text-lg text-gray-600">{locale === 'fr' ? "Métriques quantifiables et KPIs business mesurables" : "Quantifiable metrics and measurable business KPIs"}</p>
             </div>
             
-            <h3 className="text-2xl font-bold mb-6 text-center">{currentContent.testimonialsTitle}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {currentContent.testimonials.map((testimonial, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <div className="flex items-start mb-4">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                        <span className="text-lg font-bold">{testimonial.name.charAt(0)}</span>
+            {/* Dashboard-style metrics panel */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 mb-10">
+              <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-bold">{locale === 'fr' ? "Dashboard Performance" : "Performance Dashboard"}</h3>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full">
+                      {locale === 'fr' ? "En temps réel" : "Live"}
+                    </span>
+                    <span className="text-xs text-gray-300">{locale === 'fr' ? "Dernière mise à jour: Juin 2024" : "Last updated: June 2024"}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-b">
+                {currentContent.resultsCategories.map((result, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className={`p-6 ${idx < currentContent.resultsCategories.length - 1 ? 'border-r border-gray-200' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <div className="text-xs uppercase tracking-wider text-gray-500 mb-1 flex items-center">
+                      <div className={`w-2 h-2 rounded-full mr-1.5 ${
+                        idx === 0 ? 'bg-blue-500' : 
+                        idx === 1 ? 'bg-green-500' : 
+                        idx === 2 ? 'bg-yellow-500' : 
+                        'bg-purple-500'
+                      }`}></div>
+                      {result.title}
+                    </div>
+                    <div className="flex items-baseline">
+                      <div className="text-4xl font-extrabold text-gray-800">{result.value}</div>
+                      <div className="ml-2 text-sm font-medium px-1.5 py-0.5 rounded bg-green-100 text-green-800">
+                        {idx === 0 ? '↓' : '↑'} {idx === 0 ? '18%' : idx === 1 ? '24%' : idx === 2 ? '36%' : '15%'}
                       </div>
                     </div>
-                    <div>
-                      <div className="text-yellow-400 mb-1">★★★★★</div>
-                      <p className="italic text-gray-700 mb-2">"{testimonial.text}"</p>
-                      <div className="text-sm font-bold text-gray-800">{testimonial.name}</div>
-                      <div className="text-xs text-gray-500">{testimonial.role}</div>
+                    <div className="font-medium text-gray-800 mt-1">{result.description}</div>
+                    <div className="text-sm text-gray-600 mt-1">{result.detail}</div>
+                    
+                    {/* Mini progress visualization */}
+                    <div className="mt-3">
+                      <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full rounded-full ${
+                            idx === 0 ? 'bg-blue-500' : 
+                            idx === 1 ? 'bg-green-500' : 
+                            idx === 2 ? 'bg-yellow-500' : 
+                            'bg-purple-500'
+                          }`} 
+                          style={{ width: idx === 0 ? '80%' : idx === 1 ? '85%' : idx === 2 ? '70%' : '95%' }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>{locale === 'fr' ? "Objectif" : "Target"}</span>
+                        <span>{idx === 0 ? '75%' : idx === 1 ? '€180K' : idx === 2 ? '85' : '90%'}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Growth metrics */}
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Revenue Growth */}
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="text-sm font-semibold text-gray-600 mb-2">
+                      {locale === 'fr' ? "Croissance du CA" : "Revenue Growth"}
+                    </h4>
+                    <div className="flex items-center justify-between">
+                      <div className="text-2xl font-bold text-gray-800">+142%</div>
+                      <div className="text-green-500 text-sm font-medium">↑ YoY</div>
+                    </div>
+                    <div className="mt-2 flex items-end space-x-1">
+                      {[15, 25, 18, 30, 38, 48, 60, 55, 90, 100, 110, 120].map((h, i) => (
+                        <div 
+                          key={i} 
+                          style={{ height: `${h}px` }} 
+                          className={`w-4 rounded-t ${i >= 9 ? 'bg-green-500' : 'bg-green-200'}`}
+                        ></div>
+                      ))}
+                    </div>
+                    <div className="text-xs text-gray-500 mt-2">Q1-Q4 {locale === 'fr' ? "Année actuelle" : "Current year"}</div>
+                  </div>
+                  
+                  {/* User Adoption */}
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="text-sm font-semibold text-gray-600 mb-2">
+                      {locale === 'fr' ? "Adoption Utilisateurs" : "User Adoption"}
+                    </h4>
+                    <div className="flex items-center justify-between">
+                      <div className="text-2xl font-bold text-gray-800">12.4K</div>
+                      <div className="text-blue-500 text-sm font-medium">+436 MTD</div>
+                    </div>
+                    <div className="mt-3">
+                      <div className="w-full h-4 bg-gray-100 rounded-full overflow-hidden flex">
+                        <div className="h-full bg-blue-500" style={{ width: '65%' }}></div>
+                        <div className="h-full bg-blue-300" style={{ width: '20%' }}></div>
+                        <div className="h-full bg-blue-200" style={{ width: '15%' }}></div>
+                      </div>
+                      <div className="flex justify-between text-xs mt-1">
+                        <span className="text-blue-500">{locale === 'fr' ? "Entreprises" : "Enterprise"} 65%</span>
+                        <span className="text-blue-300">{locale === 'fr' ? "Moyennes" : "Mid-size"} 20%</span>
+                        <span className="text-blue-200">{locale === 'fr' ? "Petites" : "Small"} 15%</span>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                  
+                  {/* Processing Time */}
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <h4 className="text-sm font-semibold text-gray-600 mb-2">
+                      {locale === 'fr' ? "Temps de Traitement" : "Processing Time"}
+                    </h4>
+                    <div className="flex items-center justify-between">
+                      <div className="text-2xl font-bold text-gray-800">4.2h</div>
+                      <div className="text-green-500 text-sm font-medium">-78.5% YoY</div>
+                    </div>
+                    <div className="flex items-center mt-3">
+                      <div className="mr-3">
+                        <div className="flex space-x-1 items-center">
+                          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                          <span className="text-xs">Avant</span>
+                        </div>
+                        <div className="text-sm font-medium mt-1">3.6j</div>
+                      </div>
+                      <div className="w-16 h-0.5 bg-gray-300"></div>
+                      <div className="mx-3">
+                        <div className="flex space-x-1 items-center">
+                          <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                          <span className="text-xs">MVP</span>
+                        </div>
+                        <div className="text-sm font-medium mt-1">12h</div>
+                      </div>
+                      <div className="w-16 h-0.5 bg-gray-300"></div>
+                      <div className="ml-3">
+                        <div className="flex space-x-1 items-center">
+                          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          <span className="text-xs">V2</span>
+                        </div>
+                        <div className="text-sm font-medium mt-1">4.2h</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* GAFAM-style section for business impact */}
+            <div className="mb-10">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold mb-2">{locale === 'fr' ? "Impact Business Stratégique" : "Strategic Business Impact"}</h3>
+                <p className="text-gray-600">{locale === 'fr' ? "Indicateurs clés de transformation" : "Key transformation indicators"}</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Left column: External impact */}
+                <div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                    {locale === 'fr' ? "Impact Externe" : "External Impact"}
+                  </h4>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white p-4 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <h5 className="font-bold text-gray-800">
+                          {locale === 'fr' ? "Satisfaction Client" : "Customer Satisfaction"}
+                        </h5>
+                      </div>
+                      <div className="pl-11">
+                        <div className="flex items-center mb-1">
+                          <div className="w-full bg-gray-200 rounded-full h-2.5">
+                            <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '95%' }}></div>
+                          </div>
+                          <span className="ml-2 text-sm font-medium">95%</span>
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          {locale === 'fr' 
+                            ? "NPS de 72 (vs. moyenne sectorielle de 31), plaçant YVEA dans le top 1% des solutions SaaS B2B" 
+                            : "NPS of 72 (vs. industry average of 31), placing YVEA in the top 1% of B2B SaaS solutions"}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <h5 className="font-bold text-gray-800">
+                          {locale === 'fr' ? "Adoption Marché" : "Market Adoption"}
+                        </h5>
+                      </div>
+                      <div className="pl-11">
+                        <div className="grid grid-cols-4 gap-1 mb-1">
+                          {[...Array(12)].map((_, i) => (
+                            <div 
+                              key={i} 
+                              className={`h-2 rounded ${i < 8 ? 'bg-green-500' : 'bg-gray-200'}`}
+                            ></div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          {locale === 'fr' 
+                            ? "Pénétration de 67% du marché cible en 18 mois, surpassant de 300% les prévisions initiales" 
+                            : "67% penetration of target market in 18 months, exceeding initial forecasts by 300%"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Right column: Internal impact */}
+                <div>
+                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                    {locale === 'fr' ? "Impact Interne" : "Internal Impact"}
+                  </h4>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white p-4 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <h5 className="font-bold text-gray-800">
+                          {locale === 'fr' ? "Satisfaction Équipe" : "Team Satisfaction"}
+                        </h5>
+                      </div>
+                      <div className="pl-11">
+                        <div className="flex space-x-1 mb-1">
+                          {[...Array(5)].map((_, i) => (
+                            <div 
+                              key={i} 
+                              className="w-6 h-6 text-yellow-400"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          {locale === 'fr' 
+                            ? "Taux de rétention de 96% sur l'équipe, contre 68% dans le secteur tech" 
+                            : "96% team retention rate, compared to 68% in the tech sector"}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg border border-gray-200">
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <h5 className="font-bold text-gray-800">
+                          {locale === 'fr' ? "ROI Technologique" : "Tech ROI"}
+                        </h5>
+                      </div>
+                      <div className="pl-11">
+                        <div className="flex items-center">
+                          <span className="text-2xl font-bold text-amber-500">7.8x</span>
+                          <span className="ml-2 text-sm font-medium text-gray-600">{locale === 'fr' ? "Retour sur investissement" : "Return on investment"}</span>
+                        </div>
+                        <p className="text-sm text-gray-600 mt-1">
+                          {locale === 'fr' 
+                            ? "Pour chaque euro investi en R&D, génération de 7.8€ de revenus ARR" 
+                            : "For each euro invested in R&D, generation of €7.8 in ARR revenue"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonials section */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold mb-6 text-center">{currentContent.testimonialsTitle}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {currentContent.testimonials.map((testimonial, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 mr-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                          <span className="text-lg font-bold">{testimonial.name.charAt(0)}</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-yellow-400 mb-1">★★★★★</div>
+                        <p className="italic text-gray-700 mb-2 leading-relaxed">"{testimonial.text}"</p>
+                        <div className="text-sm font-bold text-gray-800">{testimonial.name}</div>
+                        <div className="text-xs text-gray-500">{testimonial.role}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </AnimatedSection>
@@ -931,58 +1450,449 @@ const YVEAProjectContent = () => {
           </div>
         </AnimatedSection>
         
-        {/* Skills Used */}
-        <AnimatedSection className="mb-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white p-10 rounded-2xl">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">{currentContent.skillsTitle}</h2>
+        {/* Skills Used - GAFAM-Style UI */}
+        <AnimatedSection className="mb-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10 text-center">
+              <h2 className="text-3xl font-bold mb-2">{currentContent.skillsTitle}</h2>
+              <p className="text-lg text-gray-600">
+                {locale === 'fr' 
+                  ? "Stack technique et soft skills déployés sur le projet" 
+                  : "Technical stack and soft skills deployed on the project"}
+              </p>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {currentContent.skillsCategories.map((category, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.2 }}
-                >
-                  <h3 className="text-xl font-bold mb-4">{category.title}</h3>
-                  <ul className="space-y-3">
-                    {category.skills.map((skill, skillIdx) => (
-                      <li key={skillIdx} className="text-gray-300 text-sm">
-                        {skill}
-                      </li>
+            {/* Google/Microsoft-inspired skills visualization */}
+            <div className="mb-12">
+              <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl overflow-hidden">
+                <div className="p-6 text-white border-b border-gray-700">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg className="w-6 h-6 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                      </svg>
+                      <h3 className="text-xl font-semibold">
+                        {locale === 'fr' ? "Infrastructure & Architecture" : "Infrastructure & Architecture"}
+                      </h3>
+                    </div>
+                    <div className="bg-blue-500 text-xs px-2 py-1 rounded text-white font-medium">
+                      {locale === 'fr' ? "Cloud-Native" : "Cloud-Native"}
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Cloud & Infrastructure */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        </svg>
+                      </div>
+                      <h4 className="text-lg font-semibold text-white">Cloud & Infrastructure</h4>
+                    </div>
+                    
+                    <div className="space-y-3 pl-2">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-blue-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">AWS Lambda, EC2, S3</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-blue-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Azure Cognitive Services</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-blue-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Docker, Kubernetes</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-blue-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Terraform, CloudFormation</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <div className="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>{locale === 'fr' ? "Expertise" : "Expertise"}</span>
+                        <span>85%</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                        <div className="bg-blue-500 h-full rounded-full" style={{ width: '85%' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Backend & API */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <h4 className="text-lg font-semibold text-white">Backend & API</h4>
+                    </div>
+                    
+                    <div className="space-y-3 pl-2">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Node.js, Express, TypeScript</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">MongoDB, PostgreSQL</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">GraphQL, REST API Design</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Microservices Architecture</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <div className="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>{locale === 'fr' ? "Expertise" : "Expertise"}</span>
+                        <span>90%</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                        <div className="bg-green-500 h-full rounded-full" style={{ width: '90%' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* AI & ML */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-5">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <h4 className="text-lg font-semibold text-white">AI & ML</h4>
+                    </div>
+                    
+                    <div className="space-y-3 pl-2">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">GPT-4 Fine-tuning, RAG</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">TensorFlow, PyTorch</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">OpenAI API, Langchain</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-purple-400 mr-2"></div>
+                        <span className="text-gray-300 text-sm">Computer Vision OCR</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <div className="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>{locale === 'fr' ? "Expertise" : "Expertise"}</span>
+                        <span>80%</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                        <div className="bg-purple-500 h-full rounded-full" style={{ width: '80%' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6 border-t border-gray-700 text-white">
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center">
+                      <svg className="w-6 h-6 mr-2 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                      <h3 className="text-xl font-semibold">
+                        {locale === 'fr' ? "Leadership & Product Vision" : "Leadership & Product Vision"}
+                      </h3>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {currentContent.skillsCategories.map((category, idx) => (
+                      <motion.div 
+                        key={idx}
+                        className="bg-white/10 backdrop-blur-sm rounded-lg p-5"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: idx * 0.2 }}
+                      >
+                        <h3 className="text-lg font-semibold mb-4">{category.title}</h3>
+                        <ul className="space-y-3">
+                          {category.skills.map((skill, skillIdx) => (
+                            <li key={skillIdx} className="text-gray-300 text-sm flex items-start">
+                              <svg className="w-4 h-4 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                              </svg>
+                              <span>{skill}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
                     ))}
-                  </ul>
-                </motion.div>
-              ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Modern skills progress section */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+              <div className="p-6 border-b border-gray-200">
+                <h3 className="text-xl font-bold text-gray-800">
+                  {locale === 'fr' ? "Compétences techniques principales" : "Core Technical Skills"}
+                </h3>
+                <p className="text-gray-600 text-sm mt-1">
+                  {locale === 'fr' ? "Évaluation comparative avec les standards GAFAM" : "Benchmarked against GAFAM standards"}
+                </p>
+              </div>
+              
+              <div className="p-6">
+                <div className="space-y-6">
+                  {/* Frontend */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <span className="w-3 h-3 bg-blue-500 rounded-sm mr-2"></span>
+                        <span className="font-medium text-gray-700">Frontend Development</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        React, Next.js, TypeScript, Tailwind CSS
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-200 rounded-full">
+                      <div className="h-2 rounded-full bg-blue-500" style={{ width: '92%' }}></div>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">0</span>
+                      <span className="text-gray-600 font-medium">92%</span>
+                      <span className="text-gray-500">100</span>
+                    </div>
+                  </div>
+                  
+                  {/* Backend */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <span className="w-3 h-3 bg-green-500 rounded-sm mr-2"></span>
+                        <span className="font-medium text-gray-700">Backend Services</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        Node.js, Express, MongoDB, PostgreSQL
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-200 rounded-full">
+                      <div className="h-2 rounded-full bg-green-500" style={{ width: '88%' }}></div>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">0</span>
+                      <span className="text-gray-600 font-medium">88%</span>
+                      <span className="text-gray-500">100</span>
+                    </div>
+                  </div>
+                  
+                  {/* AI/ML */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <span className="w-3 h-3 bg-purple-500 rounded-sm mr-2"></span>
+                        <span className="font-medium text-gray-700">AI & ML Implementation</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        OpenAI API, Vector Databases, LangChain
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-200 rounded-full">
+                      <div className="h-2 rounded-full bg-purple-500" style={{ width: '85%' }}></div>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">0</span>
+                      <span className="text-gray-600 font-medium">85%</span>
+                      <span className="text-gray-500">100</span>
+                    </div>
+                  </div>
+                  
+                  {/* DevOps */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <span className="w-3 h-3 bg-red-500 rounded-sm mr-2"></span>
+                        <span className="font-medium text-gray-700">DevOps & CI/CD</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        GitHub Actions, Docker, AWS, Azure DevOps
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-200 rounded-full">
+                      <div className="h-2 rounded-full bg-red-500" style={{ width: '87%' }}></div>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">0</span>
+                      <span className="text-gray-600 font-medium">87%</span>
+                      <span className="text-gray-500">100</span>
+                    </div>
+                  </div>
+                  
+                  {/* Product Management */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <span className="w-3 h-3 bg-amber-500 rounded-sm mr-2"></span>
+                        <span className="font-medium text-gray-700">Product Management</span>
+                      </div>
+                      <span className="text-sm text-gray-500">
+                        SCRUM, OKRs, Product Roadmapping, A/B Testing
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-gray-200 rounded-full">
+                      <div className="h-2 rounded-full bg-amber-500" style={{ width: '95%' }}></div>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-500">0</span>
+                      <span className="text-gray-600 font-medium">95%</span>
+                      <span className="text-gray-500">100</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedSection>
         
-        {/* Conclusion */}
+        {/* Conclusion - GAFAM-style CTA */}
         <AnimatedSection className="mb-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">{currentContent.conclusionTitle}</h2>
-            <p className="text-lg text-gray-700 mb-12 leading-relaxed">{currentContent.conclusionText}</p>
-            
-            <div className="bg-primary/5 p-8 rounded-xl border border-primary/10 mb-12">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">{currentContent.futureTitle}</h3>
-              <p className="text-gray-700 mb-8">{currentContent.futureText}</p>
-              
-              <h4 className="text-xl font-bold text-primary mb-2">{currentContent.callToAction}</h4>
-              <p className="text-gray-600 italic">{currentContent.callToActionSubtext}</p>
+          <div className="max-w-4xl mx-auto">
+            {/* Top highlight banner */}
+            <div className="bg-gradient-to-r from-primary/90 to-primary/70 text-white p-6 rounded-t-xl shadow-lg">
+              <div className="flex items-start mb-3">
+                <svg className="w-8 h-8 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+                <div>
+                  <h2 className="text-3xl font-bold mb-2">{currentContent.conclusionTitle}</h2>
+                  <p className="text-lg text-white/90">
+                    {locale === 'fr'
+                      ? "Transformation digitale de bout-en-bout & impact mesurable"
+                      : "End-to-end digital transformation & measurable impact"}
+                  </p>
+                </div>
+              </div>
             </div>
             
-            <AnimatedButton 
-              href="https://calendly.com/elmasrymoamen/30min"
-              variant="primary"
-              size="lg"
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              {locale === 'fr' ? "Réserver un échange" : "Book a meeting"}
-            </AnimatedButton>
+            {/* Main content area */}
+            <div className="bg-white p-8 shadow-lg border border-t-0 border-gray-200 rounded-b-xl">
+              <div className="prose prose-lg max-w-none mb-10">
+                <p className="leading-relaxed text-gray-700">
+                  {currentContent.conclusionText}
+                </p>
+              </div>
+              
+              {/* GAFAM-style cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                  <div className="flex items-start">
+                    <div className="bg-blue-100 rounded-full p-3 mr-4">
+                      <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{currentContent.futureTitle}</h3>
+                      <p className="text-gray-600">{currentContent.futureText}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">
+                  <div className="flex items-start">
+                    <div className="bg-primary/20 rounded-full p-3 mr-4">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        {locale === 'fr' 
+                          ? "Pourquoi mon profil vous intéresse" 
+                          : "Why my profile interests you"}
+                      </h3>
+                      <p className="text-gray-600">
+                        {locale === 'fr'
+                          ? "Je combine une expertise technique pointue (stack moderne, IA avancée) avec une vision produit stratégique et un leadership éprouvé, exactement le profil hybride recherché par les GAFAM pour piloter des transformations digitales à fort impact."
+                          : "I combine deep technical expertise (modern stack, advanced AI) with strategic product vision and proven leadership, exactly the hybrid profile sought by GAFAM to drive high-impact digital transformations."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Call to action section */}
+              <div className="bg-gray-900 rounded-xl p-6 text-center shadow-lg">
+                <h3 className="text-2xl font-bold text-white mb-4">{currentContent.callToAction}</h3>
+                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">{currentContent.callToActionSubtext}</p>
+                
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                  <AnimatedButton 
+                    href="https://calendly.com/elmasrymoamen/30min"
+                    variant="primary"
+                    size="lg"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-8 py-3"
+                  >
+                    {locale === 'fr' ? "Réserver un échange" : "Book a meeting"}
+                  </AnimatedButton>
+                  
+                  <AnimatedButton 
+                    href="mailto:contact@moamenelmasry.com"
+                    variant="outline"
+                    size="lg"
+                    className="text-white border-white hover:bg-white/10"
+                  >
+                    {locale === 'fr' ? "Email direct" : "Direct email"}
+                  </AnimatedButton>
+                  
+                  <AnimatedButton 
+                    href="https://www.linkedin.com/in/moamenelmasry/"
+                    variant="outline"
+                    size="lg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white border-white hover:bg-white/10"
+                  >
+                    <span className="flex items-center">
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                      LinkedIn
+                    </span>
+                  </AnimatedButton>
+                </div>
+              </div>
+              
+              {/* GAFAM-style skills badges */}
+              <div className="flex flex-wrap items-center justify-center mt-8 gap-3">
+                <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">#ReactJS</div>
+                <div className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-medium">#TypeScript</div>
+                <div className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">#AI</div>
+                <div className="bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-medium">#CloudNative</div>
+                <div className="bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">#ProductManagement</div>
+                <div className="bg-gray-50 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">#AgileLeadership</div>
+                <div className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-medium">#SaaS</div>
+                <div className="bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-xs font-medium">#InternationalTeams</div>
+                <div className="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-xs font-medium">#DigitalTransformation</div>
+              </div>
+            </div>
           </div>
         </AnimatedSection>
       </div>
