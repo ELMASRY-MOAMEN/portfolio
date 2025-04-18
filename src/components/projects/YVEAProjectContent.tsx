@@ -6,9 +6,12 @@ import { useTranslation } from '@/hooks/useTranslation';
 import AnimatedSection from '@/components/layout/AnimatedSection';
 import AnimatedButton from '@/components/ui/animated-button';
 import Image from 'next/image';
-import { HiDocumentText, HiCurrencyDollar, HiOfficeBuilding, HiCode, HiRefresh, HiGlobeAlt } from 'react-icons/hi';
+import { HiDocumentText, HiCurrencyDollar, HiOfficeBuilding, HiCode, HiRefresh, HiGlobeAlt, HiLightBulb, HiChartBar } from 'react-icons/hi';
 import DigitalGlobe from './DigitalGlobe';
 import ParticleFlowAnimation from './ParticleFlowAnimation';
+import AdvancedDataMesh from './AdvancedDataMesh';
+import MetricBadge from '../ui/MetricBadge';
+import ScrollIndicator from '../ui/ScrollIndicator';
 
 // EnhancedTimeline component for project phases
 const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
@@ -572,64 +575,197 @@ const YVEAProjectContent = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
-        {/* Particle background */}
-        {isParticleVisible && (
-          <div className="absolute inset-0 opacity-30">
-            <ParticleFlowAnimation />
-          </div>
-        )}
+      <div className="relative min-h-[95vh] overflow-hidden bg-gradient-to-br from-indigo-950 via-violet-900 to-blue-950">
+        {/* Background patterns */}
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5 z-0"></div>
+        <div className="absolute inset-0 bg-[url('/noise-texture.png')] opacity-[0.03] z-0 mix-blend-soft-light"></div>
         
-        <div className="container mx-auto px-4 py-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Animated data mesh background */}
+        <div className="absolute inset-0 z-0">
+          <AdvancedDataMesh density={120} color="#6366f1" />
+        </div>
+        
+        {/* Glowing orbs background effect */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-600/20 filter blur-[100px] z-0"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full bg-violet-600/20 filter blur-[80px] z-0"></div>
+        
+        {/* Container principal */}
+        <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-20">
+            
             {/* Content Column */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.div 
+              className="lg:col-span-6 xl:col-span-5 space-y-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary mb-6 backdrop-blur-sm">
-                {locale === 'fr' ? "Projet SaaS" : "SaaS Project"}
+              {/* Badge de catégorie */}
+              <motion.div 
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-violet-500/20 to-indigo-500/20 backdrop-blur-md px-4 py-2 rounded-full border border-indigo-600/20"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <span className="text-violet-300 text-sm font-medium">{locale === 'fr' ? "SaaS Enterprise" : "Enterprise SaaS"}</span>
+                <span className="bg-indigo-400 h-1.5 w-1.5 rounded-full"></span>
+                <span className="text-indigo-300 text-sm font-medium">{locale === 'fr' ? "IA & Certification" : "AI & Certification"}</span>
+              </motion.div>
+              
+              {/* Titre avec hiérarchie visuelle */}
+              <div className="space-y-2">
+                <motion.h1
+                  className="text-white font-extrabold tracking-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <span className="block text-4xl md:text-6xl mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
+                    YVEA
+                  </span>
+                  <span className="block text-2xl md:text-3xl font-light text-indigo-200 mt-2 max-w-xl">
+                    {currentContent.heroTitle.split('–')[1]}
+                  </span>
+                </motion.h1>
               </div>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
-                {currentContent.heroTitle}
-              </h1>
-              
-              <p className="text-lg text-gray-300 mb-4 leading-relaxed max-w-xl">
+              {/* Sous-titre avec animation */}
+              <motion.p 
+                className="text-lg text-indigo-200/90 max-w-xl leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
                 {currentContent.heroSubtitle}
-              </p>
+              </motion.p>
               
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
+              {/* Description avec animation */}
+              <motion.p 
+                className="text-indigo-100/70 leading-relaxed max-w-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
                 {currentContent.intro}
-              </p>
+              </motion.p>
+              
+              {/* Métriques-clés */}
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                <MetricBadge value="-80%" label={locale === 'fr' ? "Temps de traitement" : "Processing time"} color="violet" />
+                <MetricBadge value="100+" label={locale === 'fr' ? "Clients" : "Clients"} color="indigo" />
+                <MetricBadge value="95%" label={locale === 'fr' ? "Satisfaction" : "Satisfaction"} color="blue" />
+              </motion.div>
             </motion.div>
             
-            {/* Digital Globe Column */}
+            {/* Visualisation interactive - colonne droite */}
             <motion.div
+              className="lg:col-span-6 xl:col-span-7 relative h-[500px] hidden lg:block"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="hidden lg:block"
+              transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="relative h-[500px] w-full">
-                <DigitalGlobe />
+              <div className="relative h-full w-full">
+                {/* Effet de halo lumineux */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-[90%] h-[90%]">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 bg-indigo-500/20 rounded-full blur-[50px]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-violet-500/30 rounded-full blur-[30px]" />
+                  </div>
+                </div>
                 
-                {/* Highlight points on globe */}
-                <motion.div 
-                  className="absolute top-[30%] left-[60%] w-4 h-4 rounded-full bg-primary"
-                  animate={{ 
-                    scale: [1, 1.5, 1],
-                    boxShadow: [
-                      '0 0 0 0 rgba(var(--primary-rgb), 0.7)',
-                      '0 0 0 10px rgba(var(--primary-rgb), 0)',
-                      '0 0 0 0 rgba(var(--primary-rgb), 0)'
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
+                {/* Globe digital avec animations améliorées */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div 
+                    className="w-[90%] h-[90%]"
+                    animate={{ 
+                      rotateZ: [0, 5, 0, -5, 0],
+                      scale: [1, 1.02, 1, 0.98, 1]
+                    }}
+                    transition={{ 
+                      duration: 20, 
+                      repeat: Infinity, 
+                      repeatType: 'loop',
+                      ease: 'easeInOut'
+                    }}
+                  >
+                    <DigitalGlobe />
+                  </motion.div>
+                </div>
+                
+                {/* Points de données animés sur le globe */}
+                {[
+                  { top: '25%', left: '30%', size: 'w-4 h-4', delay: 0 },
+                  { top: '60%', left: '70%', size: 'w-3 h-3', delay: 0.5 },
+                  { top: '40%', left: '80%', size: 'w-2 h-2', delay: 1 },
+                  { top: '70%', left: '40%', size: 'w-3 h-3', delay: 1.5 },
+                  { top: '20%', left: '60%', size: 'w-2 h-2', delay: 2 }
+                ].map((point, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className={`absolute ${point.size} rounded-full bg-indigo-400 shadow-lg shadow-indigo-400/50 z-20`}
+                    style={{ top: point.top, left: point.left }}
+                    animate={{ 
+                      scale: [1, 1.5, 1],
+                      boxShadow: [
+                        '0 0 0 0 rgba(99, 102, 241, 0.7)',
+                        '0 0 0 10px rgba(99, 102, 241, 0)',
+                        '0 0 0 0 rgba(99, 102, 241, 0)'
+                      ]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      repeatType: 'loop',
+                      delay: point.delay
+                    }}
+                  />
+                ))}
+                
+                {/* Lignes de connexion */}
+                {[
+                  { x1: '30%', y1: '25%', x2: '70%', y2: '60%' },
+                  { x1: '70%', y1: '60%', x2: '80%', y2: '40%' },
+                  { x1: '30%', y1: '25%', x2: '60%', y2: '20%' },
+                  { x1: '40%', y1: '70%', x2: '70%', y2: '60%' }
+                ].map((line, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className="absolute top-0 left-0 w-full h-full"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.5 }}
+                    transition={{ delay: 1 + idx * 0.3, duration: 0.5 }}
+                  >
+                    <svg className="absolute top-0 left-0 w-full h-full">
+                      <motion.line
+                        x1={line.x1}
+                        y1={line.y1}
+                        x2={line.x2}
+                        y2={line.y2}
+                        stroke="rgba(99, 102, 241, 0.5)"
+                        strokeWidth="1"
+                        strokeDasharray="5,5"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ 
+                          duration: 1.5, 
+                          delay: 1 + idx * 0.3 
+                        }}
+                      />
+                    </svg>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
+          </div>
+          
+          {/* Indicateur de scroll */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <ScrollIndicator />
           </div>
         </div>
       </div>
