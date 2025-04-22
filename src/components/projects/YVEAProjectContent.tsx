@@ -1089,71 +1089,284 @@ const YVEAProjectContent = () => {
         
         {/* My Role as PM/PO */}
         <AnimatedSection className="mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold mb-2 text-gray-800 flex items-center">
-                <svg className="w-8 h-8 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700 overflow-hidden relative">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-10 -translate-y-20 z-0"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full translate-x-10 translate-y-20 z-0"></div>
+            
+            {/* Header section */}
+            <div className="relative z-10 mb-10 border-b border-gray-200 dark:border-gray-700 pb-8">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary dark:bg-primary/20 mb-3">
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    {locale === 'fr' ? "Fondateur & Product Manager" : "Founder & Product Manager"}
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    Mon rôle de Project Manager & Product Owner
+                  </h2>
+                  <p className="text-primary font-semibold">
+                    Orchestrer la transformation digitale à l'échelle internationale
+                  </p>
+                </div>
+                
+                <div className="bg-primary/10 dark:bg-primary/20 px-5 py-3 rounded-lg text-center">
+                  <div className="grid grid-cols-3 gap-4">
+                    <div>
+                      <div className="text-xl font-bold text-gray-900 dark:text-white">3</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Équipes</div>
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold text-gray-900 dark:text-white">12</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Devs</div>
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold text-gray-900 dark:text-white">200K€</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">Budget</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Main role description */}
+            <div className="relative z-10 mb-10">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                En tant que fondateur de YVEA, j'ai piloté le projet de sa conception à son exécution : coordination de 3 équipes internationales (12 développeurs), gestion d'un budget de 200K€, et application des méthodologies Agile/SAFe. Résultat : livraison des 6 phases dans les délais et le budget impartis.
+              </p>
+            </div>
+            
+            {/* Key responsibilities section */}
+            <div className="relative z-10 mb-12">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
-                {currentContent.pmRoleTitle}
-              </h2>
-              <p className="text-lg text-primary font-medium mb-4">{currentContent.pmRoleSubtitle}</p>
-              <p className="text-gray-700">{currentContent.pmRoleDescription}</p>
+                Responsabilités clés & Réalisations
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Vision & Execution */}
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-4">
+                    <div className="text-xl font-bold text-primary mr-2">📌</div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white">Vision & Exécution</h4>
+                  </div>
+                  <ul className="space-y-2">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Définition de la roadmap produit et priorisation via OKRs</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Pilotage de la croissance : 0 à 100+ clients B2B (20% internationaux)</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Pivot stratégique réussi en 72h après départ du CTO</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Leadership & Methodology */}
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-4">
+                    <div className="text-xl font-bold text-primary mr-2">📌</div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white">Leadership & Méthodologie</h4>
+                  </div>
+                  <ul className="space-y-2">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Animation d'équipes SCRUM/SCRUMBAN multiculturelle (FR/PK/AR)</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Comités de pilotage avec BNP, BPI, Microsoft for Startups</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Vision produit + management terrain : MoSCoW, RICE, Design thinking</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Measurement & Quality */}
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-4">
+                    <div className="text-xl font-bold text-primary mr-2">📌</div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white">Mesure & Qualité</h4>
+                  </div>
+                  <ul className="space-y-2">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Dashboards Power BI mesurant adoption et satisfaction</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>50+ sessions de tests utilisateurs avec boucles de rétroaction</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Réduction des délais de 80% et coûts opérationnels de 40%</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Crisis Management */}
+                <div className="bg-primary/10 dark:bg-primary/20 p-6 rounded-xl shadow-sm border border-primary/30 dark:border-primary/40">
+                  <div className="flex items-center mb-4">
+                    <div className="text-xl font-bold text-primary mr-2">📌</div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white">Gestion de crise</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    Réorganisation en 72h suite au départ du CTO et pivot vers un modèle B2B ciblant les organismes de certification → Sauvetage du projet et nouvelles opportunités commerciales.
+                  </p>
+                </div>
+              </div>
             </div>
             
-            <h3 className="text-xl font-bold mb-6 text-gray-800">{currentContent.responsibilitiesTitle}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-              {[
-                {
-                  title: "Définition de la roadmap produit",
-                  description: "Priorisation stratégique via workshops cross-fonctionnels et OKRs."
-                },
-                {
-                  title: "Leadership Agile",
-                  description: "Animation SCRUM/SCRUMBAN avec CTO, devs et UI/UX."
-                },
-                {
-                  title: "Gestion des parties prenantes",
-                  description: "Comités de pilotage avec BNP, BPI, Microsoft for Startups."
-                },
-                {
-                  title: "Suivi de la performance",
-                  description: "KPIs et dashboards Power BI mesurant adoption et satisfaction."
-                },
-                {
-                  title: "Qualité & tests utilisateurs",
-                  description: "50+ sessions de tests utilisateurs avec boucles de rétroaction."
-                }
-              ].map((resp, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="bg-gray-50 p-5 rounded-lg shadow-sm border border-gray-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
-                >
-                  <h4 className="font-bold text-gray-800 mb-2">{resp.title}</h4>
-                  <p className="text-gray-600">{resp.description}</p>
-                </motion.div>
-              ))}
+            {/* Technical expertise section */}
+            <div className="relative z-10 mb-12">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                Expertise technique & leadership
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Vision & Leadership */}
+                <div className="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-3">
+                    <div className="text-xl font-bold text-primary mr-2">🧭</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Vision & Leadership</h4>
+                  </div>
+                  <ul className="space-y-1 text-sm">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Stratégie produit : Alignement roadmap/ROI via OKRs</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Leadership multiculturel : Équipes distribuées FR/PK/AR</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Strategic thinking : Identification d'opportunités de disruption</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Delivery & Process */}
+                <div className="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-3">
+                    <div className="text-xl font-bold text-primary mr-2">⚙️</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Delivery & Process</h4>
+                  </div>
+                  <ul className="space-y-1 text-sm">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Méthodologies Agile : SCRUM/SCRUMBAN, RICE, MoSCoW</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Pilotage data-driven : KPIs et dashboards en temps réel</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Gestion de crise : Pivots stratégiques sous contrainte</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Technology Expertise */}
+                <div className="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-3">
+                    <div className="text-xl font-bold text-primary mr-2">☁️</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Expertise Technologique</h4>
+                  </div>
+                  <ul className="space-y-1 text-sm">
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>Architecture moderne : Stack MERN, AWS, Terraform</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>IA avancée : Azure OpenAI, GPT-4 fine-tuning, OCR/Tesseract</span>
+                    </li>
+                    <li className="text-gray-700 dark:text-gray-300 flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>DevOps : CI/CD, sécurité by design, infrastructure as code</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             
-            <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg mb-10">
-              <h3 className="text-xl font-bold mb-3 text-gray-800">{currentContent.crisisTitle}</h3>
-              <p className="text-gray-700">Réorganisation en 72h suite au départ d'un CTO, pivot vers modèle B2B ciblant les organismes de certification. Résultat : sauvetage du projet et ouverture de nouvelles opportunités commerciales.</p>
+            {/* Lessons learned section */}
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Leçons apprises
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-2">
+                    <div className="text-primary mr-2">💡</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Recul stratégique</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    Transformer les échecs en opportunités d'ajustement via rétrospectives régulières.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-2">
+                    <div className="text-primary mr-2">💡</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Écoute active</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    Cycles de feedback enrichissant la vision produit et anticipant les risques.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-2">
+                    <div className="text-primary mr-2">💡</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Décloisonnement</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    Workshops cross-fonctionnels accélérant les décisions et garantissant la cohérence.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-2">
+                    <div className="text-primary mr-2">💡</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Culture collaborative</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    Pairing et revues de code renforçant les compétences collectives.
+                  </p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center mb-2">
+                    <div className="text-primary mr-2">💡</div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">Mentorat ciblé</h4>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    Coaching de juniors via one-to-one et OKRs personnalisés.
+                  </p>
+                </div>
+              </div>
             </div>
-            
-            <h3 className="text-xl font-bold mb-4 text-gray-800">{currentContent.approachTitle}</h3>
-            <p className="text-gray-700 mb-4">Vision produit stratégique + management terrain pragmatique :</p>
-            <ul className="list-disc pl-5 mb-4 space-y-2">
-              <li className="text-gray-700">Cycles courts (MoSCoW, RICE)</li>
-              <li className="text-gray-700">Design thinking UX</li>
-              <li className="text-gray-700">Itérations techniques (TypeScript, CI/CD)</li>
-              <li className="text-gray-700">Alignement business/technique</li>
-            </ul>
-            <p className="text-gray-700 italic mb-6">{currentContent.approachConclusion}</p>
           </div>
         </AnimatedSection>
         
