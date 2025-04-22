@@ -622,31 +622,23 @@ const YVEAProjectContent = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <span className="block text-4xl md:text-6xl mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
-                    YVEA | SaaS Enterprise IA & Certification
+                  <span className="block text-5xl md:text-7xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
+                    YVEA
+                  </span>
+                  <span className="block text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200 max-w-md">
+                    SaaS IA pour certification à l'export
                   </span>
                 </motion.h1>
               </div>
               
-              {/* Sous-titre avec animation */}
+              {/* Description avec animation */}
               <motion.p 
-                className="text-lg text-indigo-200/90 max-w-xl leading-relaxed"
+                className="text-lg text-indigo-200/90 max-w-xl leading-relaxed mt-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                Première plateforme d'automatisation intelligente de certification export
-              </motion.p>
-              
-              {/* Description avec animation */}
-              <motion.p 
-                className="text-indigo-100/70 leading-relaxed max-w-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                Transformation de processus manuels en flux digitaux (temps réduit de 80%)<br />
-                Solution basée sur IA, OCR et GED pour l'Afrique et le Moyen-Orient
+                Simplifier la certification export vers l'Afrique et le Moyen-Orient de 80% grâce à IA, OCR et GED
               </motion.p>
             </motion.div>
             
@@ -806,7 +798,7 @@ const YVEAProjectContent = () => {
                     className="relative"
                   >
                     <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-red-950/40 to-red-900/30 border border-red-500/20 h-full backdrop-blur-sm">
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-red-950/40 to-red-900/30 border border-red-500/20 h-full backdrop-blur-sm flex flex-col">
                       <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
                         <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -815,11 +807,11 @@ const YVEAProjectContent = () => {
                       
                       <h4 className="text-xl font-bold text-red-300 mb-3">{currentContent.beforeTitle}</h4>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
                         Certification VoC traditionnelle : processus manuel ralenti par des vérifications multiples et des allers-retours constants. Résultat : coordination défaillante et délais étendus générant frustration client et inefficacité opérationnelle.
                       </p>
                       
-                      <div className="mt-auto pt-4 border-t border-red-500/20">
+                      <div className="mt-auto pt-4 border-t border-red-500/20 h-24 flex flex-col justify-end">
                         <div className="flex items-center">
                           <div className="text-2xl font-bold text-red-300">2-5</div>
                           <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "jours" : "days"}</div>
@@ -840,7 +832,7 @@ const YVEAProjectContent = () => {
                     className="relative"
                   >
                     <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-indigo-950/40 to-indigo-900/30 border border-indigo-500/20 h-full backdrop-blur-sm">
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-indigo-950/40 to-indigo-900/30 border border-indigo-500/20 h-full backdrop-blur-sm flex flex-col">
                       <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4">
                         <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -849,11 +841,11 @@ const YVEAProjectContent = () => {
                       
                       <h4 className="text-xl font-bold text-indigo-300 mb-3">{currentContent.bridgeTitle}</h4>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
                         Solution YVEA : automatisation intégrale via plateforme combinant OCR, GED et IA. Coordination intelligente des vérifications avec feedback instantané et structuration automatique des documents.
                       </p>
                       
-                      <div className="mt-auto pt-4 border-t border-indigo-500/20">
+                      <div className="mt-auto pt-4 border-t border-indigo-500/20 h-24 flex flex-col justify-end">
                         <div className="flex flex-wrap gap-2">
                           {['OCR', 'GED', 'IA', 'Automation'].map((tech, idx) => (
                             <span 
@@ -877,7 +869,7 @@ const YVEAProjectContent = () => {
                     className="relative"
                   >
                     <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-950/40 to-emerald-900/30 border border-emerald-500/20 h-full backdrop-blur-sm">
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-950/40 to-emerald-900/30 border border-emerald-500/20 h-full backdrop-blur-sm flex flex-col">
                       <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
                         <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -886,11 +878,11 @@ const YVEAProjectContent = () => {
                       
                       <h4 className="text-xl font-bold text-emerald-300 mb-3">{currentContent.afterTitle}</h4>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed">
+                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
                         Résultats concrets : précision améliorée (+90%), certification ultra-rapide, avantage concurrentiel décisif avec réduction des coûts opérationnels de 40%.
                       </p>
                       
-                      <div className="mt-auto pt-4 border-t border-emerald-500/20">
+                      <div className="mt-auto pt-4 border-t border-emerald-500/20 h-24 flex flex-col justify-end">
                         <div className="flex items-center">
                           <div className="text-2xl font-bold text-emerald-300">4-5</div>
                           <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "heures" : "hours"}</div>
@@ -905,7 +897,7 @@ const YVEAProjectContent = () => {
                 
                 {/* Interactive visualization */}
                 <motion.div 
-                  className="mt-12 relative overflow-hidden"
+                  className="mt-12 mb-2 relative overflow-hidden"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
@@ -1016,7 +1008,7 @@ const YVEAProjectContent = () => {
             </div>
             
             {/* Key metrics */}
-            <div className="relative z-10 bg-gradient-to-b from-blue-950/0 to-blue-950/80 p-8 md:p-12">
+            <div className="relative z-10 bg-gradient-to-b from-blue-950/0 to-blue-950/80 p-8 md:p-6">
               <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   <motion.div
@@ -1371,7 +1363,7 @@ const YVEAProjectContent = () => {
         </AnimatedSection>
         
         {/* Results & Impact Section */}
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-8">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold mb-2 text-gray-800">
@@ -1433,7 +1425,7 @@ const YVEAProjectContent = () => {
         </AnimatedSection>
         
         {/* Conclusion Section */}
-        <AnimatedSection className="mb-16">
+        <AnimatedSection className="mb-8">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold mb-4 text-gray-800">
               {currentContent.conclusionTitle}
