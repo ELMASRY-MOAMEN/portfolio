@@ -148,6 +148,8 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
 const YVEAProjectContent = () => {
   const { locale } = useTranslation();
   const [isParticleVisible, setIsParticleVisible] = useState(true);
+  const [visualizationTab, setVisualizationTab] = useState('before');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     // Désactiver les particules sur les appareils mobiles pour améliorer les performances
@@ -247,29 +249,29 @@ const YVEAProjectContent = () => {
       // Mon rôle section
       pmRoleTitle: "Mon rôle de Project Manager & Product Owner",
       pmRoleSubtitle: "Orchestrer la transformation digitale à l'échelle internationale",
-      pmRoleDescription: "En tant que Digital PM & PO, j'ai piloté YVEA de la vision à l'exécution en coordonnant 3 équipes internationales (12 développeurs), tout en gérant un budget de 200K€ et en appliquant les méthodologies Agile et SAFe. Mon expertise multidimensionnelle a permis de livrer les 6 phases du projet dans les délais et le budget impartis.",
+      pmRoleDescription: "Digital PM & PO pilotant YVEA de la vision à l'exécution : 3 équipes internationales (12 développeurs), budget 200K€, méthodologies Agile et SAFe. Livraison des 6 phases dans les délais et budget impartis.",
       
       responsibilitiesTitle: "Responsabilités principales",
       responsibilities: [
         {
           title: "Définition de la roadmap produit",
-          description: "Élaboration et priorisation des features via workshops cross-fonctionnels et OKRs."
+          description: "Priorisation stratégique via workshops cross-fonctionnels et OKRs."
         },
         {
           title: "Leadership Agile",
-          description: "Animation d'équipes SCRUM/SCRUMBAN (CTO, devs, UI/UX), sprint planning et stand-ups quotidiens."
+          description: "Animation SCRUM/SCRUMBAN avec CTO, devs et UI/UX."
         },
         {
           title: "Gestion des parties prenantes",
-          description: "Instruction des comités de pilotage (BNP, BPI, Microsoft for Startups, incubateurs)."
+          description: "Comités de pilotage avec BNP, BPI, Microsoft for Startups."
         },
         {
           title: "Suivi de la performance",
-          description: "Mise en place de KPIs (timelines, adoption, satisfaction) et dashboards Power BI."
+          description: "KPIs et dashboards Power BI mesurant adoption et satisfaction."
         },
         {
           title: "Qualité & tests utilisateurs",
-          description: "Coordination de plus de 50 sessions de tests, feed-back loops et plans d'action correctifs."
+          description: "50+ sessions de tests utilisateurs avec boucles de rétroaction."
         }
       ],
       
@@ -277,12 +279,12 @@ const YVEAProjectContent = () => {
       crisisDescription: "Face au départ inattendu d'un CTO et à un contexte d'investissement tendu, j'ai réorganisé l'équipe en 72h, reprioritisé le backlog et pivoté vers un modèle B2B ciblant les organismes de certification, sauvant ainsi le projet et ouvrant de nouvelles opportunités commerciales.",
       
       approachTitle: "Approche méthodologique",
-      approachDescription: "Je combine une vision produit stratégique avec un management terrain pragmatique:",
+      approachDescription: "Vision produit stratégique + management terrain pragmatique :",
       approachItems: [
-        "Cycles de feedback courts (MoSCoW, RICE)",
-        "Design thinking centré UX",
-        "Itérations techniques robustes (TypeScript, CI/CD)",
-        "Alignement continu entre valeur business et exécution technique"
+        "Cycles courts (MoSCoW, RICE)",
+        "Design thinking UX",
+        "Itérations techniques (TypeScript, CI/CD)",
+        "Alignement business/technique"
       ],
       approachConclusion: "Cette double exigence garantit un équilibre entre rapidité, qualité et valeur métier mesurable.",
       
@@ -307,24 +309,24 @@ const YVEAProjectContent = () => {
       lessonsTitle: "Leçons Apprises",
       lessonsChallenges: [
         {
-          title: "Prendre du recul stratégique",
-          description: "Organiser régulièrement des rétrospectives et des ateliers de cadrage permet de transformer chaque échec ou dérive en opportunité d'ajustement, et de garantir que la roadmap reste alignée sur les enjeux métier."
+          title: "Recul stratégique",
+          description: "Rétrospectives et ateliers de cadrage transformant les échecs en opportunités d'ajustement, maintenant la roadmap alignée aux enjeux métier."
         },
         {
-          title: "Écoute active des utilisateurs et parties prenantes",
-          description: "Instaurer des cycles de feedback fréquents (interviews, tests utilisateurs, stand-ups) enrichit la vision produit, anticipe les risques et favorise l'adhésion de chacun au projet."
+          title: "Écoute active",
+          description: "Cycles de feedback réguliers (interviews, tests, stand-ups) enrichissant la vision produit, anticipant les risques et renforçant l'adhésion collective."
         },
         {
-          title: "Collaboration interfonctionnelle",
-          description: "Briser les silos en animant des workshops réunissant développeurs, designers, commerciaux et experts certifiants a été décisif pour accélérer la prise de décision et garantir la cohérence fonctionnelle."
+          title: "Décloisonnement",
+          description: "Workshops cross-fonctionnels (développeurs, designers, commerciaux, experts) accélérant les décisions et garantissant la cohérence fonctionnelle."
         },
         {
-          title: "Culture d'entraide et de partage",
-          description: "Mettre en place du pairing, des revues de code croisées et des sessions de \"brown-bag lunch\" a renforcé la montée en compétences de l'équipe et créé un esprit d'équipe fondé sur la confiance."
+          title: "Culture collaborative",
+          description: "Pairing, revues de code et \"brown-bag lunch\" renforçant les compétences collectives et créant un environnement fondé sur la confiance."
         },
         {
-          title: "Mentorat et montée en compétence",
-          description: "En tant que chef de projet, j'ai veillé à coacher mes juniors (alternants, stagiaires) via des one-to-one réguliers, des plans de formation ciblés et un suivi de leurs OKRs, ce qui a multiplié leur autonomie et leur implication."
+          title: "Mentorat ciblé",
+          description: "Coaching de juniors via one-to-one, plans de formation et suivi OKRs, multipliant autonomie et implication des équipes."
         }
       ],
       
@@ -510,24 +512,24 @@ const YVEAProjectContent = () => {
       lessonsTitle: "Lessons Learned",
       lessonsChallenges: [
         {
-          title: "Taking strategic perspective",
-          description: "Regularly organizing retrospectives and framing workshops allows transforming each failure or drift into an opportunity for adjustment, and ensures that the roadmap remains aligned with business challenges."
+          title: "Strategic perspective",
+          description: "Retrospectives and framing workshops transforming failures into adjustment opportunities, keeping the roadmap aligned with business challenges."
         },
         {
-          title: "Active listening to users and stakeholders",
-          description: "Establishing frequent feedback cycles (interviews, user tests, stand-ups) enriches the product vision, anticipates risks and promotes everyone's adherence to the project."
+          title: "Active listening",
+          description: "Regular feedback cycles (interviews, tests, stand-ups) enriching product vision, anticipating risks and strengthening collective buy-in."
         },
         {
-          title: "Cross-functional collaboration",
-          description: "Breaking down silos by facilitating workshops bringing together developers, designers, sales representatives and certification experts was decisive for accelerating decision-making and ensuring functional coherence."
+          title: "Breaking silos",
+          description: "Cross-functional workshops (developers, designers, sales, experts) accelerating decisions and ensuring functional coherence."
         },
         {
-          title: "Culture of mutual assistance and sharing",
-          description: "Implementing pairing, cross-code reviews and \"brown-bag lunch\" sessions strengthened the team's skill development and created a team spirit based on trust."
+          title: "Collaborative culture",
+          description: "Pairing, code reviews and brown-bag lunches strengthening collective skills and creating a trust-based environment."
         },
         {
-          title: "Mentoring and skill development",
-          description: "As a project manager, I made sure to coach my juniors (work-study students, interns) via regular one-to-ones, targeted training plans and monitoring of their OKRs, which multiplied their autonomy and involvement."
+          title: "Targeted mentoring",
+          description: "Coaching juniors through one-on-ones, training plans and OKRs tracking, multiplying team autonomy and involvement."
         }
       ],
       
@@ -621,10 +623,7 @@ const YVEAProjectContent = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <span className="block text-4xl md:text-6xl mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
-                    YVEA
-                  </span>
-                  <span className="block text-2xl md:text-3xl font-light text-indigo-200 mt-2 max-w-xl">
-                    {currentContent.heroTitle.split('–')[1]}
+                    YVEA | SaaS Enterprise IA & Certification
                   </span>
                 </motion.h1>
               </div>
@@ -636,7 +635,7 @@ const YVEAProjectContent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                {currentContent.heroSubtitle}
+                Première plateforme d'automatisation intelligente de certification export
               </motion.p>
               
               {/* Description avec animation */}
@@ -646,7 +645,8 @@ const YVEAProjectContent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                {currentContent.intro}
+                Transformation de processus manuels en flux digitaux (temps réduit de 80%)<br />
+                Solution basée sur IA, OCR et GED pour l'Afrique et le Moyen-Orient
               </motion.p>
             </motion.div>
             
@@ -795,74 +795,6 @@ const YVEAProjectContent = () => {
               
               {/* Flow comparison slider */}
               <div className="max-w-5xl mx-auto backdrop-blur-sm bg-indigo-900/20 rounded-xl border border-indigo-500/30 overflow-hidden p-6 md:p-10">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  className="mb-10"
-                >
-                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                    <span className="w-10 h-10 rounded-full bg-indigo-500/30 flex items-center justify-center mr-4">
-                      <svg className="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                      </svg>
-                    </span>
-                    {locale === 'fr' ? "Avant vs Après YVEA" : "Before vs After YVEA"}
-                  </h3>
-                  
-                  {/* Image comparison component */}
-                  <div className="relative h-[400px] md:h-[500px] bg-gradient-to-b from-black/50 to-indigo-950/50 rounded-lg overflow-hidden select-none">
-                    {/* Before image (full width) */}
-                    <div className="absolute inset-0 z-10">
-                      <Image 
-                        src="/downloads/Current flow.png" 
-                        alt="Current certification process flow" 
-                        fill 
-                        className="object-contain"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-indigo-950/90"></div>
-                      <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
-                        {currentContent.beforeTitle}
-                      </div>
-                    </div>
-                    
-                    {/* After image (revealing slider) */}
-                    <motion.div 
-                      className="absolute inset-y-0 right-0 z-20 overflow-hidden"
-                      initial={{ width: "50%" }}
-                      whileInView={{ width: ["50%", "55%", "45%", "50%"] }}
-                      transition={{ duration: 3, ease: "easeInOut", delay: 1, repeat: Infinity, repeatDelay: 5 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="relative h-full w-[100vw]">
-                        <Image 
-                          src="/downloads/New flow.png" 
-                          alt="New certification process with YVEA" 
-                          fill 
-                          className="object-contain object-right" 
-                        />
-                        <div className="absolute top-4 right-4 bg-emerald-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
-                          {currentContent.afterTitle}
-                        </div>
-                      </div>
-                      
-                      {/* Slider handle */}
-                      <div className="absolute inset-y-0 left-0 w-1 bg-white shadow-[0_0_10px_rgba(255,255,255,0.7)]"></div>
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.7)] flex items-center justify-center">
-                        <svg className="w-6 h-6 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </motion.div>
-                    
-                    {/* Hint text */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/80 text-sm font-medium bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm z-30">
-                      {locale === 'fr' ? "Glissez pour comparer" : "Slide to compare"}
-                    </div>
-                  </div>
-                </motion.div>
-                
                 {/* Process transformation details */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
                   {/* BEFORE section */}
@@ -884,7 +816,7 @@ const YVEAProjectContent = () => {
                       <h4 className="text-xl font-bold text-red-300 mb-3">{currentContent.beforeTitle}</h4>
                       
                       <p className="text-indigo-100/80 mb-4 leading-relaxed">
-                        {currentContent.beforeContent}
+                        Certification VoC traditionnelle : processus manuel ralenti par des vérifications multiples et des allers-retours constants. Résultat : coordination défaillante et délais étendus générant frustration client et inefficacité opérationnelle.
                       </p>
                       
                       <div className="mt-auto pt-4 border-t border-red-500/20">
@@ -918,7 +850,7 @@ const YVEAProjectContent = () => {
                       <h4 className="text-xl font-bold text-indigo-300 mb-3">{currentContent.bridgeTitle}</h4>
                       
                       <p className="text-indigo-100/80 mb-4 leading-relaxed">
-                        {currentContent.bridgeContent}
+                        Solution YVEA : automatisation intégrale via plateforme combinant OCR, GED et IA. Coordination intelligente des vérifications avec feedback instantané et structuration automatique des documents.
                       </p>
                       
                       <div className="mt-auto pt-4 border-t border-indigo-500/20">
@@ -955,7 +887,7 @@ const YVEAProjectContent = () => {
                       <h4 className="text-xl font-bold text-emerald-300 mb-3">{currentContent.afterTitle}</h4>
                       
                       <p className="text-indigo-100/80 mb-4 leading-relaxed">
-                        {currentContent.afterContent}
+                        Résultats concrets : précision améliorée (+90%), certification ultra-rapide, avantage concurrentiel décisif avec réduction des coûts opérationnels de 40%.
                       </p>
                       
                       <div className="mt-auto pt-4 border-t border-emerald-500/20">
@@ -971,21 +903,114 @@ const YVEAProjectContent = () => {
                   </motion.div>
                 </div>
                 
-                {/* Interactive visualization reference */}
+                {/* Interactive visualization */}
                 <motion.div 
-                  className="mt-12 p-5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-center backdrop-blur-sm"
+                  className="mt-12 relative overflow-hidden"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   viewport={{ once: true }}
-                  whileHover={{ backgroundColor: "rgba(99, 102, 241, 0.15)" }}
                 >
-                  <p className="text-indigo-200 font-medium flex items-center justify-center">
-                    <svg className="w-5 h-5 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    {currentContent.visualizationText}
-                  </p>
+                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-full bg-indigo-500/30 flex items-center justify-center mr-4">
+                      <svg className="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      </svg>
+                    </span>
+                    {locale === 'fr' ? "Visualisation interactive: Comparez les flux de travail" : "Interactive visualization: Compare workflows"}
+                  </h3>
+                  
+                  {/* Tabs for before/after selection */}
+                  <div className="mb-6 flex justify-center">
+                    <div className="bg-indigo-900/50 rounded-lg p-1 inline-flex">
+                      <button 
+                        className={`px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium ${
+                          visualizationTab === 'before' 
+                            ? 'bg-red-500/90 text-white' 
+                            : 'text-indigo-200 hover:bg-indigo-800/50'
+                        }`}
+                        onClick={() => setVisualizationTab('before')}
+                      >
+                        {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
+                      </button>
+                      <button 
+                        className={`px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium ${
+                          visualizationTab === 'after' 
+                            ? 'bg-emerald-500/90 text-white' 
+                            : 'text-indigo-200 hover:bg-indigo-800/50'
+                        }`}
+                        onClick={() => setVisualizationTab('after')}
+                      >
+                        {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Clickable image container */}
+                  <div className="relative bg-gradient-to-b from-black/50 to-indigo-950/50 rounded-lg overflow-hidden select-none mt-4" 
+                       style={{ height: isExpanded ? '80vh' : '300px', transition: 'height 0.3s ease-in-out' }}
+                  >
+                    {/* Before image */}
+                    {visualizationTab === 'before' && (
+                      <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                        <Image 
+                          src="/downloads/Current flow.png" 
+                          alt="Current certification process flow" 
+                          fill 
+                          className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
+                        />
+                        <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
+                          {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
+                        </div>
+                        
+                        {/* Expand/collapse indicator */}
+                        <div className="absolute bottom-4 right-4 bg-black/50 text-white p-2 rounded-full backdrop-blur-sm">
+                          {isExpanded ? (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          ) : (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* After image */}
+                    {visualizationTab === 'after' && (
+                      <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                        <Image 
+                          src="/downloads/New flow.png" 
+                          alt="New certification process with YVEA" 
+                          fill 
+                          className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
+                        />
+                        <div className="absolute top-4 right-4 bg-emerald-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
+                          {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
+                        </div>
+                        
+                        {/* Expand/collapse indicator */}
+                        <div className="absolute bottom-4 right-4 bg-black/50 text-white p-2 rounded-full backdrop-blur-sm">
+                          {isExpanded ? (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          ) : (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Hint text */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/80 text-xs font-medium bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm z-30 pointer-events-none">
+                      {locale === 'fr' ? "Cliquez pour agrandir l'image" : "Click to expand image"}
+                    </div>
+                  </div>
                 </motion.div>
               </div>
             </div>
@@ -1078,7 +1103,28 @@ const YVEAProjectContent = () => {
             
             <h3 className="text-xl font-bold mb-6 text-gray-800">{currentContent.responsibilitiesTitle}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-              {currentContent.responsibilities.map((resp, idx) => (
+              {[
+                {
+                  title: "Définition de la roadmap produit",
+                  description: "Priorisation stratégique via workshops cross-fonctionnels et OKRs."
+                },
+                {
+                  title: "Leadership Agile",
+                  description: "Animation SCRUM/SCRUMBAN avec CTO, devs et UI/UX."
+                },
+                {
+                  title: "Gestion des parties prenantes",
+                  description: "Comités de pilotage avec BNP, BPI, Microsoft for Startups."
+                },
+                {
+                  title: "Suivi de la performance",
+                  description: "KPIs et dashboards Power BI mesurant adoption et satisfaction."
+                },
+                {
+                  title: "Qualité & tests utilisateurs",
+                  description: "50+ sessions de tests utilisateurs avec boucles de rétroaction."
+                }
+              ].map((resp, idx) => (
                 <motion.div 
                   key={idx}
                   className="bg-gray-50 p-5 rounded-lg shadow-sm border border-gray-100"
@@ -1096,15 +1142,16 @@ const YVEAProjectContent = () => {
             
             <div className="bg-primary/10 border-l-4 border-primary p-6 rounded-r-lg mb-10">
               <h3 className="text-xl font-bold mb-3 text-gray-800">{currentContent.crisisTitle}</h3>
-              <p className="text-gray-700">{currentContent.crisisDescription}</p>
+              <p className="text-gray-700">Réorganisation en 72h suite au départ d'un CTO, pivot vers modèle B2B ciblant les organismes de certification. Résultat : sauvetage du projet et ouverture de nouvelles opportunités commerciales.</p>
             </div>
             
             <h3 className="text-xl font-bold mb-4 text-gray-800">{currentContent.approachTitle}</h3>
-            <p className="text-gray-700 mb-4">{currentContent.approachDescription}</p>
+            <p className="text-gray-700 mb-4">Vision produit stratégique + management terrain pragmatique :</p>
             <ul className="list-disc pl-5 mb-4 space-y-2">
-              {currentContent.approachItems.map((item, idx) => (
-                <li key={idx} className="text-gray-700">{item}</li>
-              ))}
+              <li className="text-gray-700">Cycles courts (MoSCoW, RICE)</li>
+              <li className="text-gray-700">Design thinking UX</li>
+              <li className="text-gray-700">Itérations techniques (TypeScript, CI/CD)</li>
+              <li className="text-gray-700">Alignement business/technique</li>
             </ul>
             <p className="text-gray-700 italic mb-6">{currentContent.approachConclusion}</p>
           </div>
@@ -1177,69 +1224,100 @@ const YVEAProjectContent = () => {
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="mb-8">
               <h2 className="text-3xl font-bold mb-2 text-gray-800">
-                {currentContent.lessonsTitle}
+                {locale === 'fr' ? "Compétences clés & Leçons apprises" : "Key Skills & Lessons Learned"}
               </h2>
-              <p className="text-lg text-gray-600">{locale === 'fr' ? "Les apprentissages clés qui ont façonné le succès du projet" : "Key learnings that shaped the project's success"}</p>
+              <p className="text-lg text-gray-600">
+                {locale === 'fr' 
+                  ? "Expertise technique et stratégique développée durant le projet" 
+                  : "Technical and strategic expertise developed throughout the project"}
+              </p>
             </div>
             
-            <div className="space-y-6">
-              {currentContent.lessonsChallenges.map((lesson, index) => (
-                <motion.div 
-                  key={index}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-200"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <h4 className="text-xl font-bold text-gray-800 mb-3">{lesson.title}</h4>
-                  <p className="text-gray-700">{lesson.description}</p>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left column: Key Skills */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                  <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                  {locale === 'fr' ? "Expertise technique & leadership" : "Technical expertise & leadership"}
+                </h3>
+                
+                <div className="space-y-5">
+                  {/* Render skills categories in a more compact format */}
+                  {currentContent.skillsCategories.map((category, idx) => (
+                    <div key={idx} className="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                      <h4 className="font-bold text-gray-800 mb-3">{category.title}</h4>
+                      <ul className="space-y-2">
+                        {category.skills.map((skill, skillIdx) => (
+                          <li key={skillIdx} className="text-gray-700 flex items-start text-sm">
+                            <svg className="w-4 h-4 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                            </svg>
+                            <span>{skill}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Right column: Lessons Learned */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                  <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  {locale === 'fr' ? "Leçons apprises & méthodologie" : "Lessons learned & methodology"}
+                </h3>
+                
+                <div className="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                  <div className="flex flex-wrap -mx-2">
+                    {currentContent.lessonsChallenges.map((lesson, index) => (
+                      <div key={index} className="w-full sm:w-1/2 px-2 mb-4">
+                        <div className="border-l-4 border-primary pl-4 py-1">
+                          <h4 className="font-bold text-gray-800 mb-1">{lesson.title}</h4>
+                          <p className="text-gray-600 text-sm">{lesson.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Project Methodologies */}
+                <div className="mt-6 bg-primary/5 p-5 rounded-lg border border-primary/20">
+                  <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+                    <svg className="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    {locale === 'fr' ? "Méthodologies & processus" : "Methodologies & processes"}
+                  </h4>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {[
+                      { name: "Agile", icon: "🔄" }, 
+                      { name: "SCRUM", icon: "📊" }, 
+                      { name: "RICE", icon: "🔢" }, 
+                      { name: "MoSCoW", icon: "📋" },
+                      { name: "SAFe", icon: "🔐" }, 
+                      { name: "OKRs", icon: "🎯" }, 
+                      { name: "TypeScript", icon: "📝" }, 
+                      { name: "CI/CD", icon: "⚙️" }
+                    ].map((method, idx) => (
+                      <div key={idx} className="bg-white px-3 py-2 rounded-md border border-gray-100 flex items-center space-x-2">
+                        <span>{method.icon}</span>
+                        <span className="text-sm font-medium">{method.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedSection>
         
-        {/* Skills Used Section */}
-        <AnimatedSection className="mb-16">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold mb-2 text-gray-800">
-                {currentContent.skillsTitle}
-              </h2>
-              <p className="text-lg text-gray-600">
-                {locale === 'fr' 
-                  ? "Stack technique et soft skills déployés sur le projet" 
-                  : "Technical stack and soft skills deployed on the project"}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {currentContent.skillsCategories.map((category, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="bg-white p-6 rounded-lg shadow border border-gray-200"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.2 }}
-                >
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">{category.title}</h3>
-                  <ul className="space-y-3">
-                    {category.skills.map((skill, skillIdx) => (
-                      <li key={skillIdx} className="text-gray-700 flex items-start">
-                        <svg className="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                        </svg>
-                        <span>{skill}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </AnimatedSection>
+        {/* Skills Used Section - REMOVED and combined above */}
         
         {/* Conclusion Section */}
         <AnimatedSection className="mb-16">
@@ -1254,12 +1332,7 @@ const YVEAProjectContent = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{currentContent.futureTitle}</h3>
-                <p className="text-gray-700">{currentContent.futureText}</p>
-              </div>
-              
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mb-10">
               <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
                   {locale === 'fr' 
