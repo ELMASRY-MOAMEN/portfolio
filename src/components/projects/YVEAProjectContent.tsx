@@ -1062,7 +1062,7 @@ const YVEAProjectContent = () => {
       </div>
       
       {/* Project Evolution Timeline */}
-      <div id="project-evolution" className="container mx-auto px-4 py-16">
+      <div id="project-evolution" className="container mx-auto px-4 py-8">
         <AnimatedSection className="mb-16">
           <div id="project-evolution" className="bg-white rounded-xl shadow-lg p-8 overflow-hidden">
             <div className="mb-8">
