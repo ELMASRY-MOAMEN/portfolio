@@ -13,6 +13,18 @@ import AdvancedDataMesh from './AdvancedDataMesh';
 import MetricBadge from '../ui/MetricBadge';
 import ScrollIndicator from '../ui/ScrollIndicator';
 
+// Styles pour améliorer l'intégration des tooltips Shepherd.js avec les modales
+const shepherdModalStyles = `
+  [data-shepherd-step-modal] .shepherd-element {
+    z-index: 9999;
+  }
+
+  [data-shepherd-step-modal] .shepherd-target {
+    position: relative;
+    z-index: 60;
+  }
+`;
+
 // Types pour les modales des fonctionnalités
 type ModalType = 'certificats' | 'ocr' | 'assistant' | 'messaging' | null;
 
@@ -22,12 +34,14 @@ const FeatureModal = ({
   onClose,
   title,
   children,
+  type, // nouveau paramètre pour identifier le type de modale
   themeColor = 'indigo'
 }: {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  type: ModalType;
   themeColor?: 'indigo' | 'blue' | 'purple' | 'green';
 }) => {
   // Map des classes de couleur selon le thème
@@ -60,6 +74,7 @@ const FeatureModal = ({
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
         className="relative w-11/12 max-w-5xl max-h-[90vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden"
+        data-shepherd-step-modal={type} // Pour ciblage par Shepherd.js
       >
         {/* Modale header avec titre et bouton de fermeture */}
         <div className={`p-4 flex items-center justify-between ${colorClasses[themeColor]}`}>
@@ -223,137 +238,82 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
   );
 };
 
-// Hook personnalisé pour initialiser le walkthrough Certificats
-function useWalkthroughCertificats() {
+// Hook personnalisé pour initialiser le walkthrough conditionnel en fonction du type de modale
+function useWalkthrough(type: ModalType | null) {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (!type || typeof window === 'undefined') return;
     
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const workflowCss = document.createElement('link');
-    workflowCss.rel = 'stylesheet';
-    workflowCss.href = '/walkthroughs/css/workflow-styles.css';
-    document.head.appendChild(workflowCss);
-
-    // Lazy load Shepherd.js et le walkthrough
+    // Fonction de nettoyage commune
     let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/workflow-certificats/js/workflow-tour.js').then((workflowTour) => {
-          // Initialiser le walkthrough Certificats
-          const { setupCertificatsTourTrigger } = workflowTour;
-          setupCertificatsTourTrigger('tour-certificats-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      // eslint-disable-next-line no-console
-      console.error('Shepherd.js ou le walkthrough Certificats n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
-}
-
-// Hook personnalisé pour initialiser le walkthrough OCR
-function useWalkthroughOcr() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
     
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const ocrCss = document.createElement('link');
-    ocrCss.rel = 'stylesheet';
-    ocrCss.href = '/walkthroughs/css/ocr-styles.css';
-    document.head.appendChild(ocrCss);
+    // Chargement des styles selon le type
+    const loadStyles = () => {
+      const shepherdCss = document.createElement('link');
+      shepherdCss.rel = 'stylesheet';
+      shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+      document.head.appendChild(shepherdCss);
+      
+      const specificCss = document.createElement('link');
+      specificCss.rel = 'stylesheet';
+      specificCss.href = `/walkthroughs/css/${type}-styles.css`;
+      document.head.appendChild(specificCss);
+      
+      return () => {
+        document.head.removeChild(shepherdCss);
+        document.head.removeChild(specificCss);
+      };
+    };
 
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/ocr-extraction/js/ocr-tour.js').then((ocrTour) => {
-          // Initialiser le walkthrough OCR
-          const { setupOcrTourTrigger } = ocrTour;
-          setupOcrTourTrigger('tour-ocr-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough OCR n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
-}
+    // Initialisation selon le type de modale
+    const initWalkthrough = async () => {
+      try {
+        cleanup = loadStyles();
+        
+        await import('shepherd.js');
+        const { initShepherdBase } = await import('@/walkthroughs/shared/shepherd-base.js');
+        
+        let setupFunction: ((triggerId: string) => void) | undefined;
+        let triggerId: string | undefined;
+        
+        switch (type) {
+          case 'certificats':
+            const { setupCertificatsTourTrigger } = await import('@/walkthroughs/workflow-certificats/js/workflow-tour.js');
+            setupFunction = setupCertificatsTourTrigger;
+            triggerId = 'tour-certificats-trigger';
+            break;
+          case 'ocr':
+            const { setupOcrTourTrigger } = await import('@/walkthroughs/ocr-extraction/js/ocr-tour.js');
+            setupFunction = setupOcrTourTrigger;
+            triggerId = 'tour-ocr-trigger';
+            break;
+          case 'assistant':
+            const { setupAssistantTourTrigger } = await import('@/walkthroughs/assistant-ia/js/assistant-tour.js');
+            setupFunction = setupAssistantTourTrigger;
+            triggerId = 'tour-assistant-trigger';
+            break;
+          case 'messaging':
+            const { setupMessagingTourTrigger } = await import('@/walkthroughs/messaging/js/messaging-tour.js');
+            setupFunction = setupMessagingTourTrigger;
+            triggerId = 'tour-messaging-trigger';
+            break;
+        }
+        
+        if (setupFunction && triggerId) {
+          setupFunction(triggerId);
+          // Optionnel : démarrage automatique après un petit délai
+          setTimeout(() => {
+            const triggerButton = document.getElementById(triggerId as string);
+            if (triggerButton) triggerButton.click();
+          }, 500);
+        }
+      } catch (error) {
+        console.error(`Erreur lors du chargement du walkthrough ${type}:`, error);
+      }
+    };
 
-// Hook personnalisé pour initialiser le walkthrough Assistant
-function useWalkthroughAssistant() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const assistantCss = document.createElement('link');
-    assistantCss.rel = 'stylesheet';
-    assistantCss.href = '/walkthroughs/css/assistant-styles.css';
-    document.head.appendChild(assistantCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/assistant-ia/js/assistant-tour.js').then((assistantTour) => {
-          // Initialiser le walkthrough Assistant
-          const { setupAssistantTourTrigger } = assistantTour;
-          setupAssistantTourTrigger('tour-assistant-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough Assistant n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
-}
-
-// Hook personnalisé pour initialiser le walkthrough Messaging
-function useWalkthroughMessaging() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const messagingCss = document.createElement('link');
-    messagingCss.rel = 'stylesheet';
-    messagingCss.href = '/walkthroughs/css/messaging-styles.css';
-    document.head.appendChild(messagingCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/messaging/js/messaging-tour.js').then((messagingTour) => {
-          // Initialiser le walkthrough Messaging
-          const { setupMessagingTourTrigger } = messagingTour;
-          setupMessagingTourTrigger('tour-messaging-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough Messaging n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
+    initWalkthrough();
+    return () => cleanup();
+  }, [type]);
 }
 
 const CertificatsModalContent = ({ onClose }: { onClose: () => void }) => {
@@ -448,26 +408,17 @@ const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
         
         <div className="data-validation bg-blue-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Validation des données</h3>
-          <p>Vérifiez et validez l'ensemble des données avant utilisation.</p>
+          <p>Validez les données avant de les utiliser dans vos opérations d'export.</p>
         </div>
         
-        <div className="export-options bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Options d'export</h3>
-          <p>Choisissez comment vous souhaitez exploiter les données extraites.</p>
-        </div>
-        
-        <div className="export-formats bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Formats disponibles</h3>
-          <div className="flex gap-3">
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Excel</span>
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">CSV</span>
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">JSON</span>
-          </div>
+        <div className="export-interface bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Export des données</h3>
+          <p>Exportez les données extraites vers d'autres systèmes ou utilisez-les directement dans YVEA.</p>
         </div>
       </div>
       
       <div className="ocr-footer text-center text-gray-500 mt-4">
-        <p>Le système OCR d'YVEA réduit de 80% le temps de traitement des documents d'exportation.</p>
+        <p>La reconnaissance optique de caractères d'YVEA permet d'extraire automatiquement les données clés des documents commerciaux.</p>
         <button 
           id="tour-ocr-trigger"
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
@@ -589,11 +540,33 @@ const YVEAProjectContent = () => {
   // Fonction pour fermer la modale active
   const closeModal = () => setActiveModal(null);
   
-  // Chargement des hooks de walkthroughs
-  useWalkthroughCertificats();
-  useWalkthroughOcr();
-  useWalkthroughAssistant();
-  useWalkthroughMessaging();
+  // Utiliser le hook conditionnel au lieu des hooks individuels
+  useWalkthrough(activeModal);
+  
+  // Gestionnaire d'événements pour les événements de walkthrough
+  useEffect(() => {
+    if (!activeModal) return;
+    
+    // Gestionnaire d'événements pour les événements de walkthrough
+    const handleWalkthroughEvent = (event: CustomEvent) => {
+      const { detail } = event;
+      
+      // Si le walkthrough est terminé ou annulé, fermer la modale
+      if (event.type === 'yvea:tour:complete' || event.type === 'yvea:tour:cancel') {
+        setActiveModal(null);
+      }
+    };
+    
+    // Ajouter les écouteurs d'événements
+    document.addEventListener('yvea:tour:complete', handleWalkthroughEvent as EventListener);
+    document.addEventListener('yvea:tour:cancel', handleWalkthroughEvent as EventListener);
+    
+    return () => {
+      // Nettoyer les écouteurs d'événements
+      document.removeEventListener('yvea:tour:complete', handleWalkthroughEvent as EventListener);
+      document.removeEventListener('yvea:tour:cancel', handleWalkthroughEvent as EventListener);
+    };
+  }, [activeModal]);
   
   const [isParticleVisible, setIsParticleVisible] = useState(true);
   const [visualizationTab, setVisualizationTab] = useState('before');
@@ -1020,10 +993,14 @@ const YVEAProjectContent = () => {
     }
   };
   
-  const currentContent = content[locale as keyof typeof content];
+  // Contenu actuel en fonction de la locale
+  const currentContent = content[currentLocale as 'fr' | 'en'] || content.fr;
 
   return (
-    <div className="bg-white">
+    <div className="relative">
+      {/* Styles pour Shepherd.js */}
+      <style jsx global>{shepherdModalStyles}</style>
+      
       {/* Hero Section */}
       <div className="relative min-h-[95vh] overflow-hidden bg-gradient-to-br from-indigo-950 via-violet-900 to-blue-950">
         {/* Background patterns */}
@@ -2072,68 +2049,13 @@ const YVEAProjectContent = () => {
         </AnimatedSection>
       </div>
       
-      {/* Section Workflow de Certificats - Walkthrough */}
-      <section className="my-16" id="workflow-certificats-demo">
-        <div className="bg-white rounded-xl shadow-lg p-8 border border-primary/20">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="certificats-header text-2xl md:text-3xl font-bold text-primary flex items-center">
-              <svg className="w-7 h-7 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4z" /></svg>
-              Workflow de Certificats
-            </h2>
-            <button id="tour-certificats-trigger" className="btn-primary ml-4">Découvrir cette fonctionnalité</button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <div className="certificate-base-info bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Informations de base</h3>
-                <p className="text-sm text-gray-700">Numéro de certificat, date d'émission, client, etc.</p>
-              </div>
-              <div className="products-section bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Produits concernés</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>Produit A</li>
-                  <li>Produit B</li>
-                </ul>
-              </div>
-              <div className="document-upload-zone bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Documents justificatifs</h3>
-                <button className="btn-secondary">Télécharger un document</button>
-              </div>
-            </div>
-            <div>
-              <div className="certificate-type-selector bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Type de certificat</h3>
-                <select className="w-full border rounded p-2">
-                  <option>Certificat d'Inspection</option>
-                  <option>Certificat de Conformité</option>
-                </select>
-              </div>
-              <div className="validation-panel bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Validation automatique</h3>
-                <p className="text-sm text-gray-700">Vérification des données et conformité réglementaire.</p>
-              </div>
-              <div className="submission-controls flex items-center gap-4 mb-4">
-                <button className="btn-primary">Vérifier</button>
-                <button className="btn-secondary">Soumettre</button>
-              </div>
-              <div className="certificate-status-tracker bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Suivi du statut</h3>
-                <p className="text-sm text-gray-700">En attente &rarr; En cours &rarr; Validé</p>
-              </div>
-            </div>
-          </div>
-          <div className="certificats-footer mt-8 text-center text-primary font-semibold">
-            <span>Workflow de certificats - YVEA</span>
-          </div>
-        </div>
-      </section>
-      
       {/* Modales des fonctionnalités */}
       <FeatureModal 
         isOpen={activeModal === 'certificats'} 
         onClose={closeModal}
         title="Workflow de Certificats"
         themeColor="indigo"
+        type="certificats"
       >
         <CertificatsModalContent onClose={closeModal} />
       </FeatureModal>
@@ -2143,6 +2065,7 @@ const YVEAProjectContent = () => {
         onClose={closeModal}
         title="OCR et Extraction Intelligente"
         themeColor="blue"
+        type="ocr"
       >
         <OcrModalContent onClose={closeModal} />
       </FeatureModal>
@@ -2152,6 +2075,7 @@ const YVEAProjectContent = () => {
         onClose={closeModal}
         title="Assistant Virtuel IA"
         themeColor="purple"
+        type="assistant"
       >
         <AssistantModalContent onClose={closeModal} />
       </FeatureModal>
@@ -2161,6 +2085,7 @@ const YVEAProjectContent = () => {
         onClose={closeModal}
         title="Messagerie Collaborative"
         themeColor="green"
+        type="messaging"
       >
         <MessagingModalContent onClose={closeModal} />
       </FeatureModal>
