@@ -1,0 +1,307 @@
+{
+  "conversations": [
+    {
+      "id": "conv-1",
+      "name": "Support YVEA",
+      "participants": ["Support Technique", "Vous"],
+      "lastMessage": {
+        "sender": "Support Technique",
+        "text": "Votre demande a été traitée. Voici les documents demandés.",
+        "timestamp": "2024-04-20T09:35:00Z",
+        "hasAttachments": true,
+        "isRead": false
+      },
+      "messages": [
+        {
+          "sender": "Support Technique",
+          "text": "Bonjour, comment puis-je vous aider ?",
+          "timestamp": "2024-04-20T09:15:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "Bonjour, je cherche des informations sur les certificats d'importation.",
+          "timestamp": "2024-04-20T09:20:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Support Technique",
+          "text": "Bien sûr, je peux vous aider. Pouvez-vous préciser quelles informations vous recherchez ?",
+          "timestamp": "2024-04-20T09:25:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "J'aimerais obtenir des exemples de documents requis pour une demande de certificat d'importation de produits alimentaires.",
+          "timestamp": "2024-04-20T09:30:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Support Technique",
+          "text": "Votre demande a été traitée. Voici les documents demandés.",
+          "timestamp": "2024-04-20T09:35:00Z",
+          "hasAttachments": true,
+          "attachments": [
+            {
+              "name": "Exemple_Certificat_Importation.pdf",
+              "type": "pdf",
+              "size": "1.2 MB"
+            },
+            {
+              "name": "Liste_Documents_Requis.docx",
+              "type": "docx",
+              "size": "680 KB"
+            }
+          ],
+          "isRead": false
+        }
+      ]
+    },
+    {
+      "id": "conv-2",
+      "name": "Service des certificats",
+      "participants": ["Agent certificats", "Superviseur", "Vous"],
+      "lastMessage": {
+        "sender": "Agent certificats",
+        "text": "Votre certificat a été validé et est disponible au téléchargement.",
+        "timestamp": "2024-04-19T16:45:00Z",
+        "hasAttachments": false,
+        "isRead": true
+      },
+      "messages": [
+        {
+          "sender": "Agent certificats",
+          "text": "Bonjour, nous avons reçu votre demande de certificat d'importation référence CI-2024-0458.",
+          "timestamp": "2024-04-19T14:30:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "Merci pour votre retour rapide. Quel est le délai habituel de traitement ?",
+          "timestamp": "2024-04-19T15:15:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent certificats",
+          "text": "Le délai standard est de 48h, mais nous traitons actuellement les demandes plus rapidement. La vôtre est en cours de validation.",
+          "timestamp": "2024-04-19T15:30:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Superviseur",
+          "text": "J'ai accéléré la validation de votre dossier compte tenu de l'urgence mentionnée.",
+          "timestamp": "2024-04-19T16:20:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent certificats",
+          "text": "Votre certificat a été validé et est disponible au téléchargement.",
+          "timestamp": "2024-04-19T16:45:00Z",
+          "isRead": true
+        }
+      ]
+    },
+    {
+      "id": "conv-3",
+      "name": "Service comptabilité",
+      "participants": ["Comptable", "Vous"],
+      "lastMessage": {
+        "sender": "Comptable",
+        "text": "Nous avons bien reçu votre paiement pour les frais de dossier.",
+        "timestamp": "2024-04-18T11:20:00Z",
+        "hasAttachments": false,
+        "isRead": true
+      },
+      "messages": [
+        {
+          "sender": "Comptable",
+          "text": "Bonjour, nous avons constaté que votre paiement pour les frais de dossier est en attente.",
+          "timestamp": "2024-04-18T10:30:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "Bonjour, le paiement a été effectué hier. Je vous transmets la confirmation de transaction.",
+          "timestamp": "2024-04-18T10:45:00Z",
+          "hasAttachments": true,
+          "attachments": [
+            {
+              "name": "Confirmation_Paiement.pdf",
+              "type": "pdf",
+              "size": "450 KB"
+            }
+          ],
+          "isRead": true
+        },
+        {
+          "sender": "Comptable",
+          "text": "Nous avons bien reçu votre paiement pour les frais de dossier.",
+          "timestamp": "2024-04-18T11:20:00Z",
+          "isRead": true
+        }
+      ]
+    },
+    {
+      "id": "conv-4",
+      "name": "Douanes Gabonaises",
+      "participants": ["Agent douanes", "Vous"],
+      "lastMessage": {
+        "sender": "Agent douanes",
+        "text": "Votre dossier est complet, vous recevrez une notification lors du passage en douane.",
+        "timestamp": "2024-04-17T14:15:00Z",
+        "hasAttachments": false,
+        "isRead": true
+      },
+      "messages": [
+        {
+          "sender": "Vous",
+          "text": "Bonjour, je souhaite connaître l'avancée de mon dossier d'importation n°IMP-2024-7823.",
+          "timestamp": "2024-04-17T13:10:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent douanes",
+          "text": "Bonjour, nous avons bien reçu votre dossier. La vérification est en cours par nos services.",
+          "timestamp": "2024-04-17T13:45:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "Dois-je fournir des documents supplémentaires pour accélérer la procédure ?",
+          "timestamp": "2024-04-17T14:00:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent douanes",
+          "text": "Votre dossier est complet, vous recevrez une notification lors du passage en douane.",
+          "timestamp": "2024-04-17T14:15:00Z",
+          "isRead": true
+        }
+      ]
+    },
+    {
+      "id": "conv-5",
+      "name": "Transporteur maritime",
+      "participants": ["Agent logistique", "Vous"],
+      "lastMessage": {
+        "sender": "Agent logistique",
+        "text": "Votre conteneur est arrivé au port. Veuillez préparer les documents pour le dédouanement.",
+        "timestamp": "2024-04-16T09:30:00Z",
+        "hasAttachments": false,
+        "isRead": false
+      },
+      "messages": [
+        {
+          "sender": "Agent logistique",
+          "text": "Bonjour, nous vous informons que votre conteneur n°CONT-85632 a quitté le port d'origine.",
+          "timestamp": "2024-04-10T08:15:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Vous",
+          "text": "Merci pour l'information. Quelle est la date d'arrivée prévue ?",
+          "timestamp": "2024-04-10T10:30:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent logistique",
+          "text": "La date d'arrivée estimée est le 16 avril. Nous vous tiendrons informé de tout changement.",
+          "timestamp": "2024-04-10T11:05:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent logistique",
+          "text": "Nous vous confirmons que le navire suit son itinéraire comme prévu. L'arrivée est confirmée pour le 16 avril.",
+          "timestamp": "2024-04-14T14:20:00Z",
+          "isRead": true
+        },
+        {
+          "sender": "Agent logistique",
+          "text": "Votre conteneur est arrivé au port. Veuillez préparer les documents pour le dédouanement.",
+          "timestamp": "2024-04-16T09:30:00Z",
+          "isRead": false
+        }
+      ]
+    }
+  ],
+  
+  "sharedFiles": [
+    {
+      "name": "Certificat_Origine.pdf",
+      "type": "pdf",
+      "size": "1.5 MB",
+      "uploadedBy": "Vous",
+      "timestamp": "2024-04-19T10:15:00Z"
+    },
+    {
+      "name": "Facture_Commerciale.pdf",
+      "type": "pdf",
+      "size": "820 KB",
+      "uploadedBy": "Vous",
+      "timestamp": "2024-04-19T10:18:00Z"
+    },
+    {
+      "name": "LTA_Maritime.pdf",
+      "type": "pdf",
+      "size": "950 KB",
+      "uploadedBy": "Agent logistique",
+      "timestamp": "2024-04-16T09:25:00Z"
+    },
+    {
+      "name": "Declaration_Douaniere.pdf",
+      "type": "pdf",
+      "size": "1.2 MB",
+      "uploadedBy": "Agent douanes",
+      "timestamp": "2024-04-17T14:10:00Z"
+    },
+    {
+      "name": "Confirmation_Paiement.pdf",
+      "type": "pdf",
+      "size": "450 KB",
+      "uploadedBy": "Vous",
+      "timestamp": "2024-04-18T10:45:00Z"
+    },
+    {
+      "name": "Liste_Documents_Requis.docx",
+      "type": "docx",
+      "size": "680 KB",
+      "uploadedBy": "Support Technique",
+      "timestamp": "2024-04-20T09:35:00Z"
+    },
+    {
+      "name": "Exemple_Certificat_Importation.pdf",
+      "type": "pdf",
+      "size": "1.2 MB",
+      "uploadedBy": "Support Technique",
+      "timestamp": "2024-04-20T09:35:00Z"
+    }
+  ],
+  
+  "filters": [
+    {
+      "id": "unread",
+      "name": "Non lus",
+      "default": true
+    },
+    {
+      "id": "important",
+      "name": "Messages importants",
+      "default": true
+    },
+    {
+      "id": "with-attachments",
+      "name": "Avec documents",
+      "default": true
+    }
+  ],
+  
+  "statuses": {
+    "READ": "Lu",
+    "SENT": "Envoyé",
+    "DELIVERED": "Distribué",
+    "TYPING": "En train d'écrire...",
+    "ONLINE": "En ligne",
+    "OFFLINE": "Hors ligne",
+    "AWAY": "Absent"
+  }
+} 

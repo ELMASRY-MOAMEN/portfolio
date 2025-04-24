@@ -13,6 +13,84 @@ import AdvancedDataMesh from './AdvancedDataMesh';
 import MetricBadge from '../ui/MetricBadge';
 import ScrollIndicator from '../ui/ScrollIndicator';
 
+// Types pour les modales des fonctionnalités
+type ModalType = 'certificats' | 'ocr' | 'assistant' | 'messaging' | null;
+
+// Composant Modal réutilisable
+const FeatureModal = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+  themeColor = 'indigo'
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  themeColor?: 'indigo' | 'blue' | 'purple' | 'green';
+}) => {
+  // Map des classes de couleur selon le thème
+  const colorClasses = {
+    indigo: 'bg-indigo-600 text-white border-indigo-700',
+    blue: 'bg-blue-600 text-white border-blue-700',
+    purple: 'bg-purple-600 text-white border-purple-700',
+    green: 'bg-green-600 text-white border-green-700'
+  };
+
+  // Fermeture de la modale sur Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  // Animation avec Framer Motion
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        className="relative w-11/12 max-w-5xl max-h-[90vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden"
+      >
+        {/* Modale header avec titre et bouton de fermeture */}
+        <div className={`p-4 flex items-center justify-between ${colorClasses[themeColor]}`}>
+          <h2 className="text-xl font-bold">{title}</h2>
+          <button 
+            onClick={onClose}
+            className="p-1 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
+            aria-label="Fermer"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        {/* Contenu de la modale avec scrolling interne */}
+        <div className="flex-1 overflow-y-auto p-6">
+          {children}
+        </div>
+      </motion.div>
+      
+      {/* Overlay cliquable pour fermer la modale */}
+      <div 
+        className="absolute inset-0 z-[-1]" 
+        onClick={onClose}
+        aria-hidden="true"
+      />
+    </div>
+  );
+};
+
 // EnhancedTimeline component for project phases
 const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
   const [activeStep, setActiveStep] = useState<number | null>(null);
@@ -145,8 +223,378 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
   );
 };
 
+// Hook personnalisé pour initialiser le walkthrough Certificats
+function useWalkthroughCertificats() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Importer les styles côté client
+    const shepherdCss = document.createElement('link');
+    shepherdCss.rel = 'stylesheet';
+    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+    document.head.appendChild(shepherdCss);
+    const workflowCss = document.createElement('link');
+    workflowCss.rel = 'stylesheet';
+    workflowCss.href = '/walkthroughs/css/workflow-styles.css';
+    document.head.appendChild(workflowCss);
+
+    // Lazy load Shepherd.js et le walkthrough
+    let cleanup = () => {};
+    import('shepherd.js').then(() => {
+      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
+        import('@/walkthroughs/workflow-certificats/js/workflow-tour.js').then((workflowTour) => {
+          // Initialiser le walkthrough Certificats
+          const { setupCertificatsTourTrigger } = workflowTour;
+          setupCertificatsTourTrigger('tour-certificats-trigger');
+        });
+      });
+    }).catch(() => {
+      // Gestion d'erreur si Shepherd.js ne se charge pas
+      // eslint-disable-next-line no-console
+      console.error('Shepherd.js ou le walkthrough Certificats n\'ont pas pu être chargés.');
+    });
+    return cleanup;
+  }, []);
+}
+
+// Hook personnalisé pour initialiser le walkthrough OCR
+function useWalkthroughOcr() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Importer les styles côté client
+    const shepherdCss = document.createElement('link');
+    shepherdCss.rel = 'stylesheet';
+    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+    document.head.appendChild(shepherdCss);
+    const ocrCss = document.createElement('link');
+    ocrCss.rel = 'stylesheet';
+    ocrCss.href = '/walkthroughs/css/ocr-styles.css';
+    document.head.appendChild(ocrCss);
+
+    // Lazy load Shepherd.js et le walkthrough
+    let cleanup = () => {};
+    import('shepherd.js').then(() => {
+      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
+        import('@/walkthroughs/ocr-extraction/js/ocr-tour.js').then((ocrTour) => {
+          // Initialiser le walkthrough OCR
+          const { setupOcrTourTrigger } = ocrTour;
+          setupOcrTourTrigger('tour-ocr-trigger');
+        });
+      });
+    }).catch(() => {
+      // Gestion d'erreur si Shepherd.js ne se charge pas
+      console.error('Shepherd.js ou le walkthrough OCR n\'ont pas pu être chargés.');
+    });
+    return cleanup;
+  }, []);
+}
+
+// Hook personnalisé pour initialiser le walkthrough Assistant
+function useWalkthroughAssistant() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Importer les styles côté client
+    const shepherdCss = document.createElement('link');
+    shepherdCss.rel = 'stylesheet';
+    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+    document.head.appendChild(shepherdCss);
+    const assistantCss = document.createElement('link');
+    assistantCss.rel = 'stylesheet';
+    assistantCss.href = '/walkthroughs/css/assistant-styles.css';
+    document.head.appendChild(assistantCss);
+
+    // Lazy load Shepherd.js et le walkthrough
+    let cleanup = () => {};
+    import('shepherd.js').then(() => {
+      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
+        import('@/walkthroughs/assistant-ia/js/assistant-tour.js').then((assistantTour) => {
+          // Initialiser le walkthrough Assistant
+          const { setupAssistantTourTrigger } = assistantTour;
+          setupAssistantTourTrigger('tour-assistant-trigger');
+        });
+      });
+    }).catch(() => {
+      // Gestion d'erreur si Shepherd.js ne se charge pas
+      console.error('Shepherd.js ou le walkthrough Assistant n\'ont pas pu être chargés.');
+    });
+    return cleanup;
+  }, []);
+}
+
+// Hook personnalisé pour initialiser le walkthrough Messaging
+function useWalkthroughMessaging() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Importer les styles côté client
+    const shepherdCss = document.createElement('link');
+    shepherdCss.rel = 'stylesheet';
+    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+    document.head.appendChild(shepherdCss);
+    const messagingCss = document.createElement('link');
+    messagingCss.rel = 'stylesheet';
+    messagingCss.href = '/walkthroughs/css/messaging-styles.css';
+    document.head.appendChild(messagingCss);
+
+    // Lazy load Shepherd.js et le walkthrough
+    let cleanup = () => {};
+    import('shepherd.js').then(() => {
+      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
+        import('@/walkthroughs/messaging/js/messaging-tour.js').then((messagingTour) => {
+          // Initialiser le walkthrough Messaging
+          const { setupMessagingTourTrigger } = messagingTour;
+          setupMessagingTourTrigger('tour-messaging-trigger');
+        });
+      });
+    }).catch(() => {
+      // Gestion d'erreur si Shepherd.js ne se charge pas
+      console.error('Shepherd.js ou le walkthrough Messaging n\'ont pas pu être chargés.');
+    });
+    return cleanup;
+  }, []);
+}
+
+const CertificatsModalContent = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div className="certificats-content">
+      <div className="certificats-header text-2xl font-bold mb-4">Workflow de Certificats</div>
+      
+      <div className="mb-6 flex flex-col gap-4">
+        <div className="new-certificate-button bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Création de nouveaux certificats</h3>
+          <p>Initiez la création d'un nouveau certificat d'exportation en quelques clics.</p>
+        </div>
+        
+        <div className="certificate-type-selector bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Sélection du type de certificat</h3>
+          <div className="flex flex-wrap gap-3 mb-2">
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Certificat d'origine</span>
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Certificat sanitaire</span>
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Certificat de conformité</span>
+          </div>
+        </div>
+        
+        <div className="certificate-base-info bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Informations de base</h3>
+          <p>Renseignez le pays de destination, l'acheteur et les informations d'expédition.</p>
+        </div>
+        
+        <div className="products-section bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Gestion des produits</h3>
+          <p>Ajoutez les produits concernés par l'exportation avec les détails requis.</p>
+        </div>
+        
+        <div className="document-upload-zone bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Documents justificatifs</h3>
+          <p>Téléchargez les documents requis pour appuyer votre demande de certification.</p>
+        </div>
+        
+        <div className="validation-panel bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Validation automatique</h3>
+          <p>Vérification automatique de la conformité de votre demande avant soumission.</p>
+        </div>
+        
+        <div className="submission-controls bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Soumission</h3>
+          <p>Envoyez votre demande de certificat aux autorités compétentes.</p>
+        </div>
+        
+        <div className="certificate-status-tracker bg-indigo-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Suivi en temps réel</h3>
+          <p>Suivez l'avancement de votre demande à chaque étape du processus.</p>
+        </div>
+      </div>
+      
+      <div className="certificats-footer text-center text-gray-500 mt-4">
+        <p>Le workflow de certification d'YVEA automatise et simplifie le processus complexe d'obtention des documents export.</p>
+        <button 
+          id="tour-certificats-trigger"
+          className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+        >
+          Démarrer la visite guidée
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div className="ocr-content">
+      <div className="ocr-header text-2xl font-bold mb-4">OCR et Extraction Intelligente</div>
+      
+      <div className="mb-6 flex flex-col gap-4">
+        <div className="document-uploader bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Téléchargement de documents</h3>
+          <p>Déposez vos documents commerciaux pour analyse et extraction automatique.</p>
+        </div>
+        
+        <div className="ocr-progress bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Traitement OCR</h3>
+          <p>Visualisez la progression en temps réel de l'analyse de vos documents.</p>
+        </div>
+        
+        <div className="extraction-preview bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Aperçu des données extraites</h3>
+          <p>Consultez les données extraites de vos documents avec mise en évidence.</p>
+        </div>
+        
+        <div className="correction-interface bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Interface de correction</h3>
+          <p>Corrigez facilement les erreurs potentielles d'extraction avec des suggestions IA.</p>
+        </div>
+        
+        <div className="data-validation bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Validation des données</h3>
+          <p>Vérifiez et validez l'ensemble des données avant utilisation.</p>
+        </div>
+        
+        <div className="export-options bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Options d'export</h3>
+          <p>Choisissez comment vous souhaitez exploiter les données extraites.</p>
+        </div>
+        
+        <div className="export-formats bg-blue-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Formats disponibles</h3>
+          <div className="flex gap-3">
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Excel</span>
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">CSV</span>
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">JSON</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="ocr-footer text-center text-gray-500 mt-4">
+        <p>Le système OCR d'YVEA réduit de 80% le temps de traitement des documents d'exportation.</p>
+        <button 
+          id="tour-ocr-trigger"
+          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+        >
+          Démarrer la visite guidée
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const AssistantModalContent = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div className="assistant-content">
+      <div className="assistant-icon text-2xl font-bold mb-4">Assistant Virtuel IA</div>
+      
+      <div className="mb-6 flex flex-col gap-4">
+        <div className="assistant-trigger bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Accès à l'assistant</h3>
+          <p>Votre assistant export est accessible à tout moment pendant votre navigation.</p>
+        </div>
+        
+        <div className="chatbox-container bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Interface de dialogue</h3>
+          <p>Posez vos questions en langage naturel et obtenez des réponses précises.</p>
+        </div>
+        
+        <div className="assistant-capabilities bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Capacités intelligentes</h3>
+          <p>L'assistant répond à vos questions sur la réglementation export et vous guide dans vos démarches.</p>
+        </div>
+        
+        <div className="document-analysis-section bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Analyse de documents</h3>
+          <p>Partagez vos documents avec l'assistant pour une analyse approfondie et des conseils personnalisés.</p>
+        </div>
+        
+        <div className="context-indicator bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Sensibilité au contexte</h3>
+          <p>L'assistant s'adapte à votre profil, vos produits et vos marchés cibles.</p>
+        </div>
+        
+        <div className="command-helper bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Commandes spéciales</h3>
+          <p>Utilisez des commandes dédiées pour des fonctionnalités avancées.</p>
+        </div>
+        
+        <div className="feedback-controls bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Feedback et amélioration</h3>
+          <p>Aidez-nous à améliorer l'assistant en notant la pertinence des réponses.</p>
+        </div>
+      </div>
+      
+      <div className="assistant-footer text-center text-gray-500 mt-4">
+        <p>L'Assistant IA d'YVEA réduit de 85% les demandes de support de premier niveau.</p>
+        <button 
+          id="tour-assistant-trigger"
+          className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
+        >
+          Démarrer la visite guidée
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const MessagingModalContent = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div className="messaging-content">
+      <div className="messaging-header text-2xl font-bold mb-4">Messagerie Collaborative</div>
+      
+      <div className="mb-6 flex flex-col gap-4">
+        <div className="conversation-list bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Centre de messagerie</h3>
+          <p>Accédez à toutes vos conversations avec les partenaires et organismes de certification.</p>
+        </div>
+        
+        <div className="message-status-indicators bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Indicateurs en temps réel</h3>
+          <p>Suivez l'état de vos messages (envoyé, reçu, lu) en temps réel.</p>
+        </div>
+        
+        <div className="attachment-zone bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Partage de fichiers</h3>
+          <p>Échangez facilement des documents et pièces jointes avec vos interlocuteurs.</p>
+        </div>
+        
+        <div className="contextual-references bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Références contextuelles</h3>
+          <p>Intégrez des références aux certificats et documents directement dans vos messages.</p>
+        </div>
+        
+        <div className="security-badge bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Sécurité des échanges</h3>
+          <p>Profitez d'un système de messagerie sécurisé avec chiffrement de bout en bout.</p>
+        </div>
+      </div>
+      
+      <div className="messaging-footer text-center text-gray-500 mt-4">
+        <p>La messagerie collaborative d'YVEA accélère les échanges et réduit les délais de validation de 60%.</p>
+        <button 
+          id="tour-messaging-trigger"
+          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
+        >
+          Démarrer la visite guidée
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const YVEAProjectContent = () => {
-  const { locale } = useTranslation();
+  const [locale, setLocale] = useState<'fr' | 'en'>('fr');
+  const { t, locale: currentLocale } = useTranslation();
+  
+  // État pour gérer les modales de fonctionnalités
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+  
+  // Fonction pour fermer la modale active
+  const closeModal = () => setActiveModal(null);
+  
+  // Chargement des hooks de walkthroughs
+  useWalkthroughCertificats();
+  useWalkthroughOcr();
+  useWalkthroughAssistant();
+  useWalkthroughMessaging();
+  
   const [isParticleVisible, setIsParticleVisible] = useState(true);
   const [visualizationTab, setVisualizationTab] = useState('before');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -1079,6 +1527,148 @@ const YVEAProjectContent = () => {
           </div>
         </AnimatedSection>
         
+        {/* Fonctionnalités clés d'YVEA Section */}
+        <AnimatedSection className="mb-16">
+          <div id="key-features" className="bg-white rounded-xl shadow-lg p-8 overflow-hidden">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-gray-800 flex items-center">
+                <svg className="w-8 h-8 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                Fonctionnalités clés d'YVEA
+              </h2>
+              <p className="text-lg text-gray-600">Découvrez les technologies innovantes d'YVEA à travers des démonstrations interactives</p>
+            </div>
+            
+            {/* Features Card Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+              {/* Workflow de Certificats Card */}
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setActiveModal('certificats')}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0 * 0.1 }}
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                    <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Workflow de Certificats</h3>
+                <div className="flex flex-wrap justify-center gap-2 mb-3">
+                  <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">GED</span>
+                  <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">Automatisation</span>
+                  <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">Validation</span>
+                </div>
+                <p className="text-gray-600 text-center mb-4 text-sm">Processus complet de création et de validation des certificats d'inspection et de conformité pour l'export.</p>
+                <div className="flex justify-center">
+                  <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                    Découvrir cette fonctionnalité
+                  </button>
+                </div>
+              </motion.div>
+              
+              {/* OCR et Extraction Intelligente Card */}
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setActiveModal('ocr')}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1 * 0.1 }}
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                    <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">OCR et Extraction Intelligente</h3>
+                <div className="flex flex-wrap justify-center gap-2 mb-3">
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">OCR</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">ML</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Tesseract</span>
+                </div>
+                <p className="text-gray-600 text-center mb-4 text-sm">Analyse automatisée des documents commerciaux avec reconnaissance optique et extraction structurée.</p>
+                <div className="flex justify-center">
+                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                    Découvrir cette fonctionnalité
+                  </button>
+                </div>
+              </motion.div>
+              
+              {/* Assistant IA Card */}
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setActiveModal('assistant')}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 2 * 0.1 }}
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                    <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Assistant IA</h3>
+                <div className="flex flex-wrap justify-center gap-2 mb-3">
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Azure OpenAI</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">GPT-4</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">IA Conversationnelle</span>
+                </div>
+                <p className="text-gray-600 text-center mb-4 text-sm">Interface conversationnelle intelligente pour guider les utilisateurs dans leurs démarches d'export.</p>
+                <div className="flex justify-center">
+                  <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300">
+                    Découvrir cette fonctionnalité
+                  </button>
+                </div>
+              </motion.div>
+              
+              {/* Messagerie Card */}
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setActiveModal('messaging')}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 3 * 0.1 }}
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                    <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Messagerie Collaborative</h3>
+                <div className="flex flex-wrap justify-center gap-2 mb-3">
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">WebSockets</span>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Temps réel</span>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Collaboration</span>
+                </div>
+                <p className="text-gray-600 text-center mb-4 text-sm">Système de communication instantanée avec collaboration documentaire et gestion d'état partagé.</p>
+                <div className="flex justify-center">
+                  <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300">
+                    Découvrir cette fonctionnalité
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </AnimatedSection>
+
         {/* My Role as PM/PO */}
         <AnimatedSection className="mb-16">
           <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700 overflow-hidden relative">
@@ -1291,7 +1881,7 @@ const YVEAProjectContent = () => {
                     </li>
                     <li className="text-gray-700 dark:text-gray-300 flex items-start">
                       <span className="text-primary mr-2">•</span>
-                      <span>DevOps : CI/CD, sécurité by design, infrastructure as code</span>
+                      <span>DevOps : CI/CD, security by design, infrastructure as code</span>
                     </li>
                   </ul>
                 </div>
@@ -1481,6 +2071,99 @@ const YVEAProjectContent = () => {
           </div>
         </AnimatedSection>
       </div>
+      
+      {/* Section Workflow de Certificats - Walkthrough */}
+      <section className="my-16" id="workflow-certificats-demo">
+        <div className="bg-white rounded-xl shadow-lg p-8 border border-primary/20">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="certificats-header text-2xl md:text-3xl font-bold text-primary flex items-center">
+              <svg className="w-7 h-7 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4z" /></svg>
+              Workflow de Certificats
+            </h2>
+            <button id="tour-certificats-trigger" className="btn-primary ml-4">Découvrir cette fonctionnalité</button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <div className="certificate-base-info bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Informations de base</h3>
+                <p className="text-sm text-gray-700">Numéro de certificat, date d'émission, client, etc.</p>
+              </div>
+              <div className="products-section bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Produits concernés</h3>
+                <ul className="list-disc pl-5 text-sm text-gray-700">
+                  <li>Produit A</li>
+                  <li>Produit B</li>
+                </ul>
+              </div>
+              <div className="document-upload-zone bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Documents justificatifs</h3>
+                <button className="btn-secondary">Télécharger un document</button>
+              </div>
+            </div>
+            <div>
+              <div className="certificate-type-selector bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Type de certificat</h3>
+                <select className="w-full border rounded p-2">
+                  <option>Certificat d'Inspection</option>
+                  <option>Certificat de Conformité</option>
+                </select>
+              </div>
+              <div className="validation-panel bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Validation automatique</h3>
+                <p className="text-sm text-gray-700">Vérification des données et conformité réglementaire.</p>
+              </div>
+              <div className="submission-controls flex items-center gap-4 mb-4">
+                <button className="btn-primary">Vérifier</button>
+                <button className="btn-secondary">Soumettre</button>
+              </div>
+              <div className="certificate-status-tracker bg-primary/5 p-4 rounded mb-4">
+                <h3 className="text-lg font-semibold mb-2">Suivi du statut</h3>
+                <p className="text-sm text-gray-700">En attente &rarr; En cours &rarr; Validé</p>
+              </div>
+            </div>
+          </div>
+          <div className="certificats-footer mt-8 text-center text-primary font-semibold">
+            <span>Workflow de certificats - YVEA</span>
+          </div>
+        </div>
+      </section>
+      
+      {/* Modales des fonctionnalités */}
+      <FeatureModal 
+        isOpen={activeModal === 'certificats'} 
+        onClose={closeModal}
+        title="Workflow de Certificats"
+        themeColor="indigo"
+      >
+        <CertificatsModalContent onClose={closeModal} />
+      </FeatureModal>
+      
+      <FeatureModal 
+        isOpen={activeModal === 'ocr'} 
+        onClose={closeModal}
+        title="OCR et Extraction Intelligente"
+        themeColor="blue"
+      >
+        <OcrModalContent onClose={closeModal} />
+      </FeatureModal>
+      
+      <FeatureModal 
+        isOpen={activeModal === 'assistant'} 
+        onClose={closeModal}
+        title="Assistant Virtuel IA"
+        themeColor="purple"
+      >
+        <AssistantModalContent onClose={closeModal} />
+      </FeatureModal>
+      
+      <FeatureModal 
+        isOpen={activeModal === 'messaging'} 
+        onClose={closeModal}
+        title="Messagerie Collaborative"
+        themeColor="green"
+      >
+        <MessagingModalContent onClose={closeModal} />
+      </FeatureModal>
     </div>
   );
 };

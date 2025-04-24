@@ -1,0 +1,219 @@
+{
+  "documents": [
+    {
+      "id": "doc-001",
+      "name": "facture-electricite.pdf",
+      "type": "facture",
+      "size": "1.2 MB",
+      "uploadDate": "2023-08-15T10:30:45",
+      "status": "processed",
+      "thumbnail": "../img/doc-facture-thumbnail.png",
+      "extractedData": {
+        "fournisseur": "ENERGABON",
+        "numeroFacture": "F2023-4587",
+        "dateFacture": "2023-07-30",
+        "montantHT": "152.75",
+        "montantTVA": "30.55",
+        "montantTTC": "183.30",
+        "clientReference": "CLI-98742",
+        "echeance": "2023-08-30",
+        "modePaiement": "Prélèvement"
+      },
+      "confidenceScore": 0.92,
+      "correctionNeeded": ["montantHT"],
+      "ocrRegions": [
+        {
+          "field": "fournisseur",
+          "bbox": [120, 85, 280, 110],
+          "confidence": 0.98
+        },
+        {
+          "field": "numeroFacture",
+          "bbox": [420, 120, 520, 140],
+          "confidence": 0.97
+        },
+        {
+          "field": "dateFacture",
+          "bbox": [420, 160, 520, 180],
+          "confidence": 0.99
+        },
+        {
+          "field": "montantHT",
+          "bbox": [480, 320, 540, 340],
+          "confidence": 0.82
+        },
+        {
+          "field": "montantTVA",
+          "bbox": [480, 350, 540, 370],
+          "confidence": 0.95
+        },
+        {
+          "field": "montantTTC",
+          "bbox": [480, 380, 540, 400],
+          "confidence": 0.96
+        }
+      ]
+    },
+    {
+      "id": "doc-002",
+      "name": "certificat-conformite.pdf",
+      "type": "certificat",
+      "size": "0.8 MB",
+      "uploadDate": "2023-08-14T14:22:10",
+      "status": "processing",
+      "thumbnail": "../img/doc-certificat-thumbnail.png",
+      "extractionProgress": 0.65,
+      "currentStep": "data_validation"
+    },
+    {
+      "id": "doc-003",
+      "name": "bon-livraison.pdf",
+      "type": "logistique",
+      "size": "1.5 MB",
+      "uploadDate": "2023-08-13T09:10:05",
+      "status": "error",
+      "thumbnail": "../img/doc-logistique-thumbnail.png",
+      "errorType": "low_quality_scan",
+      "errorMessage": "La qualité du scan est insuffisante pour une extraction fiable"
+    },
+    {
+      "id": "doc-004",
+      "name": "contrat-fournisseur.pdf",
+      "type": "contrat",
+      "size": "2.3 MB",
+      "uploadDate": "2023-08-12T16:48:30",
+      "status": "waiting",
+      "thumbnail": "../img/doc-contrat-thumbnail.png"
+    },
+    {
+      "id": "doc-005",
+      "name": "rapport-inspection.pdf",
+      "type": "rapport",
+      "size": "3.1 MB",
+      "uploadDate": "2023-08-10T11:05:22",
+      "status": "processed",
+      "thumbnail": "../img/doc-rapport-thumbnail.png",
+      "extractedData": {
+        "numeroRapport": "INS-2023-156",
+        "dateInspection": "2023-08-05",
+        "inspecteur": "Jean Dupont",
+        "siteInspecte": "Entrepôt Central - Zone B",
+        "conformite": "Partielle",
+        "observations": "4 non-conformités mineures identifiées",
+        "delaiCorrection": "2023-09-15"
+      },
+      "confidenceScore": 0.88,
+      "correctionNeeded": ["observations", "delaiCorrection"],
+      "ocrRegions": [
+        {
+          "field": "numeroRapport",
+          "bbox": [150, 90, 300, 110],
+          "confidence": 0.94
+        },
+        {
+          "field": "dateInspection",
+          "bbox": [150, 130, 300, 150],
+          "confidence": 0.96
+        },
+        {
+          "field": "inspecteur",
+          "bbox": [150, 170, 350, 190],
+          "confidence": 0.92
+        },
+        {
+          "field": "observations",
+          "bbox": [120, 380, 520, 420],
+          "confidence": 0.78
+        }
+      ]
+    }
+  ],
+  "exportFormats": [
+    {
+      "id": "excel",
+      "name": "Excel",
+      "extension": ".xlsx",
+      "icon": "table",
+      "isDefault": true
+    },
+    {
+      "id": "csv",
+      "name": "CSV",
+      "extension": ".csv",
+      "icon": "file-text"
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "extension": ".json",
+      "icon": "code"
+    },
+    {
+      "id": "pdf",
+      "name": "PDF",
+      "extension": ".pdf",
+      "icon": "file-pdf"
+    }
+  ],
+  "processingSteps": [
+    {
+      "id": "upload",
+      "name": "Upload",
+      "position": 1
+    },
+    {
+      "id": "ocr_analysis",
+      "name": "Analyse OCR",
+      "position": 2
+    },
+    {
+      "id": "data_extraction",
+      "name": "Extraction",
+      "position": 3
+    },
+    {
+      "id": "data_validation",
+      "name": "Validation",
+      "position": 4
+    },
+    {
+      "id": "export",
+      "name": "Export",
+      "position": 5
+    }
+  ],
+  "documentTypes": [
+    {
+      "id": "facture", 
+      "name": "Facture",
+      "icon": "receipt"
+    },
+    {
+      "id": "certificat", 
+      "name": "Certificat",
+      "icon": "certificate"
+    },
+    {
+      "id": "logistique", 
+      "name": "Bon de livraison",
+      "icon": "truck"
+    },
+    {
+      "id": "contrat", 
+      "name": "Contrat",
+      "icon": "file-signature"
+    },
+    {
+      "id": "rapport", 
+      "name": "Rapport",
+      "icon": "clipboard-check"
+    }
+  ],
+  "statistics": {
+    "documentsProcessed": 187,
+    "averageAccuracy": 0.91,
+    "timePerDocument": "45s",
+    "mostCommonType": "facture",
+    "lastWeekActivity": [23, 18, 27, 31, 15, 5, 12]
+  }
+} 

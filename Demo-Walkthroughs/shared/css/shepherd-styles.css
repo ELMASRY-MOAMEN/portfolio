@@ -1,0 +1,231 @@
+/**
+ * Styles pour les visites guidées avec Shepherd.js
+ * Feuille de style commune à tous les walkthroughs de YVEA
+ */
+
+/* Styles globaux */
+body.yvea-tour-active {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Styles généraux des étapes */
+.yvea-shepherd-step {
+  max-width: 400px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  z-index: 10000;
+}
+
+/* En-tête des étapes */
+.shepherd-header {
+  background-color: #0C3D73; /* Bleu YVEA */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px 8px 0 0;
+}
+
+.shepherd-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.shepherd-cancel-icon {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease;
+}
+
+.shepherd-cancel-icon:hover {
+  color: white;
+}
+
+/* Corps des étapes */
+.shepherd-text {
+  padding: 16px;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.shepherd-text p {
+  margin-bottom: 12px;
+}
+
+.shepherd-text p:last-child {
+  margin-bottom: 0;
+}
+
+.shepherd-text ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.shepherd-text li {
+  margin-bottom: 6px;
+}
+
+/* Indicateur de progression */
+.yvea-progress-indicator {
+  padding: 0 16px 12px;
+  margin-top: -4px;
+}
+
+.yvea-progress-text {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.yvea-progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background-color: #eaeaea;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.yvea-progress-bar-inner {
+  height: 100%;
+  background-color: #0C3D73; /* Bleu YVEA */
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Zone des boutons */
+.shepherd-footer {
+  padding: 0 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Boutons communs */
+.shepherd-button {
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.yvea-shepherd-button-primary {
+  background-color: #0C3D73; /* Bleu YVEA */
+  color: white;
+}
+
+.yvea-shepherd-button-primary:hover {
+  background-color: #0A3160;
+}
+
+.yvea-shepherd-button-secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.yvea-shepherd-button-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* Flèche de l'étape */
+.shepherd-arrow {
+  border-width: 8px;
+}
+
+.shepherd-arrow:before {
+  border-width: 8px;
+  display: none; /* Simplification des flèches */
+}
+
+/* Overlay en arrière-plan */
+.shepherd-modal-overlay-container {
+  opacity: 0.7;
+  background-color: #000;
+  animation: shepherdModalFadeIn 0.3s ease;
+}
+
+@keyframes shepherdModalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Animation des étapes */
+.shepherd-element {
+  animation: shepherdElementFadeIn 0.3s ease;
+}
+
+@keyframes shepherdElementFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styles spécifiques pour l'étape d'introduction */
+.yvea-step-intro {
+  max-width: 500px;
+}
+
+.yvea-step-intro .shepherd-text {
+  font-size: 15px;
+}
+
+/* Styles spécifiques pour l'étape de conclusion */
+.yvea-step-conclusion {
+  max-width: 500px;
+  background-color: #F7FAFF;
+}
+
+.yvea-step-conclusion .shepherd-text {
+  font-size: 15px;
+}
+
+/* Surlignage des éléments ciblés */
+.shepherd-target {
+  box-shadow: 0 0 0 4px rgba(12, 61, 115, 0.4);
+  border-radius: 4px;
+  animation: shepherdTargetHighlight 1s infinite alternate;
+  z-index: 9999;
+}
+
+@keyframes shepherdTargetHighlight {
+  0% {
+    box-shadow: 0 0 0 4px rgba(12, 61, 115, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(12, 61, 115, 0.2);
+  }
+}
+
+/* Adaptations pour mobile */
+@media (max-width: 768px) {
+  .yvea-shepherd-step {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  
+  .shepherd-text {
+    font-size: 13px;
+  }
+  
+  .shepherd-button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+} 

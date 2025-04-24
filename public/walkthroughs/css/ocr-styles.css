@@ -1,0 +1,317 @@
+/**
+ * Styles spécifiques pour le walkthrough OCR et Extraction Intelligente
+ */
+
+/* Mise en évidence des éléments OCR */
+.ocr-header,
+.document-uploader,
+.ocr-progress,
+.extraction-preview,
+.correction-interface,
+.data-validation,
+.export-options,
+.export-formats,
+.ocr-footer {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Style des éléments actifs (ciblés par le tour) */
+.shepherd-enabled.ocr-header,
+.shepherd-enabled.document-uploader,
+.shepherd-enabled.ocr-progress,
+.shepherd-enabled.extraction-preview,
+.shepherd-enabled.correction-interface,
+.shepherd-enabled.data-validation,
+.shepherd-enabled.export-options,
+.shepherd-enabled.export-formats,
+.shepherd-enabled.ocr-footer {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+  transform: scale(1.02);
+  z-index: 9;
+  position: relative;
+}
+
+/* Zone de dépôt de document */
+.document-uploader {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: #f9fafb;
+  padding: 20px;
+  text-align: center;
+}
+
+.document-uploader:hover,
+.document-uploader.dragover {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.document-uploader-icon {
+  font-size: 32px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.document-uploader-text {
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+.document-uploader-button {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.document-uploader-button:hover {
+  background-color: #2563eb;
+}
+
+/* Barre de progression */
+.ocr-progress {
+  margin: 20px 0;
+}
+
+.ocr-progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ocr-progress-bar {
+  height: 100%;
+  background-color: #3b82f6;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.ocr-progress-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 5px;
+}
+
+.ocr-progress-percentage {
+  font-weight: 500;
+  color: #3b82f6;
+}
+
+/* Aperçu des données extraites */
+.extraction-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.original-document {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.original-document img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.extracted-data {
+  flex: 1;
+  min-width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.highlight-box {
+  position: absolute;
+  border: 2px solid #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.highlight-box:hover,
+.highlight-box.active {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Interface de correction */
+.correction-interface {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.correction-field {
+  margin-bottom: 15px;
+}
+
+.correction-field-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #4b5563;
+}
+
+.correction-field-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.correction-field-suggestion {
+  margin-top: 5px;
+  color: #6b7280;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.correction-field-suggestion svg {
+  margin-right: 5px;
+  color: #3b82f6;
+}
+
+/* Validation des données */
+.data-validation {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+.data-validation-icon {
+  color: #3b82f6;
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.data-validation-message {
+  flex: 1;
+}
+
+.data-validation-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #1e3a8a;
+}
+
+.data-validation-description {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* Options d'export */
+.export-options {
+  margin: 20px 0;
+}
+
+.export-formats {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.export-format-option {
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.export-format-option:hover {
+  border-color: #3b82f6;
+  background-color: #f0f9ff;
+}
+
+.export-format-option.selected {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* Adaptations pour mode sombre */
+@media (prefers-color-scheme: dark) {
+  .document-uploader {
+    background-color: #1f2937;
+    border-color: #4b5563;
+  }
+  
+  .document-uploader:hover,
+  .document-uploader.dragover {
+    border-color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+  
+  .document-uploader-icon,
+  .document-uploader-text {
+    color: #9ca3af;
+  }
+  
+  .extracted-data,
+  .correction-interface {
+    background-color: #1f2937;
+    border-color: #4b5563;
+  }
+  
+  .correction-field-input {
+    background-color: #111827;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .data-validation {
+    background-color: #172554;
+    border-left-color: #60a5fa;
+  }
+  
+  .data-validation-title {
+    color: #93c5fd;
+  }
+  
+  .data-validation-description {
+    color: #d1d5db;
+  }
+  
+  .export-format-option {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .export-format-option:hover {
+    background-color: #111827;
+    border-color: #60a5fa;
+  }
+  
+  .export-format-option.selected {
+    background-color: #2563eb;
+    color: white;
+    border-color: #60a5fa;
+  }
+} 

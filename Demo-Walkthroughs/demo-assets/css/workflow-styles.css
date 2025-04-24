@@ -1,0 +1,694 @@
+/* 
+ * YVEA Certificate Workflow Styles
+ * Styles for the certificate workflow walkthrough and demo
+ */
+
+:root {
+  --workflow-primary: #3f51b5;
+  --workflow-secondary: #536dfe;
+  --workflow-accent: #ff4081;
+  --workflow-light: #e8eaf6;
+  --workflow-dark: #303f9f;
+  --workflow-text: #212121;
+  --workflow-text-light: #757575;
+  --workflow-border: #e0e0e0;
+  --workflow-background: #fafafa;
+  --workflow-highlight: #f5f5f5;
+  --workflow-error: #f44336;
+  --workflow-success: #4caf50;
+  --workflow-warning: #ff9800;
+  --workflow-info: #2196f3;
+  --workflow-pending: #ff9800;
+  --workflow-validated: #4caf50;
+  --workflow-rejected: #f44336;
+  --workflow-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Certificate Dashboard */
+.certificate-dashboard {
+  background-color: var(--workflow-light);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  border: 1px solid var(--workflow-border);
+  box-shadow: 0 2px 8px var(--workflow-shadow);
+}
+
+/* Certificate Header */
+.certificats-header {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--workflow-text);
+  border-bottom: 2px solid var(--workflow-primary);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* New Certificate Button */
+.new-certificate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--workflow-primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.new-certificate-button:hover {
+  background-color: var(--workflow-dark);
+}
+
+.new-certificate-button::before {
+  content: '+';
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+/* Certificate Type Selector */
+.certificate-type-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--workflow-border);
+}
+
+.certificate-type {
+  flex: 1 0 200px;
+  padding: 15px;
+  border: 1px solid var(--workflow-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--workflow-light);
+}
+
+.certificate-type:hover {
+  background-color: var(--workflow-highlight);
+  border-color: var(--workflow-secondary);
+}
+
+.certificate-type.selected {
+  background-color: var(--workflow-light);
+  border-color: var(--workflow-primary);
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.certificate-type-icon {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--workflow-primary);
+}
+
+.certificate-type-name {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--workflow-text);
+}
+
+.certificate-type-desc {
+  font-size: 0.9rem;
+  color: var(--workflow-text-light);
+}
+
+/* Certificate Creation Form */
+.certificate-creation-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid var(--workflow-border);
+}
+
+.form-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--workflow-text);
+  border-bottom: 1px solid var(--workflow-border);
+  padding-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1 0 250px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--workflow-text);
+}
+
+.form-label.required::after {
+  content: '*';
+  color: var(--workflow-error);
+  margin-left: 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--workflow-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--workflow-primary);
+  outline: none;
+}
+
+.form-input.error {
+  border-color: var(--workflow-error);
+}
+
+.form-error {
+  color: var(--workflow-error);
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Supporting Docs Uploader */
+.supporting-docs-uploader {
+  padding: 20px;
+  border: 2px dashed var(--workflow-border);
+  border-radius: 8px;
+  text-align: center;
+  margin: 15px 0;
+  background-color: var(--workflow-light);
+  transition: all 0.2s;
+}
+
+.supporting-docs-uploader:hover {
+  background-color: var(--workflow-highlight);
+  border-color: var(--workflow-primary);
+}
+
+.uploader-title {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--workflow-text);
+}
+
+.uploader-description {
+  color: var(--workflow-text-light);
+  margin-bottom: 15px;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  color: var(--workflow-primary);
+  margin-bottom: 10px;
+}
+
+.uploaded-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--workflow-border);
+}
+
+.file-icon {
+  margin-right: 8px;
+  color: var(--workflow-primary);
+}
+
+.file-name {
+  font-size: 0.9rem;
+  color: var(--workflow-text);
+}
+
+.file-remove {
+  margin-left: 8px;
+  cursor: pointer;
+  color: var(--workflow-error);
+}
+
+/* Validation Section */
+.validation-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid var(--workflow-border);
+}
+
+.validation-header {
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--workflow-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.validation-status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.validation-status.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--workflow-success);
+}
+
+.validation-status.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--workflow-error);
+}
+
+.validation-status.warning {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--workflow-warning);
+}
+
+.validation-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.validation-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--workflow-highlight);
+}
+
+.validation-item.error {
+  background-color: rgba(244, 67, 54, 0.05);
+  border-left: 3px solid var(--workflow-error);
+}
+
+.validation-item.warning {
+  background-color: rgba(255, 152, 0, 0.05);
+  border-left: 3px solid var(--workflow-warning);
+}
+
+.validation-item.success {
+  background-color: rgba(76, 175, 80, 0.05);
+  border-left: 3px solid var(--workflow-success);
+}
+
+.validation-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.validation-content {
+  flex: 1;
+}
+
+.validation-message {
+  color: var(--workflow-text);
+  margin-bottom: 5px;
+}
+
+.validation-fix {
+  color: var(--workflow-text-light);
+  font-size: 0.9rem;
+}
+
+/* Submission Controls */
+.submission-controls {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+
+.submission-controls span {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.submission-controls span:first-child {
+  background-color: var(--workflow-light);
+  color: var(--workflow-primary);
+  border: 1px solid var(--workflow-primary);
+}
+
+.submission-controls span:first-child:hover {
+  background-color: var(--workflow-highlight);
+}
+
+.submission-controls span:last-child {
+  background-color: var(--workflow-primary);
+  color: white;
+}
+
+.submission-controls span:last-child:hover {
+  background-color: var(--workflow-dark);
+}
+
+/* Certificate Status Tracker */
+.certificate-status-tracker {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid var(--workflow-border);
+}
+
+.tracker-title {
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--workflow-text);
+  border-bottom: 1px solid var(--workflow-border);
+  padding-bottom: 8px;
+}
+
+.tracker-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.tracker-steps::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--workflow-border);
+  z-index: 1;
+}
+
+.tracker-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid var(--workflow-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.step-label {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--workflow-text-light);
+  max-width: 120px;
+}
+
+.tracker-step.active .step-circle {
+  background-color: var(--workflow-primary);
+  border-color: var(--workflow-primary);
+  color: white;
+}
+
+.tracker-step.completed .step-circle {
+  background-color: var(--workflow-success);
+  border-color: var(--workflow-success);
+  color: white;
+}
+
+.tracker-step.error .step-circle {
+  background-color: var(--workflow-error);
+  border-color: var(--workflow-error);
+  color: white;
+}
+
+.tracker-step.active .step-label {
+  color: var(--workflow-text);
+  font-weight: 500;
+}
+
+.certificate-list {
+  margin-top: 20px;
+}
+
+.certificate-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--workflow-border);
+  transition: background-color 0.2s;
+}
+
+.certificate-item:hover {
+  background-color: var(--workflow-highlight);
+}
+
+.certificate-info {
+  flex: 1;
+}
+
+.certificate-title {
+  font-weight: 500;
+  color: var(--workflow-text);
+  margin-bottom: 5px;
+}
+
+.certificate-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: var(--workflow-text-light);
+}
+
+.certificate-status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.certificate-status.pending {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--workflow-pending);
+}
+
+.certificate-status.validated {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--workflow-validated);
+}
+
+.certificate-status.rejected {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--workflow-rejected);
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.certificate-action {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.certificate-action.view {
+  background-color: var(--workflow-light);
+  color: var(--workflow-primary);
+}
+
+.certificate-action.download {
+  background-color: var(--workflow-primary);
+  color: white;
+}
+
+/* Amendment Section */
+.amendment-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid var(--workflow-border);
+}
+
+.amendment-title {
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--workflow-text);
+  border-bottom: 1px solid var(--workflow-border);
+  padding-bottom: 8px;
+}
+
+.amendment-details {
+  padding: 15px;
+  background-color: var(--workflow-light);
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.amendment-reason {
+  font-weight: 500;
+  color: var(--workflow-error);
+  margin-bottom: 10px;
+}
+
+.amendment-text {
+  color: var(--workflow-text);
+  margin-bottom: 15px;
+}
+
+.amendment-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Download Section */
+.download-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid var(--workflow-border);
+}
+
+.download-title {
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--workflow-text);
+  border-bottom: 1px solid var(--workflow-border);
+  padding-bottom: 8px;
+}
+
+.download-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.download-option {
+  flex: 1 0 200px;
+  padding: 15px;
+  border: 1px solid var(--workflow-border);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--workflow-light);
+}
+
+.download-option:hover {
+  background-color: var(--workflow-highlight);
+  border-color: var(--workflow-primary);
+}
+
+.download-icon {
+  font-size: 2rem;
+  color: var(--workflow-primary);
+  margin-bottom: 10px;
+}
+
+.download-format {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--workflow-text);
+}
+
+.download-desc {
+  font-size: 0.85rem;
+  color: var(--workflow-text-light);
+}
+
+/* Certificats Footer */
+.certificats-footer {
+  text-align: center;
+  padding: 10px;
+  color: var(--workflow-text-light);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--workflow-border);
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .certificate-type {
+    flex: 1 0 100%;
+  }
+  
+  .certificate-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .certificate-actions {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .tracker-steps {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .submission-controls {
+    flex-direction: column;
+  }
+  
+  .certificate-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .download-option {
+    flex: 1 0 100%;
+  }
+} 

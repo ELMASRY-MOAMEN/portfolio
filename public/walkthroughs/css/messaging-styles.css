@@ -1,0 +1,473 @@
+/**
+ * Styles spécifiques pour le walkthrough Messagerie Collaborative
+ */
+
+/* Mise en évidence des éléments de la messagerie */
+.messaging-header,
+.conversation-list,
+.message-status-indicators,
+.attachment-zone,
+.contextual-references,
+.security-badge,
+.messaging-footer {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Style des éléments actifs (ciblés par le tour) */
+.shepherd-enabled.messaging-header,
+.shepherd-enabled.conversation-list,
+.shepherd-enabled.message-status-indicators,
+.shepherd-enabled.attachment-zone,
+.shepherd-enabled.contextual-references,
+.shepherd-enabled.security-badge,
+.shepherd-enabled.messaging-footer {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+  transform: scale(1.02);
+  z-index: 9;
+  position: relative;
+}
+
+/* Interface de messagerie */
+.messaging-container {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  height: 600px;
+  width: 100%;
+  background-color: white;
+}
+
+/* Liste des conversations */
+.conversation-list {
+  width: 320px;
+  border-right: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  overflow-y: auto;
+}
+
+.conversation-list-header {
+  padding: 16px;
+  background-color: #10b981;
+  color: white;
+  font-weight: 600;
+}
+
+.conversation-search {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.conversation-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.conversation-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.conversation-item:hover {
+  background-color: #ecfdf5;
+}
+
+.conversation-item.active {
+  background-color: #d1fae5;
+  border-left: 4px solid #10b981;
+}
+
+.conversation-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6b7280;
+  margin-right: 12px;
+}
+
+.conversation-item.active .conversation-avatar {
+  background-color: #10b981;
+  color: white;
+}
+
+.conversation-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.conversation-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.conversation-time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.conversation-preview {
+  font-size: 13px;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Zone de conversation */
+.conversation-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.conversation-title {
+  display: flex;
+  align-items: center;
+}
+
+.conversation-contact {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.conversation-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.conversation-action-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.conversation-action-button:hover {
+  background-color: #e5e7eb;
+}
+
+.message-area {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #f9fafb;
+}
+
+.message {
+  margin-bottom: 16px;
+  max-width: 70%;
+}
+
+.message-bubble {
+  padding: 10px 14px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.message-outgoing {
+  margin-left: auto;
+}
+
+.message-outgoing .message-bubble {
+  background-color: #10b981;
+  color: white;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.message-incoming {
+  margin-right: auto;
+}
+
+.message-incoming .message-bubble {
+  background-color: white;
+  color: #111827;
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Status indicators */
+.message-status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.message-status-sent svg,
+.message-status-delivered svg,
+.message-status-read svg {
+  width: 16px;
+  height: 16px;
+}
+
+.message-status-sent {
+  color: #9ca3af;
+}
+
+.message-status-delivered {
+  color: #60a5fa;
+}
+
+.message-status-read {
+  color: #10b981;
+}
+
+/* Zone de saisie et pièces jointes */
+.message-composer {
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  background-color: white;
+}
+
+.attachment-zone {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.attachment-button {
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.attachment-button:hover {
+  background-color: #e5e7eb;
+}
+
+.attachment-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.message-send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #10b981;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.message-send-button:hover {
+  background-color: #059669;
+}
+
+/* Références contextuelles */
+.contextual-references {
+  background-color: #ecfdf5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reference-icon {
+  width: 24px;
+  height: 24px;
+  color: #10b981;
+}
+
+.reference-content {
+  flex: 1;
+  font-size: 14px;
+}
+
+.reference-title {
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 2px;
+}
+
+.reference-description {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.reference-action {
+  background: none;
+  border: none;
+  color: #10b981;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Badge de sécurité */
+.security-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #ecfdf5;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #059669;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+.security-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Adaptations pour mode sombre */
+@media (prefers-color-scheme: dark) {
+  .messaging-container {
+    background-color: #1f2937;
+  }
+  
+  .conversation-list {
+    background-color: #111827;
+    border-right-color: #374151;
+  }
+  
+  .conversation-search-input {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .conversation-item {
+    border-bottom-color: #374151;
+  }
+  
+  .conversation-item:hover {
+    background-color: #064e3b;
+  }
+  
+  .conversation-item.active {
+    background-color: #065f46;
+    border-left-color: #10b981;
+  }
+  
+  .conversation-name {
+    color: #e5e7eb;
+  }
+  
+  .conversation-time,
+  .conversation-preview {
+    color: #9ca3af;
+  }
+  
+  .conversation-header {
+    border-bottom-color: #374151;
+  }
+  
+  .conversation-action-button {
+    background-color: #374151;
+    color: #e5e7eb;
+  }
+  
+  .conversation-action-button:hover {
+    background-color: #4b5563;
+  }
+  
+  .message-area {
+    background-color: #111827;
+  }
+  
+  .message-incoming .message-bubble {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .message-composer {
+    background-color: #1f2937;
+    border-top-color: #374151;
+  }
+  
+  .attachment-button {
+    background-color: #374151;
+    color: #e5e7eb;
+  }
+  
+  .attachment-button:hover {
+    background-color: #4b5563;
+  }
+  
+  .message-input {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .contextual-references {
+    background-color: #064e3b;
+  }
+  
+  .reference-title {
+    color: #34d399;
+  }
+  
+  .reference-description {
+    color: #9ca3af;
+  }
+  
+  .reference-action {
+    color: #34d399;
+  }
+  
+  .security-badge {
+    background-color: #064e3b;
+    color: #34d399;
+  }
+} 
