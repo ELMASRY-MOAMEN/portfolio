@@ -238,81 +238,211 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
   );
 };
 
+// Déclaration d'augmentation pour ajouter Shepherd à Window
+declare global {
+  interface Window {
+    Shepherd?: any;
+  }
+}
+
 // Hook personnalisé pour initialiser le walkthrough conditionnel en fonction du type de modale
 function useWalkthrough(type: ModalType | null) {
   useEffect(() => {
     if (!type || typeof window === 'undefined') return;
+    
+    console.log(`[Walkthrough] Initialisation du walkthrough pour le type: ${type}`);
     
     // Fonction de nettoyage commune
     let cleanup = () => {};
     
     // Chargement des styles selon le type
     const loadStyles = () => {
-      const shepherdCss = document.createElement('link');
-      shepherdCss.rel = 'stylesheet';
-      shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-      document.head.appendChild(shepherdCss);
-      
-      const specificCss = document.createElement('link');
-      specificCss.rel = 'stylesheet';
-      specificCss.href = `/walkthroughs/css/${type}-styles.css`;
-      document.head.appendChild(specificCss);
-      
-      return () => {
-        document.head.removeChild(shepherdCss);
-        document.head.removeChild(specificCss);
-      };
+      console.log(`[Walkthrough] Chargement des styles pour: ${type}`);
+      try {
+        const shepherdCss = document.createElement('link');
+        shepherdCss.rel = 'stylesheet';
+        shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
+        document.head.appendChild(shepherdCss);
+        
+        const specificCss = document.createElement('link');
+        specificCss.rel = 'stylesheet';
+        specificCss.href = `/walkthroughs/css/${type}-styles.css`;
+        document.head.appendChild(specificCss);
+        
+        console.log('[Walkthrough] Styles chargés avec succès');
+        
+        return () => {
+          try {
+            document.head.removeChild(shepherdCss);
+            document.head.removeChild(specificCss);
+          } catch (error) {
+            console.error('[Walkthrough] Erreur lors du nettoyage des styles:', error);
+          }
+        };
+      } catch (error) {
+        console.error('[Walkthrough] Erreur lors du chargement des styles:', error);
+        return () => {};
+      }
     };
 
-    // Initialisation selon le type de modale
+    // Fonction pour charger Shepherd.js via CDN
+    const loadShepherdJS = () => {
+      return new Promise<void>((resolve, reject) => {
+        // Vérifier si Shepherd.js est déjà chargé
+        if (window.Shepherd) {
+          console.log('[Walkthrough] Shepherd.js déjà chargé');
+          resolve();
+          return;
+        }
+        
+        // Charger Shepherd.js depuis CDN
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js';
+        script.onload = () => {
+          console.log('[Walkthrough] Shepherd.js chargé avec succès');
+          resolve();
+        };
+        script.onerror = (err) => {
+          console.error('[Walkthrough] Erreur lors du chargement de Shepherd.js:', err);
+          reject(new Error('Erreur lors du chargement de Shepherd.js'));
+        };
+        document.head.appendChild(script);
+      });
+    };
+    
+    // Fonction pour initialiser un tour Shepherd simple
+    const initSimpleTour = (stepElements: string[]) => {
+      if (!window.Shepherd) {
+        console.error('[Walkthrough] Shepherd.js n\'est pas chargé');
+        return;
+      }
+      
+      console.log(`[Walkthrough] Initialisation d'un tour simple pour: ${type}`);
+      const tour = new window.Shepherd.Tour({
+        defaultStepOptions: {
+          cancelIcon: {
+            enabled: true
+          },
+          classes: 'shepherd-theme-default shepherd-theme-custom',
+          scrollTo: { behavior: 'smooth', block: 'center' }
+        },
+        useModalOverlay: true
+      });
+      
+      // Ajouter les étapes en fonction des éléments disponibles
+      stepElements.forEach((selector, index) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          tour.addStep({
+            id: `${type}-step-${index + 1}`,
+            title: `Étape ${index + 1}`,
+            text: `Découvrez cet élément important de la fonctionnalité ${type}.`,
+            attachTo: {
+              element: selector,
+              on: 'bottom'
+            },
+            buttons: [
+              {
+                text: 'Précédent',
+                action: tour.back,
+                classes: 'shepherd-button-secondary',
+                disabled: index === 0
+              },
+              {
+                text: index === stepElements.length - 1 ? 'Terminer' : 'Suivant',
+                action: index === stepElements.length - 1 ? tour.complete : tour.next
+              }
+            ]
+          });
+        } else {
+          console.warn(`[Walkthrough] Élément non trouvé pour le sélecteur: ${selector}`);
+        }
+      });
+      
+      // Démarrer le tour
+      if (tour.steps.length > 0) {
+        console.log(`[Walkthrough] Démarrage du tour avec ${tour.steps.length} étapes`);
+        tour.start();
+      } else {
+        console.error('[Walkthrough] Aucune étape disponible pour le tour');
+      }
+      
+      return tour;
+    };
+
+    // Fonction principale d'initialisation
     const initWalkthrough = async () => {
       try {
         cleanup = loadStyles();
         
-        await import('shepherd.js');
-        const { initShepherdBase } = await import('@/walkthroughs/shared/shepherd-base.js');
+        // Charger Shepherd.js
+        await loadShepherdJS();
         
-        let setupFunction: ((triggerId: string) => void) | undefined;
-        let triggerId: string | undefined;
+        // Sélecteurs à utiliser pour chaque type de walkthrough
+        const selectors: Record<string, string[]> = {
+          certificats: [
+            '.certificats-header',
+            '.new-certificate-button',
+            '.certificate-type-selector',
+            '.certificate-base-info',
+            '.products-section',
+            '.document-upload-zone',
+            '.validation-panel',
+            '.submission-controls',
+            '.certificate-status-tracker'
+          ],
+          ocr: [
+            '.ocr-header',
+            '.document-uploader',
+            '.ocr-progress',
+            '.extraction-preview',
+            '.correction-interface',
+            '.data-validation',
+            '.export-interface'
+          ],
+          assistant: [
+            '.assistant-icon',
+            '.assistant-trigger',
+            '.conversation-panel',
+            '.capabilities-section',
+            '.document-analysis-section'
+          ],
+          messaging: [
+            '.messaging-header',
+            '.chat-interface',
+            '.document-sharing',
+            '.notification-system',
+            '.status-tracking',
+            '.audit-trail'
+          ]
+        };
         
-        switch (type) {
-          case 'certificats':
-            const { setupCertificatsTourTrigger } = await import('@/walkthroughs/workflow-certificats/js/workflow-tour.js');
-            setupFunction = setupCertificatsTourTrigger;
-            triggerId = 'tour-certificats-trigger';
-            break;
-          case 'ocr':
-            const { setupOcrTourTrigger } = await import('@/walkthroughs/ocr-extraction/js/ocr-tour.js');
-            setupFunction = setupOcrTourTrigger;
-            triggerId = 'tour-ocr-trigger';
-            break;
-          case 'assistant':
-            const { setupAssistantTourTrigger } = await import('@/walkthroughs/assistant-ia/js/assistant-tour.js');
-            setupFunction = setupAssistantTourTrigger;
-            triggerId = 'tour-assistant-trigger';
-            break;
-          case 'messaging':
-            const { setupMessagingTourTrigger } = await import('@/walkthroughs/messaging/js/messaging-tour.js');
-            setupFunction = setupMessagingTourTrigger;
-            triggerId = 'tour-messaging-trigger';
-            break;
-        }
+        // Sélecteurs pour le type actuel
+        const currentSelectors = selectors[type] || [];
         
-        if (setupFunction && triggerId) {
-          setupFunction(triggerId);
-          // Optionnel : démarrage automatique après un petit délai
-          setTimeout(() => {
-            const triggerButton = document.getElementById(triggerId as string);
-            if (triggerButton) triggerButton.click();
-          }, 500);
+        // Initialiser le tour
+        if (currentSelectors.length > 0) {
+          const tour = initSimpleTour(currentSelectors);
+          
+          // Nettoyage du tour lors du démontage
+          cleanup = () => {
+            if (tour) {
+              tour.cancel();
+            }
+          };
+        } else {
+          console.error(`[Walkthrough] Aucun sélecteur défini pour le type: ${type}`);
         }
       } catch (error) {
-        console.error(`Erreur lors du chargement du walkthrough ${type}:`, error);
+        console.error('[Walkthrough] Erreur lors de l\'initialisation:', error);
       }
     };
 
+    // Démarrer l'initialisation
     initWalkthrough();
-    return () => cleanup();
+    
+    // Retourner la fonction de nettoyage
+    return cleanup;
   }, [type]);
 }
 
@@ -433,47 +563,37 @@ const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
 const AssistantModalContent = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="assistant-content">
-      <div className="assistant-icon text-2xl font-bold mb-4">Assistant Virtuel IA</div>
+      <div className="assistant-header text-2xl font-bold mb-4">Assistant Virtuel IA</div>
       
       <div className="mb-6 flex flex-col gap-4">
-        <div className="assistant-trigger bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Accès à l'assistant</h3>
-          <p>Votre assistant export est accessible à tout moment pendant votre navigation.</p>
-        </div>
-        
-        <div className="chatbox-container bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Interface de dialogue</h3>
-          <p>Posez vos questions en langage naturel et obtenez des réponses précises.</p>
-        </div>
-        
-        <div className="assistant-capabilities bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Capacités intelligentes</h3>
-          <p>L'assistant répond à vos questions sur la réglementation export et vous guide dans vos démarches.</p>
+        <div className="assistant-icon assistant-trigger bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Interface conversationnelle</h3>
+          <p>Interagissez avec l'assistant IA d'YVEA en langage naturel pour obtenir de l'aide sur vos démarches d'export.</p>
         </div>
         
         <div className="document-analysis-section bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Analyse de documents</h3>
-          <p>Partagez vos documents avec l'assistant pour une analyse approfondie et des conseils personnalisés.</p>
+          <p>Partagez vos documents avec l'assistant pour obtenir une analyse instantanée et des recommandations.</p>
         </div>
         
-        <div className="context-indicator bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Sensibilité au contexte</h3>
-          <p>L'assistant s'adapte à votre profil, vos produits et vos marchés cibles.</p>
+        <div className="conversation-panel bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Conseils réglementaires</h3>
+          <p>Obtenez des informations précises sur les exigences réglementaires pour vos marchés cibles.</p>
         </div>
         
-        <div className="command-helper bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Commandes spéciales</h3>
-          <p>Utilisez des commandes dédiées pour des fonctionnalités avancées.</p>
+        <div className="capabilities-section bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Recommandations d'export</h3>
+          <p>Recevez des conseils personnalisés pour optimiser vos démarches d'exportation.</p>
         </div>
         
-        <div className="feedback-controls bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Feedback et amélioration</h3>
-          <p>Aidez-nous à améliorer l'assistant en notant la pertinence des réponses.</p>
+        <div className="document-generation bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Génération de documents</h3>
+          <p>Générez automatiquement des brouillons de documents d'export basés sur vos besoins spécifiques.</p>
         </div>
       </div>
       
       <div className="assistant-footer text-center text-gray-500 mt-4">
-        <p>L'Assistant IA d'YVEA réduit de 85% les demandes de support de premier niveau.</p>
+        <p>L'assistant IA d'YVEA utilise GPT-4 fine-tuné pour fournir une aide contextuelle et précise sur toutes vos questions d'export.</p>
         <button 
           id="tour-assistant-trigger"
           className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
@@ -491,34 +611,34 @@ const MessagingModalContent = ({ onClose }: { onClose: () => void }) => {
       <div className="messaging-header text-2xl font-bold mb-4">Messagerie Collaborative</div>
       
       <div className="mb-6 flex flex-col gap-4">
-        <div className="conversation-list bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Centre de messagerie</h3>
-          <p>Accédez à toutes vos conversations avec les partenaires et organismes de certification.</p>
+        <div className="chat-interface bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Interface de chat</h3>
+          <p>Communiquez en temps réel avec vos partenaires et les organismes de certification dans un espace sécurisé.</p>
         </div>
         
-        <div className="message-status-indicators bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Indicateurs en temps réel</h3>
-          <p>Suivez l'état de vos messages (envoyé, reçu, lu) en temps réel.</p>
+        <div className="document-sharing bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Partage de documents</h3>
+          <p>Partagez et collaborez sur les documents critiques directement dans l'interface de messagerie.</p>
         </div>
         
-        <div className="attachment-zone bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Partage de fichiers</h3>
-          <p>Échangez facilement des documents et pièces jointes avec vos interlocuteurs.</p>
+        <div className="notification-system bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Système de notifications</h3>
+          <p>Recevez des alertes en temps réel sur les mises à jour importantes de vos certificats et documents.</p>
         </div>
         
-        <div className="contextual-references bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Références contextuelles</h3>
-          <p>Intégrez des références aux certificats et documents directement dans vos messages.</p>
+        <div className="status-tracking bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Suivi de statut intégré</h3>
+          <p>Consultez l'état d'avancement de vos certifications directement dans vos conversations.</p>
         </div>
         
-        <div className="security-badge bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Sécurité des échanges</h3>
-          <p>Profitez d'un système de messagerie sécurisé avec chiffrement de bout en bout.</p>
+        <div className="audit-trail bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Historique d'audit</h3>
+          <p>Accédez à un historique complet des communications et actions pour assurer la traçabilité.</p>
         </div>
       </div>
       
       <div className="messaging-footer text-center text-gray-500 mt-4">
-        <p>La messagerie collaborative d'YVEA accélère les échanges et réduit les délais de validation de 60%.</p>
+        <p>La messagerie collaborative d'YVEA centralise les communications entre tous les acteurs de la chaîne de certification pour plus d'efficacité.</p>
         <button 
           id="tour-messaging-trigger"
           className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
