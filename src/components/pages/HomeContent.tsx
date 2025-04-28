@@ -221,18 +221,16 @@ export default function HomeContent({ params }: HomeContentProps) {
   const pageContent = {
     fr: {
       heroTitle: "Bienvenue sur mon site web",
-      heroRole: "Project Manager & Product Owner en transformation digitale",
-      heroSubtitle: ["Transformer des idées ambitieuses en solutions digitales", "Piloter des projets innovants", "Optimiser les processus digitaux", "Garantir un ROI mesurable"],
-      heroDescription: "Fort de 9 ans d'expérience en transformation digitale et développement commercial B2B, je m'engage dans la réussite de projets à fort enjeu stratégique. Ancien fondateur ayant conçu et développé une plateforme SaaS innovante, j'allie vision stratégique et exécution opérationnelle pour transformer chaque défi en opportunité concrète.",
-      jobStatus: "En recherche active d'un poste en CDI ou CDD",
-      ctaProjects: "Voir mes projets",
+      heroRole: "Digital Product Manager – Expert IA & Innovation",
+      heroSubtitle: ["Développer des produits digitaux à forte valeur ajoutée", "Piloter l'innovation technologique stratégique", "Intégrer l'IA au cœur des modèles business", "Générer un impact opérationnel mesurable"],
+      heroDescription: "Découvrez mes expériences où j'ai allié vision produit, agilité méthodologique et leadership collaboratif pour délivrer une valeur opérationnelle mesurable et pérenne.",
       ctaBookMeeting: "Réserver un échange",
       ctaContact: "Me contacter",
-      profileAlt: "Moamen Elmasry - Project Manager spécialisé en transformation digitale",
+      profileAlt: "Moamen Elmasry - Digital Product Manager spécialisé en IA et Innovation",
       profileBadges: {
-        certifications: "Expert Certifié Google PMP",
-        experience: "9 ans d'expertise",
-        projects: "60% croissance"
+        certifications: "IBM AI Product Manager Certifié",
+        experience: "9+ ans d'expérience",
+        projects: "80% de gains d'efficacité"
       },
       stats: [
         { value: "80%", label: "Réduction des délais de projets" },
@@ -269,18 +267,16 @@ export default function HomeContent({ params }: HomeContentProps) {
     },
     en: {
       heroTitle: "Welcome to my website",
-      heroRole: "Project Manager & Product Owner in digital transformation",
-      heroSubtitle: ["Transforming ambitious ideas into digital solutions", "Leading innovative projects", "Optimizing digital processes", "Ensuring measurable ROI"],
-      heroDescription: "With 9 years of experience in digital transformation and B2B business development, I'm committed to the success of high-stakes strategic projects. Former entrepreneur who designed and developed an innovative SaaS platform, I combine strategic vision and operational execution to transform every challenge into a concrete opportunity.",
-      jobStatus: "Actively seeking a permanent or fixed-term position",
-      ctaProjects: "View my projects",
+      heroRole: "Digital Product Manager – AI & Innovation Expert",
+      heroSubtitle: ["Develop high-value digital products", "Drive strategic technological innovation", "Integrate AI into business models", "Generate measurable operational impact"],
+      heroDescription: "Discover my experiences where I've combined product vision, methodological agility, and collaborative leadership to deliver measurable and sustainable operational value.",
       ctaBookMeeting: "Book a meeting",
       ctaContact: "Contact me",
-      profileAlt: "Moamen Elmasry - Project Manager specialized in digital transformation",
+      profileAlt: "Moamen Elmasry - Digital Product Manager specialized in AI and Innovation",
       profileBadges: {
-        certifications: "Google PMP Certified Expert",
-        experience: "9 years of expertise",
-        projects: "60% growth"
+        certifications: "IBM AI Product Manager Certified",
+        experience: "9+ years of experience",
+        projects: "80% efficiency gains"
       },
       stats: [
         { value: "80%", label: "Reduction in project timelines" },
@@ -381,19 +377,6 @@ export default function HomeContent({ params }: HomeContentProps) {
                 <span className="gradient-text">{content.heroTitle}</span>
               </motion.h1>
               
-              {/* Statut de recherche d'emploi */}
-              <motion.div
-                className="mb-4"
-                initial="hidden"
-                animate={isLoaded ? "visible" : "hidden"}
-                custom={1.5}
-                variants={fadeInUp}
-              >
-                <span className="inline-block px-4 py-1 bg-green-500/20 text-green-700 font-bold rounded-full text-sm">
-                  {content.jobStatus}
-                </span>
-              </motion.div>
-              
               <motion.div
                 className="font-bricolage text-xl md:text-2xl text-text-primary font-medium mb-6 h-12"
                 initial="hidden"
@@ -425,20 +408,6 @@ export default function HomeContent({ params }: HomeContentProps) {
                 custom={4}
                 variants={fadeInUp}
               >
-                <AnimatedButton 
-                  href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export"
-                  variant="primary"
-                  size="lg"
-                  ariaLabel={content.ctaProjects}
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  }
-                >
-                  {content.ctaProjects}
-                </AnimatedButton>
-                
                 <AnimatedButton 
                   href="https://calendly.com/elmasrymoamen/30min"
                   variant="primary"
