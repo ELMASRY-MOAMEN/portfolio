@@ -87,7 +87,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link 
-                    href={locale === 'fr' ? '/fr/#projets' : '/en/#projets'} 
+                    href={`${t.routes.home}#projets`} 
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {locale === 'fr' ? 'Projets' : 'Projects'}

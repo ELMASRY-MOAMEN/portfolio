@@ -53,7 +53,7 @@ const Header = () => {
             <Link href={langPrefix} className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`}>
               {t.navigation.home}
             </Link>
-            <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`}>
+            <Link href={`${langPrefix}/#projets`} className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`}>
               {locale === 'fr' ? 'Projets' : 'Projects'}
             </Link>
             <a href="https://calendly.com/elmasrymoamen/30min" className={`font-bricolage ${scrolled ? 'text-text-primary' : 'text-white'} hover:text-primary transition-colors`} target="_blank" rel="noopener noreferrer">
@@ -102,7 +102,7 @@ const Header = () => {
               <Link href={langPrefix} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {t.navigation.home}
               </Link>
-              <Link href="https://moamen.fr/fr/#projets:~:text=de%20mon%20parcours.-,Naviguer%20par%20projet,-YVEA%20%E2%80%93%20SaaS%20export" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
+              <Link href={`${langPrefix}/#projets`} className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors">
                 {locale === 'fr' ? 'Projets' : 'Projects'}
               </Link>
               <a href="https://calendly.com/elmasrymoamen/30min" className="px-2 py-1 font-bricolage text-text-primary hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">

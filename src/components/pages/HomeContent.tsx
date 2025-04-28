@@ -653,9 +653,9 @@ export default function HomeContent({ params }: HomeContentProps) {
         className="py-16 bg-gray-50"
         direction="up"
         withGrain={true}
-        data-id="projets"
+        data-section-id="projets"
       >
-        <div className="container-custom">
+        <div id="projets" className="container-custom">
           <motion.h2 
             className="text-3xl font-unbounded font-bold mb-3 text-center"
             initial={{ opacity: 0, y: 20 }}
