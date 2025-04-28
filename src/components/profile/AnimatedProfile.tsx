@@ -126,8 +126,8 @@ export default function AnimatedProfile({
               </svg>
             </div>
             <div>
-              <div className="text-xs text-[#0052FF] font-medium">{locale === 'fr' ? 'Certifié' : 'Certified'}</div>
-              <div className="font-bold text-[#0052FF]">{badges.certifications}</div>
+              <div className="text-xs text-gray-200 font-medium">{locale === 'fr' ? 'Certifié' : 'Certified'}</div>
+              <div className="font-bold text-gray-200">{badges.certifications}</div>
             </div>
           </div>
         </motion.div>
@@ -154,8 +154,8 @@ export default function AnimatedProfile({
               </svg>
             </div>
             <div>
-              <div className="text-xs text-[#0052FF] font-medium">{locale === 'fr' ? 'Expérience' : 'Experience'}</div>
-              <div className="font-bold text-[#0052FF]">{badges.experience}</div>
+              <div className="text-xs text-gray-200 font-medium">{locale === 'fr' ? 'Expérience' : 'Experience'}</div>
+              <div className="font-bold text-gray-200">{badges.experience}</div>
             </div>
           </div>
         </motion.div>
@@ -182,8 +182,8 @@ export default function AnimatedProfile({
               </svg>
             </div>
             <div>
-              <div className="text-xs text-[#0052FF] font-medium">{locale === 'fr' ? 'Impact Business' : 'Business Impact'}</div>
-              <div className="font-bold text-[#0052FF]">{badges.projects}</div>
+              <div className="text-xs text-gray-200 font-medium">{locale === 'fr' ? 'Impact Business' : 'Business Impact'}</div>
+              <div className="font-bold text-gray-200">{badges.projects}</div>
             </div>
           </div>
         </motion.div>

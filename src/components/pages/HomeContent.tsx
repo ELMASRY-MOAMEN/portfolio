@@ -517,7 +517,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {locale === 'fr' ? 'Allier leadership humain, vision business et innovation technologique' : 'Combining human leadership, business vision and technological innovation'}
+                {locale === 'fr' ? 'Le pont stratégique entre leadership, vision et innovation responsable' : 'Digital Product Manager specialized in AI and enterprise solutions'}
               </motion.h2>
               
               <motion.p 
@@ -528,11 +528,11 @@ export default function HomeContent({ params }: HomeContentProps) {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 {locale === 'fr' 
-                  ? "Passionné par l'impact concret du digital, je transforme les défis complexes en opportunités grâce à une vision stratégique et à un leadership humain. Fort de 9 ans d'expérience dans des environnements B2B exigeants, j'ai débuté en développant des compétences commerciales solides avant d'acquérir une expertise technique poussée – expérience qui m'a conduit à orchestrer d'importantes transformations digitales. Mon parcours m'a appris que la réussite d'un projet repose sur la capacité à fédérer des équipes autour d'une vision commune et à mettre la technologie au service du business."
-                  : "Passionate about the concrete impact of digital, I transform complex challenges into opportunities thanks to a strategic vision and human leadership. With 9 years of experience in demanding B2B environments, I started by developing strong commercial skills before acquiring advanced technical expertise – an experience that led me to orchestrate major digital transformations. My journey has taught me that a project's success relies on the ability to unite teams around a shared vision and to put technology at the service of business."}
+                  ? "Mon approche repose sur une vision produit clairement définie, enrichie par une maîtrise avancée des technologies émergentes telles que l'IA générative (GPT-4, Azure OpenAI), les plateformes SaaS et l'automatisation avancée. Habitué à collaborer étroitement avec des équipes techniques et métiers internationales, je favorise un environnement de travail agile et collaboratif pour accélérer l'adoption interne des innovations technologiques et dépasser efficacement les résistances au changement."
+                  : "As a Digital Product Manager specialized in AI, I design and develop high-value digital products. My unique expertise combines technological innovation and business vision, reducing production timelines by 80% and increasing commercial performance by up to 300%. I transform complex AI concepts into concrete enterprise solutions that generate measurable and sustainable operational impact."}
               </motion.p>
               
-              {locale === 'fr' && (
+              {locale === 'fr' ? (
                 <motion.p 
                   className="text-lg mb-6"
                   initial={{ opacity: 0, y: 20 }}
@@ -540,11 +540,9 @@ export default function HomeContent({ params }: HomeContentProps) {
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  En fondant YVEA, j'ai combiné innovation et exécution opérationnelle pour lancer une plateforme SaaS dédiée à la certification export, soutenue par une IA générative (MAY) qui redéfinit la formation aux procédures internationales. Aujourd'hui, je souhaite intégrer une organisation ambitieuse où mes compétences en développement commercial et en transformation digitale se conjuguent pour générer un impact durable, en alignant la stratégie, la technologie et l'humain.
+                  J'excelle à traduire les enjeux métier en fonctionnalités à fort impact, en maîtrisant les cycles Agile, le pilotage data-driven et la gestion d'équipes internationales. Mon ambition : aligner stratégie produit et technologies émergentes pour rendre chaque initiative scalable, responsable et orientée résultats.
                 </motion.p>
-              )}
-              
-              {locale === 'en' && (
+              ) : (
                 <motion.p 
                   className="text-lg mb-6"
                   initial={{ opacity: 0, y: 20 }}
@@ -552,7 +550,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  By founding YVEA, I combined innovation and operational execution to launch a SaaS platform dedicated to export certification, supported by a generative AI (MAY) that redefines training for international procedures. Today, I wish to join an ambitious organization where my skills in business development and digital transformation combine to generate sustainable impact, by aligning strategy, technology and people.
+                  I master the complete lifecycle of AI products - from strategic ideation and use case definition to technical integration and continuous optimization. My expertise covers AI product design (LLMs, OCR, automation), impact-based prioritization (RICE method), and Agile coordination of cross-functional teams. My distinctive value lies in my ability to translate business needs into innovative technological solutions while ensuring their adoption by end users.
                 </motion.p>
               )}
               
