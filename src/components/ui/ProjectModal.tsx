@@ -156,24 +156,7 @@ const ProjectModal = ({ isOpen, onClose, title, detail, locale, projectId = '' }
           ? "Voici une démo interactive de MAY, notre copilot d'export propulsé par l'IA. Cliquez pour explorer ses fonctionnalités." 
           : "Here's an interactive demo of MAY, our AI-powered export copilot. Click to explore its features."}
       </div>
-      <div style={{ position: 'relative', paddingBottom: 'calc(50.418410041841% + 41px)', height: 0, width: '100%' }}>
-        <iframe 
-          src="https://demo.arcade.software/R4EdYeJx1ocNFzBr7mvw?embed&embed_mobile=modal&embed_desktop=modal&show_copy_link=true" 
-          title="MAY : Export copilot" 
-          frameBorder="0" 
-          loading="lazy" 
-          allowFullScreen
-          allow="clipboard-write" 
-          style={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            width: '100%', 
-            height: '100%', 
-            colorScheme: 'light' 
-          }}
-        />
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: `<!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(50.418410041841% + 41px); height: 0; width: 100%;"><iframe src="https://demo.arcade.software/R4EdYeJx1ocNFzBr7mvw?embed&embed_mobile=inline&embed_desktop=inline&squared=true&show_copy_link=true" title="MAY : Export copilot" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->` }} />
     </div>
   );
 
