@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IoMdClose } from 'react-icons/io';
 import Image from 'next/image';
 import { FiArrowRight, FiCheckCircle, FiAward, FiLayers, FiTarget } from 'react-icons/fi';
-import { ArcadeEmbed } from './ArcadeEmbed';
 
 export interface ProjectDetail {
   context: string;
@@ -157,7 +156,24 @@ const ProjectModal = ({ isOpen, onClose, title, detail, locale, projectId = '' }
           ? "Voici une démo interactive de MAY, notre copilot d'export propulsé par l'IA. Cliquez pour explorer ses fonctionnalités." 
           : "Here's an interactive demo of MAY, our AI-powered export copilot. Click to explore its features."}
       </div>
-      <ArcadeEmbed />
+      <div style={{ position: 'relative', paddingBottom: 'calc(50.418410041841% + 41px)', height: 0, width: '100%' }}>
+        <iframe 
+          src="https://demo.arcade.software/R4EdYeJx1ocNFzBr7mvw?embed&embed_mobile=modal&embed_desktop=modal&show_copy_link=true" 
+          title="MAY : Export copilot" 
+          frameBorder="0" 
+          loading="lazy" 
+          allowFullScreen
+          allow="clipboard-write" 
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            colorScheme: 'light' 
+          }}
+        />
+      </div>
     </div>
   );
 
