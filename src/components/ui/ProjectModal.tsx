@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IoMdClose } from 'react-icons/io';
 import Image from 'next/image';
 import { FiArrowRight, FiCheckCircle, FiAward, FiLayers, FiTarget } from 'react-icons/fi';
+import { ArcadeEmbed } from './ArcadeEmbed';
 
 export interface ProjectDetail {
   context: string;
@@ -145,6 +146,18 @@ const ProjectModal = ({ isOpen, onClose, title, detail, locale, projectId = '' }
           allowFullScreen
         ></iframe>
       </div>
+    </div>
+  );
+
+  // Render interactive demo for MAY project
+  const renderArcadeEmbed = () => (
+    <div>
+      <div className="text-sm text-gray-500 mb-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+        {locale === 'fr' 
+          ? "Voici une démo interactive de MAY, notre copilot d'export propulsé par l'IA. Cliquez pour explorer ses fonctionnalités." 
+          : "Here's an interactive demo of MAY, our AI-powered export copilot. Click to explore its features."}
+      </div>
+      <ArcadeEmbed />
     </div>
   );
 
@@ -484,13 +497,13 @@ const ProjectModal = ({ isOpen, onClose, title, detail, locale, projectId = '' }
                           </svg>
                         </div>
                         <h4 className="text-xl sm:text-2xl font-bold text-gray-800">
-                          {locale === 'fr' ? 'Présentation vidéo' : 'Video Presentation'}
+                          {locale === 'fr' ? 'Démo interactive' : 'Interactive Demo'}
                         </h4>
                       </div>
                       
                       <div className="pl-16">
                         <div className="mt-2 mb-6">
-                          {renderYouTubeEmbed()}
+                          {renderArcadeEmbed()}
                         </div>
                       </div>
                     </motion.div>
