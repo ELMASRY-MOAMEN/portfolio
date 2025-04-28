@@ -209,7 +209,7 @@ const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
 export default function HomeContent({ params }: HomeContentProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedProject, setSelectedProject] = useState("YVEA");
-  const [selectedSkillTab, setSelectedSkillTab] = useState('soft');
+  const [selectedSkillTab, setSelectedSkillTab] = useState('hard');
   const [selectedDetailProject, setSelectedDetailProject] = useState<string | null>(null);
   const locale = params.lang;
   const langPrefix = `/${locale}`;
@@ -511,7 +511,7 @@ export default function HomeContent({ params }: HomeContentProps) {
               </motion.span>
               
               <motion.h2 
-                className="text-3xl font-unbounded font-bold mb-4"
+                className="text-3xl font-unbounded font-bold mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -520,39 +520,87 @@ export default function HomeContent({ params }: HomeContentProps) {
                 {locale === 'fr' ? 'Le pont stratégique entre leadership, vision et innovation responsable' : 'Digital Product Manager specialized in AI and enterprise solutions'}
               </motion.h2>
               
-              <motion.p 
-                className="text-lg mb-4"
+              <motion.div 
+                className="mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
+                <h3 className="text-lg font-bold text-primary mb-4">
+                  {locale === 'fr' ? 'Mon approche en 4 points clés :' : 'My approach in 4 key points:'}
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
+                    <h4 className="font-semibold mb-2 text-gray-800">
+                      {locale === 'fr' ? 'Vision produit claire' : 'Clear product vision'}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {locale === 'fr' 
+                        ? "Définition d'objectifs business et de roadmaps orientées ROI" 
+                        : "Definition of business objectives and ROI-oriented roadmaps"}
+                    </p>
+                  </div>
+                  
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
+                    <h4 className="font-semibold mb-2 text-gray-800">
+                      {locale === 'fr' ? 'Technologies émergentes' : 'Emerging technologies'}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {locale === 'fr' 
+                        ? "IA générative (GPT-4, Azure OpenAI), SaaS, automatisation avancée" 
+                        : "Generative AI (GPT-4, Azure OpenAI), SaaS, advanced automation"}
+                    </p>
+                  </div>
+                  
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
+                    <h4 className="font-semibold mb-2 text-gray-800">
+                      {locale === 'fr' ? 'Collaboration internationale' : 'International collaboration'}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {locale === 'fr' 
+                        ? "Pilotage d'équipes techniques et métiers réparties sur plusieurs zones" 
+                        : "Management of technical and business teams spread across multiple regions"}
+                    </p>
+                  </div>
+                  
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
+                    <h4 className="font-semibold mb-2 text-gray-800">
+                      {locale === 'fr' ? 'Agilité & adoption' : 'Agility & adoption'}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {locale === 'fr' 
+                        ? "Scrum/Kanban pour accélérer l'intégration et lever les freins au changement" 
+                        : "Scrum/Kanban to accelerate integration and overcome resistance to change"}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.p 
+                className="text-lg mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {locale === 'fr' 
-                  ? "Mon approche repose sur une vision produit clairement définie, enrichie par une maîtrise avancée des technologies émergentes telles que l'IA générative (GPT-4, Azure OpenAI), les plateformes SaaS et l'automatisation avancée. Habitué à collaborer étroitement avec des équipes techniques et métiers internationales, je favorise un environnement de travail agile et collaboratif pour accélérer l'adoption interne des innovations technologiques et dépasser efficacement les résistances au changement."
-                  : "As a Digital Product Manager specialized in AI, I design and develop high-value digital products. My unique expertise combines technological innovation and business vision, reducing production timelines by 80% and increasing commercial performance by up to 300%. I transform complex AI concepts into concrete enterprise solutions that generate measurable and sustainable operational impact."}
+                  ? "J'excelle à traduire les enjeux métier en fonctionnalités à fort impact, en maîtrisant les cycles Agile, le pilotage data-driven et la gestion d'équipes internationales."
+                  : "I excel at translating business challenges into high-impact features, mastering Agile cycles, data-driven management, and international team leadership."}
               </motion.p>
               
-              {locale === 'fr' ? (
-                <motion.p 
-                  className="text-lg mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  J'excelle à traduire les enjeux métier en fonctionnalités à fort impact, en maîtrisant les cycles Agile, le pilotage data-driven et la gestion d'équipes internationales. Mon ambition : aligner stratégie produit et technologies émergentes pour rendre chaque initiative scalable, responsable et orientée résultats.
-                </motion.p>
-              ) : (
-                <motion.p 
-                  className="text-lg mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  I master the complete lifecycle of AI products - from strategic ideation and use case definition to technical integration and continuous optimization. My expertise covers AI product design (LLMs, OCR, automation), impact-based prioritization (RICE method), and Agile coordination of cross-functional teams. My distinctive value lies in my ability to translate business needs into innovative technological solutions while ensuring their adoption by end users.
-                </motion.p>
-              )}
+              <motion.p 
+                className="text-lg mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                {locale === 'fr' 
+                  ? "Ma vision : concevoir des produits intelligents, scalables et responsables qui réinventent l'expérience utilisateur et cimentent une croissance durable."
+                  : "My vision: designing intelligent, scalable, and responsible products that reinvent the user experience and cement sustainable growth."}
+              </motion.p>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -877,16 +925,16 @@ export default function HomeContent({ params }: HomeContentProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <button 
-                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'soft' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                onClick={() => setSelectedSkillTab('soft')}
-              >
-                {locale === 'fr' ? 'Soft Skills' : 'Soft Skills'}
-              </button>
-              <button 
                 className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'hard' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
                 onClick={() => setSelectedSkillTab('hard')}
               >
                 {locale === 'fr' ? 'Hard Skills' : 'Hard Skills'}
+              </button>
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'soft' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedSkillTab('soft')}
+              >
+                {locale === 'fr' ? 'Soft Skills' : 'Soft Skills'}
               </button>
             </motion.div>
           </div>
@@ -916,8 +964,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Fédération des équipes multiculturelles autour d'une vision commune, favorisant l'innovation et la performance collective."
-                    : "Uniting multicultural teams around a shared vision, fostering innovation and collective performance."}
+                    ? "Vision claire et mobilisatrice qui inspire les équipes pluridisciplinaires à atteindre des objectifs ambitieux et créer un impact mesurable."
+                    : "Clear and mobilizing vision that inspires multidisciplinary teams to achieve ambitious goals and create measurable impact."}
                 </p>
               </motion.div>
               
@@ -933,12 +981,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Communication efficace' : 'Effective Communication'}
+                  {locale === 'fr' ? 'Communication stratégique' : 'Strategic Communication'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Transmission claire des objectifs, enjeux et feedbacks, facilitant l'adhésion et évitant les malentendus organisationnels."
-                    : "Clear transmission of objectives, stakes and feedback, facilitating buy-in and avoiding organizational misunderstandings."}
+                    ? "Communication percutante adaptée aux différentes parties prenantes, facilitant l'alignement et l'adhésion à tous les niveaux organisationnels."
+                    : "Impactful communication adapted to different stakeholders, facilitating alignment and buy-in at all organizational levels."}
                 </p>
               </motion.div>
               
@@ -958,8 +1006,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Capacité à pivoter rapidement face aux imprévus, transformant les contraintes en opportunités d'innovation et d'optimisation."
-                    : "Ability to pivot quickly in the face of unforeseen events, transforming constraints into opportunities for innovation and optimization."}
+                    ? "Flexibilité et résilience face aux environnements complexes et changeants, permettant de transformer les obstacles en opportunités d'innovation."
+                    : "Flexibility and resilience in complex and changing environments, allowing obstacles to be transformed into innovation opportunities."}
                 </p>
               </motion.div>
               
@@ -979,8 +1027,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Maintien du calme et prise de décision éclairée sous pression, assurant la continuité des opérations même en environnement incertain."
-                    : "Maintaining calm and making informed decisions under pressure, ensuring continuity of operations even in uncertain environments."}
+                    ? "Capacité à prendre des décisions critiques sous pression, à mobiliser les ressources nécessaires et à maintenir la cohésion d'équipe face à l'adversité."
+                    : "Ability to make critical decisions under pressure, mobilize necessary resources, and maintain team cohesion in the face of adversity."}
                 </p>
               </motion.div>
               
@@ -996,12 +1044,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Innovation stratégique' : 'Strategic Innovation'}
+                  {locale === 'fr' ? 'Leadership produit' : 'Product Leadership'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Identification précoce des tendances émergentes et capacité à réinventer les processus pour maintenir un avantage compétitif durable."
-                    : "Early identification of emerging trends and ability to reinvent processes to maintain a sustainable competitive advantage."}
+                    ? "Capacité à définir une vision produit ambitieuse, à prioriser stratégiquement les fonctionnalités et à conduire des équipes vers l'excellence."
+                    : "Ability to define an ambitious product vision, strategically prioritize features and lead teams toward excellence."}
                 </p>
               </motion.div>
               
@@ -1017,12 +1065,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Négociation & médiation' : 'Negotiation & Mediation'}
+                  {locale === 'fr' ? 'Intelligence émotionnelle' : 'Emotional Intelligence'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Recherche d'accords gagnant-gagnant et résolution des conflits d'équipe, favorisant un environnement de travail harmonieux et productif."
-                    : "Seeking win-win agreements and resolving team conflicts, promoting a harmonious and productive work environment."}
+                    ? "Forte empathie et compréhension des dynamiques interpersonnelles, permettant de créer des environnements où chacun peut s'épanouir et exceller."
+                    : "Strong empathy and understanding of interpersonal dynamics, creating environments where everyone can thrive and excel."}
                 </p>
               </motion.div>
             </motion.div>
@@ -1049,12 +1097,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Méthodologies Agiles' : 'Agile Methodologies'}
+                  {locale === 'fr' ? 'Product Management' : 'Product Management'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Maîtrise de Scrum, Kanban et SAFe, permettant d'optimiser la planification et d'accélérer l'exécution des projets jusqu'à 80%."
-                    : "Mastery of Scrum, Kanban and SAFe, optimizing planning and accelerating project execution by up to 80%."}
+                    ? "Expertise approfondie en définition de roadmap, priorisation stratégique (RICE, ICE) et développement itératif basé sur les retours utilisateurs."
+                    : "Deep expertise in roadmap definition, strategic prioritization (RICE, ICE) and iterative development based on user feedback."}
                 </p>
               </motion.div>
               
@@ -1070,12 +1118,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Développement SaaS & IA' : 'SaaS & AI Development'}
+                  {locale === 'fr' ? 'IA & Technologies émergentes' : 'AI & Emerging Technologies'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Conception et déploiement de plateformes SaaS avec intégration IA (GPT-4, OCR), augmentant l'efficacité des processus de 60%."
-                    : "Design and deployment of SaaS platforms with AI integration (GPT-4, OCR), increasing process efficiency by 60%."}
+                    ? "Intégration d'IA générative (GPT-4) et technologies prédictives dans les produits, avec une compréhension avancée des possibilités et limitations."
+                    : "Integration of generative AI (GPT-4) and predictive technologies in products, with advanced understanding of possibilities and limitations."}
                 </p>
               </motion.div>
               
@@ -1091,12 +1139,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Infrastructure Cloud' : 'Cloud Infrastructure'}
+                  {locale === 'fr' ? 'Design thinking & UX' : 'Design Thinking & UX'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Mise en œuvre d'architectures cloud scalables (AWS, Azure), garantissant une disponibilité élevée et réduisant les coûts d'exploitation."
-                    : "Implementation of scalable cloud architectures (AWS, Azure), ensuring high availability and reducing operating costs."}
+                    ? "Conception centrée utilisateur combinant recherche terrain, prototypage rapide et tests d'usabilité pour des solutions à forte valeur ajoutée."
+                    : "User-centered design combining field research, rapid prototyping and usability testing for high value-added solutions."}
                 </p>
               </motion.div>
               
@@ -1112,12 +1160,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'DevOps & CI/CD' : 'DevOps & CI/CD'}
+                  {locale === 'fr' ? 'Growth & Acquisition' : 'Growth & Acquisition'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Automatisation des pipelines de déploiement (Docker, Kubernetes), accélérant les cycles de livraison de 70% tout en maintenant la qualité."
-                    : "Automation of deployment pipelines (Docker, Kubernetes), accelerating delivery cycles by 70% while maintaining quality."}
+                    ? "Élaboration de stratégies d'acquisition et de rétention, optimisation des tunnels de conversion et analyse des métriques d'engagement."
+                    : "Development of acquisition and retention strategies, optimization of conversion funnels and analysis of engagement metrics."}
                 </p>
               </motion.div>
               
@@ -1133,12 +1181,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Analyse de données' : 'Data Analysis'}
+                  {locale === 'fr' ? 'Pilotage Data-Driven' : 'Data-Driven Management'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Génération d'insights opérationnels à partir de données complexes, facilitant la prise de décision stratégique et l'optimisation des KPIs."
-                    : "Generating operational insights from complex data, facilitating strategic decision-making and KPI optimization."}
+                    ? "Exploitation de données analytiques pour guider les décisions produit, identifier les opportunités d'amélioration et mesurer l'impact des initiatives."
+                    : "Leveraging analytical data to guide product decisions, identify improvement opportunities and measure the impact of initiatives."}
                 </p>
               </motion.div>
               
@@ -1154,12 +1202,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Outils de gestion de projet' : 'Project Management Tools'}
+                  {locale === 'fr' ? 'Méthodologies Agiles' : 'Agile Methodologies'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Pilotage efficace via JIRA, Asana, MS Project, garantissant la visibilité, coordination et suivi précis des équipes distribuées."
-                    : "Effective management through JIRA, Asana, MS Project, ensuring visibility, coordination and precise tracking of distributed teams."}
+                    ? "Maîtrise approfondie de Scrum, Kanban, SAFe et OKRs, permettant de délivrer efficacement des produits complexes dans des environnements changeants."
+                    : "In-depth mastery of Scrum, Kanban, SAFe and OKRs, enabling efficient delivery of complex products in changing environments."}
                 </p>
               </motion.div>
             </motion.div>
@@ -1169,37 +1217,41 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* CALL TO ACTION SECTION (Updated with warmer tone) */}
       <AnimatedSection 
-        className="py-16 bg-white"
+        className="py-20 bg-gradient-to-b from-white to-primary/5"
         direction="up"
         withGrain={true}
       >
-        <div className="container-custom text-center">
+        <div className="container-custom text-center relative">
+          {/* Éléments décoratifs subtils */}
+          <div className="absolute top-0 right-10 w-24 h-24 rounded-full bg-primary/5 blur-xl"></div>
+          <div className="absolute bottom-0 left-10 w-32 h-32 rounded-full bg-primary/5 blur-xl"></div>
+          
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-8 gradient-text"
+            className="text-4xl font-unbounded font-bold mb-8 gradient-text"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
           >
             {locale === 'fr' 
-              ? 'Discutons d\'un avenir commun' 
-              : 'Let\'s discuss a shared future'}
+              ? 'Prêt à collaborer?' 
+              : 'Ready to collaborate?'}
           </motion.h2>
           
           <motion.p 
-            className="text-xl mb-10 max-w-2xl mx-auto"
+            className="text-xl mb-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {locale === 'fr'
-              ? "Si vous aussi vous êtes animé par un leadership humain, une vision orientée impact et l'ambition d'innover durablement, alors je serais honoré d'échanger pour explorer ensemble les prochaines étapes."
-              : "If you are also driven by human leadership, an impact-oriented vision and the ambition to innovate sustainably, then I would be honored to exchange and explore the next steps together."}
+              ? "Si votre organisation recherche un Digital Product Manager expérimenté capable de porter vos projets IA et technologiques à un niveau supérieur, je suis prêt à apporter mon expertise et mon leadership en interne pour atteindre vos objectifs stratégiques ambitieux."
+              : "If your organization is looking for an experienced Digital Product Manager capable of taking your AI and technological projects to the next level, I am ready to bring my expertise and leadership internally to achieve your ambitious strategic objectives."}
           </motion.p>
           
           <motion.div 
-            className="flex justify-center"
+            className="flex flex-col md:flex-row justify-center items-center gap-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -1218,6 +1270,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               }
             >
               {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
+            </AnimatedButton>
+            
+            <AnimatedButton 
+              href={`${langPrefix}/contact`}
+              variant="outline"
+              size="lg"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              }
+            >
+              {locale === 'fr' ? 'Me contacter' : 'Contact me'}
             </AnimatedButton>
           </motion.div>
         </div>
