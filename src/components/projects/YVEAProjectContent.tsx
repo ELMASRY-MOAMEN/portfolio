@@ -1019,258 +1019,228 @@ const YVEAProjectContent = () => {
       {/* Project Context - Version GAFAM */}
       <div id="project-context" className="container mx-auto px-4 py-24">
         <AnimatedSection>
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-950/80 to-blue-950/90 shadow-2xl">
-            {/* Background elements */}
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5 z-0"></div>
-            <div className="absolute top-0 right-0 w-1/3 h-2/3 bg-indigo-500/10 blur-[80px] rounded-full"></div>
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/10 blur-[60px] rounded-full"></div>
+          <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-950 shadow-xl">
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center opacity-[0.02] z-0"></div>
+            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-indigo-100/20 to-transparent dark:from-indigo-900/10 blur-[120px] rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-blue-100/20 to-transparent dark:from-blue-900/10 blur-[100px] rounded-full"></div>
             
-            {/* Header */}
-            <div className="relative z-10 p-8 md:p-12">
+            {/* Section Header */}
+            <div className="relative z-10 p-8 md:p-16">
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true }}
-                className="max-w-4xl mx-auto text-center mb-16"
+                className="max-w-4xl mx-auto text-center mb-20"
               >
-                <div className="inline-flex items-center justify-center space-x-2 bg-indigo-500/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-500/30 mb-6">
-                  <span className="text-indigo-200 text-sm font-medium">{locale === 'fr' ? "Transformation" : "Transformation"}</span>
-                  <span className="bg-indigo-400 h-1 w-1 rounded-full"></span>
-                  <span className="text-indigo-200 text-sm font-medium">{locale === 'fr' ? "Valeur Métier" : "Business Value"}</span>
-                </div>
+                <span className="inline-block text-xs font-medium tracking-wider uppercase text-indigo-600 dark:text-indigo-400 mb-4">
+                  {locale === 'fr' ? "Transformation & Valeur Métier" : "Transformation & Business Value"}
+                </span>
                 
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
                   {currentContent.contextTitle}
                 </h2>
                 
-                <p className="text-xl text-indigo-200/90 max-w-3xl mx-auto">
+                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
                   {locale === 'fr' 
                     ? "Une réinvention digitale complète du processus de certification"
                     : "A complete digital reinvention of the certification process"}
                 </p>
               </motion.div>
               
-              {/* Flow comparison slider */}
-              <div className="max-w-5xl mx-auto backdrop-blur-sm bg-indigo-900/20 rounded-xl border border-indigo-500/30 overflow-hidden p-6 md:p-10">
-                {/* Process transformation details */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-                  {/* BEFORE section */}
+              {/* Process Transformation Cards */}
+              <div className="max-w-6xl mx-auto relative">
+                {/* Connected line between cards */}
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-red-300 via-indigo-400 to-emerald-300 dark:from-red-700 dark:via-indigo-600 dark:to-emerald-500 transform -translate-y-1/2 z-0 hidden md:block"></div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
+                  {/* BEFORE card */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative"
+                    className="group"
                   >
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-red-950/40 to-red-900/30 border border-red-500/20 h-full backdrop-blur-sm flex flex-col">
-                      <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
-                        <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                      </div>
+                    <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+                      <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-white dark:from-red-950/20 dark:to-gray-900 opacity-70"></div>
                       
-                      <h4 className="text-xl font-bold text-red-300 mb-3">{currentContent.beforeTitle}</h4>
+                      {/* Top accent bar */}
+                      <div className="h-1.5 w-full bg-red-500 dark:bg-red-600"></div>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
-                        Certification VoC traditionnelle : processus manuel ralenti par des vérifications multiples et des allers-retours constants. Résultat : coordination défaillante et délais étendus générant frustration client et inefficacité opérationnelle.
-                      </p>
-                      
-                      <div className="mt-auto pt-4 border-t border-red-500/20 h-24 flex flex-col justify-end">
-                        <div className="flex items-center">
-                          <div className="text-2xl font-bold text-red-300">2-5</div>
-                          <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "jours" : "days"}</div>
+                      <div className="relative p-8 flex flex-col h-full">
+                        <div className="flex items-center mb-6">
+                          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 mr-4">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                          </span>
+                          <h3 className="text-lg font-semibold text-red-600 dark:text-red-400">
+                            {currentContent.beforeTitle}
+                          </h3>
                         </div>
-                        <div className="text-sm text-indigo-300/50">
-                          {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                        
+                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-8">
+                          {currentContent.beforeContent}
+                        </p>
+                        
+                        <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
+                          <div className="flex items-end gap-1.5">
+                            <span className="text-3xl font-bold text-red-600 dark:text-red-400">2-5</span>
+                            <span className="text-sm text-gray-500 dark:text-gray-400 mb-1">{locale === 'fr' ? "jours" : "days"}</span>
+                          </div>
+                          <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                            {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                          </span>
                         </div>
                       </div>
                     </div>
                   </motion.div>
                   
-                  {/* BRIDGE section */}
+                  {/* BRIDGE card */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="relative"
+                    className="group md:mt-10"
                   >
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-indigo-950/40 to-indigo-900/30 border border-indigo-500/20 h-full backdrop-blur-sm flex flex-col">
-                      <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4">
-                        <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                      </div>
+                    <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+                      <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/20 dark:to-gray-900 opacity-70"></div>
                       
-                      <h4 className="text-xl font-bold text-indigo-300 mb-3">{currentContent.bridgeTitle}</h4>
+                      {/* Top accent bar */}
+                      <div className="h-1.5 w-full bg-indigo-500 dark:bg-indigo-600"></div>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
-                        Solution YVEA : automatisation intégrale via plateforme combinant OCR, GED et IA. Coordination intelligente des vérifications avec feedback instantané et structuration automatique des documents.
-                      </p>
-                      
-                      <div className="mt-auto pt-4 border-t border-indigo-500/20 h-24 flex flex-col justify-end">
-                        <div className="flex flex-wrap gap-2">
-                          {['OCR', 'GED', 'IA', 'Automation'].map((tech, idx) => (
-                            <span 
-                              key={idx}
-                              className="px-2 py-1 bg-indigo-500/20 text-indigo-200 text-xs rounded-md border border-indigo-500/30"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+                      <div className="relative p-8 flex flex-col h-full">
+                        <div className="flex items-center mb-6">
+                          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mr-4">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                          </span>
+                          <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400">
+                            {currentContent.bridgeTitle}
+                          </h3>
+                        </div>
+                        
+                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-8">
+                          {currentContent.bridgeContent}
+                        </p>
+                        
+                        <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
+                          <div className="flex flex-wrap gap-2">
+                            {['OCR', 'GED', 'IA', 'Automation'].map((tech, idx) => (
+                              <span 
+                                key={idx}
+                                className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-medium rounded-md"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </motion.div>
                   
-                  {/* AFTER section */}
+                  {/* AFTER card */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="relative"
+                    className="group"
                   >
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/20 rounded-full blur-xl -z-10"></div>
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-950/40 to-emerald-900/30 border border-emerald-500/20 h-full backdrop-blur-sm flex flex-col">
-                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
-                        <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                      </div>
+                    <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+                      <div className="absolute inset-0 bg-gradient-to-b from-emerald-50 to-white dark:from-emerald-950/20 dark:to-gray-900 opacity-70"></div>
                       
-                      <h4 className="text-xl font-bold text-emerald-300 mb-3">{currentContent.afterTitle}</h4>
+                      {/* Top accent bar */}
+                      <div className="h-1.5 w-full bg-emerald-500 dark:bg-emerald-600"></div>
                       
-                      <p className="text-indigo-100/80 mb-4 leading-relaxed flex-grow">
-                        Résultats concrets : précision améliorée (+90%), certification ultra-rapide, avantage concurrentiel décisif avec réduction des coûts opérationnels de 40%.
-                      </p>
-                      
-                      <div className="mt-auto pt-4 border-t border-emerald-500/20 h-24 flex flex-col justify-end">
-                        <div className="flex items-center">
-                          <div className="text-2xl font-bold text-emerald-300">4-5</div>
-                          <div className="ml-2 text-indigo-200/70">{locale === 'fr' ? "heures" : "hours"}</div>
+                      <div className="relative p-8 flex flex-col h-full">
+                        <div className="flex items-center mb-6">
+                          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 mr-4">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                          </span>
+                          <h3 className="text-lg font-semibold text-emerald-600 dark:text-emerald-400">
+                            {currentContent.afterTitle}
+                          </h3>
                         </div>
-                        <div className="text-sm text-indigo-300/50">
-                          {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                        
+                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-8">
+                          {currentContent.afterContent}
+                        </p>
+                        
+                        <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
+                          <div className="flex items-end gap-1.5">
+                            <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">4-5</span>
+                            <span className="text-sm text-gray-500 dark:text-gray-400 mb-1">{locale === 'fr' ? "heures" : "hours"}</span>
+                          </div>
+                          <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                            {locale === 'fr' ? "Temps de traitement moyen" : "Average processing time"}
+                          </span>
                         </div>
                       </div>
                     </div>
                   </motion.div>
                 </div>
-                
-                {/* Interactive visualization */}
-                <motion.div 
-                  className="mt-12 mb-2 relative overflow-hidden"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center">
-                    <span className="w-10 h-10 rounded-full bg-indigo-500/30 flex items-center justify-center mr-4">
-                      <svg className="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                      </svg>
-                    </span>
-                    {locale === 'fr' ? "Visualisation interactive: Comparez les flux de travail" : "Interactive visualization: Compare workflows"}
+              </div>
+              
+              {/* Interactive visualization - Redesigned */}
+              <motion.div 
+                className="mt-24 relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex flex-col items-center justify-center mb-12">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 mb-4">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                  </span>
+                  
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+                    {currentContent.visualizationText}
                   </h3>
                   
-                  {/* Tabs for before/after selection */}
-                  <div className="mb-6 flex justify-center">
-                    <div className="bg-indigo-900/50 rounded-lg p-1 inline-flex">
-                      <button 
-                        className={`px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium ${
-                          visualizationTab === 'before' 
-                            ? 'bg-red-500/90 text-white' 
-                            : 'text-indigo-200 hover:bg-indigo-800/50'
-                        }`}
-                        onClick={() => setVisualizationTab('before')}
-                      >
-                        {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
-                      </button>
-                      <button 
-                        className={`px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium ${
-                          visualizationTab === 'after' 
-                            ? 'bg-emerald-500/90 text-white' 
-                            : 'text-indigo-200 hover:bg-indigo-800/50'
-                        }`}
-                        onClick={() => setVisualizationTab('after')}
-                      >
-                        {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
-                      </button>
-                    </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl text-center">
+                    {locale === 'fr' 
+                      ? "Explorez la transformation du processus de certification et découvrez comment YVEA réduit drastiquement les délais tout en améliorant la précision."
+                      : "Explore the certification process transformation and discover how YVEA drastically reduces processing time while improving accuracy."}
+                  </p>
+                </div>
+                
+                {/* Tabs for before/after selection - Elegant design */}
+                <div className="mb-10 flex justify-center">
+                  <div className="inline-flex items-center p-1 rounded-xl bg-gray-100 dark:bg-gray-800">
+                    <button 
+                      className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        visualizationTab === 'before' 
+                          ? 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 shadow-sm' 
+                          : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      }`}
+                      onClick={() => setVisualizationTab('before')}
+                    >
+                      {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
+                    </button>
+                    <button 
+                      className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        visualizationTab === 'after' 
+                          ? 'bg-white dark:bg-gray-700 text-emerald-600 dark:text-emerald-400 shadow-sm' 
+                          : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      }`}
+                      onClick={() => setVisualizationTab('after')}
+                    >
+                      {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
+                    </button>
                   </div>
-                  
-                  {/* Clickable image container */}
-                  <div className="relative bg-gradient-to-b from-black/50 to-indigo-950/50 rounded-lg overflow-hidden select-none mt-4" 
-                       style={{ height: isExpanded ? '80vh' : '300px', transition: 'height 0.3s ease-in-out' }}
-                  >
-                    {/* Before image */}
-                    {visualizationTab === 'before' && (
-                      <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
-                        <Image 
-                          src="/downloads/Current flow.png" 
-                          alt="Current certification process flow" 
-                          fill 
-                          className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
-                        />
-                        <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
-                          {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
-                        </div>
-                        
-                        {/* Expand/collapse indicator */}
-                        <div className="absolute bottom-4 right-4 bg-black/50 text-white p-2 rounded-full backdrop-blur-sm">
-                          {isExpanded ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                          ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
-                            </svg>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* After image */}
-                    {visualizationTab === 'after' && (
-                      <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
-                        <Image 
-                          src="/downloads/New flow.png" 
-                          alt="New certification process with YVEA" 
-                          fill 
-                          className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
-                        />
-                        <div className="absolute top-4 right-4 bg-emerald-500/90 text-white px-3 py-1 rounded-md font-medium backdrop-blur-sm">
-                          {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
-                        </div>
-                        
-                        {/* Expand/collapse indicator */}
-                        <div className="absolute bottom-4 right-4 bg-black/50 text-white p-2 rounded-full backdrop-blur-sm">
-                          {isExpanded ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                          ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
-                            </svg>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Hint text */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/80 text-xs font-medium bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm z-30 pointer-events-none">
-                      {locale === 'fr' ? "Cliquez pour agrandir l'image" : "Click to expand image"}
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             </div>
             
             {/* Key metrics */}
