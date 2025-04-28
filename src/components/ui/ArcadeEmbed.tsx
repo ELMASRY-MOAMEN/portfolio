@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 
 export function ArcadeEmbed() {
-  const arcadeIframeRef = useRef(null);
+  const arcadeIframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    function onArcadeIframeMessage(e) {
+    function onArcadeIframeMessage(e: MessageEvent) {
       if (e.origin !== 'https://demo.arcade.software' || !e.isTrusted) return;
 
       const arcadeIframe = arcadeIframeRef.current;
@@ -15,13 +15,13 @@ export function ArcadeEmbed() {
       }
       
       if (e.data.event === 'arcade-popout-open') {
-        arcadeIframe.style['position'] = 'fixed';
-        arcadeIframe.style['z-index'] = '9999999';
+        arcadeIframe.style.position = 'fixed';
+        arcadeIframe.style.zIndex = '9999999';
       }
 
       if (e.data.event === 'arcade-popout-close') {
-        arcadeIframe.style['position'] = 'absolute';
-        arcadeIframe.style['z-index'] = 'auto';
+        arcadeIframe.style.position = 'absolute';
+        arcadeIframe.style.zIndex = 'auto';
       }
     }
 
