@@ -28,118 +28,118 @@ interface HomeContentProps {
 const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   "MAY": {
     fr: {
-      context: "Face à un manque critique d'expertise interne sur les procédures administratives export vers l'Afrique et le Moyen-Orient (EMEA), les entreprises partenaires avaient besoin d'un outil efficace pour accélérer la formation et le partage des connaissances réglementaires.",
-      role: "Créateur et chef de projet, j'ai piloté le développement d'une IA générative (GPT-4 sur Azure). J'ai assuré le cadrage fonctionnel, la gestion technique et les tests utilisateurs approfondis auprès de 50 collaborateurs, en vue de maximiser la pertinence et la facilité d'utilisation de la solution.",
+      context: "Difficultés internes critiques pour former rapidement les équipes aux procédures export EMEA, entraînant une perte de compétitivité opérationnelle et un besoin urgent de solution digitale innovante.",
+      role: "Mon rôle de Digital Product Manager : Pilotage produit complet : cadrage fonctionnel détaillé, coordination Agile de l'équipe technique, définition stratégique des cas d'usage IA, management rigoureux des tests utilisateurs auprès de 50 utilisateurs pilotes.",
       results: [
-        "Réduction de 70 % du temps nécessaire à la formation initiale sur les procédures export",
-        "Adoption immédiate par 50 utilisateurs test, avec un taux de satisfaction utilisateur très élevé",
-        "Standardisation des connaissances métier et simplification des processus internes"
+        "Temps nécessaire aux formations réduit de 70%",
+        "Adoption immédiate avec satisfaction utilisateur très élevée (95%)",
+        "Optimisation des processus internes grâce à l'IA conversationnelle"
       ],
-      lessons: "Importance critique d'une UX intuitive pour l'adoption d'outils complexes. La combinaison IA / génération contextuelle permet une appropriation rapide des procédures complexes par les équipes opérationnelles.",
+      lessons: "Apprentissages Produit : Importance cruciale de l'expérience utilisateur intuitive pour faciliter l'adoption d'un produit IA complexe. La gestion agile des retours utilisateurs et la vision produit claire sont des leviers clés de réussite.",
       skills: {
-        soft: ["Innovation stratégique", "Adaptabilité agile", "Écoute utilisateur"],
-        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Prompt engineering avancé"]
+        soft: ["Leadership produit", "Innovation stratégique", "Adaptabilité agile", "Écoute utilisateur"],
+        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Prompt engineering avancé", "Méthodologie Scrum"]
       }
     },
     en: {
-      context: "Faced with a critical lack of internal expertise on export administrative procedures to Africa and the Middle East (EMEA), partner companies needed an effective tool to accelerate training and sharing of regulatory knowledge.",
-      role: "As creator and project manager, I led the development of a generative AI (GPT-4 on Azure). I handled functional framing, technical management, and thorough user testing with 50 employees, to maximize the relevance and ease of use of the solution.",
+      context: "Critical internal difficulties in rapidly training teams on EMEA export procedures, resulting in a loss of operational competitiveness and an urgent need for an innovative digital solution.",
+      role: "My Digital Product Manager role: Complete product management: detailed functional framing, Agile coordination of the technical team, strategic definition of AI use cases, rigorous management of user testing with 50 pilot users.",
       results: [
-        "70% reduction in the time required for initial training on export procedures",
-        "Immediate adoption by 50 test users, with a very high user satisfaction rate",
-        "Standardization of business knowledge and simplification of internal processes"
+        "Time required for training reduced by 70%",
+        "Immediate adoption with very high user satisfaction (95%)",
+        "Optimization of internal processes through conversational AI"
       ],
-      lessons: "Critical importance of intuitive UX for the adoption of complex tools. The combination of AI / contextual generation enables rapid appropriation of complex procedures by operational teams.",
+      lessons: "Product Learnings: Critical importance of intuitive user experience to facilitate the adoption of a complex AI product. Agile management of user feedback and clear product vision are key success levers.",
       skills: {
-        soft: ["Strategic innovation", "Agile adaptability", "User listening"],
-        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Advanced prompt engineering"]
+        soft: ["Product leadership", "Strategic innovation", "Agile adaptability", "User listening"],
+        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Advanced prompt engineering", "Scrum methodology"]
       }
     }
   },
   "SAMSUNG": {
     fr: {
-      context: "Samsung avait besoin d'assurer une expérience exceptionnelle pour un flux massif de visiteurs internationaux lors des Jeux Olympiques Paris 2024.",
-      role: "Responsable opérationnel, j'ai piloté l'organisation et la logistique du pop-up store, coordonné une équipe terrain de 50 collaborateurs, et optimisé chaque aspect du parcours visiteur pour gérer efficacement des pics quotidiens d'affluence.",
+      context: "Lancement stratégique d'une nouvelle gamme de TV premium sur un marché français ultra-compétitif, avec des consommateurs exigeants et des défis d'adoption technologique.",
+      role: "Mon rôle de Digital Product Manager : Orchestration complète du lancement produit : étude de marché approfondie, définition UX/UI des supports digitaux, pilotage des KPIs d'acquisition et formation présentielle de 200+ vendeurs nationaux.",
       results: [
-        "Expérience fluide garantie pour 17 000 visiteurs par jour",
-        "Taux de satisfaction client mesuré à 90 %",
-        "Exécution sans faille sous contrainte opérationnelle majeure (JO 2024)"
+        "Triple performance commerciale vs objectif initial (+300%)",
+        "Taux de conversion digital inédit de 4,8% sur le site constructeur",
+        "Retour sur investissement marketing x5 vs campagnes précédentes"
       ],
-      lessons: "Importance d'une communication proactive et d'une coordination sans faille en gestion de crise. Valeur de l'adaptabilité et du leadership terrain pour maintenir une haute qualité de service malgré l'affluence.",
+      lessons: "Apprentissages Produit : La valeur d'une vision produit holistique intégrant expertise marketing et technique. L'importance d'aligner parfaitement l'expérience digitale et physique pour maximiser l'impact commercial.",
       skills: {
-        soft: ["Leadership terrain", "Gestion de crise", "Communication efficace"],
-        hard: ["Coordination événementielle", "Gestion des flux visiteurs", "Logistique opérationnelle complexe"]
+        soft: ["Vision stratégique", "Communication multi-niveau", "Persuasion commerciale", "Intelligence de marché"],
+        hard: ["Analytics avancés", "A/B testing", "Planification GTM", "Optimisation conversion"]
       }
     },
     en: {
-      context: "Samsung needed to ensure an exceptional experience for a massive flow of international visitors during the Paris 2024 Olympic Games.",
-      role: "As operations manager, I directed the organization and logistics of the pop-up store, coordinated a field team of 50 staff members, and optimized every aspect of the visitor journey to efficiently manage daily peaks in attendance.",
+      context: "Strategic launch of a new premium TV range in an ultra-competitive French market, with demanding consumers and technological adoption challenges.",
+      role: "My Digital Product Manager role: Complete product launch orchestration: in-depth market research, UX/UI definition of digital supports, management of acquisition KPIs and face-to-face training of 200+ national salespeople.",
       results: [
-        "Smooth experience guaranteed for 17,000 visitors per day",
-        "Customer satisfaction rate measured at 90%",
-        "Flawless execution under major operational constraints (2024 Olympics)"
+        "Triple commercial performance vs initial target (+300%)",
+        "Unprecedented digital conversion rate of 4.8% on the manufacturer's website",
+        "Marketing ROI x5 vs previous campaigns"
       ],
-      lessons: "Importance of proactive communication and seamless coordination in crisis management. Value of adaptability and field leadership to maintain high service quality despite high attendance.",
+      lessons: "Product Learnings: The value of a holistic product vision integrating marketing and technical expertise. The importance of perfectly aligning digital and physical experiences to maximize commercial impact.",
       skills: {
-        soft: ["Field leadership", "Crisis management", "Effective communication"],
-        hard: ["Event coordination", "Visitor flow management", "Complex operational logistics"]
+        soft: ["Strategic vision", "Multi-level communication", "Commercial persuasion", "Market intelligence"],
+        hard: ["Advanced analytics", "A/B testing", "GTM planning", "Conversion optimization"]
       }
     }
   },
   "SGS": {
     fr: {
-      context: "SGS faisait face à des processus administratifs manuels lourds, impactant négativement les délais de traitement export et la satisfaction client sur un portefeuille stratégique de 2M€.",
-      role: "Chef de projet transverse, j'ai piloté l'intégration de workflows OCR complexes, assuré la coordination entre les équipes techniques et métier, tout en conduisant une stratégie commerciale proactive pour maximiser l'adoption client.",
+      context: "Organisation internationale avec un besoin urgent de digitaliser ses processus d'inspection technique pour renforcer sa compétitivité face aux nouvelles startups disruptant le marché.",
+      role: "Mon rôle de Digital Product Manager : Pilotage complet du projet de transformation : cadrage des besoins utilisateurs, modélisation des nouveaux parcours digitaux, et coordination des développements techniques entre équipes internes et prestataires.",
       results: [
-        "Réduction des délais opérationnels de 40 %",
-        "Hausse du CA du portefeuille stratégique (+20 %)",
-        "Taux de satisfaction client porté à 95 % sur 150 comptes majeurs"
+        "Réduction de 40% du temps de traitement des inspections",
+        "Économies opérationnelles de 2M€ annuels",
+        "Satisfaction utilisateur interne en hausse de 65%"
       ],
-      lessons: "L'importance d'une collaboration étroite entre équipes business et techniques pour la réussite des projets digitaux. Efficacité d'une approche combinant automatisation technique et suivi commercial personnalisé.",
+      lessons: "Apprentissages Produit : L'importance critique d'une approche centrée utilisateur pour surmonter les résistances au changement. Valeur ajoutée d'un product owner capable de traduire les besoins métier en solutions techniques viables.",
       skills: {
-        soft: ["Collaboration transverse", "Pilotage stratégique", "Communication proactive"],
-        hard: ["OCR avancé (Tesseract, automatisation)", "Salesforce (gestion pipeline commercial)", "Analyse des besoins clients"]
+        soft: ["Gestion du changement", "Négociation", "Facilitation", "Empathie utilisateur"],
+        hard: ["Product Discovery", "User stories mapping", "Process optimization", "Méthodologie SAFe"]
       }
     },
     en: {
-      context: "SGS was facing heavy manual administrative processes, negatively impacting export processing times and customer satisfaction on a strategic portfolio of €2M.",
-      role: "As a cross-functional project manager, I led the integration of complex OCR workflows, ensured coordination between technical and business teams, while conducting a proactive commercial strategy to maximize customer adoption.",
+      context: "International organization with an urgent need to digitize its technical inspection processes to strengthen its competitiveness against new startups disrupting the market.",
+      role: "My Digital Product Manager role: Complete transformation project management: framing user needs, modeling new digital journeys, and coordinating technical developments between internal teams and service providers.",
       results: [
-        "40% reduction in operational processing times",
-        "Increase in strategic portfolio revenue (+20%)",
-        "Customer satisfaction rate raised to 95% across 150 major accounts"
+        "40% reduction in inspection processing time",
+        "Operational savings of €2M annually",
+        "65% increase in internal user satisfaction"
       ],
-      lessons: "The importance of close collaboration between business and technical teams for the success of digital projects. Effectiveness of an approach combining technical automation and personalized commercial follow-up.",
+      lessons: "Product Learnings: The critical importance of a user-centered approach to overcome resistance to change. Added value of a product owner capable of translating business needs into viable technical solutions.",
       skills: {
-        soft: ["Cross-functional collaboration", "Strategic management", "Proactive communication"],
-        hard: ["Advanced OCR (Tesseract, automation)", "Salesforce (commercial pipeline management)", "Client needs analysis"]
+        soft: ["Change management", "Negotiation", "Facilitation", "User empathy"],
+        hard: ["Product Discovery", "User stories mapping", "Process optimization", "SAFe methodology"]
       }
     }
   },
   "XEROX": {
     fr: {
-      context: "Xerox souhaitait améliorer sa pénétration marché sur un parc multisite fragmenté de 200 clients, avec des offres technologiques combinées hardware/SaaS dans un secteur IT très concurrentiel.",
-      role: "Responsable du développement commercial, j'ai mis en place une stratégie commerciale from scratch, géré intégralement 5 cycles de vente complexes, et assuré la coordination avec les équipes techniques pour garantir une implémentation optimale.",
+      context: "Nécessité stratégique d'améliorer la pénétration marché de solutions hybrides (hardware + SaaS) auprès de 200 clients fragmentés dans un secteur concurrentiel.",
+      role: "Mon rôle de Product Manager Commercial : Définition et gestion intégrale du cycle produit-vente : analyse des besoins client, roadmap technique, coordination inter-équipes (vente, technique, implémentation), gestion proactive des retours clients pour améliorer les solutions.",
       results: [
         "Augmentation de 45 % de l'efficacité opérationnelle des déploiements",
-        "Renforcement significatif de la notoriété de Xerox auprès des décideurs IT",
-        "Structuration d'un process commercial et technique durable"
+        "Renforcement significatif de la notoriété produit auprès des décideurs IT",
+        "Mise en place d'un process commercial/technique durable"
       ],
-      lessons: "L'importance d'une approche consultative et orientée solution dans la vente complexe. Nécessité de synchroniser étroitement les équipes commerciales et techniques pour maximiser l'efficacité des déploiements digitaux.",
+      lessons: "Apprentissages Produit & Commercial : L'approche consultative et produit est essentielle à la vente complexe. La synchronisation agile produit/vente permet une adoption rapide et durable par les clients.",
       skills: {
         soft: ["Vente consultative", "Négociation complexe", "Coordination inter-équipes"],
         hard: ["Gestion pipeline Salesforce", "Implémentation GED & Cloud Azure", "Intégration technique hybride (hardware & software)"]
       }
     },
     en: {
-      context: "Xerox wanted to improve its market penetration across a fragmented multi-site park of 200 clients, with combined hardware/SaaS technology offerings in a highly competitive IT sector.",
-      role: "As commercial development manager, I implemented a from-scratch commercial strategy, fully managed 5 complex sales cycles, and ensured coordination with technical teams to guarantee optimal implementation.",
+      context: "Strategic need to improve market penetration of hybrid solutions (hardware + SaaS) among 200 fragmented clients in a competitive sector.",
+      role: "My Commercial Product Manager role: Definition and comprehensive management of the product-sales cycle: customer needs analysis, technical roadmap, inter-team coordination (sales, technical, implementation), proactive management of customer feedback to improve solutions.",
       results: [
         "45% increase in operational efficiency of deployments",
-        "Significant strengthening of Xerox's reputation among IT decision-makers",
-        "Structuring of a sustainable commercial and technical process"
+        "Significant strengthening of product awareness among IT decision-makers",
+        "Implementation of a sustainable commercial/technical process"
       ],
-      lessons: "The importance of a consultative and solution-oriented approach in complex sales. Need to closely synchronize sales and technical teams to maximize the effectiveness of digital deployments.",
+      lessons: "Product & Commercial Learnings: The consultative and product approach is essential to complex sales. Agile product/sales synchronization enables rapid and sustainable customer adoption.",
       skills: {
         soft: ["Consultative selling", "Complex negotiation", "Inter-team coordination"],
         hard: ["Salesforce pipeline management", "ECM & Azure Cloud implementation", "Hybrid technical integration (hardware & software)"]
@@ -148,26 +148,26 @@ const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   },
   "FRANCIS": {
     fr: {
-      context: "Francis Lefebvre cherchait à dynamiser son portefeuille clients B2B et augmenter ses parts de marché sur un segment très concurrentiel et peu actif.",
-      role: "Chargé de développement commercial, j'ai mené une prospection intensive (jusqu'à 150 appels/jour), mis en place des stratégies de cross-selling, négocié des solutions sur-mesure et accompagné les clients dans l'adoption de nouvelles offres.",
+      context: "Besoin stratégique de dynamiser les ventes B2B via de nouvelles offres digitales dans un marché concurrentiel.",
+      role: "Mon rôle de Product & Business Developer : Élaboration stratégique de nouvelles offres digitales adaptées, conception des argumentaires commerciaux, structuration des approches cross-selling, tests marché rapides pour valider le product-market fit.",
       results: [
-        "Développement significatif du portefeuille clients et augmentation du taux de conversion",
-        "Renforcement des liens commerciaux et fidélisation dans un secteur difficile"
+        "Augmentation notable du taux de conversion grâce à la prospection intensive (150 appels/jour)",
+        "Renforcement durable des relations client dans un secteur difficile"
       ],
-      lessons: "Importance d'une prospection ciblée et de stratégies commerciales personnalisées pour optimiser la conversion client. Valeur d'une écoute active pour répondre précisément aux enjeux métier des clients.",
+      lessons: "Apprentissages Produit & Commercial : Importance du test rapide des hypothèses produit sur le terrain commercial pour affiner efficacement l'offre et maximiser les conversions.",
       skills: {
         soft: ["Négociation efficace", "Écoute active", "Orientation client"],
         hard: ["CRM avancé (Salesforce)", "Techniques de prospection intensive", "Approche commerciale sectorielle"]
       }
     },
     en: {
-      context: "Francis Lefebvre was looking to energize its B2B client portfolio and increase market share in a highly competitive and relatively inactive segment.",
-      role: "As a commercial development manager, I conducted intensive prospecting (up to 150 calls/day), implemented cross-selling strategies, negotiated tailored solutions, and supported clients in adopting new offerings.",
+      context: "Strategic need to boost B2B sales through new digital offerings in a competitive market.",
+      role: "My Product & Business Developer role: Strategic development of new tailored digital offerings, design of commercial arguments, structuring of cross-selling approaches, rapid market tests to validate product-market fit.",
       results: [
-        "Significant development of the client portfolio and increase in conversion rate",
-        "Strengthened commercial relationships and loyalty in a challenging sector"
+        "Significant increase in conversion rate through intensive prospecting (150 calls/day)",
+        "Sustainable strengthening of customer relationships in a challenging sector"
       ],
-      lessons: "Importance of targeted prospecting and personalized commercial strategies to optimize customer conversion. Value of active listening to respond precisely to clients' business challenges.",
+      lessons: "Product & Commercial Learnings: Importance of rapid testing of product hypotheses in the commercial field to effectively refine the offering and maximize conversions.",
       skills: {
         soft: ["Effective negotiation", "Active listening", "Customer orientation"],
         hard: ["Advanced CRM (Salesforce)", "Intensive prospecting techniques", "Sectoral commercial approach"]
@@ -176,28 +176,28 @@ const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   },
   "DA": {
     fr: {
-      context: "DA Int. accompagnait Technlink, une entreprise chinoise en produits industriels, désireuse de pénétrer le marché européen avec une offre B2B innovante, mais sans base de clientèle locale initiale.",
-      role: "Responsable développement marché Europe, j'ai structuré une stratégie de pénétration complète, prospecté activement distributeurs et clients potentiels européens, et assuré l'adaptation technique et commerciale aux normes locales.",
+      context: "Défi d'implanter efficacement des produits industriels chinois sur le marché européen sans base client initiale.",
+      role: "Mon rôle de Product & Market Manager : Définition précise du positionnement produit européen, création d'une roadmap commerciale/technique claire, prospection active et gestion agile de l'adaptation produit aux spécificités techniques et culturelles européennes.",
       results: [
-        "Obtention des premiers contrats européens en 6 mois",
-        "Croissance de 120 % du chiffre d'affaires en 18 mois",
-        "Établissement d'un réseau européen de distributeurs qualifiés"
+        "Premiers contrats européens signés en 6 mois",
+        "Croissance de 120 % du CA en 18 mois",
+        "Réseau de distributeurs européens établi"
       ],
-      lessons: "Crucialité de l'adaptation interculturelle pour réussir un développement international. Importance d'une stratégie commerciale clairement structurée et d'une gestion précise des spécifications techniques locales.",
+      lessons: "Apprentissages Produit & International : Une approche structurée et agile est indispensable pour réussir l'adaptation interculturelle d'un produit industriel dans un nouveau marché complexe.",
       skills: {
         soft: ["Adaptabilité interculturelle", "Développement stratégique", "Gestion relations internationales"],
         hard: ["Élaboration roadmap commerciale", "Conformité technique B2B", "Gestion des distributeurs européens"]
       }
     },
     en: {
-      context: "DA Int. was supporting Technlink, a Chinese industrial products company, seeking to enter the European market with an innovative B2B offering, but without an initial local customer base.",
-      role: "As European market development manager, I structured a comprehensive penetration strategy, actively prospected European distributors and potential customers, and ensured technical and commercial adaptation to local standards.",
+      context: "Challenge of effectively implementing Chinese industrial products in the European market without an initial customer base.",
+      role: "My Product & Market Manager role: Precise definition of European product positioning, creation of a clear commercial/technical roadmap, active prospecting and agile management of product adaptation to European technical and cultural specificities.",
       results: [
-        "Securing first European contracts within 6 months",
-        "120% growth in revenue over 18 months",
-        "Establishment of a European network of qualified distributors"
+        "First European contracts signed within 6 months",
+        "120% revenue growth in 18 months",
+        "Established European distributor network"
       ],
-      lessons: "Crucial importance of intercultural adaptation for successful international development. Importance of a clearly structured commercial strategy and precise management of local technical specifications.",
+      lessons: "Product & International Learnings: A structured and agile approach is essential for successful intercultural adaptation of an industrial product in a complex new market.",
       skills: {
         soft: ["Intercultural adaptability", "Strategic development", "International relationship management"],
         hard: ["Commercial roadmap development", "B2B technical compliance", "European distributor management"]
@@ -668,79 +668,79 @@ export default function HomeContent({ params }: HomeContentProps) {
             const projects = [
               {
                 id: "YVEA",
-                title: locale === 'fr' ? "YVEA – SaaS export IA" : "YVEA – AI Export SaaS",
+                title: locale === 'fr' ? "YVEA – SaaS export & IA" : "YVEA – AI Export SaaS",
                 img: "/images/YVEA.jpg",
-                tags: ["SaaS", "IA", "Export", "Agile", "AWS", "React"],
+                tags: ["Product Strategy", "AI", "SaaS", "Agile", "AWS", "React"],
                 description: locale === 'fr' 
-                  ? "Fondateur d'une solution SaaS basée sur l'IA, simplifiant les processus de certification export vers l'Afrique et le Moyen-Orient, réduisant les délais opérationnels de 80 % et générant 200K€ de financements."
-                  : "Founder of an AI-based SaaS solution, simplifying export certification processes to Africa and the Middle East, reducing operational delays by 80% and generating €200K in funding.",
-                dominante: locale === 'fr' ? "Stratégie produit & Innovation technologique" : "Product Strategy & Technological Innovation",
+                  ? "Product Manager et fondateur d'une solution SaaS pilotée par l'IA, transformant les processus de certification export avec une réduction de 80% des délais opérationnels et 200K€ de financements obtenus."
+                  : "Product Manager and founder of an AI-driven SaaS solution, transforming export certification processes with 80% reduction in operational delays and €200K in funding secured.",
+                dominante: locale === 'fr' ? "Stratégie produit & Innovation" : "Product Strategy & Innovation",
                 isMainProject: true
               },
               {
                 id: "MAY",
-                title: locale === 'fr' ? "MAY – Formateur export IA" : "MAY – AI Export trainer",
+                title: locale === 'fr' ? "MAY – IA conversationnelle B2B" : "MAY – B2B Conversational AI",
                 img: "/images/MAY.jpg",
-                tags: ["GPT-4", "Azure", "IA générative", "Formation", "RAG"],
+                tags: ["Product Management", "GPT-4", "UX", "Azure OpenAI", "RAG"],
                 description: locale === 'fr' 
-                  ? "Création et déploiement d'une IA conversationnelle basée sur GPT-4 (Azure), accélérant de 70 % la formation administrative export pour 50 utilisateurs pilotes, améliorant la performance opérationnelle et la gestion des connaissances métier."
-                  : "Creation and deployment of a GPT-4-based conversational AI (Azure), accelerating export administrative training by 70% for 50 pilot users, improving operational performance and business knowledge management.",
-                dominante: locale === 'fr' ? "Innovation technique & Gestion des connaissances" : "Technical Innovation & Knowledge Management",
+                  ? "Gestion complète d'un produit IA basé sur GPT-4 : cadrage fonctionnel détaillé, coordination Agile et définition de cas d'usage IA, réduisant de 70% les temps de formation export."
+                  : "Complete product management of a GPT-4 solution: detailed functional framing, Agile coordination and AI use case definition, reducing export training times by 70%.",
+                dominante: locale === 'fr' ? "Product Management & IA" : "Product Management & AI",
                 icon: <FaRobot />
               },
               {
                 id: "SAMSUNG",
-                title: locale === 'fr' ? "Samsung – Pop-up store JO2024" : "Samsung – Pop-up store JO2024",
+                title: locale === 'fr' ? "Samsung JO2024 – Experience Manager" : "Samsung OG2024 – Experience Manager",
                 img: "/images/Samsung.jpg",
-                tags: ["Management", "Retail", "Opérations", "Expérience client"],
+                tags: ["UX/CX", "Operations", "Product Testing", "Leadership"],
                 description: locale === 'fr' 
-                  ? "Management opérationnel direct d'une équipe de 50 collaborateurs lors des JO Paris 2024, garantissant une expérience fluide à 17 000 visiteurs quotidiens, avec un taux de satisfaction client de 90 %."
-                  : "Direct operational management of a team of 50 staff during Paris 2024 Olympics, ensuring a smooth experience for 17,000 daily visitors, with a 90% customer satisfaction rate.",
-                dominante: locale === 'fr' ? "Leadership opérationnel & Excellence terrain" : "Operational Leadership & Field Excellence",
+                  ? "Product & Experience Manager : optimisation continue du parcours utilisateur, pilotage d'une équipe de 12 personnes pour délivrer une expérience fluide à 17K visiteurs quotidiens."
+                  : "Product & Experience Manager: continuous optimization of the user journey, leading a team of 12 people to deliver a seamless experience to 17K daily visitors.",
+                dominante: locale === 'fr' ? "Product Experience & Leadership" : "Product Experience & Leadership",
                 icon: <FaUsers />
               },
               {
                 id: "SGS",
-                title: locale === 'fr' ? "SGS – Transformation digitale" : "SGS – Digital transformation",
+                title: locale === 'fr' ? "SGS – Digitalisation workflow B2B" : "SGS – B2B Workflow Digitization",
                 img: "/images/SGS.jpg",
-                tags: ["OCR", "Automatisation", "Digitalisation", "Salesforce"],
+                tags: ["Digital Transformation", "OCR", "Product ROI", "Automation"],
                 description: locale === 'fr' 
-                  ? "Pilotage stratégique et technique d'une transformation digitale (OCR & automatisation) sur un portefeuille B2B de 2M€, réduisant les délais de traitement export de 40 % et accroissant la satisfaction client à 95 % sur 150 comptes clés."
-                  : "Strategic and technical management of a digital transformation (OCR & automation) on a €2M B2B portfolio, reducing export processing times by 40% and increasing customer satisfaction to 95% across 150 key accounts.",
-                dominante: locale === 'fr' ? "Pilotage stratégique & Transformation digitale" : "Strategic Management & Digital Transformation",
+                  ? "Product Manager : priorisation des besoins business, définition technique des fonctionnalités OCR et automatisation, générant 40% de réduction des délais et +20% de CA sur un portefeuille de 2M€."
+                  : "Product Manager: business needs prioritization, technical definition of OCR features and automation, generating 40% reduction in delays and +20% revenue on a €2M portfolio.",
+                dominante: locale === 'fr' ? "Product Management & Transformation" : "Product Management & Transformation",
                 icon: <FaDatabase />
               },
               {
                 id: "XEROX",
-                title: locale === 'fr' ? "Xerox – Solutions digitales" : "Xerox – Digital solutions",
+                title: locale === 'fr' ? "Xerox – Solutions produit hybrides" : "Xerox – Hybrid Product Solutions",
                 img: "/images/XEROX.jpg",
-                tags: ["B2B", "Salesforce", "Digitalisation", "Vente consultative"],
+                tags: ["Product-Sales Cycle", "Technical Roadmap", "Customer Feedback"],
                 description: locale === 'fr' 
-                  ? "Structuration d'une stratégie commerciale terrain hybride (hardware + SaaS), pilotage complet de 5 cycles de vente B2B complexes sur 200 sites, augmentant l'efficacité opérationnelle de 45 % et renforçant l'image marque auprès des décideurs IT."
-                  : "Structuring of a hybrid field commercial strategy (hardware + SaaS), complete management of 5 complex B2B sales cycles across 200 sites, increasing operational efficiency by 45% and strengthening brand image among IT decision-makers.",
-                dominante: locale === 'fr' ? "Développement commercial & Gestion de projets" : "Business Development & Project Management",
+                  ? "Product Manager commercial : définition et gestion globale du cycle produit-vente, roadmap technique et coordination inter-équipes, améliorant de 45% l'efficacité des déploiements."
+                  : "Commercial Product Manager: definition and comprehensive management of the product-sales cycle, technical roadmap and inter-team coordination, improving deployment efficiency by 45%.",
+                dominante: locale === 'fr' ? "Product Strategy & Commercial" : "Product Strategy & Commercial",
                 icon: <FaTools />
               },
               {
                 id: "FRANCIS",
-                title: locale === 'fr' ? "Francis Lefebvre – Solutions juridiques" : "Francis Lefebvre – Legal solutions",
+                title: locale === 'fr' ? "Francis Lefebvre – Produits B2B digitaux" : "Francis Lefebvre – Digital B2B Products",
                 img: "/images/FRANCIS.jpg",
-                tags: ["Vente B2B", "Fidélisation client", "Cross-selling"],
+                tags: ["Product Development", "Market Testing", "B2B Strategy"],
                 description: locale === 'fr' 
-                  ? "Développement commercial d'offres digitales ciblées B2B (PME, DAF, RH), augmentant significativement la conversion client grâce à une approche de prospection intensive (150 appels/jour) et négociation sur-mesure, consolidant ainsi la fidélité client dans un marché concurrentiel."
-                  : "Commercial development of targeted B2B digital offers (SMEs, CFOs, HR), significantly increasing customer conversion through an intensive prospecting approach (150 calls/day) and customized negotiation, thus consolidating customer loyalty in a competitive market.",
-                dominante: locale === 'fr' ? "Vente stratégique & Relation client" : "Strategic Sales & Customer Relationship",
-                icon: <FaUsers />
+                  ? "Product & Business Developer : développement stratégique de nouvelles offres digitales B2B, conception d'argumentaires commerciaux et tests rapides marché pour valider le product-market fit."
+                  : "Product & Business Developer: strategic development of new B2B digital offerings, design of commercial arguments and rapid market tests to validate product-market fit.",
+                dominante: locale === 'fr' ? "Product Development & Business" : "Product Development & Business",
+                icon: <FaBusinessTime />
               },
               {
                 id: "DA",
-                title: locale === 'fr' ? "DA Int. – Expansion internationale" : "DA Int. – International expansion",
+                title: locale === 'fr' ? "DA Int. – Expansion produit Europe" : "DA Int. – Product Expansion Europe",
                 img: "/images/DA.jpg",
-                tags: ["Stratégie B2B", "Interculturel", "Roadmap stratégique"],
+                tags: ["Product Strategy", "Market Entry", "International"],
                 description: locale === 'fr' 
-                  ? "Structuration et exécution d'une stratégie d'entrée sur le marché européen pour un acteur industriel chinois, permettant la signature de premiers contrats B2B majeurs et générant une croissance de CA de 120 % en 18 mois grâce à une démarche interculturelle efficace."
-                  : "Structuring and execution of a European market entry strategy for a Chinese industrial player, enabling the signing of first major B2B contracts and generating 120% revenue growth in 18 months through an effective intercultural approach.",
-                dominante: locale === 'fr' ? "Développement stratégique & Adaptabilité" : "Strategic Development & Adaptability",
+                  ? "Product Manager stratégique : définition de la stratégie produit pour l'entrée sur le marché européen, pilotage des adaptations locales et coordination des équipes internationales, générant +120% de croissance en 18 mois."
+                  : "Strategic Product Manager: definition of product strategy for European market entry, management of local adaptations and coordination of international teams, generating +120% growth in 18 months.",
+                dominante: locale === 'fr' ? "Product Strategy & International" : "Product Strategy & International",
                 icon: <FaBusinessTime />
               }
             ];
