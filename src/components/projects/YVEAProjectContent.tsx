@@ -225,135 +225,26 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
 
 // Hook personnalisé pour initialiser le walkthrough Certificats
 function useWalkthroughCertificats() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const workflowCss = document.createElement('link');
-    workflowCss.rel = 'stylesheet';
-    workflowCss.href = '/walkthroughs/css/workflow-styles.css';
-    document.head.appendChild(workflowCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/workflow-certificats/js/workflow-tour.js').then((workflowTour) => {
-          // Initialiser le walkthrough Certificats
-          const { setupCertificatsTourTrigger } = workflowTour;
-          setupCertificatsTourTrigger('tour-certificats-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      // eslint-disable-next-line no-console
-      console.error('Shepherd.js ou le walkthrough Certificats n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
+  // Fonctionnalité walkthrough supprimée
+  return null;
 }
 
 // Hook personnalisé pour initialiser le walkthrough OCR
 function useWalkthroughOcr() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const ocrCss = document.createElement('link');
-    ocrCss.rel = 'stylesheet';
-    ocrCss.href = '/walkthroughs/css/ocr-styles.css';
-    document.head.appendChild(ocrCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/ocr-extraction/js/ocr-tour.js').then((ocrTour) => {
-          // Initialiser le walkthrough OCR
-          const { setupOcrTourTrigger } = ocrTour;
-          setupOcrTourTrigger('tour-ocr-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough OCR n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
+  // Fonctionnalité walkthrough supprimée
+  return null;
 }
 
 // Hook personnalisé pour initialiser le walkthrough Assistant
 function useWalkthroughAssistant() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const assistantCss = document.createElement('link');
-    assistantCss.rel = 'stylesheet';
-    assistantCss.href = '/walkthroughs/css/assistant-styles.css';
-    document.head.appendChild(assistantCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/assistant-ia/js/assistant-tour.js').then((assistantTour) => {
-          // Initialiser le walkthrough Assistant
-          const { setupAssistantTourTrigger } = assistantTour;
-          setupAssistantTourTrigger('tour-assistant-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough Assistant n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
+  // Fonctionnalité walkthrough supprimée
+  return null;
 }
 
 // Hook personnalisé pour initialiser le walkthrough Messaging
 function useWalkthroughMessaging() {
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // Importer les styles côté client
-    const shepherdCss = document.createElement('link');
-    shepherdCss.rel = 'stylesheet';
-    shepherdCss.href = '/walkthroughs/css/shepherd-styles.css';
-    document.head.appendChild(shepherdCss);
-    const messagingCss = document.createElement('link');
-    messagingCss.rel = 'stylesheet';
-    messagingCss.href = '/walkthroughs/css/messaging-styles.css';
-    document.head.appendChild(messagingCss);
-
-    // Lazy load Shepherd.js et le walkthrough
-    let cleanup = () => {};
-    import('shepherd.js').then(() => {
-      import('@/walkthroughs/shared/shepherd-base.js').then((shepherdBase) => {
-        import('@/walkthroughs/messaging/js/messaging-tour.js').then((messagingTour) => {
-          // Initialiser le walkthrough Messaging
-          const { setupMessagingTourTrigger } = messagingTour;
-          setupMessagingTourTrigger('tour-messaging-trigger');
-        });
-      });
-    }).catch(() => {
-      // Gestion d'erreur si Shepherd.js ne se charge pas
-      console.error('Shepherd.js ou le walkthrough Messaging n\'ont pas pu être chargés.');
-    });
-    return cleanup;
-  }, []);
+  // Fonctionnalité walkthrough supprimée
+  return null;
 }
 
 const CertificatsModalContent = ({ onClose }: { onClose: () => void }) => {
@@ -409,12 +300,6 @@ const CertificatsModalContent = ({ onClose }: { onClose: () => void }) => {
       
       <div className="certificats-footer text-center text-gray-500 mt-4">
         <p>Le workflow de certification d'YVEA automatise et simplifie le processus complexe d'obtention des documents export.</p>
-        <button 
-          id="tour-certificats-trigger"
-          className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
       </div>
     </div>
   );
@@ -428,52 +313,47 @@ const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
       <div className="mb-6 flex flex-col gap-4">
         <div className="document-uploader bg-blue-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Téléchargement de documents</h3>
-          <p>Déposez vos documents commerciaux pour analyse et extraction automatique.</p>
+          <p>Importez vos documents commerciaux, factures et certificats par simple glisser-déposer.</p>
         </div>
         
         <div className="ocr-progress bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Traitement OCR</h3>
-          <p>Visualisez la progression en temps réel de l'analyse de vos documents.</p>
+          <h3 className="font-medium mb-2">Traitement OCR en temps réel</h3>
+          <p>Visualisez l'avancement du traitement OCR avec des indicateurs précis.</p>
         </div>
         
         <div className="extraction-preview bg-blue-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Aperçu des données extraites</h3>
-          <p>Consultez les données extraites de vos documents avec mise en évidence.</p>
+          <p>Prévisualisation des données extraites automatiquement par l'IA.</p>
         </div>
         
         <div className="correction-interface bg-blue-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Interface de correction</h3>
-          <p>Corrigez facilement les erreurs potentielles d'extraction avec des suggestions IA.</p>
+          <p>Outils intuitifs pour valider et corriger les données si nécessaire.</p>
         </div>
         
         <div className="data-validation bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Validation des données</h3>
-          <p>Vérifiez et validez l'ensemble des données avant utilisation.</p>
+          <h3 className="font-medium mb-2">Validation intelligente</h3>
+          <p>Détection automatique des anomalies et suggestions de correction.</p>
         </div>
         
         <div className="export-options bg-blue-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Options d'export</h3>
-          <p>Choisissez comment vous souhaitez exploiter les données extraites.</p>
+          <p>Exportez les données extraites vers différents formats et systèmes.</p>
         </div>
         
         <div className="export-formats bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Formats disponibles</h3>
-          <div className="flex gap-3">
+          <h3 className="font-medium mb-2">Formats d'export disponibles</h3>
+          <div className="flex space-x-4">
             <span className="px-3 py-2 bg-white rounded-md shadow-sm">Excel</span>
             <span className="px-3 py-2 bg-white rounded-md shadow-sm">CSV</span>
             <span className="px-3 py-2 bg-white rounded-md shadow-sm">JSON</span>
+            <span className="px-3 py-2 bg-white rounded-md shadow-sm">API</span>
           </div>
         </div>
       </div>
       
       <div className="ocr-footer text-center text-gray-500 mt-4">
         <p>Le système OCR d'YVEA réduit de 80% le temps de traitement des documents d'exportation.</p>
-        <button 
-          id="tour-ocr-trigger"
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
       </div>
     </div>
   );
@@ -482,53 +362,52 @@ const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
 const AssistantModalContent = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="assistant-content">
-      <div className="assistant-icon text-2xl font-bold mb-4">Assistant Virtuel IA</div>
+      <div className="assistant-header text-2xl font-bold mb-4">Assistant Virtuel IA</div>
       
       <div className="mb-6 flex flex-col gap-4">
-        <div className="assistant-trigger bg-purple-100 p-4 rounded-lg">
+        <div className="assistant-icon bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Accès à l'assistant</h3>
-          <p>Votre assistant export est accessible à tout moment pendant votre navigation.</p>
+          <p>L'assistant IA est accessible depuis n'importe quelle page de la plateforme.</p>
+        </div>
+        
+        <div className="assistant-trigger bg-purple-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Activation de l'assistant</h3>
+          <p>Démarrez une conversation avec l'assistant en un seul clic.</p>
         </div>
         
         <div className="chatbox-container bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Interface de dialogue</h3>
-          <p>Posez vos questions en langage naturel et obtenez des réponses précises.</p>
+          <h3 className="font-medium mb-2">Interface conversationnelle</h3>
+          <p>Interface intuitive similaire aux applications de messagerie modernes.</p>
         </div>
         
         <div className="assistant-capabilities bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Capacités intelligentes</h3>
-          <p>L'assistant répond à vos questions sur la réglementation export et vous guide dans vos démarches.</p>
+          <p>Assistance sur la réglementation, les procédures et le suivi des dossiers.</p>
         </div>
         
         <div className="document-analysis-section bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Analyse de documents</h3>
-          <p>Partagez vos documents avec l'assistant pour une analyse approfondie et des conseils personnalisés.</p>
+          <p>Capacité à comprendre et extraire des informations des documents importés.</p>
         </div>
         
         <div className="context-indicator bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Sensibilité au contexte</h3>
-          <p>L'assistant s'adapte à votre profil, vos produits et vos marchés cibles.</p>
+          <p>L'assistant s'adapte à votre profil utilisateur et à votre historique.</p>
         </div>
         
         <div className="command-helper bg-purple-100 p-4 rounded-lg">
           <h3 className="font-medium mb-2">Commandes spéciales</h3>
-          <p>Utilisez des commandes dédiées pour des fonctionnalités avancées.</p>
+          <p>Utilisez des mots-clés spécifiques pour des actions rapides et ciblées.</p>
         </div>
         
         <div className="feedback-controls bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Feedback et amélioration</h3>
-          <p>Aidez-nous à améliorer l'assistant en notant la pertinence des réponses.</p>
+          <h3 className="font-medium mb-2">Amélioration continue</h3>
+          <p>Système d'apprentissage basé sur les feedbacks utilisateurs.</p>
         </div>
       </div>
       
       <div className="assistant-footer text-center text-gray-500 mt-4">
         <p>L'Assistant IA d'YVEA réduit de 85% les demandes de support de premier niveau.</p>
-        <button 
-          id="tour-assistant-trigger"
-          className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
       </div>
     </div>
   );
@@ -541,39 +420,38 @@ const MessagingModalContent = ({ onClose }: { onClose: () => void }) => {
       
       <div className="mb-6 flex flex-col gap-4">
         <div className="conversation-list bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Centre de messagerie</h3>
-          <p>Accédez à toutes vos conversations avec les partenaires et organismes de certification.</p>
+          <h3 className="font-medium mb-2">Liste des conversations</h3>
+          <p>Accédez à vos conversations actives organisées par dossier et priorité.</p>
         </div>
         
-        <div className="message-status-indicators bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Indicateurs en temps réel</h3>
-          <p>Suivez l'état de vos messages (envoyé, reçu, lu) en temps réel.</p>
+        <div className="messaging-interface bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Interface de messagerie</h3>
+          <p>Interface ergonomique pour des communications efficaces et sécurisées.</p>
         </div>
         
-        <div className="attachment-zone bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Partage de fichiers</h3>
-          <p>Échangez facilement des documents et pièces jointes avec vos interlocuteurs.</p>
+        <div className="document-sharing bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Partage de documents</h3>
+          <p>Partagez instantanément des documents avec l'aperçu intégré.</p>
         </div>
         
-        <div className="contextual-references bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Références contextuelles</h3>
-          <p>Intégrez des références aux certificats et documents directement dans vos messages.</p>
+        <div className="real-time-collaboration bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Collaboration en temps réel</h3>
+          <p>Collaboration simultanée sur les documents avec indicateurs de présence.</p>
         </div>
         
-        <div className="security-badge bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Sécurité des échanges</h3>
-          <p>Profitez d'un système de messagerie sécurisé avec chiffrement de bout en bout.</p>
+        <div className="notification-center bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Centre de notifications</h3>
+          <p>Restez informé des nouvelles communications, validations et actions requises.</p>
+        </div>
+        
+        <div className="conversation-timeline bg-green-100 p-4 rounded-lg">
+          <h3 className="font-medium mb-2">Historique des échanges</h3>
+          <p>Chronologie complète et consultable de toutes les communications.</p>
         </div>
       </div>
       
       <div className="messaging-footer text-center text-gray-500 mt-4">
         <p>La messagerie collaborative d'YVEA accélère les échanges et réduit les délais de validation de 60%.</p>
-        <button 
-          id="tour-messaging-trigger"
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
       </div>
     </div>
   );
@@ -589,11 +467,6 @@ const YVEAProjectContent = () => {
   // Fonction pour fermer la modale active
   const closeModal = () => setActiveModal(null);
   
-  // Chargement des hooks de walkthroughs
-  useWalkthroughCertificats();
-  useWalkthroughOcr();
-  useWalkthroughAssistant();
-  useWalkthroughMessaging();
   
   const [isParticleVisible, setIsParticleVisible] = useState(true);
   const [visualizationTab, setVisualizationTab] = useState('before');
@@ -2072,61 +1945,6 @@ const YVEAProjectContent = () => {
         </AnimatedSection>
       </div>
       
-      {/* Section Workflow de Certificats - Walkthrough */}
-      <section className="my-16" id="workflow-certificats-demo">
-        <div className="bg-white rounded-xl shadow-lg p-8 border border-primary/20">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="certificats-header text-2xl md:text-3xl font-bold text-primary flex items-center">
-              <svg className="w-7 h-7 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4zm-2 0a2 2 0 100-4 2 2 0 000 4z" /></svg>
-              Workflow de Certificats
-            </h2>
-            <button id="tour-certificats-trigger" className="btn-primary ml-4">Découvrir cette fonctionnalité</button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <div className="certificate-base-info bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Informations de base</h3>
-                <p className="text-sm text-gray-700">Numéro de certificat, date d'émission, client, etc.</p>
-              </div>
-              <div className="products-section bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Produits concernés</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>Produit A</li>
-                  <li>Produit B</li>
-                </ul>
-              </div>
-              <div className="document-upload-zone bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Documents justificatifs</h3>
-                <button className="btn-secondary">Télécharger un document</button>
-              </div>
-            </div>
-            <div>
-              <div className="certificate-type-selector bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Type de certificat</h3>
-                <select className="w-full border rounded p-2">
-                  <option>Certificat d'Inspection</option>
-                  <option>Certificat de Conformité</option>
-                </select>
-              </div>
-              <div className="validation-panel bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Validation automatique</h3>
-                <p className="text-sm text-gray-700">Vérification des données et conformité réglementaire.</p>
-              </div>
-              <div className="submission-controls flex items-center gap-4 mb-4">
-                <button className="btn-primary">Vérifier</button>
-                <button className="btn-secondary">Soumettre</button>
-              </div>
-              <div className="certificate-status-tracker bg-primary/5 p-4 rounded mb-4">
-                <h3 className="text-lg font-semibold mb-2">Suivi du statut</h3>
-                <p className="text-sm text-gray-700">En attente &rarr; En cours &rarr; Validé</p>
-              </div>
-            </div>
-          </div>
-          <div className="certificats-footer mt-8 text-center text-primary font-semibold">
-            <span>Workflow de certificats - YVEA</span>
-          </div>
-        </div>
-      </section>
       
       {/* Modales des fonctionnalités */}
       <FeatureModal 

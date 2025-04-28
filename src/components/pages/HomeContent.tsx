@@ -1234,8 +1234,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6 }}
           >
             {locale === 'fr' 
-              ? 'Prêt à collaborer?' 
-              : 'Ready to collaborate?'}
+              ? 'Parlons de vos produits' 
+              : 'Tell me about your prpducts'}
           </motion.h2>
           
           <motion.p 
