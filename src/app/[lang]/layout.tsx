@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { generatePersonSchema } from '@/utils/seo';
 import { Lang, langs } from './params';
 import LangProvider from '@/components/LangProvider';
+import Script from 'next/script';
 
 // Re-export the Lang type only
 export type { Lang };
@@ -50,6 +51,32 @@ const personSchema = generatePersonSchema({
   description: 'Expert en gestion de projets et product ownership'
 });
 
+// Script Arcade pour les démos interactives
+const arcadeScript = `
+  function onArcadeIframeMessage(e) {
+    if (e.origin !== 'https://demo.arcade.software' || !e.isTrusted) return;
+    
+    const arcadeIframe = document.querySelector('iframe[src*="R4EdYeJx1ocNFzBr7mvw"]');
+    if (!arcadeIframe || !arcadeIframe.contentWindow) return;
+    
+    if (e.data.event === 'arcade-init') {
+      arcadeIframe.contentWindow.postMessage({event: 'register-popout-handler'}, '*');
+    }
+    
+    if (e.data.event === 'arcade-popout-open') {
+      arcadeIframe.style.position = 'fixed';
+      arcadeIframe.style.zIndex = '9999999';
+    }
+    
+    if (e.data.event === 'arcade-popout-close') {
+      arcadeIframe.style.position = 'absolute';
+      arcadeIframe.style.zIndex = 'auto';
+    }
+  }
+  
+  window.addEventListener('message', onArcadeIframeMessage);
+`;
+
 export default function LocaleLayout({
   children,
   params: { lang },
@@ -82,6 +109,9 @@ export default function LocaleLayout({
         <LangProvider lang={lang}>
           {children}
         </LangProvider>
+        
+        {/* Script pour gérer les démos Arcade */}
+        <Script id="arcade-handler" dangerouslySetInnerHTML={{ __html: arcadeScript }} />
       </body>
     </html>
   );
