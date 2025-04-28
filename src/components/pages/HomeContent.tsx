@@ -28,28 +28,28 @@ interface HomeContentProps {
 const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   "MAY": {
     fr: {
-      context: "Difficultés internes critiques pour former rapidement les équipes aux procédures export EMEA, entraînant une perte de compétitivité opérationnelle et un besoin urgent de solution digitale innovante.",
-      role: "Mon rôle de Digital Product Manager : Pilotage produit complet : cadrage fonctionnel détaillé, coordination Agile de l'équipe technique, définition stratégique des cas d'usage IA, management rigoureux des tests utilisateurs auprès de 50 utilisateurs pilotes.",
+      context: "Difficultés internes critiques pour former rapidement les équipes aux procédures export EMEA, entraînant une perte de compétitivité opérationnelle.",
+      role: "Mon rôle de Product Manager : Pilotage produit complet : cadrage fonctionnel détaillé, coordination Agile de l'équipe technique, définition des cas d'usage IA, management rigoureux des tests utilisateurs auprès de 50 utilisateurs pilotes.",
       results: [
-        "Temps nécessaire aux formations réduit de 70%",
-        "Adoption immédiate avec satisfaction utilisateur très élevée (95%)",
+        "Temps nécessaire aux formations réduit de 70 %",
+        "Adoption immédiate avec satisfaction utilisateur très élevée (95 %)",
         "Optimisation des processus internes grâce à l'IA conversationnelle"
       ],
-      lessons: "Apprentissages Produit : Importance cruciale de l'expérience utilisateur intuitive pour faciliter l'adoption d'un produit IA complexe. La gestion agile des retours utilisateurs et la vision produit claire sont des leviers clés de réussite.",
+      lessons: "Apprentissages Produit : Importance cruciale de l'expérience utilisateur intuitive pour faciliter l'adoption d'un produit IA complexe. La gestion agile des retours utilisateurs est un levier clé de réussite.",
       skills: {
         soft: ["Leadership produit", "Innovation stratégique", "Adaptabilité agile", "Écoute utilisateur"],
         hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Prompt engineering avancé", "Méthodologie Scrum"]
       }
     },
     en: {
-      context: "Critical internal difficulties in rapidly training teams on EMEA export procedures, resulting in a loss of operational competitiveness and an urgent need for an innovative digital solution.",
-      role: "My Digital Product Manager role: Complete product management: detailed functional framing, Agile coordination of the technical team, strategic definition of AI use cases, rigorous management of user testing with 50 pilot users.",
+      context: "Critical internal difficulties in rapidly training teams on EMEA export procedures, resulting in a loss of operational competitiveness.",
+      role: "My Product Manager role: Complete product management: detailed functional framing, Agile coordination of the technical team, AI use case definition, rigorous management of user testing with 50 pilot users.",
       results: [
         "Time required for training reduced by 70%",
         "Immediate adoption with very high user satisfaction (95%)",
         "Optimization of internal processes through conversational AI"
       ],
-      lessons: "Product Learnings: Critical importance of intuitive user experience to facilitate the adoption of a complex AI product. Agile management of user feedback and clear product vision are key success levers.",
+      lessons: "Product Learnings: Critical importance of intuitive user experience to facilitate the adoption of a complex AI product. Agile management of user feedback is a key success lever.",
       skills: {
         soft: ["Product leadership", "Strategic innovation", "Agile adaptability", "User listening"],
         hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Advanced prompt engineering", "Scrum methodology"]
@@ -58,28 +58,28 @@ const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   },
   "SAMSUNG": {
     fr: {
-      context: "Lancement stratégique d'une nouvelle gamme de TV premium sur un marché français ultra-compétitif, avec des consommateurs exigeants et des défis d'adoption technologique.",
-      role: "Mon rôle de Digital Product Manager : Orchestration complète du lancement produit : étude de marché approfondie, définition UX/UI des supports digitaux, pilotage des KPIs d'acquisition et formation présentielle de 200+ vendeurs nationaux.",
+      context: "Nécessité d'offrir une expérience utilisateur irréprochable face à l'afflux exceptionnel lors des JO2024.",
+      role: "Mon rôle (gestion produit/terrain) : Responsable opérationnel de la « roadmap » visiteur : analyse et optimisation des parcours utilisateurs, coordination terrain des équipes, amélioration continue basée sur des retours utilisateurs quotidiens.",
       results: [
-        "Triple performance commerciale vs objectif initial (+300%)",
-        "Taux de conversion digital inédit de 4,8% sur le site constructeur",
-        "Retour sur investissement marketing x5 vs campagnes précédentes"
+        "Fluidité totale du parcours pour 17K visiteurs/jour",
+        "Taux de satisfaction client mesuré à 90 %",
+        "Zéro incident majeur malgré un contexte opérationnel complexe"
       ],
-      lessons: "Apprentissages Produit : La valeur d'une vision produit holistique intégrant expertise marketing et technique. L'importance d'aligner parfaitement l'expérience digitale et physique pour maximiser l'impact commercial.",
+      lessons: "Apprentissages Produit & Opérations : L'approche « test and learn » et la gestion proactive des retours terrain ont été essentielles à l'expérience produit réussie. Importance du leadership agile pour gérer efficacement les imprévus opérationnels.",
       skills: {
         soft: ["Vision stratégique", "Communication multi-niveau", "Persuasion commerciale", "Intelligence de marché"],
         hard: ["Analytics avancés", "A/B testing", "Planification GTM", "Optimisation conversion"]
       }
     },
     en: {
-      context: "Strategic launch of a new premium TV range in an ultra-competitive French market, with demanding consumers and technological adoption challenges.",
-      role: "My Digital Product Manager role: Complete product launch orchestration: in-depth market research, UX/UI definition of digital supports, management of acquisition KPIs and face-to-face training of 200+ national salespeople.",
+      context: "Need to provide an impeccable user experience in the face of exceptional attendance during the 2024 Olympics.",
+      role: "My role (product/field management): Operational manager of the visitor 'roadmap': analysis and optimization of user journeys, field coordination of teams, continuous improvement based on daily user feedback.",
       results: [
-        "Triple commercial performance vs initial target (+300%)",
-        "Unprecedented digital conversion rate of 4.8% on the manufacturer's website",
-        "Marketing ROI x5 vs previous campaigns"
+        "Total fluidity of the journey for 17K visitors/day",
+        "Customer satisfaction rate measured at 90%",
+        "Zero major incidents despite a complex operational context"
       ],
-      lessons: "Product Learnings: The value of a holistic product vision integrating marketing and technical expertise. The importance of perfectly aligning digital and physical experiences to maximize commercial impact.",
+      lessons: "Product & Operations Learnings: The 'test and learn' approach and proactive management of field feedback were essential to the successful product experience. Importance of agile leadership to effectively manage operational contingencies.",
       skills: {
         soft: ["Strategic vision", "Multi-level communication", "Commercial persuasion", "Market intelligence"],
         hard: ["Advanced analytics", "A/B testing", "GTM planning", "Conversion optimization"]
@@ -88,28 +88,28 @@ const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   },
   "SGS": {
     fr: {
-      context: "Organisation internationale avec un besoin urgent de digitaliser ses processus d'inspection technique pour renforcer sa compétitivité face aux nouvelles startups disruptant le marché.",
-      role: "Mon rôle de Digital Product Manager : Pilotage complet du projet de transformation : cadrage des besoins utilisateurs, modélisation des nouveaux parcours digitaux, et coordination des développements techniques entre équipes internes et prestataires.",
+      context: "Processus administratifs manuels et inefficaces affectant négativement les performances commerciales et la satisfaction client.",
+      role: "Mon rôle de Product Manager : Pilotage complet produit : priorisation des besoins métier, définition technique des fonctionnalités OCR et automatisation, collaboration étroite avec équipes techniques/agiles et équipes commerciales.",
       results: [
-        "Réduction de 40% du temps de traitement des inspections",
-        "Économies opérationnelles de 2M€ annuels",
-        "Satisfaction utilisateur interne en hausse de 65%"
+        "Réduction de 40 % des délais opérationnels export",
+        "Augmentation du CA stratégique de 20 % sur portefeuille B2B (2M€)",
+        "Satisfaction client portée à 95 % sur 150 comptes majeurs"
       ],
-      lessons: "Apprentissages Produit : L'importance critique d'une approche centrée utilisateur pour surmonter les résistances au changement. Valeur ajoutée d'un product owner capable de traduire les besoins métier en solutions techniques viables.",
+      lessons: "Apprentissages Produit : La collaboration étroite entre équipes commerciales et techniques est fondamentale pour garantir la pertinence du produit digital et son succès auprès des utilisateurs finaux.",
       skills: {
         soft: ["Gestion du changement", "Négociation", "Facilitation", "Empathie utilisateur"],
         hard: ["Product Discovery", "User stories mapping", "Process optimization", "Méthodologie SAFe"]
       }
     },
     en: {
-      context: "International organization with an urgent need to digitize its technical inspection processes to strengthen its competitiveness against new startups disrupting the market.",
-      role: "My Digital Product Manager role: Complete transformation project management: framing user needs, modeling new digital journeys, and coordinating technical developments between internal teams and service providers.",
+      context: "Manual and inefficient administrative processes negatively affecting commercial performance and customer satisfaction.",
+      role: "My Product Manager role: Complete product management: business needs prioritization, technical definition of OCR features and automation, close collaboration with technical/agile teams and commercial teams.",
       results: [
-        "40% reduction in inspection processing time",
-        "Operational savings of €2M annually",
-        "65% increase in internal user satisfaction"
+        "40% reduction in export operational delays",
+        "20% increase in strategic revenue on B2B portfolio (€2M)",
+        "Customer satisfaction raised to 95% on 150 major accounts"
       ],
-      lessons: "Product Learnings: The critical importance of a user-centered approach to overcome resistance to change. Added value of a product owner capable of translating business needs into viable technical solutions.",
+      lessons: "Product Learnings: Close collaboration between commercial and technical teams is fundamental to ensuring the relevance of the digital product and its success with end users.",
       skills: {
         soft: ["Change management", "Negotiation", "Facilitation", "User empathy"],
         hard: ["Product Discovery", "User stories mapping", "Process optimization", "SAFe methodology"]
@@ -650,8 +650,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/MAY.jpg",
                 tags: ["Product Management", "GPT-4", "UX", "Azure OpenAI", "RAG"],
                 description: locale === 'fr' 
-                  ? "Gestion complète d'un produit IA basé sur GPT-4 : cadrage fonctionnel détaillé, coordination Agile et définition de cas d'usage IA, réduisant de 70% les temps de formation export."
-                  : "Complete product management of a GPT-4 solution: detailed functional framing, Agile coordination and AI use case definition, reducing export training times by 70%.",
+                  ? "Création d'un produit IA basé sur GPT-4 (Azure), réduisant de 70 % les temps de formation export et adopté par 50 utilisateurs pilotes grâce à une UX optimisée."
+                  : "Creation of a GPT-4 (Azure) based AI product, reducing export training times by 70% and adopted by 50 pilot users thanks to optimized UX.",
                 dominante: locale === 'fr' ? "Product Management & IA" : "Product Management & AI",
                 icon: <FaRobot />
               },
@@ -661,8 +661,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/Samsung.jpg",
                 tags: ["UX/CX", "Operations", "Product Testing", "Leadership"],
                 description: locale === 'fr' 
-                  ? "Product & Experience Manager : optimisation continue du parcours utilisateur, pilotage d'une équipe de 12 personnes pour délivrer une expérience fluide à 17K visiteurs quotidiens."
-                  : "Product & Experience Manager: continuous optimization of the user journey, leading a team of 12 people to deliver a seamless experience to 17K daily visitors.",
+                  ? "Management terrain et optimisation continue du parcours utilisateur, assurant une expérience fluide à 17K visiteurs quotidiens, avec un taux de satisfaction client à 90 %."
+                  : "Field management and continuous optimization of the user journey, ensuring a smooth experience for 17K daily visitors, with a 90% customer satisfaction rate.",
                 dominante: locale === 'fr' ? "Product Experience & Leadership" : "Product Experience & Leadership",
                 icon: <FaUsers />
               },
@@ -672,30 +672,30 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/SGS.jpg",
                 tags: ["Digital Transformation", "OCR", "Product ROI", "Automation"],
                 description: locale === 'fr' 
-                  ? "Product Manager : priorisation des besoins business, définition technique des fonctionnalités OCR et automatisation, générant 40% de réduction des délais et +20% de CA sur un portefeuille de 2M€."
-                  : "Product Manager: business needs prioritization, technical definition of OCR features and automation, generating 40% reduction in delays and +20% revenue on a €2M portfolio.",
+                  ? "Gestion produit d'une automatisation OCR avancée réduisant de 40 % les délais opérationnels et augmentant de 20 % le CA d'un portefeuille stratégique de 2M€."
+                  : "Product management of advanced OCR automation reducing operational delays by 40% and increasing revenue by 20% on a strategic €2M portfolio.",
                 dominante: locale === 'fr' ? "Product Management & Transformation" : "Product Management & Transformation",
                 icon: <FaDatabase />
               },
               {
                 id: "XEROX",
-                title: locale === 'fr' ? "Xerox – Solutions produit hybrides" : "Xerox – Hybrid Product Solutions",
+                title: locale === 'fr' ? "Xerox – Déploiement solutions hybrides" : "Xerox – Hybrid Solutions Deployment",
                 img: "/images/XEROX.jpg",
                 tags: ["Product-Sales Cycle", "Technical Roadmap", "Customer Feedback"],
                 description: locale === 'fr' 
-                  ? "Product Manager commercial : définition et gestion globale du cycle produit-vente, roadmap technique et coordination inter-équipes, améliorant de 45% l'efficacité des déploiements."
-                  : "Commercial Product Manager: definition and comprehensive management of the product-sales cycle, technical roadmap and inter-team coordination, improving deployment efficiency by 45%.",
+                  ? "Structuration stratégique produit/commerciale d'offres hardware/SaaS sur 200 clients multisites, améliorant de 45 % l'efficacité des déploiements."
+                  : "Strategic product/commercial structuring of hardware/SaaS offerings for 200 multi-site clients, improving deployment efficiency by 45%.",
                 dominante: locale === 'fr' ? "Product Strategy & Commercial" : "Product Strategy & Commercial",
                 icon: <FaTools />
               },
               {
                 id: "FRANCIS",
-                title: locale === 'fr' ? "Francis Lefebvre – Produits B2B digitaux" : "Francis Lefebvre – Digital B2B Products",
+                title: locale === 'fr' ? "Francis Lefebvre – Digitalisation des ventes B2B" : "Francis Lefebvre – B2B Sales Digitalization",
                 img: "/images/FRANCIS.jpg",
                 tags: ["Product Development", "Market Testing", "B2B Strategy"],
                 description: locale === 'fr' 
-                  ? "Product & Business Developer : développement stratégique de nouvelles offres digitales B2B, conception d'argumentaires commerciaux et tests rapides marché pour valider le product-market fit."
-                  : "Product & Business Developer: strategic development of new B2B digital offerings, design of commercial arguments and rapid market tests to validate product-market fit.",
+                  ? "Conception stratégique produit de nouvelles offres digitales B2B, améliorant considérablement la conversion client grâce à une approche de prospection intensive personnalisée."
+                  : "Strategic product design of new B2B digital offerings, significantly improving customer conversion through an intensive personalized prospecting approach.",
                 dominante: locale === 'fr' ? "Product Development & Business" : "Product Development & Business",
                 icon: <FaBusinessTime />
               },
@@ -705,8 +705,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/DA.jpg",
                 tags: ["Product Strategy", "Market Entry", "International"],
                 description: locale === 'fr' 
-                  ? "Product Manager stratégique : définition de la stratégie produit pour l'entrée sur le marché européen, pilotage des adaptations locales et coordination des équipes internationales, générant +120% de croissance en 18 mois."
-                  : "Strategic Product Manager: definition of product strategy for European market entry, management of local adaptations and coordination of international teams, generating +120% growth in 18 months.",
+                  ? "Pilotage stratégique de l'entrée produit sur le marché européen pour une entreprise chinoise, atteignant une croissance CA de 120 % en 18 mois."
+                  : "Strategic management of product entry into the European market for a Chinese company, achieving 120% revenue growth in 18 months.",
                 dominante: locale === 'fr' ? "Product Strategy & International" : "Product Strategy & International",
                 icon: <FaBusinessTime />
               }
