@@ -11,6 +11,7 @@ Un portfolio personnel moderne, élégant et interactif mettant en valeur l'expe
 - **GSAP**: Pour des animations de défilement sophistiquées
 - **ESLint**: Pour assurer la qualité du code
 - **Internationalisation**: Support multilingue (français et anglais)
+- **Arcade**: Intégration de démonstrations interactives pour les projets
 
 ## Caractéristiques UI/UX Premium
 
@@ -25,6 +26,8 @@ Un portfolio personnel moderne, élégant et interactif mettant en valeur l'expe
 - **Bordures animées**: Transitions subtiles sur les liens et boutons
 - **Texte en dégradé**: Titres avec dégradés de couleurs animés
 - **Sections animées au défilement**: Apparition progressive des contenus
+- **Modales projet interactives**: Présentation détaillée des projets avec navigation par sections
+- **Démos Arcade intégrées**: Démonstrations interactives en iframe pour certains projets
 
 ## Caractéristiques SEO
 
@@ -49,12 +52,32 @@ Le projet utilise une architecture modulaire pour les animations et effets:
   - `AnimatedSection`: Sections avec apparition au défilement
   - `ScrollingText`: Texte défilant lors du scroll
   - `AnimatedButton`: Boutons avec effets de survol avancés
+  - `ProjectModal`: Fenêtre modale interactive pour le détail des projets
 
 - **Styles d'animation**:
   - Animations CSS personnalisées (fade, float, slide, etc.)
   - Animation Tailwind intégrées
   - Effets visuels (neumorphisme, glassmorphisme, grain de texture)
   - Effets de texte (gradient, shadow, typing)
+  - Animations Framer Motion pour les transitions entre sections
+
+## Intégration d'Arcade et sécurité CSP
+
+Le site intègre des démonstrations interactives Arcade pour certains projets :
+
+- **Configuration CSP** : En-têtes de sécurité de contenu configurés pour autoriser les iframes Arcade
+- **Fichiers de configuration** :
+  - `_headers` : Définit les en-têtes HTTP pour Netlify
+  - `netlify.toml` : Configuration complète incluant les politiques CSP
+- **Paramètres d'intégration** : Mode modal optimisé pour une expérience utilisateur fluide
+- **Attributs iframe** : Configuration sandbox et allowfullscreen pour une sécurité renforcée
+
+La politique CSP inclut :
+```
+frame-src 'self' https://demo.arcade.software https://*.arcade.software;
+script-src 'self' 'unsafe-inline' 'unsafe-eval';
+connect-src 'self' https://demo.arcade.software https://*.arcade.software;
+```
 
 ## Internationalisation (i18n)
 
@@ -115,7 +138,10 @@ Portfolio/
   │    │    ├── stats/     (Composants pour les statistiques)
   │    │    │    └── AnimatedStatsCard.tsx
   │    │    ├── ui/        (Composants d'interface réutilisables)
-  │    │    │    └── animated-button.tsx
+  │    │    │    ├── animated-button.tsx
+  │    │    │    └── ProjectModal.tsx (Modal interactif pour les détails de projets)
+  │    │    ├── projects/  (Composants pour les projets)
+  │    │    │    └── YVEAProjectContent.tsx (Contenu spécifique au projet YVEA)
   │    │    ├── hero/      (Composants modulaires pour la section héro)
   │    │    │    ├── GatewayCard.tsx
   │    │    │    ├── GatewayGrid.tsx
@@ -126,31 +152,33 @@ Portfolio/
   │    │    │    ├── HeroStatistics.tsx
   │    │    │    ├── ProfileImage.tsx
   │    │    │    └── index.ts
-  │    │    ├── data/
-  │    │    │    └── translations.json (Fichier de traductions)
-  │    │    ├── hooks/
-  │    │    │    ├── useTranslation.ts (Hook personnalisé pour les traductions)
-  │    │    │    ├── useTypingEffect.ts (Effet de frappe pour les textes)
-  │    │    │    └── useLoadAnimation.ts (Animation au chargement des éléments)
-  │    │    ├── types/
-  │    │    │    └── hero.ts   (Types TypeScript pour les composants héro)
-  │    │    ├── utils/
-  │    │    │    └── cn.ts     (Utilitaire pour la fusion de classes Tailwind)
-  │    │    ├── middleware.ts  (Middleware pour la redirection linguistique)
-  │    │    └── styles/        (Fichiers CSS globaux)
-  │    │         ├── globals.css (Styles globaux et base Tailwind)
-  │    │         └── animations.css (Styles d'animation spécifiques)
-  │    ├── public/             (Assets et images)
-  │    │    ├── images/        (Images optimisées pour le web)
-  │    │    └── robots.txt     (Configuration pour les crawlers)
-  │    ├── package.json        (Dépendances)
-  │    ├── tsconfig.json       (Configuration TypeScript)
-  │    ├── tailwind.config.js  (Configuration Tailwind avec animations)
-  │    ├── postcss.config.js   (Configuration PostCSS)
-  │    ├── next.config.js      (Configuration Next.js pour export statique)
-  │    ├── next-i18next.config.js (Configuration i18n)
-  │    ├── netlify.toml        (Configuration de déploiement Netlify)
-  │    └── README.md           (Documentation)
+  │    ├── data/          (Données et traductions)
+  │    │    └── translations.json (Fichier de traductions)
+  │    ├── hooks/         (Hooks personnalisés)
+  │    │    ├── useTranslation.ts (Hook personnalisé pour les traductions)
+  │    │    ├── useTypingEffect.ts (Effet de frappe pour les textes)
+  │    │    └── useLoadAnimation.ts (Animation au chargement des éléments)
+  │    ├── types/         (Types TypeScript)
+  │    │    └── hero.ts   (Types TypeScript pour les composants héro)
+  │    ├── utils/         (Utilitaires)
+  │    │    ├── cn.ts     (Utilitaire pour la fusion de classes Tailwind)
+  │    │    └── seo.ts    (Générateur de schémas JSON-LD)
+  │    ├── middleware.ts  (Middleware pour la redirection linguistique)
+  │    └── styles/        (Fichiers CSS globaux)
+  │         ├── globals.css (Styles globaux et base Tailwind)
+  │         └── animations.css (Styles d'animation spécifiques)
+  ├── public/             (Assets et images)
+  │    ├── images/        (Images optimisées pour le web)
+  │    └── robots.txt     (Configuration pour les crawlers)
+  ├── _headers            (Configuration des en-têtes HTTP pour Netlify)
+  ├── package.json        (Dépendances)
+  ├── tsconfig.json       (Configuration TypeScript)
+  ├── tailwind.config.js  (Configuration Tailwind avec animations)
+  ├── postcss.config.js   (Configuration PostCSS)
+  ├── next.config.js      (Configuration Next.js pour export statique)
+  ├── next-i18next.config.js (Configuration i18n)
+  ├── netlify.toml        (Configuration de déploiement Netlify)
+  └── README.md           (Documentation)
 ```
 
 ## Architecture Client-Server
@@ -161,6 +189,28 @@ Pour optimiser les performances et la compatibilité SEO, le projet implémente 
 - **Composants client**: Pour les animations et interactions avancées (HomeContent)
 
 Cette architecture permet de bénéficier des avantages du rendu côté serveur pour le référencement tout en offrant une expérience utilisateur interactive et animée.
+
+## Composants clés
+
+### ProjectModal
+
+Le composant `ProjectModal` est responsable de l'affichage détaillé des projets :
+
+- **Navigation par sections** : Contexte, Rôle, Résultats, Leçons, Compétences, Média
+- **Animations de transition** : Effets de déplacement et d'opacité lors de l'ouverture/fermeture
+- **Contenu dynamique** : Adapté en fonction du projet sélectionné
+- **Intégrations média** : Support pour les démos Arcade et contenu multimédia
+- **Expérience réactive** : Design adapté mobile et desktop
+- **Navigation intuitive** : Indicateurs de section actuelle et gestion du défilement
+
+### AnimatedProfile
+
+Composant de profil interactif avec :
+
+- **Badges animés** : Éléments d'information flottants (certifications, expérience, impact)
+- **Effets visuels** : Ombres de texte et arrière-plan semi-transparent pour améliorer la lisibilité
+- **Animations réactives** : Mouvement subtil des badges et effets de survol
+- **Adaptabilité** : Responsive sur tous les appareils
 
 ## Optimisation SEO des pages
 
@@ -205,8 +255,9 @@ Le projet est configuré pour générer un site statique avec Next.js en utilisa
 Ce projet est déployé sur Netlify avec les configurations suivantes :
 
 - **Fichier `netlify.toml`** : Définit les paramètres de build et de déploiement
+- **Fichier `_headers`** : Configure les en-têtes HTTP pour la sécurité et la performance
 - **Dossier de publication** : `out` (généré par Next.js lors du build)
-- **Commande de build** : `npm run build`
+- **Commande de build** : `npm run netlify-build` (inclut la copie des fichiers de configuration)
 - **Redirections** : Configuration pour une SPA (Single Page Application)
 - **Headers sécurisés** : X-Frame-Options, Content-Security-Policy, etc.
 
@@ -219,6 +270,7 @@ Pour déployer manuellement :
 - Design responsive adapté à tous les appareils et tailles d'écran
 - Tests de compatibilité cross-browser (Chrome, Firefox, Safari, Edge)
 - Animations dégradables pour maintenir la fonctionnalité sur des navigateurs moins avancés
+- Configuration CSP compatible avec les navigateurs modernes
 
 ## Accessibilité et performance
 
@@ -248,39 +300,25 @@ Un système de gestion de contenu (CMS) a été partiellement implémenté pour 
   - Système d'authentification avec JWT
   - Points d'accès API pour opérations CRUD d'images et d'articles de blog
   - Utilitaires de base de données basés sur JSON pour stockage de métadonnées
-  - Configuration dans `netlify.toml` pour supporter les fonctions serverless
 
-- **Composants Frontend**:
-  - Composant `ImageManager` pour l'affichage d'images dynamiques
-  - Intégration avec les composants existants comme `ProfileImage`
-  - Gestion des erreurs et mise en cache d'images
-  - Support multilingue intégré aux composants du CMS
+## Résolution des problèmes courants
 
-### Fonctionnalités restantes à développer
+### Intégration Arcade
 
-- **Interface d'administration**:
-  - UI complète pour l'authentification des administrateurs
-  - Interface de gestion des images (téléchargement, modification, suppression)
-  - Interface pour création/édition d'articles de blog
-  - Tableau de bord avec statistiques
+Si l'iframe Arcade affiche un message d'erreur "Ce contenu est bloqué", vérifiez :
+1. La configuration CSP dans `netlify.toml` et `_headers`
+2. Les attributs de l'iframe dans le composant `ProjectModal`
+3. Le déploiement des fichiers de configuration sur Netlify
 
-- **Gestion de fichiers**:
-  - Téléchargement de fichiers pour les images
-  - Optimisation et traitement d'images (redimensionnement, compression)
-  - Système de stockage de fichiers intégré (peut utiliser Netlify Large Media)
+### Build et déploiement
 
-- **Fonctionnalités blog avancées**:
-  - Éditeur de texte riche pour les articles
-  - Système de catégories et tags
-  - Pagination et recherche
-  - Prévisualisation des articles
+Pour assurer un build correct :
+1. Utilisez la commande `npm run netlify-build` qui copie les fichiers de configuration
+2. Vérifiez que le fichier `_headers` est bien présent dans le dossier `out`
+3. Assurez-vous que la configuration CSP inclut tous les domaines nécessaires
 
-### Architecture technique
+## Contact et contributions
 
-Le CMS utilise une architecture serverless avec Netlify Functions pour les opérations backend. Les données sont stockées dans des fichiers JSON structurés. Le frontend est intégré nativement dans l'application Next.js existante.
-
-Pour continuer le développement:
-1. Les fichiers de fonction sont dans le dossier `/netlify/functions/`
-2. Les composants frontend du CMS sont dans `/src/components/cms/`
-3. Les types et interfaces sont définis dans `/src/types/cms.ts`
-4. La configuration d'authentification est dans `/netlify/functions/auth.js`
+Pour toute question ou contribution au projet, veuillez contacter :
+- **Email**: contact@moamen.fr
+- **LinkedIn**: [Moamen Elmasry](https://www.linkedin.com/in/moamen-elmasry/)
