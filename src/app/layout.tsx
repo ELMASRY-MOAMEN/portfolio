@@ -91,11 +91,6 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Meta-tag CSP pour autoriser les iframes d'Arcade */}
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; frame-src 'self' https://demo.arcade.software https://*.arcade.software; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://demo.arcade.software https://*.arcade.software;"
-        />
         {/* Préchargement des polices pour optimiser le chargement */}
         <link
           rel="preload"
