@@ -1610,7 +1610,7 @@ const YVEAProjectContent = () => {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {currentContent.resultsCategories.map((result, idx) => (
+              {((currentContent as any).resultsCategories || []).map((result: any, idx: number) => (
                 <motion.div 
                   key={idx}
                   className="bg-white p-6 rounded-lg shadow border border-gray th-100"
