@@ -1218,7 +1218,8 @@ const YVEAProjectContent = () => {
                 {/* Tabs for before/after selection - Elegant design */}
                 <div className="mb-10 flex justify-center">
                   <div className="inline-flex items-center p-1 rounded-xl bg-gray-100 dark:bg-gray-800">
-                    <button 
+                    <button
+                   
                       className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                         visualizationTab === 'before' 
                           ? 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 shadow-sm' 
@@ -1227,7 +1228,8 @@ const YVEAProjectContent = () => {
                       onClick={() => setVisualizationTab('before')}
                     >
                       {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
-                    </button>
+                    </button
+                  >
                     <button 
                       className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                         visualizationTab === 'after' 
@@ -1238,6 +1240,72 @@ const YVEAProjectContent = () => {
                     >
                       {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
                     </button>
+                  </div>
+                </div>
+                
+                {/* Clickable image container - Redesigned */}
+                <div className="relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden select-none border border-gray-200 dark:border-gray-800 shadow-sm"
+                    style={{ height: isExpanded ? '80vh' : '300px', transition: 'height 0.3s ease-in-out' }}
+                >
+                  {/* Before image */}
+                  {visualizationTab === 'before' && (
+                    <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                      <Image 
+                        src="/downloads/Current flow.png" 
+                        alt="Current certification process flow" 
+                        fill 
+                        className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
+                      />
+                      <div className="absolute top-4 left-4 bg-white dark:bg-gray-800 text-red-600 dark:text-red-400 px-3 py-1 rounded-md text-sm font-medium shadow-sm border border-gray-100 dark:border-gray-700">
+                        {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
+                      </div>
+                      
+                      {/* Expand/collapse indicator */}
+                      <div className="absolute bottom-4 right-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 p-2 rounded-full shadow-sm border border-gray-100 dark:border-gray-700">
+                        {isExpanded ? (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                        ) : (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 15l7-7 7 7"></path>
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* After image */}
+                  {visualizationTab === 'after' && (
+                    <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                      <Image 
+                        src="/downloads/New flow.png" 
+                        alt="New certification process with YVEA" 
+                        fill 
+                        className={`object-contain ${isExpanded ? 'object-scale-down' : 'object-cover object-center'}`}
+                      />
+                      <div className="absolute top-4 right-4 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 px-3 py-1 rounded-md text-sm font-medium shadow-sm border border-gray-100 dark:border-gray-700">
+                        {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
+                      </div>
+                      
+                      {/* Expand/collapse indicator */}
+                      <div className="absolute bottom-4 right-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 p-2 rounded-full shadow-sm border border-gray-100 dark:border-gray-700">
+                        {isExpanded ? (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                        ) : (
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 15l7-7 7 7"></path>
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Hint text */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-xs font-medium shadow-sm border border-gray-100 dark:border-gray-700 z-30 pointer-events-none">
+                    {locale === 'fr' ? "Cliquez pour agrandir l'image" : "Click to expand image"}
                   </div>
                 </div>
               </motion.div>
