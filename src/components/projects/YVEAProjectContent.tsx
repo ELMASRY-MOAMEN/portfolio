@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 import AnimatedSection from '@/components/layout/AnimatedSection';
 import AnimatedButton from '@/components/ui/animated-button';
 import Image from 'next/image';
-import { HiDocumentText, HiCurrencyDollar, HiOfficeBuilding, HiCode, HiRefresh, HiGlobeAlt, HiLightBulb, HiChartBar } from 'react-icons/hi';
+import { HiDocumentText, HiCurrencyDollar, HiOfficeBuilding, HiCode, HiRefresh, HiGlobeAlt, HiLightBulb, HiChartBar, HiAcademicCap, HiUser, HiUserGroup, HiChatAlt, HiClipboardCheck } from 'react-icons/hi';
 import DigitalGlobe from './DigitalGlobe';
 import ParticleFlowAnimation from './ParticleFlowAnimation';
 import AdvancedDataMesh from './AdvancedDataMesh';
@@ -1625,57 +1625,8 @@ const YVEAProjectContent = () => {
                 Leçons apprises
               </h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center mb-2">
-                    <div className="text-primary mr-2">💡</div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">Recul stratégique</h4>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Transformer les échecs en opportunités d'ajustement via rétrospectives régulières.
-                  </p>
-                </div>
-                
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center mb-2">
-                    <div className="text-primary mr-2">💡</div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">Écoute active</h4>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Cycles de feedback enrichissant la vision produit et anticipant les risques.
-                  </p>
-                </div>
-                
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center mb-2">
-                    <div className="text-primary mr-2">💡</div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">Décloisonnement</h4>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Workshops cross-fonctionnels accélérant les décisions et garantissant la cohérence.
-                  </p>
-                </div>
-                
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center mb-2">
-                    <div className="text-primary mr-2">💡</div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">Culture collaborative</h4>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Pairing et revues de code renforçant les compétences collectives.
-                  </p>
-                </div>
-                
-                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center mb-2">
-                    <div className="text-primary mr-2">💡</div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">Mentorat ciblé</h4>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Coaching de juniors via one-to-one et OKRs personnalisés.
-                  </p>
-                </div>
-              </div>
+              {/* Leçons apprises - Stepper & Accordion Component */}
+              <LessonsLearnedStepper />
             </div>
           </div>
         </AnimatedSection>
@@ -1874,6 +1825,236 @@ const YVEAProjectContent = () => {
             </div>
           </div>
         </AnimatedSection>
+      </div>
+    </div>
+  );
+};
+
+// Nouveau composant pour les leçons apprises
+const LessonsLearnedStepper = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const stepsRef = useRef<HTMLDivElement>(null);
+  const { locale } = useTranslation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Leçons apprises avec contenu bilingue
+  const lessons = {
+    fr: [
+      {
+        id: 1,
+        title: "Mettre en place des rétrospectives stratégiques",
+        description: "Capitaliser sur les échecs pour ajuster la roadmap et améliorer la prise de décision.",
+        icon: <HiClipboardCheck className="h-5 w-5" />,
+        color: "bg-blue-100 text-blue-600",
+        metric: "+25% d'amélioration continue"
+      },
+      {
+        id: 2,
+        title: "Instaurer l'écoute active",
+        description: "Formaliser des boucles de feedback fréquentes pour anticiper les risques et affiner la vision produit.",
+        icon: <HiUserGroup className="h-5 w-5" />,
+        color: "bg-purple-100 text-purple-600",
+        metric: "-30% de pivots majeurs"
+      },
+      {
+        id: 3,
+        title: "Animer des workshops cross-fonctionnels",
+        description: "Favoriser l'alignement rapide entre design, dev et business pour accélérer la mise sur le marché.",
+        icon: <HiUser className="h-5 w-5" />,
+        color: "bg-green-100 text-green-600",
+        metric: "+40% de vélocité"
+      },
+      {
+        id: 4,
+        title: "Développer la culture collaborative",
+        description: "Organiser du pairing et des revues de code systématiques pour monter en compétences et fiabiliser le code.",
+        icon: <HiChatAlt className="h-5 w-5" />,
+        color: "bg-orange-100 text-orange-600",
+        metric: "-45% de bugs en production"
+      },
+      {
+        id: 5,
+        title: "Lancer un programme de mentorat ciblé",
+        description: "Accompagner les juniors en one-to-one avec des OKR personnalisés pour booster leur autonomie.",
+        icon: <HiAcademicCap className="h-5 w-5" />,
+        color: "bg-red-100 text-red-600",
+        metric: "+30% d'autonomie junior"
+      }
+    ],
+    en: [
+      {
+        id: 1,
+        title: "Implement strategic retrospectives",
+        description: "Leverage failures to adjust the roadmap and improve decision-making.",
+        icon: <HiClipboardCheck className="h-5 w-5" />,
+        color: "bg-blue-100 text-blue-600",
+        metric: "+25% continuous improvement"
+      },
+      {
+        id: 2,
+        title: "Establish active listening",
+        description: "Formalize frequent feedback loops to anticipate risks and refine product vision.",
+        icon: <HiUserGroup className="h-5 w-5" />,
+        color: "bg-purple-100 text-purple-600",
+        metric: "-30% major pivots"
+      },
+      {
+        id: 3,
+        title: "Facilitate cross-functional workshops",
+        description: "Promote rapid alignment between design, dev and business to accelerate time-to-market.",
+        icon: <HiUser className="h-5 w-5" />,
+        color: "bg-green-100 text-green-600",
+        metric: "+40% velocity"
+      },
+      {
+        id: 4,
+        title: "Develop collaborative culture",
+        description: "Organize pairing and systematic code reviews to build skills and improve code reliability.",
+        icon: <HiChatAlt className="h-5 w-5" />,
+        color: "bg-orange-100 text-orange-600",
+        metric: "-45% production bugs"
+      },
+      {
+        id: 5,
+        title: "Launch targeted mentoring program",
+        description: "Coach juniors through one-to-one sessions with personalized OKRs to boost autonomy.",
+        icon: <HiAcademicCap className="h-5 w-5" />,
+        color: "bg-red-100 text-red-600",
+        metric: "+30% junior autonomy"
+      }
+    ]
+  };
+
+  const currentLessons = locale === 'en' ? lessons.en : lessons.fr;
+
+  const handleStepClick = (index: number) => {
+    setActiveStep(index);
+    if (stepsRef.current) {
+      const stepElements = stepsRef.current.querySelectorAll('.step-item');
+      if (stepElements[index]) {
+        stepElements[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  };
+
+  return (
+    <div>
+      {/* Desktop: Stepper Timeline Horizontal */}
+      {!isMobile && (
+        <div className="hidden md:block mb-8">
+          <div className="relative" ref={stepsRef}>
+            {/* Ligne de temps */}
+            <div className="absolute h-1 bg-gray-200 top-6 left-0 right-0 z-0"></div>
+            
+            {/* Steps */}
+            <div className="flex justify-between relative z-10">
+              {currentLessons.map((lesson, idx) => (
+                <div 
+                  key={idx} 
+                  className="step-item flex flex-col items-center cursor-pointer transition-all duration-300 px-2"
+                  onClick={() => handleStepClick(idx)}
+                >
+                  <div 
+                    className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 ${
+                      activeStep === idx 
+                        ? `${lesson.color} shadow-md scale-110` 
+                        : 'bg-white border-2 border-gray-300 text-gray-400 hover:border-gray-400'
+                    }`}
+                  >
+                    {lesson.icon}
+                  </div>
+                  <div className="mt-2 text-xs font-medium text-center">
+                    {idx + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Active Step Content */}
+          <motion.div 
+            key={activeStep}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+          >
+            <div className="flex items-start">
+              <div className={`p-3 mr-4 rounded-lg ${currentLessons[activeStep].color} bg-opacity-20`}>
+                {currentLessons[activeStep].icon}
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white text-lg mb-2">
+                  {currentLessons[activeStep].title}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  {currentLessons[activeStep].description}
+                </p>
+                <div className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium text-gray-800 dark:text-gray-200">
+                  {currentLessons[activeStep].metric}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+      
+      {/* Mobile: Accordion */}
+      <div className={`${isMobile ? 'block' : 'hidden'} space-y-3`}>
+        {currentLessons.map((lesson, idx) => (
+          <div key={idx} className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <button
+              onClick={() => setActiveStep(activeStep === idx ? -1 : idx)}
+              className="w-full flex items-center justify-between p-4 text-left bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              aria-expanded={activeStep === idx}
+            >
+              <div className="flex items-center">
+                <div className={`p-2 mr-3 rounded-lg ${lesson.color} bg-opacity-20`}>
+                  {lesson.icon}
+                </div>
+                <span className="font-medium text-gray-900 dark:text-white">
+                  {lesson.title}
+                </span>
+              </div>
+              <svg 
+                className={`w-5 h-5 transition-transform ${activeStep === idx ? 'transform rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            {activeStep === idx && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="px-4 pb-4 pt-0"
+              >
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  {lesson.description}
+                </p>
+                <div className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium text-gray-800 dark:text-gray-200">
+                  {lesson.metric}
+                </div>
+              </motion.div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
