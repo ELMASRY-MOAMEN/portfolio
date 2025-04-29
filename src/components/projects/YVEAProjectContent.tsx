@@ -12,84 +12,8 @@ import ParticleFlowAnimation from './ParticleFlowAnimation';
 import AdvancedDataMesh from './AdvancedDataMesh';
 import MetricBadge from '../ui/MetricBadge';
 import ScrollIndicator from '../ui/ScrollIndicator';
-
-// Types pour les modales des fonctionnalités
-type ModalType = 'ocr' | 'assistant' | 'messaging' | null;
-
-// Composant Modal réutilisable
-const FeatureModal = ({
-  isOpen,
-  onClose,
-  title,
-  children,
-  themeColor = 'indigo'
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-  themeColor?: 'indigo' | 'blue' | 'purple' | 'green';
-}) => {
-  // Map des classes de couleur selon le thème
-  const colorClasses = {
-    indigo: 'bg-indigo-600 text-white border-indigo-700',
-    blue: 'bg-blue-600 text-white border-blue-700',
-    purple: 'bg-purple-600 text-white border-purple-700',
-    green: 'bg-green-600 text-white border-green-700'
-  };
-
-  // Fermeture de la modale sur Escape
-  useEffect(() => {
-    if (!isOpen) return;
-    
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  // Animation avec Framer Motion
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.3 }}
-        className="relative w-11/12 max-w-5xl max-h-[90vh] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden"
-      >
-        {/* Modale header avec titre et bouton de fermeture */}
-        <div className={`p-4 flex items-center justify-between ${colorClasses[themeColor]}`}>
-          <h2 className="text-xl font-bold">{title}</h2>
-          <button 
-            onClick={onClose}
-            className="p-1 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
-            aria-label="Fermer"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        
-        {/* Contenu de la modale avec scrolling interne */}
-        <div className="flex-1 overflow-y-auto p-6">
-          {children}
-        </div>
-      </motion.div>
-      
-      {/* Overlay cliquable pour fermer la modale */}
-      <div 
-        className="absolute inset-0 z-[-1]" 
-        onClick={onClose}
-        aria-hidden="true"
-      />
-    </div>
-  );
-};
+import clsx from 'clsx';
+import { Button } from '../ui/button';
 
 // EnhancedTimeline component for project phases
 const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
@@ -223,345 +147,191 @@ const EnhancedTimeline = ({ phases }: { phases: any[] }) => {
   );
 };
 
-// Hook personnalisé pour initialiser le walkthrough OCR
-function useWalkthroughOcr() {
-  // Fonctionnalité walkthrough supprimée
-  return null;
-}
-
-// Hook personnalisé pour initialiser le walkthrough Assistant
-function useWalkthroughAssistant() {
-  // Fonctionnalité walkthrough supprimée
-  return null;
-}
-
-// Hook personnalisé pour initialiser le walkthrough Messagerie
-function useWalkthroughMessaging() {
-  // Fonctionnalité walkthrough supprimée
-  return null;
-}
-
-
-const OcrModalContent = ({ onClose }: { onClose: () => void }) => {
-  return (
-    <div className="ocr-content">
-      <div className="ocr-header text-2xl font-bold mb-4">OCR et Extraction Intelligente</div>
-      
-      <div className="mb-6 flex flex-col gap-4">
-        <div className="document-uploader bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Téléchargement de documents</h3>
-          <p>Déposez vos documents commerciaux pour analyse et extraction automatique.</p>
-        </div>
-        
-        <div className="ocr-progress bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Traitement OCR</h3>
-          <p>Visualisez la progression en temps réel de l'analyse de vos documents.</p>
-        </div>
-        
-        <div className="extraction-preview bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Aperçu des données extraites</h3>
-          <p>Consultez les données extraites de vos documents avec mise en évidence.</p>
-        </div>
-        
-        <div className="correction-interface bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Interface de correction</h3>
-          <p>Corrigez facilement les erreurs potentielles d'extraction avec des suggestions IA.</p>
-        </div>
-        
-        <div className="data-validation bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Validation des données</h3>
-          <p>Vérifiez et validez l'ensemble des données avant utilisation.</p>
-        </div>
-        
-        <div className="export-options bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Options d'export</h3>
-          <p>Choisissez comment vous souhaitez exploiter les données extraites.</p>
-        </div>
-        
-        <div className="export-formats bg-blue-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Formats disponibles</h3>
-          <div className="flex gap-3">
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">Excel</span>
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">CSV</span>
-            <span className="px-3 py-2 bg-white rounded-md shadow-sm">JSON</span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="ocr-footer text-center text-gray-500 mt-4">
-        <p>Le système OCR d'YVEA réduit de 80% le temps de traitement des documents d'exportation.</p>
-        <button 
-          id="tour-ocr-trigger"
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const AssistantModalContent = ({ onClose }: { onClose: () => void }) => {
-  return (
-    <div className="assistant-content">
-      <div className="assistant-icon text-2xl font-bold mb-4">Assistant Virtuel IA</div>
-      
-      <div className="mb-6 flex flex-col gap-4">
-        <div className="assistant-trigger bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Accès à l'assistant</h3>
-          <p>Votre assistant export est accessible à tout moment pendant votre navigation.</p>
-        </div>
-        
-        <div className="chatbox-container bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Interface de dialogue</h3>
-          <p>Posez vos questions en langage naturel et obtenez des réponses précises.</p>
-        </div>
-        
-        <div className="assistant-capabilities bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Capacités intelligentes</h3>
-          <p>L'assistant répond à vos questions sur la réglementation export et vous guide dans vos démarches.</p>
-        </div>
-        
-        <div className="document-analysis-section bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Analyse de documents</h3>
-          <p>Partagez vos documents avec l'assistant pour une analyse approfondie et des conseils personnalisés.</p>
-        </div>
-        
-        <div className="context-indicator bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Sensibilité au contexte</h3>
-          <p>L'assistant s'adapte à votre profil, vos produits et vos marchés cibles.</p>
-        </div>
-        
-        <div className="command-helper bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Commandes spéciales</h3>
-          <p>Utilisez des commandes dédiées pour des fonctionnalités avancées.</p>
-        </div>
-        
-        <div className="feedback-controls bg-purple-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Feedback et amélioration</h3>
-          <p>Aidez-nous à améliorer l'assistant en notant la pertinence des réponses.</p>
-        </div>
-      </div>
-      
-      <div className="assistant-footer text-center text-gray-500 mt-4">
-        <p>L'Assistant IA d'YVEA réduit de 85% les demandes de support de premier niveau.</p>
-        <button 
-          id="tour-assistant-trigger"
-          className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const MessagingModalContent = ({ onClose }: { onClose: () => void }) => {
-  return (
-    <div className="messaging-content">
-      <div className="messaging-header text-2xl font-bold mb-4">Messagerie Collaborative</div>
-      
-      <div className="mb-6 flex flex-col gap-4">
-        <div className="conversation-list bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Centre de messagerie</h3>
-          <p>Accédez à toutes vos conversations avec les partenaires et organismes de certification.</p>
-        </div>
-        
-        <div className="message-status-indicators bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Indicateurs en temps réel</h3>
-          <p>Suivez l'état de vos messages (envoyé, reçu, lu) en temps réel.</p>
-        </div>
-        
-        <div className="attachment-zone bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Partage de fichiers</h3>
-          <p>Échangez facilement des documents et pièces jointes avec vos interlocuteurs.</p>
-        </div>
-        
-        <div className="contextual-references bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Références contextuelles</h3>
-          <p>Intégrez des références aux certificats et documents directement dans vos messages.</p>
-        </div>
-        
-        <div className="security-badge bg-green-100 p-4 rounded-lg">
-          <h3 className="font-medium mb-2">Sécurité des échanges</h3>
-          <p>Profitez d'un système de messagerie sécurisé avec chiffrement de bout en bout.</p>
-        </div>
-      </div>
-      
-      <div className="messaging-footer text-center text-gray-500 mt-4">
-        <p>La messagerie collaborative d'YVEA accélère les échanges et réduit les délais de validation de 60%.</p>
-        <button 
-          id="tour-messaging-trigger"
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
-        >
-          Démarrer la visite guidée
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const YVEAProjectContent = () => {
-  const [locale, setLocale] = useState<'fr' | 'en'>('fr');
-  const { t, locale: currentLocale } = useTranslation();
-  
-  // État pour gérer les modales de fonctionnalités
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
-  
-  // Fonction pour fermer la modale active
-  const closeModal = () => setActiveModal(null);
-  
-  // Chargement des hooks de walkthroughs supprimé - fonctionnalité non disponible
-  
-  const [isParticleVisible, setIsParticleVisible] = useState(true);
-  const [visualizationTab, setVisualizationTab] = useState('before');
+  const { t, locale } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
-
+  const [selectedTab, setSelectedTab] = useState(0);
+  
+  // Toggle expand state for visualization container
+  const toggleExpand = () => setIsExpanded(!isExpanded);
+  
   useEffect(() => {
-    // Désactiver les particules sur les appareils mobiles pour améliorer les performances
     const handleResize = () => {
-      setIsParticleVisible(window.innerWidth > 768);
+      // Logic for responsive behavior
     };
     
-    handleResize();
     window.addEventListener('resize', handleResize);
+    handleResize();
+    
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Content based on selected language
+  // Content based on locale
   const content = {
     fr: {
-      heroTitle: "YVEA – Le portail vers la certification export simplifiée",
-      heroSubtitle: "Automatisation intelligente des processus de certification pour l'export vers l'Afrique et le Moyen-Orient.",
-      intro: "Découvrez la première plateforme qui automatise de bout en bout la certification des marchandises destinées à l'Afrique et au Moyen-Orient, transformant des processus manuels en une expérience digitale ultra-rapide et fiable grâce à l'OCR, la GED et l'IA.",
+      heroTitle: "Automatisation IA de la certification export",
+      heroSubtitle: "80% de gain opérationnel | SaaS B2B pour l'Afrique et le Moyen-Orient",
+      intro: "Plateforme SaaS transformant les processus de certification export de 2-5 jours à 4-5 heures. Automatisation via OCR avancé et GPT-4 fine-tuné, réduisant les coûts opérationnels de 40%.",
       contextTitle: "Contexte du projet",
-      beforeTitle: "BEFORE",
-      beforeContent: "Le processus traditionnel de certification VoC est actuellement freiné par une multitude de tâches manuelles: vérifications répétées, envois, relances et allers-retours incessants entre les équipes. Ce manque de coordination entraîne des délais de traitement de 2 à 5 jours, générant une frustration notable chez les clients et une perte d'efficacité interne.",
-      bridgeTitle: "BRIDGE",
-      bridgeContent: "YVEA répond à ce défi en automatisant de bout en bout l'ensemble du processus. Grâce à une plateforme intégrée qui combine l'OCR, la GED et l'IA, YVEA coordonne les vérifications, fournit des rétroactions immédiates en cas d'anomalie et structure automatiquement les pièces requises.",
-      afterTitle: "AFTER",
-      afterContent: "Cette transformation améliore la précision de 90%, accélère la certification (de jours à heures) et offre un avantage concurrentiel significatif, en réduisant non seulement les délais mais également les coûts opérationnels de 40%.",
-      visualizationText: "Visualisation interactive: Comparez les flux de travail [Sans YVEA] vs [Avec YVEA]",
+      beforeTitle: "AVANT",
+      beforeContent: "Processus manuel: 2-5 jours de traitement, vérifications répétées, multiples allers-retours, frustration client, inefficacité interne.",
+      bridgeTitle: "SOLUTION",
+      bridgeContent: "Automatisation complète du processus via OCR, IA et workflow numérique, permettant vérifications instantanées et détection proactive des anomalies.",
+      afterTitle: "RÉSULTATS",
+      afterContent: "Précision améliorée à 90%, délais réduits de jours à heures, coûts opérationnels diminués de 40%, avantage concurrentiel significatif.",
+      visualizationText: "Comparer: Sans vs Avec YVEA",
       evolutionTitle: "Évolution du projet",
-      evolutionSubtitle: "De la conceptualisation à la solution SaaS IA industrialisée en 6 étapes clés",
+      evolutionSubtitle: "SaaS IA pour la certification export: de l'idée au marché",
       phases: [
         {
           year: "2022",
-          title: "Cahier des Charges & Recherche de Financements",
-          description: "Validation du concept de YVEA et démonstration de sa viabilité économique en définissant précisément les besoins du marché de la certification export.",
-          impact: "Validation de la vision du projet et obtention d'un financement initial de 40K€ auprès de BNP Paribas",
+          title: "Conceptualisation & Financement",
+          description: "Validation de la viabilité économique et définition précise des besoins du marché de certification export.",
+          impact: "Financement initial de 40K€ (BNP Paribas)",
           icon: <HiDocumentText size={20} />,
           tags: ["#BusinessModel", "#PitchDeck", "#Financement"],
-          objective: "Valider le concept de YVEA et démontrer sa viabilité économique en définissant précisément les besoins du marché de la certification export.",
-          approach: "Réalisation d'un Business Model Canvas, élaboration d'un business plan complet, création d'un pitch deck et constitution d'un cahier des charges détaillé, intégrant des prévisions financières et une estimation du retour sur investissement.",
-          resources: "Collecte d'informations de marché, collaboration avec des experts sectoriels et financiers, et rédaction de documents stratégiques solides pour préparer un dossier convaincant."
+          objective: "Valider le concept et sécuriser le financement initial.",
+          approach: "Business Model Canvas, pitch deck et cahier des charges détaillé avec prévisions financières.",
+          resources: "Collaboration avec experts sectoriels et financiers."
         },
         {
           year: "2022-Q2",
-          title: "Maquettage & Incubation",
-          description: "Conception d'une maquette interactive sur Figma et révision du pitch deck afin de présenter clairement la proposition de valeur aux partenaires et incubateurs.",
-          impact: "Obtention d'une subvention d'innovation de 30K€ via Paris Innovation Amorçage et d'un crédit AWS de 15K$",
+          title: "Prototypage & Incubation",
+          description: "Création d'une maquette interactive pour démontrer la proposition de valeur.",
+          impact: "Subvention d'innovation 30K€ et crédit AWS 15K$",
           icon: <HiCurrencyDollar size={20} />,
           tags: ["#Prototyping", "#UX/UI", "#Incubation"],
-          objective: "Transformer le concept en une maquette interactive qui puisse capter l'intérêt du marché et préparer la phase de développement.",
-          approach: "Conception d'une maquette interactive sur Figma et révision du pitch deck afin de présenter clairement la proposition de valeur aux partenaires et incubateurs.",
-          resources: "Collaboration avec un cabinet de design parisien pour créer une interface moderne et esthétique, et participation à l'incubateur Pepinière27 pour renforcer la crédibilité du projet."
+          objective: "Transformer le concept en prototype interactif.",
+          approach: "Conception UX/UI Figma et présentation aux incubateurs.",
+          resources: "Partenariat design et incubation Pepinière27."
         },
         {
           year: "2022-Q3/Q4",
-          title: "Développement Initial du MVP",
-          description: "Développement du MVP en utilisant la stack MERN avec une organisation SCRUM en sprints de 2 semaines, incluant des phases de tests pilotes auprès d'un panel de 50 utilisateurs.",
-          impact: "Lancement d'un MVP validé, démontrant la faisabilité technique et l'intérêt fonctionnel de la solution",
+          title: "MVP & Tests Utilisateurs",
+          description: "Développement avec stack MERN et sprints SCRUM de 2 semaines.",
+          impact: "MVP validé par les premiers utilisateurs",
           icon: <HiOfficeBuilding size={20} />,
           tags: ["#MVP", "#MERN", "#SCRUM"],
-          objective: "Lancer une première version fonctionnelle de YVEA afin de tester la faisabilité technique et recueillir les premiers retours des utilisateurs.",
-          approach: "Développement du MVP en utilisant la stack MERN avec une organisation SCRUM en sprints de 2 semaines, incluant des phases de tests pilotes auprès d'un panel de 50 utilisateurs.",
-          resources: "Formation d'une équipe tech franco-pakistanaise (recrutement d'un associé CTO et d'un développeur alternant fullstack), développement initial en JavaScript et déploiement sur AWS pour garantir la rapidité de mise en œuvre."
+          objective: "Livrer une version fonctionnelle testable.",
+          approach: "Sprints SCRUM et tests avec panel de 50 utilisateurs.",
+          resources: "Équipe franco-pakistanaise, déploiement AWS."
         },
         {
           year: "2023-Q1/Q2",
-          title: "Itérations & Refactorisation",
-          description: "Recueil intensif de feedbacks auprès des utilisateurs et des organismes de certification, suivi d'une refactorisation complète (passage de JavaScript à TypeScript) et d'améliorations de l'UX/UI.",
-          impact: "Amélioration significative de la stabilité, de la sécurité et de la fluidité de la solution",
+          title: "Itération & Refactorisation",
+          description: "Amélioration basée sur feedback utilisateurs et passage à TypeScript.",
+          impact: "Stabilité et sécurité améliorées",
           icon: <HiCode size={20} />,
           tags: ["#Refactoring", "#TypeScript", "#UserFeedback"],
-          objective: "Optimiser le MVP en intégrant les retours des utilisateurs et en renforçant sa robustesse technique pour mieux répondre aux besoins du marché.",
-          approach: "Recueil intensif de feedbacks auprès des utilisateurs et des organismes de certification, suivi d'une refactorisation complète (passage de JavaScript à TypeScript) et d'améliorations de l'UX/UI.",
-          resources: "Mise en place de sessions quotidiennes de standups, utilisation de méthodologies Agile (SCRUM, RICE, MoSCoW) pour la priorisation des fonctionnalités et collaboration étroite avec les parties prenantes pour affiner la solution."
+          objective: "Renforcer la robustesse et l'expérience utilisateur.",
+          approach: "Refactorisation TypeScript et améliorations UX/UI.",
+          resources: "Standups quotidiens, méthodologies Agile."
         },
         {
           year: "2023-Q3/Q4",
-          title: "Industrialisation & Lancement de la V1",
-          description: "Levée de fonds supplémentaire (50K€ obtenus via BNP), refonte complète de l'architecture technique et amélioration de l'UI/UX, incluant l'intégration d'une marketplace de services partenaires.",
-          impact: "Lancement réussi de la V1, avec une solution stable et scalable ouvrant de nouvelles opportunités internationales",
+          title: "Industrialisation & V1",
+          description: "Refonte architecture technique et intégration marketplace partenaires.",
+          impact: "Solution scalable et opportunités internationales",
           icon: <HiRefresh size={20} />,
           tags: ["#Scaling", "#V1", "#Marketplace"],
-          objective: "Transformer le prototype en une solution industrialisée, prête pour un déploiement à grande échelle et capable de conquérir le marché international.",
-          approach: "Levée de fonds supplémentaire (50K€ obtenus via BNP), refonte complète de l'architecture technique (migration complète vers AWS, mise en œuvre de Terraform, sécurisation renforcée, optimisation de la mise en cache) et amélioration de l'UI/UX, incluant l'intégration d'une marketplace de services partenaires.",
-          resources: "Collaboration avec une équipe de développeurs franco-argentins, adoption d'une méthodologie SCRUMBAN pour un suivi rigoureux des livrables et mise en place des meilleures pratiques de déploiement pour garantir la scalabilité et la sécurité de la plateforme."
+          objective: "Scaling pour déploiement international.",
+          approach: "Migration AWS, Terraform, sécurisation optimisée.",
+          resources: "Équipe franco-argentine, méthodologie SCRUMBAN."
         },
         {
           year: "2024-2025",
-          title: "Pivot Stratégique & Lancement de la V2",
-          description: "Basée sur des interviews approfondies avec des organismes de certification, développement d'un moteur de pré-vérification automatique avec détection intelligente du type de document et analyse IA via GPT-4 fine-tuné.",
-          impact: "Réduction drastique du temps de vérification (de plusieurs heures à moins de 5 minutes) et amélioration de la qualité documentaire",
+          title: "Pivot Stratégique & V2",
+          description: "Moteur de pré-vérification IA basé sur Azure OpenAI et GPT-4.",
+          impact: "Temps d'analyse réduit à 5 minutes, qualité +90%",
           icon: <HiGlobeAlt size={20} />,
           tags: ["#IA", "#GPT4", "#StrategicPivot"],
-          objective: "Répondre aux besoins critiques des organismes de certification en automatisant l'analyse initiale des rapports de test, tout en fluidifiant la communication entre utilisateurs et administrateurs grâce à un système de messagerie intégré.",
-          approach: "Basée sur des interviews approfondies avec des organismes de certification, la démarche a consisté à développer un moteur de pré-vérification automatique. Ce moteur se décompose en plusieurs modules: détection du type de document, extraction intelligente de texte via Mammoth.js/PDFReader/Tesseract, et envoi de prompt structuré à GPT-4 fine-tuné.",
-          resources: "Mise en place d'une API backend orchestrant l'ensemble des modules, utilisation des technologies Azure OpenAI pour garantir la pertinence des évaluations, et développement d'un système de chat intégré pour améliorer la réactivité et la communication entre l'admin et l'utilisateur."
+          objective: "Automatiser l'analyse documentaire pour organismes de certification.",
+          approach: "Détection intelligente de documents et analyse IA.",
+          resources: "API backend et intégration Azure OpenAI."
         }
       ],
       // Mon rôle section
-      pmRoleTitle: "Mon rôle de Project Manager & Product Owner",
-      pmRoleSubtitle: "Orchestrer la transformation digitale à l'échelle internationale",
-      pmRoleDescription: "Digital PM & PO pilotant YVEA de la vision à l'exécution : 3 équipes internationales (12 développeurs), budget 200K€, méthodologies Agile et SAFe. Livraison des 6 phases dans les délais et budget impartis.",
+      pmRoleTitle: "Rôle: Digital Product Manager",
+      pmRoleSubtitle: "Leadership produit avec méthodologies agiles",
+      pmRoleDescription: "Pilotage produit de la vision à l'exécution: 3 équipes internationales (12 développeurs), budget 200K€, livraison dans les délais et objectifs dépassés.",
       
-      responsibilitiesTitle: "Responsabilités principales",
+      responsibilitiesTitle: "Contributions clés",
       responsibilities: [
         {
-          title: "Définition de la roadmap produit",
-          description: "Priorisation stratégique via workshops cross-fonctionnels et OKRs."
+          title: "Vision & Roadmap",
+          description: "Définition stratégique et priorisation (OKRs, RICE)."
         },
         {
-          title: "Leadership Agile",
-          description: "Animation SCRUM/SCRUMBAN avec CTO, devs et UI/UX."
+          title: "Gestion Agile",
+          description: "SCRUM/SAFe avec équipes multiculturelles."
         },
         {
-          title: "Gestion des parties prenantes",
-          description: "Comités de pilotage avec BNP, BPI, Microsoft for Startups."
+          title: "Stakeholders",
+          description: "Comités de pilotage (BNP, BPI, Microsoft Startups)."
         },
         {
-          title: "Suivi de la performance",
-          description: "KPIs et dashboards Power BI mesurant adoption et satisfaction."
+          title: "Performance",
+          description: "KPIs et dashboards mesurant adoption/ROI."
         },
         {
-          title: "Qualité & tests utilisateurs",
-          description: "50+ sessions de tests utilisateurs avec boucles de rétroaction."
+          title: "UX & Tests",
+          description: "50+ sessions utilisateurs et itérations."
         }
       ],
       
-      crisisTitle: "Gestion de crise: Pivot stratégique réussi",
-      crisisDescription: "Face au départ inattendu d'un CTO et à un contexte d'investissement tendu, j'ai réorganisé l'équipe en 72h, reprioritisé le backlog et pivoté vers un modèle B2B ciblant les organismes de certification, sauvant ainsi le projet et ouvrant de nouvelles opportunités commerciales.",
+      crisisTitle: "Pivot stratégique",
+      crisisDescription: "Suite au départ du CTO: réorganisation en 72h, reprioritisation du backlog et pivot vers un modèle B2B ciblant les organismes de certification.",
       
-      approachTitle: "Approche méthodologique",
-      approachDescription: "Vision produit stratégique + management terrain pragmatique :",
+      approachTitle: "Méthodologie",
+      approachDescription: "Approche hybride business/technique:",
       approachItems: [
-        "Cycles courts (MoSCoW, RICE)",
+        "Priorisation RICE & MoSCoW",
         "Design thinking UX",
-        "Itérations techniques (TypeScript, CI/CD)",
-        "Alignement business/technique"
+        "CI/CD & Itérations rapides",
+        "Data-driven decision making"
       ],
-      approachConclusion: "Cette double exigence garantit un équilibre entre rapidité, qualité et valeur métier mesurable.",
+      approachConclusion: "Équilibre entre vision stratégique et exécution technique.",
       
       // Résultats section
-      resultsTitle: "Résultats clés & Impact",
-      resultsCategories: [
-        { title: "Opérationnel", value: "80%", description: "Réduction des délais", detail: "De 2-5 jours à 4-5 heures grâce à l'automatisation IA" },
-        { title: "Financier", value: "200 K€", description: "Financements initiaux", detail: "Prêt BNP 40K€, subvention BPI 30K€ et crédit AWS 15K$" },
-        { title: "Adoption", value: "100+", description: "Comptes stratégiques", detail: "Déploiement sur plus de 100 clients dont 20% à l'international" },
-        { title: "Satisfaction", value: "95%", description: "Taux de satisfaction", detail: "Mesuré auprès des premiers utilisateurs pilotes" }
+      resultsTitle: "Impact Business",
+      resultsSubtitle: "Résultats tangibles & ROI mesurable",
+      resultsDescription: "YVEA a transformé les processus de certification export avec impacts quantifiés:",
+      businessResults: [
+        {
+          metric: "80%",
+          description: "Réduction du temps de traitement (2-5 jours → 4-5 heures)"
+        },
+        {
+          metric: "40%",
+          description: "Économies sur les coûts opérationnels"
+        },
+        {
+          metric: "99%",
+          description: "Précision des vérifications automatisées (OCR + IA)"
+        },
+        {
+          metric: "3X",
+          description: "Augmentation du volume de certificats traités quotidiennement"
+        }
       ],
+      
+      techResults: [
+        {
+          title: "Architecture Cloud Native",
+          description: "100% AWS (ECS, Lambda, S3), CI/CD automatisé"
+        },
+        {
+          title: "IA & Machine Learning",
+          description: "OCR + OpenAI GPT-4 pour prévalidation automatique"
+        },
+        {
+          title: "Sécurité & Conformité",
+          description: "ISO 27001, RGPD, 0 vulnérabilité critique"
+        }
+      ],
+      
+      feedbackTitle: "Retours clients",
+      feedbackQuote: "YVEA a révolutionné notre département export en éliminant les erreurs et en accélérant les délais de 80%, nous permettant de doubler notre capacité sans personnel supplémentaire.",
       
       testimonialsTitle: "Avis utilisateurs",
       testimonials: [
@@ -626,17 +396,18 @@ const YVEAProjectContent = () => {
       ],
       
       // Conclusion
-      conclusionTitle: "Conclusion",
-      conclusionText: "YVEA démontre ma capacité à diriger des transformations digitales complexes de A à Z, en combinant vision stratégique, excellence opérationnelle et leadership international. Cette approche full-stack du management de projet — alliant business acumen, compétences techniques et soft skills — correspond précisément aux profils recherchés par les Big Four, Google et les cabinets de recrutement d'élite.",
-      futureTitle: "L'avenir de YVEA & mes prochains défis",
-      futureText: "Dans sa prochaine itération, YVEA pourrait intégrer une blockchain pour la traçabilité des certifications et des modèles IA génératifs pour l'auto-correction documentaire. Je recherche désormais des environnements complexes où appliquer cette expertise pour transformer des défis business en opportunités digitales.",
+      conclusionTitle: "Résultats d'impact business",
+      conclusionText: "En tant que Digital Product Manager, j'ai dirigé cette transformation digitale qui a généré 80% de gain de temps opérationnel et 40% d'économies pour nos clients. Cette approche alliant expertise produit (RICE, MoSCoW, Agile) et vision technologique (AI, OCR, cloud-native) correspond précisément aux profils recherchés par les Big Four et les leaders technologiques.",
+      futureTitle: "Ma vision produit future",
+      futureText: "Ma vision produit intègre maintenant les technologies blockchain pour la traçabilité et les modèles IA génératifs pour l'auto-correction documentaire. Je recherche des environnements complexes où appliquer cette expertise pour transformer des défis business en opportunités digitales à fort impact métrique.",
       callToAction: "Discutons de votre prochain défi transformationnel",
-      callToActionSubtext: "Je suis prêt à mettre cette double expertise business/tech au service de votre organisation."
+      callToActionSubtext: "Je suis Digital Product Manager spécialisé en transformation digitale et intégration IA.",
+      feedbackAuthor: "Directeur des Opérations, organisme de certification"
     },
     en: {
-      heroTitle: "YVEA – The portal to simplified export certification",
-      heroSubtitle: "Intelligent automation of certification processes for exports to Africa and the Middle East.",
-      intro: "Discover the first platform that fully automates the certification of goods destined for Africa and the Middle East, transforming manual processes into an ultra-fast and reliable digital experience using OCR, EDM and AI.",
+      heroTitle: "AI-Powered Export Certification Automation",
+      heroSubtitle: "80% operational time savings through SaaS solution for Africa and Middle East",
+      intro: "AI-driven SaaS solution transforming export certification processes, reducing processing times from 2-5 days to 4-5 hours through advanced OCR, intelligent EDM, and fine-tuned GPT-4 models.",
       contextTitle: "Project Context",
       beforeTitle: "BEFORE",
       beforeContent: "The traditional VoC certification process is currently hampered by multiple manual tasks: repeated verifications, submissions, follow-ups, and constant back-and-forth between teams. This lack of coordination leads to processing times of 2-5 days, generating notable frustration among clients and internal efficiency loss.",
@@ -716,9 +487,9 @@ const YVEAProjectContent = () => {
         }
       ],
       // Roles section
-      pmRoleTitle: "My Role as Project Manager & Product Owner",
-      pmRoleSubtitle: "Orchestrating digital transformation on an international scale",
-      pmRoleDescription: "As Digital PM & PO, I led YVEA from vision to execution by coordinating 3 international teams (12 developers), while managing a €200K budget and applying Agile and SAFe methodologies. My multidimensional expertise allowed delivering all 6 phases of the project on time and within budget.",
+      pmRoleTitle: "My Role as Digital Product Manager",
+      pmRoleSubtitle: "Orchestrating digital transformation on an international scale with Agile/SAFe",
+      pmRoleDescription: "As Digital PM & PO, I led YVEA from vision to execution by coordinating 3 international teams (12 developers), while managing a €200K budget and applying SCRUM, RICE and MoSCoW methodologies. My product expertise enabled delivering all 6 phases on time and within budget.",
       
       responsibilitiesTitle: "Key Responsibilities",
       responsibilities: [
@@ -829,12 +600,13 @@ const YVEAProjectContent = () => {
       ],
       
       // Conclusion
-      conclusionTitle: "Conclusion",
-      conclusionText: "YVEA demonstrates my ability to lead complex digital transformations from A to Z, combining strategic vision, operational excellence and international leadership. This full-stack approach to project management — combining business acumen, technical skills and soft skills — precisely matches the profiles sought by the Big Four, Google and elite recruitment firms.",
-      futureTitle: "The future of YVEA & my next challenges",
-      futureText: "In its next iteration, YVEA could integrate blockchain for certification traceability and generative AI models for document self-correction. I am now looking for complex environments where I can apply this expertise to transform business challenges into digital opportunities.",
+      conclusionTitle: "Business Impact Results",
+      conclusionText: "As Digital Product Manager, I led this digital transformation that generated 80% operational time savings and 40% cost reduction for our clients. This approach combining product expertise (RICE, MoSCoW, Agile) with technological vision (AI, OCR, cloud-native) precisely matches the profiles sought by the Big Four and technology leaders.",
+      futureTitle: "My Future Product Vision",
+      futureText: "My product vision now incorporates blockchain technologies for traceability and generative AI models for document self-correction. I am looking for complex environments where I can apply this expertise to transform business challenges into high-metric impact digital opportunities.",
       callToAction: "Let's discuss your next transformational challenge",
-      callToActionSubtext: "I am ready to put this dual business/tech expertise at the service of your organization."
+      callToActionSubtext: "I am a Digital Product Manager specialized in digital transformation and AI integration.",
+      feedbackAuthor: "Directeur des Opérations, organisme de certification"
     }
   };
   
@@ -904,7 +676,9 @@ const YVEAProjectContent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                Simplifier la certification export vers l'Afrique et le Moyen-Orient de 80% grâce à IA, OCR et GED
+                {locale === 'fr' 
+                  ? "80% de réduction des délais de certification export grâce à l'IA, l'OCR et l'automatisation des processus"
+                  : "80% reduction in export certification delays through AI, OCR and process automation"}
               </motion.p>
             </motion.div>
             
@@ -1221,22 +995,22 @@ const YVEAProjectContent = () => {
                     <button
                    
                       className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                        visualizationTab === 'before' 
+                        selectedTab === 0 
                           ? 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 shadow-sm' 
                           : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                       }`}
-                      onClick={() => setVisualizationTab('before')}
+                      onClick={() => setSelectedTab(0)}
                     >
                       {locale === 'fr' ? "Sans YVEA" : "Without YVEA"}
                     </button
                   >
                     <button 
                       className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                        visualizationTab === 'after' 
+                        selectedTab === 1 
                           ? 'bg-white dark:bg-gray-700 text-emerald-600 dark:text-emerald-400 shadow-sm' 
                           : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                       }`}
-                      onClick={() => setVisualizationTab('after')}
+                      onClick={() => setSelectedTab(1)}
                     >
                       {locale === 'fr' ? "Avec YVEA" : "With YVEA"}
                     </button>
@@ -1248,8 +1022,8 @@ const YVEAProjectContent = () => {
                     style={{ height: isExpanded ? '80vh' : '300px', transition: 'height 0.3s ease-in-out' }}
                 >
                   {/* Before image */}
-                  {visualizationTab === 'before' && (
-                    <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                  {selectedTab === 0 && (
+                    <div className="relative h-full w-full cursor-pointer" onClick={toggleExpand}>
                       <Image 
                         src="/downloads/Current flow.png" 
                         alt="Current certification process flow" 
@@ -1276,8 +1050,8 @@ const YVEAProjectContent = () => {
                   )}
                   
                   {/* After image */}
-                  {visualizationTab === 'after' && (
-                    <div className="relative h-full w-full cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                  {selectedTab === 1 && (
+                    <div className="relative h-full w-full cursor-pointer" onClick={toggleExpand}>
                       <Image 
                         src="/downloads/New flow.png" 
                         alt="New certification process with YVEA" 
@@ -1398,11 +1172,10 @@ const YVEAProjectContent = () => {
             
             {/* Features Card Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-              {/* OCR et Extraction Intelligente Card */}
+              {/* OCR Card */}
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
-                onClick={() => setActiveModal('ocr')}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1411,17 +1184,17 @@ const YVEAProjectContent = () => {
                 <div className="flex justify-center mb-4">
                   <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                     <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">OCR et Extraction Intelligente</h3>
+                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">OCR et Extraction</h3>
                 <div className="flex flex-wrap justify-center gap-2 mb-3">
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">OCR</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Computer Vision</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">ML</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Tesseract</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Extraction</span>
                 </div>
-                <p className="text-gray-600 text-center mb-4 text-sm">Analyse automatisée des documents commerciaux avec reconnaissance optique et extraction structurée.</p>
+                <p className="text-gray-600 text-center mb-4 text-sm">Extraction automatique de données structurées depuis vos documents commerciaux.</p>
                 <div className="flex justify-center">
                   <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
                     Découvrir cette fonctionnalité
@@ -1429,11 +1202,10 @@ const YVEAProjectContent = () => {
                 </div>
               </motion.div>
               
-              {/* Assistant IA Card */}
+              {/* AI Assistant Card */}
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
-                onClick={() => setActiveModal('assistant')}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1442,17 +1214,17 @@ const YVEAProjectContent = () => {
                 <div className="flex justify-center mb-4">
                   <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
                     <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Assistant IA</h3>
                 <div className="flex flex-wrap justify-center gap-2 mb-3">
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Azure OpenAI</span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">GPT-4</span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">IA Conversationnelle</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">NLP</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">LLM</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">RAG</span>
                 </div>
-                <p className="text-gray-600 text-center mb-4 text-sm">Interface conversationnelle intelligente pour guider les utilisateurs dans leurs démarches d'export.</p>
+                <p className="text-gray-600 text-center mb-4 text-sm">Expert virtuel pour répondre à toutes vos questions sur la réglementation export.</p>
                 <div className="flex justify-center">
                   <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300">
                     Découvrir cette fonctionnalité
@@ -1464,7 +1236,6 @@ const YVEAProjectContent = () => {
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
-                onClick={() => setActiveModal('messaging')}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1509,13 +1280,13 @@ const YVEAProjectContent = () => {
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
-                    {locale === 'fr' ? "Fondateur & Product Manager" : "Founder & Product Manager"}
+                    {locale === 'fr' ? "Digital Product Manager" : "Digital Product Manager"}
                   </div>
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                    Mon rôle de Project Manager & Product Owner
+                    {currentContent.pmRoleTitle}
                   </h2>
                   <p className="text-primary font-semibold">
-                    Orchestrer la transformation digitale à l'échelle internationale
+                    {currentContent.pmRoleSubtitle}
                   </p>
                 </div>
                 
@@ -1541,8 +1312,59 @@ const YVEAProjectContent = () => {
             {/* Main role description */}
             <div className="relative z-10 mb-10">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                En tant que fondateur de YVEA, j'ai piloté le projet de sa conception à son exécution : coordination de 3 équipes internationales (12 développeurs), gestion d'un budget de 200K€, et application des méthodologies Agile/SAFe. Résultat : livraison des 6 phases dans les délais et le budget impartis.
+                {locale === 'fr' 
+                 ? "En tant que Digital Product Manager, j'ai piloté YVEA de la vision à l'exécution : coordination de 3 équipes internationales (12 développeurs), gestion d'un budget de 200K€, et application des méthodologies SCRUM/SAFe, RICE et MoSCoW. Résultat : livraison des 6 phases dans les délais et un gain de 80% sur les temps opérationnels."
+                 : "As Digital Product Manager, I led YVEA from vision to execution: coordinating 3 international teams (12 developers), managing a €200K budget, and applying SCRUM/SAFe, RICE and MoSCoW methodologies. Result: delivery of all 6 phases on time with 80% operational time savings."}
               </p>
+            </div>
+            
+            {/* Méthodologies et frameworks utilisés */}
+            <div className="relative z-10 mb-10">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                {locale === 'fr' ? "Méthodologies & Frameworks" : "Methodologies & Frameworks"}
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h4 className="font-semibold text-primary mb-1">
+                    SCRUM / SAFe
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {locale === 'fr' 
+                     ? "Gestion agile des équipes et alignement avec les objectifs stratégiques" 
+                     : "Agile team management and alignment with strategic objectives"}
+                  </p>
+                </div>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h4 className="font-semibold text-primary mb-1">
+                    RICE
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {locale === 'fr' 
+                     ? "Priorisation basée sur Reach, Impact, Confidence, Effort" 
+                     : "Prioritization based on Reach, Impact, Confidence, Effort"}
+                  </p>
+                </div>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h4 className="font-semibold text-primary mb-1">
+                    MoSCoW
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {locale === 'fr' 
+                     ? "Classification fonctionnelle Must, Should, Could, Won't have" 
+                     : "Feature classification into Must, Should, Could, Won't have"}
+                  </p>
+                </div>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h4 className="font-semibold text-primary mb-1">
+                    Design Thinking
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {locale === 'fr' 
+                     ? "Approche centrée utilisateur pour résolution de problèmes complexes" 
+                     : "User-centered approach for solving complex problems"}
+                  </p>
+                </div>
+              </div>
             </div>
             
             {/* Key responsibilities section */}
@@ -1896,34 +1718,6 @@ const YVEAProjectContent = () => {
           </div>
         </AnimatedSection>
       </div>
-      
-      {/* Modales des fonctionnalités */}
-      <FeatureModal 
-        isOpen={activeModal === 'ocr'} 
-        onClose={closeModal}
-        title="OCR et Extraction Intelligente"
-        themeColor="blue"
-      >
-        <OcrModalContent onClose={closeModal} />
-      </FeatureModal>
-      
-      <FeatureModal 
-        isOpen={activeModal === 'assistant'} 
-        onClose={closeModal}
-        title="Assistant Virtuel IA"
-        themeColor="purple"
-      >
-        <AssistantModalContent onClose={closeModal} />
-      </FeatureModal>
-      
-      <FeatureModal 
-        isOpen={activeModal === 'messaging'} 
-        onClose={closeModal}
-        title="Messagerie Collaborative"
-        themeColor="green"
-      >
-        <MessagingModalContent onClose={closeModal} />
-      </FeatureModal>
     </div>
   );
 };
