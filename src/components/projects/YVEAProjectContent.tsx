@@ -1167,12 +1167,12 @@ const YVEAProjectContent = () => {
                 </svg>
                 Fonctionnalités clés d'YVEA
               </h2>
-              <p className="text-lg text-gray-600">Découvrez les technologies innovantes d'YVEA à travers des démonstrations interactives</p>
+              <p className="text-lg text-gray-600">Architecture modulaire et évolutive générant 80% de gain de temps opérationnel pour nos clients</p>
             </div>
             
             {/* Features Card Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-              {/* OCR Card */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {/* Certificate Management System Card */}
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
@@ -1181,28 +1181,46 @@ const YVEAProjectContent = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0 * 0.1 }}
               >
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-between mb-4">
                   <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                     <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
+                  <div className="px-3 py-1 bg-blue-100 text-blue-700 text-xs h-fit rounded-full">Critical Path</div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">OCR et Extraction</h3>
-                <div className="flex flex-wrap justify-center gap-2 mb-3">
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Computer Vision</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">ML</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Extraction</span>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">Gestion complète des certificats</h3>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Domain-Driven Design</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Typescript</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">NestJS</span>
                 </div>
-                <p className="text-gray-600 text-center mb-4 text-sm">Extraction automatique de données structurées depuis vos documents commerciaux.</p>
-                <div className="flex justify-center">
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                    Découvrir cette fonctionnalité
-                  </button>
+                <p className="text-gray-600 mb-4">
+                  Système end-to-end de création, validation et suivi des certificats d'export avec workflow multi-étapes intégrant tous les acteurs de la chaîne de certification et conformité réglementaire internationale.
+                </p>
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Réduction de 80% du temps de traitement</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">40% d'économies sur les coûts opérationnels</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Triple augmentation du volume traité</span>
+                  </div>
                 </div>
               </motion.div>
               
-              {/* AI Assistant Card */}
+              {/* OCR & Document Processing Card */}
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
@@ -1211,28 +1229,46 @@ const YVEAProjectContent = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 1 * 0.1 }}
               >
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-between mb-4">
                   <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
                     <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   </div>
+                  <div className="px-3 py-1 bg-purple-100 text-purple-700 text-xs h-fit rounded-full">High Impact</div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Assistant IA</h3>
-                <div className="flex flex-wrap justify-center gap-2 mb-3">
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">NLP</span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">LLM</span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">RAG</span>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">OCR & IA avancée</h3>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Azure OpenAI</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Tesseract</span>
+                  <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Fine-tuning</span>
                 </div>
-                <p className="text-gray-600 text-center mb-4 text-sm">Expert virtuel pour répondre à toutes vos questions sur la réglementation export.</p>
-                <div className="flex justify-center">
-                  <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300">
-                    Découvrir cette fonctionnalité
-                  </button>
+                <p className="text-gray-600 mb-4">
+                  Extraction intelligente de données documentaires via OCR optimisé et analyse par GPT-4 fine-tuné, détection automatique du type de document et pré-vérification des informations avec 99% de précision.
+                </p>
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">99% de précision dans la détection d'anomalies</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Support multi-formats (PDF, DOCX, JPG)</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Processing asynchrone via Bull/Redis</span>
+                  </div>
                 </div>
               </motion.div>
               
-              {/* Messagerie Card */}
+              {/* Virtual Assistant Card */}
               <motion.div 
                 className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
@@ -1241,26 +1277,232 @@ const YVEAProjectContent = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 2 * 0.1 }}
               >
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-between mb-4">
                   <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                    <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div className="px-3 py-1 bg-green-100 text-green-700 text-xs h-fit rounded-full">Innovative</div>
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">Assistant virtuel IA</h3>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">NLP</span>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">GPT-4</span>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">RAG</span>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Interface conversationnelle intelligente utilisant techniques RAG et prompting structuré pour guider les utilisateurs, répondre aux questions techniques et faciliter la création de certificats avec 85% de réduction des requêtes de support.
+                </p>
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Réduction de 85% des tickets de support</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Contextualisation avancée des réponses</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Adoption de 95% par les utilisateurs</span>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Real-time Messaging Card */}
+              <motion.div 
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 3 * 0.1 }}
+              >
+                <div className="flex justify-between mb-4">
+                  <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
                     <svg className="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
+                  <div className="px-3 py-1 bg-amber-100 text-amber-700 text-xs h-fit rounded-full">Real-time</div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-3 text-gray-800">Messagerie Collaborative</h3>
-                <div className="flex flex-wrap justify-center gap-2 mb-3">
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">WebSockets</span>
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Temps réel</span>
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Collaboration</span>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">Messagerie temps réel</h3>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">WebSockets</span>
+                  <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">Socket.IO</span>
+                  <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">Redis</span>
                 </div>
-                <p className="text-gray-600 text-center mb-4 text-sm">Système de communication instantanée avec collaboration documentaire et gestion d'état partagé.</p>
-                <div className="flex justify-center">
-                  <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300">
-                    Découvrir cette fonctionnalité
-                  </button>
+                <p className="text-gray-600 mb-4">
+                  Système de communication instantanée avec partage documentaire, statuts de messages et gestion contextuelle des conversations, réduisant les délais de validation de 60% grâce à une architecture distribuée scalable.
+                </p>
+                <div className="flex flex-col space-y-2">
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Réduction de 60% des délais de validation</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Architecture scalable via Redis adapter</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-4 h-4 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm text-gray-600">Circuit breaker pattern pour la résilience</span>
+                  </div>
                 </div>
               </motion.div>
+            </div>
+            
+            {/* Architecture Section */}
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg p-6 mb-6">
+              <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">Architecture technique moderne</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                  <h4 className="font-semibold text-primary mb-2">Frontend</h4>
+                  <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Next.js (TypeScript, React)
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Redux/Redux Toolkit
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Material-UI, Emotion
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      SWR pour le data fetching
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                  <h4 className="font-semibold text-primary mb-2">Backend</h4>
+                  <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      NestJS (TypeScript)
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      PostgreSQL, TypeORM
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Redis, Bull (queue)
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Azure OpenAI, Tesseract OCR
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                  <h4 className="font-semibold text-primary mb-2">DevOps</h4>
+                  <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Docker, Docker Compose
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Terraform (AWS Infrastructure)
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      GitLab CI/CD Pipeline
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-3 h-3 mr-1 text-primary" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      MinIO (S3-compatible storage)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            {/* Methodology & Achievement Highlights */}
+            <div className="bg-primary/5 rounded-lg p-6">
+              <div className="flex items-center mb-4">
+                <svg className="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white">Résultats métier & techniques clés</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                  <h4 className="font-semibold text-primary mb-2">Métriques business</h4>
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="font-bold text-lg text-primary mr-2">80%</span>
+                      <span>Réduction des délais de traitement, de 2-5 jours à 4-5 heures</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="font-bold text-lg text-primary mr-2">40%</span>
+                      <span>Économies sur les coûts opérationnels pour les clients</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="font-bold text-lg text-primary mr-2">95%</span>
+                      <span>Taux de satisfaction mesuré chez les premiers utilisateurs</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+                  <h4 className="font-semibold text-primary mb-2">Méthodologies appliquées</h4>
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="font-semibold text-primary mr-2">Agile:</span>
+                      <span>SCRUM/SCRUMBAN, cycles courts, standups quotidiens</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="font-semibold text-primary mr-2">Priorisation:</span>
+                      <span>Framework RICE & MoSCoW pour backlog produit</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="font-semibold text-primary mr-2">DevOps:</span>
+                      <span>CI/CD, Infrastructure as Code, tests automatisés</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedSection>
