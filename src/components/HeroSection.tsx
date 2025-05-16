@@ -144,7 +144,7 @@ const HeroSection = () => {
                 {locale === 'fr' ? 'Voir mes réalisations' : 'View my projects'}
               </Link>
               <Link 
-                href="/cv-moamen-elmasry.pdf" 
+                href="/CV_Moamen_Elmasry_Ingenieur_IA.pdf" 
                 className="btn-outline"
                 target="_blank"
                 rel="noopener noreferrer"

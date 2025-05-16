@@ -60,7 +60,7 @@ const Header = () => {
               {t.navigation.contact}
             </a>
             <a 
-              href="/cv/MOAMEN_ELMASRY_CV_Project_Manager.pdf" 
+              href="/cv/CV_Moamen_Elmasry_Ingenieur_IA.pdf" 
               className={`font-bricolage ${scrolled ? 'btn-sm-primary' : 'text-white border border-white hover:bg-white/10 hover:text-white px-4 py-2 rounded-md text-sm transition-colors'}`}
               download
             >
@@ -109,7 +109,7 @@ const Header = () => {
                 {t.navigation.contact}
               </a>
               <a 
-                href="/cv/MOAMEN_ELMASRY_CV_Project_Manager.pdf" 
+                href="/cv/CV_Moamen_Elmasry_Ingenieur_IA.pdf" 
                 className="px-2 py-1 font-bricolage text-primary font-medium hover:underline transition-colors inline-flex items-center"
                 download
               >
