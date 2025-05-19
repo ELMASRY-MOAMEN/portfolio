@@ -916,12 +916,12 @@ export default function HomeContent({ params }: HomeContentProps) {
               },
               {
                 id: "SAMSUNG",
-                title: locale === 'fr' ? "Samsung JO2024 – Experience Manager" : "Samsung OG2024 – Experience Manager",
+                title: locale === 'fr' ? "Samsung JO2024 – Management de l'expérience visiteur" : "Samsung OG2024 – Visitor Experience Management",
                 img: "/images/Samsung.jpg",
                 tags: ["UX/CX", "Operations", "Product Testing", "Leadership"],
                 description: locale === 'fr' 
-                  ? "Management terrain et optimisation continue du parcours utilisateur, assurant une expérience fluide à 17K visiteurs quotidiens, avec un taux de satisfaction client à 90 %."
-                  : "Field management and continuous optimization of the user journey, ensuring a smooth experience for 17K daily visitors, with a 90% customer satisfaction rate.",
+                  ? "Responsable de l'expérience utilisateur terrain pendant les JO, avec amélioration continue du parcours visiteur (17K visiteurs/jour) et pilotage d'indicateurs de satisfaction (>90 %)."
+                  : "Responsible for on-site user experience during the Olympics, with continuous improvement of the visitor journey (17K visitors/day) and management of satisfaction indicators (>90%).",
                 dominante: locale === 'fr' ? "Product Experience & Leadership" : "Product Experience & Leadership",
                 icon: <FaUsers />,
                 type: "business"
@@ -932,8 +932,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/SGS.jpg",
                 tags: ["Digital Transformation", "OCR", "Product ROI", "Automation"],
                 description: locale === 'fr' 
-                  ? "Gestion produit d'une automatisation OCR avancée réduisant de 40 % les délais opérationnels et augmentant de 20 % le CA d'un portefeuille stratégique de 2M€."
-                  : "Product management of advanced OCR automation reducing operational delays by 40% and increasing revenue by 20% on a strategic €2M portfolio.",
+                  ? "Pilotage produit d'une automatisation OCR (avec équipes techniques), réduisant les délais opérationnels de 40 % et générant +20 % de CA sur un portefeuille stratégique de 2M€."
+                  : "Product management of OCR automation (with technical teams), reducing operational delays by 40% and generating +20% revenue on a strategic €2M portfolio.",
                 dominante: locale === 'fr' ? "Product Management & Transformation" : "Product Management & Transformation",
                 icon: <FaDatabase />,
                 type: "business"
@@ -944,8 +944,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/XEROX.jpg",
                 tags: ["Product-Sales Cycle", "Technical Roadmap", "Customer Feedback"],
                 description: locale === 'fr' 
-                  ? "Structuration stratégique produit/commerciale d'offres hardware/SaaS sur 200 clients multisites, améliorant de 45 % l'efficacité des déploiements."
-                  : "Strategic product/commercial structuring of hardware/SaaS offerings for 200 multi-site clients, improving deployment efficiency by 45%.",
+                  ? "Structuration produit et coordination commerciale d'offres hybrides (hardware + SaaS) auprès de 200 clients multisites, avec +45 % d'efficacité de déploiement."
+                  : "Product structuring and commercial coordination of hybrid offerings (hardware + SaaS) for 200 multi-site clients, with +45% deployment efficiency.",
                 dominante: locale === 'fr' ? "Product Strategy & Commercial" : "Product Strategy & Commercial",
                 icon: <FaTools />,
                 type: "business"
@@ -956,8 +956,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/FRANCIS.jpg",
                 tags: ["Product Development", "Market Testing", "B2B Strategy"],
                 description: locale === 'fr' 
-                  ? "Conception stratégique produit de nouvelles offres digitales B2B, améliorant considérablement la conversion client grâce à une approche de prospection intensive personnalisée."
-                  : "Strategic product design of new B2B digital offerings, significantly improving customer conversion through an intensive personalized prospecting approach.",
+                  ? "Création d'offres digitales B2B adaptées au marché, avec itération rapide via retours commerciaux, entraînant une forte amélioration de la conversion client."
+                  : "Creation of market-adapted B2B digital offerings, with rapid iteration through commercial feedback, leading to significant improvement in customer conversion.",
                 dominante: locale === 'fr' ? "Product Development & Business" : "Product Development & Business",
                 icon: <FaBusinessTime />,
                 type: "business"
@@ -968,8 +968,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 img: "/images/DA.jpg",
                 tags: ["Product Strategy", "Market Entry", "International"],
                 description: locale === 'fr' 
-                  ? "Pilotage stratégique de l'entrée produit sur le marché européen pour une entreprise chinoise, atteignant une croissance CA de 120 % en 18 mois."
-                  : "Strategic management of product entry into the European market for a Chinese company, achieving 120% revenue growth in 18 months.",
+                  ? "Pilotage de l'entrée produit sur le marché européen (positionnement, adaptation offre, go-to-market), générant +120 % de CA en 18 mois."
+                  : "Management of product entry into the European market (positioning, offer adaptation, go-to-market), generating +120% revenue in 18 months.",
                 dominante: locale === 'fr' ? "Product Strategy & International" : "Product Strategy & International",
                 icon: <FaBusinessTime />,
                 type: "business"
