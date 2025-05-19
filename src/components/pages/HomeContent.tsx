@@ -220,29 +220,51 @@ export default function HomeContent({ params }: HomeContentProps) {
   // Content based on language
   const pageContent = {
     fr: {
-      heroTitle: "Bienvenue sur mon site web",
-      heroRole: "Digital Product Manager – Expert IA & Innovation",
-      heroSubtitle: ["Développer des produits digitaux à forte valeur ajoutée", "Piloter l'innovation technologique stratégique", "Intégrer l'IA au cœur des modèles business", "Générer un impact opérationnel mesurable"],
-      heroDescription: "Découvrez mes expériences où j'ai allié vision produit, agilité méthodologique et leadership collaboratif pour délivrer une valeur opérationnelle mesurable et pérenne.",
+      heroTitle: "Ingénieur IA en formation",
+      heroRole: "Formation Bac+5 IA | Spécialisation ML/DL & NLP | Background Product",
+      heroSubtitle: [
+        "Développement ML/DL avec Python, PyTorch et scikit-learn",
+        "Implémentation de solutions NLP et Computer Vision",
+        "Déploiement de modèles IA en production (MLOps)",
+        "Vision produit & technique : 9 ans d'expérience"
+      ],
+      heroDescription: "En formation d'Ingénieur IA pour combiner expertise technique et vision produit. Actuellement en développement actif sur des projets ML/DL, avec un focus sur le NLP et le Computer Vision. Rythme d'alternance optimisé (4j entreprise/1j formation) et aide financière (6000€).",
       ctaBookMeeting: "Réserver un échange",
       ctaContact: "Me contacter",
-      profileAlt: "Moamen Elmasry - Digital Product Manager spécialisé en IA et Innovation",
+      ctaDownloadCV: "Télécharger mon CV",
+      profileAlt: "Moamen Elmasry - En reconversion IA Engineer avec expérience en Product Management",
       profileBadges: {
-        certifications: "IBM AI Product Manager Certifié",
-        experience: "9+ ans d'expérience",
-        projects: "80% de gains d'efficacité"
+        certifications: "En formation AI Engineer Bac+5",
+        experience: "9 ans d'expérience produit",
+        projects: "Aide alternance 6000€"
       },
       stats: [
-        { value: "80%", label: "Réduction des délais de projets" },
-        { value: "+200K€", label: "Financements obtenus" },
-        { value: "50+", label: "Collaborateurs managés" },
-        { value: "20+", label: "Pays - Déploiements internationaux" }
+        { 
+          value: "5+", 
+          label: "Projets ML/DL",
+          icon: <MdDeveloperMode className="w-6 h-6" />
+        },
+        { 
+          value: "3", 
+          label: "Modèles en prod",
+          icon: <FaRobot className="w-6 h-6" />
+        },
+        { 
+          value: "CI/CD", 
+          label: "Pipeline MLOps",
+          icon: <FaTools className="w-6 h-6" />
+        },
+        { 
+          value: "4j/1j", 
+          label: "Disponibilité",
+          icon: <FaBusinessTime className="w-6 h-6" />
+        }
       ],
-      approachTitle: "Mon expertise à votre service",
+      approachTitle: "De Product Manager à Ingénieur IA : une transition stratégique",
       approachDescription1: "J'ai toujours privilégié l'humain et la collaboration comme moteurs de réussite. Ma méthode repose sur une communication transparente, un esprit d'équipe solidement ancré et un leadership bienveillant. En prenant le temps de comprendre les enjeux et la culture de chaque organisation, je facilite l'adhésion et le partage de responsabilités. Ce souci du relationnel me permet de fédérer les équipes, d'anticiper les résistances au changement et de créer un climat propice à l'innovation.",
-      approachDescription2: "Sur le terrain, je déploie des méthodologies Agiles (Scrum, Kanban) et des outils techniques éprouvés (CI/CD, Docker, automatisation IA, OCR) pour garantir une exécution solide et mesurable. Qu'il s'agisse de concevoir une architecture SaaS, d'implémenter des workflows OCR complexes ou de piloter des sprints, j'aime être au contact du concret et apporter des solutions tangibles. Cette vision 'hands-on' me permet de cerner rapidement les priorités, d'optimiser les performances opérationnelles et de livrer chaque projet avec rigueur et efficacité.",
-      ctaSectionTitle: "Prêt à collaborer sur vos défis digitaux?",
-      ctaSectionDescription: "Je souhaite mettre mon expérience au service de votre entreprise dans le cadre d'un CDI ou CDD. Discutons de vos projets stratégiques et de comment mon expertise peut contribuer à leur réussite.",
+      approachDescription2: "Sur le terrain, j'ai développé une passion pour l'aspect technique des solutions IA et automatisation. C'est pourquoi je me forme désormais aux technologies Python, LangChain, RAG et MistralAI pour apporter à vos équipes une double compétence unique: vision produit/business et expertise technique IA.",
+      ctaSectionTitle: "Recruter un alternant Ingénieur IA dès maintenant",
+      ctaSectionDescription: "J'apporte 9 ans d'expérience produit & marché à votre équipe IA, avec une formation technique de pointe et un rythme d'alternance optimisé (4j/1j). L'aide à l'apprentissage de 6000€ réduit significativement votre investissement.",
       sections: [
         {
           title: "À Propos",
@@ -258,7 +280,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         },
         {
           title: "Contact",
-          description: "Échangeons sur vos opportunités en gestion de projets et transformation digitale.",
+          description: "Échangeons sur vos opportunités en IA et transformation digitale.",
           cta: "Me contacter",
           link: "/fr/contact"
         }
@@ -266,29 +288,51 @@ export default function HomeContent({ params }: HomeContentProps) {
       scrollingText: "Résultats"
     },
     en: {
-      heroTitle: "Welcome to my website",
-      heroRole: "Digital Product Manager – AI & Innovation Expert",
-      heroSubtitle: ["Develop high-value digital products", "Drive strategic technological innovation", "Integrate AI into business models", "Generate measurable operational impact"],
-      heroDescription: "Discover my experiences where I've combined product vision, methodological agility, and collaborative leadership to deliver measurable and sustainable operational value.",
+      heroTitle: "AI Engineer in Training",
+      heroRole: "Master's in AI | ML/DL & NLP Specialization | Product Background",
+      heroSubtitle: [
+        "ML/DL Development with Python, PyTorch and scikit-learn",
+        "NLP and Computer Vision Implementation",
+        "AI Models Deployment in Production (MLOps)",
+        "Product & Technical Vision: 9 years of experience"
+      ],
+      heroDescription: "Training as an AI Engineer to combine technical expertise and product vision. Currently actively developing ML/DL projects, focusing on NLP and Computer Vision. Optimized apprenticeship schedule (4d company/1d training) and financial aid (€6000).",
       ctaBookMeeting: "Book a meeting",
       ctaContact: "Contact me",
-      profileAlt: "Moamen Elmasry - Digital Product Manager specialized in AI and Innovation",
+      ctaDownloadCV: "Download my CV",
+      profileAlt: "Moamen Elmasry - Transitioning to AI Engineer with Product Management experience",
       profileBadges: {
-        certifications: "IBM AI Product Manager Certified",
-        experience: "9+ years of experience",
-        projects: "80% efficiency gains"
+        certifications: "AI Engineer Master's program",
+        experience: "9 years of product experience",
+        projects: "Apprenticeship aid €6000"
       },
       stats: [
-        { value: "80%", label: "Reduction in project timelines" },
-        { value: "200K€", label: "Funding secured" },
-        { value: "50+", label: "Team members managed" },
-        { value: "20+", label: "Countries - International deployments" }
+        { 
+          value: "5+", 
+          label: "ML/DL Projects",
+          icon: <MdDeveloperMode className="w-6 h-6" />
+        },
+        { 
+          value: "3", 
+          label: "Models in prod",
+          icon: <FaRobot className="w-6 h-6" />
+        },
+        { 
+          value: "CI/CD", 
+          label: "MLOps Pipeline",
+          icon: <FaTools className="w-6 h-6" />
+        },
+        { 
+          value: "4d/1d", 
+          label: "Availability",
+          icon: <FaBusinessTime className="w-6 h-6" />
+        }
       ],
-      approachTitle: "My expertise at your service",
-      approachDescription1: "I convert complex challenges into tangible results for your business. Through my proven experience, I've reduced project timelines by up to 80% and significantly increased the ROI of strategic initiatives. My mobilizing leadership and mastery of agile methodologies ensure quality deliveries, on time.",
-      approachDescription2: "My technical expertise (SaaS, AI, ECM, OCR) combined with my change management skills enable me to ensure the success of your strategic projects, from design to implementation. I improve operational performance while effectively guiding teams toward adopting new solutions.",
-      ctaSectionTitle: "Ready to discuss your next digital project?",
-      ctaSectionDescription: "I wish to put my experience at the service of your company through a permanent or fixed-term position. Let's discuss your strategic projects and how my expertise can contribute to their success.",
+      approachTitle: "From Product Manager to AI Engineer: a strategic transition",
+      approachDescription1: "I've always prioritized human connection and collaboration as drivers of success. My method is based on transparent communication, a solidly anchored team spirit, and caring leadership. By taking the time to understand the challenges and culture of each organization, I facilitate buy-in and shared responsibility. This focus on relationships allows me to unite teams, anticipate resistance to change, and create an environment conducive to innovation.",
+      approachDescription2: "In the field, I developed a passion for the technical aspect of AI solutions and automation. That's why I'm now training in Python, LangChain, RAG, and MistralAI technologies to bring your teams a unique dual competency: product/business vision and AI technical expertise.",
+      ctaSectionTitle: "Hire an AI Engineer apprentice now",
+      ctaSectionDescription: "I bring 9 years of product & market experience to your AI team, with cutting-edge technical training and an optimized apprenticeship schedule (4d/1d). The €6,000 apprenticeship aid significantly reduces your investment.",
       sections: [
         {
           title: "About",
@@ -304,7 +348,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         },
         {
           title: "Contact",
-          description: "Let's discuss your opportunities in project management and digital transformation.",
+          description: "Let's discuss your opportunities in AI and digital transformation.",
           cta: "Contact me",
           link: "/en/contact"
         }
@@ -343,6 +387,35 @@ export default function HomeContent({ params }: HomeContentProps) {
     <main id="content" className="flex flex-col">
       {/* Particles background */}
       <ParticlesBackground />
+      
+      {/* Indicateur de disponibilité immédiate */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <motion.div 
+          className="bg-gradient-to-r from-primary to-primary/80 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <div className="text-white">
+            <p className="font-medium text-white">
+              {locale === 'fr' ? 'Disponible immédiatement' : 'Available immediately'}
+            </p>
+            <p className="text-sm opacity-90 text-white">
+              {locale === 'fr' ? 'Pour une alternance en IA Engineering' : 'For an AI Engineering apprenticeship'}
+            </p>
+          </div>
+          <a 
+            href="https://calendly.com/elmasrymoamen/30min" 
+            className="ml-2 bg-white text-primary px-3 py-1 rounded text-sm font-medium hover:bg-opacity-90 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {locale === 'fr' ? 'Échanger' : 'Let\'s talk'}
+          </a>
+        </motion.div>
+      </div>
       
       {/* HERO SECTION (ATTENTION) */}
       <section className="pt-36 pb-20 md:pt-48 md:pb-32 bg-primary-light/80 relative overflow-hidden">
@@ -422,6 +495,21 @@ export default function HomeContent({ params }: HomeContentProps) {
                 >
                   {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
                 </AnimatedButton>
+                
+                <AnimatedButton 
+                  href="/CV_Moamen_Elmasry.pdf"
+                  variant="outline"
+                  size="lg"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  }
+                >
+                  {content.ctaDownloadCV}
+                </AnimatedButton>
               </motion.div>
             </div>
             
@@ -456,13 +544,6 @@ export default function HomeContent({ params }: HomeContentProps) {
         </motion.div>
       </section>
       
-      {/* Scrolling text section */}
-      <ScrollingText 
-        text={content.scrollingText}
-        direction="rtl"
-        mode="static"
-      />
-      
       {/* KEY INDICATORS SECTION (INTEREST) */}
       <AnimatedSection 
         className="py-10 bg-white"
@@ -483,13 +564,196 @@ export default function HomeContent({ params }: HomeContentProps) {
         </div>
       </AnimatedSection>
       
-      {/* Scrolling text in opposite direction */}
-      <ScrollingText 
-        text={locale === 'fr' ? "Vente B2B tech • Pilotage stratégique • Digitalisation des processus • Conduite du changement" : "B2B tech sales • Strategic management • Process digitalization • Change management"}
-        direction="ltr"
-        mode="carousel"
-        speed={0.8}
-      />
+      {/* SECTION: Ma reconversion vers l'IA */}
+      <AnimatedSection 
+        className="py-12 bg-primary-light/80"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <motion.h2 
+            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            {locale === 'fr' ? 'Ma reconversion vers l\'IA' : 'My path to AI Engineering'}
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-lg mb-4">
+                {locale === 'fr' 
+                  ? "Durant mes 9 années en tant que Product Manager, j'ai identifié un pattern récurrent : les projets IA les plus réussis sont ceux où la communication entre équipes business et techniques est fluide."
+                  : "During my 9 years as a Product Manager, I identified a recurring pattern: the most successful AI projects are those where communication between business and technical teams is seamless."}
+              </p>
+              
+              <p className="text-lg mb-4">
+                {locale === 'fr' 
+                  ? "J'ai piloté plusieurs initiatives d'IA générative et automatisation qui ont transformé des processus métier, et j'ai développé une passion pour l'aspect technique de ces solutions."
+                  : "I've led several generative AI and automation initiatives that transformed business processes, and I've developed a passion for the technical aspect of these solutions."}
+              </p>
+              
+              <p className="text-lg mb-4 font-semibold">
+                {locale === 'fr' 
+                  ? "Aujourd'hui, je souhaite me placer au cœur de cette transformation en développant l'expertise technique qui complète ma vision produit."
+                  : "Today, I want to position myself at the heart of this transformation by developing the technical expertise that complements my product vision."}
+              </p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-xl shadow-md"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-xl font-bold mb-4 text-primary">
+                {locale === 'fr' ? 'Ce que j\'apporte à votre équipe IA' : 'What I bring to your AI team'}
+              </h3>
+              
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{locale === 'fr' 
+                    ? "Une vision centrée sur l'impact business et le ROI des solutions IA"
+                    : "A vision centered on business impact and ROI of AI solutions"}</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{locale === 'fr' 
+                    ? "Une capacité à traduire les besoins business en spécifications techniques"
+                    : "An ability to translate business needs into technical specifications"}</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{locale === 'fr' 
+                    ? "L'expérience de la conduite du changement et de l'adoption utilisateur"
+                    : "Experience in change management and user adoption"}</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{locale === 'fr' 
+                    ? "Une motivation exceptionnelle à apprendre et maîtriser les technologies IA"
+                    : "Exceptional motivation to learn and master AI technologies"}</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </AnimatedSection>
+      
+      {/* SECTION: Mon rythme d'alternance */}
+      <AnimatedSection 
+        className="py-10 bg-gradient-to-r from-primary/5 to-white"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <motion.h2 
+            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            {locale === 'fr' ? 'Mon rythme d\'alternance' : 'My apprenticeship schedule'}
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <motion.div 
+              className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-primary">4 jours</h3>
+              <p className="text-gray-600">
+                {locale === 'fr' ? 'En entreprise (lundi à jeudi)' : 'In company (Monday to Thursday)'}
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-primary">1 jour</h3>
+              <p className="text-gray-600">
+                {locale === 'fr' ? 'En formation (vendredi)' : 'In training (Friday)'}
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-primary">6000€</h3>
+              <p className="text-gray-600">
+                {locale === 'fr' ? 'Aide à l\'apprentissage' : 'Apprenticeship aid'}
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-primary">12 mois</h3>
+              <p className="text-gray-600">
+                {locale === 'fr' ? 'Durée de la formation' : 'Training duration'}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </AnimatedSection>
       
       {/* MINI SECTION: À PROPOS (using AIDA) */}
       <AnimatedSection 
@@ -517,7 +781,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                {locale === 'fr' ? 'Le pont stratégique entre leadership, vision et innovation responsable' : 'Digital Product Manager specialized in AI and enterprise solutions'}
+                {locale === 'fr' ? 'Fusion de l\'expertise produit et des compétences d\'ingénierie IA' : 'Merging Product Expertise with AI Engineering Skills'}
               </motion.h2>
               
               <motion.div 
@@ -528,51 +792,51 @@ export default function HomeContent({ params }: HomeContentProps) {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <h3 className="text-lg font-bold text-primary mb-4">
-                  {locale === 'fr' ? 'Mon approche en 4 points clés :' : 'My approach in 4 key points:'}
+                  {locale === 'fr' ? 'Mon projet en 4 points clés :' : 'My project in 4 key points:'}
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
                     <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Vision produit claire' : 'Clear product vision'}
+                      {locale === 'fr' ? 'Formation complète IA' : 'Comprehensive AI training'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "Définition d'objectifs business et de roadmaps orientées ROI" 
-                        : "Definition of business objectives and ROI-oriented roadmaps"}
+                        ? "Python, LangChain, RAG, MLOps, BentoML - Diplôme Bac+5" 
+                        : "Python, LangChain, RAG, MLOps, BentoML - Master's degree"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
                     <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Technologies émergentes' : 'Emerging technologies'}
+                      {locale === 'fr' ? 'Double compétence unique' : 'Unique dual competency'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "IA générative (GPT-4, Azure OpenAI), SaaS, automatisation avancée" 
-                        : "Generative AI (GPT-4, Azure OpenAI), SaaS, advanced automation"}
+                        ? "9 ans d'expérience produit + compétences techniques IA" 
+                        : "9 years of product experience + AI technical skills"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
                     <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Collaboration internationale' : 'International collaboration'}
+                      {locale === 'fr' ? 'Rythme optimal' : 'Optimal schedule'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "Pilotage d'équipes techniques et métiers réparties sur plusieurs zones" 
-                        : "Management of technical and business teams spread across multiple regions"}
+                        ? "4 jours en entreprise, 1 jour en formation + aide de 6000€" 
+                        : "4 days in company, 1 day in training + €6000 aid"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
                     <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Agilité & adoption' : 'Agility & adoption'}
+                      {locale === 'fr' ? 'Disponibilité immédiate' : 'Immediate availability'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "Scrum/Kanban pour accélérer l'intégration et lever les freins au changement" 
-                        : "Scrum/Kanban to accelerate integration and overcome resistance to change"}
+                        ? "Prêt à intégrer vos équipes et apporter une valeur ajoutée dès le premier mois" 
+                        : "Ready to join your teams and add value from the first month"}
                     </p>
                   </div>
                 </div>
@@ -936,6 +1200,12 @@ export default function HomeContent({ params }: HomeContentProps) {
               >
                 {locale === 'fr' ? 'Soft Skills' : 'Soft Skills'}
               </button>
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors ${selectedSkillTab === 'ai' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedSkillTab('ai')}
+              >
+                {locale === 'fr' ? 'IA & Data (en formation)' : 'AI & Data (in training)'}
+              </button>
             </motion.div>
           </div>
           
@@ -952,7 +1222,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -973,7 +1246,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -994,7 +1270,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1015,7 +1294,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1036,7 +1318,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1057,7 +1342,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1089,7 +1377,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1110,7 +1401,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1131,7 +1425,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1152,7 +1449,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1173,7 +1473,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1194,7 +1497,10 @@ export default function HomeContent({ params }: HomeContentProps) {
               <motion.div 
                 className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1212,6 +1518,154 @@ export default function HomeContent({ params }: HomeContentProps) {
               </motion.div>
             </motion.div>
           )}
+          
+          {/* AI & Data Skills Content */}
+          {selectedSkillTab === 'ai' && (
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Python & Data */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <MdDeveloperMode className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'Python & Data Science' : 'Python & Data Science'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "Pandas, NumPy, Scikit-Learn, PostgreSQL pour la préparation et l'analyse de données à grande échelle"
+                    : "Pandas, NumPy, Scikit-Learn, PostgreSQL for large-scale data preparation and analysis"}
+                </p>
+              </motion.div>
+              
+              {/* LLMs & RAG */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <FaRobot className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'LLMs & RAG' : 'LLMs & RAG'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "LangChain, Mistral AI, Retrieval Augmented Generation pour créer des agents IA contextuels et efficaces"
+                    : "LangChain, Mistral AI, Retrieval Augmented Generation to create contextual and efficient AI agents"}
+                </p>
+              </motion.div>
+              
+              {/* MLOps */}
+              <motion.div 
+                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow" 
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
+                  <FaTools className="w-7 h-7" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">
+                  {locale === 'fr' ? 'MLOps & Déploiement' : 'MLOps & Deployment'}
+                </h3>
+                <p className="text-gray-600">
+                  {locale === 'fr' 
+                    ? "BentoML, Docker, automatisation des workflows et monitoring de modèles en production"
+                    : "BentoML, Docker, workflow automation and monitoring of models in production"}
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+        </div>
+      </AnimatedSection>
+      
+      {/* SECTION: L'IA en action */}
+      <AnimatedSection 
+        className="py-16 bg-white"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <motion.h2 
+            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            {locale === 'fr' ? 'L\'IA en action : Un cas concret' : 'AI in action: A concrete case'}
+          </motion.h2>
+          
+          <div className="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-primary">
+                  {locale === 'fr' ? 'Le problème business' : 'The business problem'}
+                </h3>
+                <p className="text-gray-700">
+                  {locale === 'fr' 
+                    ? "Délais d'exportation trop longs (72h) et erreurs fréquentes (30%) dans les certifications export, impactant directement le CA et la satisfaction client."
+                    : "Export delays too long (72h) and frequent errors (30%) in export certifications, directly impacting revenue and customer satisfaction."}
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-primary">
+                  {locale === 'fr' ? 'La solution IA' : 'The AI solution'}
+                </h3>
+                <p className="text-gray-700">
+                  {locale === 'fr' 
+                    ? "Système d'extraction OCR couplé à un modèle LLM fine-tuné pour analyser, classifier et valider automatiquement les documents complexes d'exportation."
+                    : "OCR extraction system coupled with a fine-tuned LLM model to automatically analyze, classify and validate complex export documents."}
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-primary">
+                  {locale === 'fr' ? 'Impact mesurable' : 'Measurable impact'}
+                </h3>
+                <p className="text-gray-700">
+                  {locale === 'fr' 
+                    ? "Réduction de 80% des délais et 95% des erreurs, générant 200K€ d'économies annuelles et augmentant significativement la satisfaction client."
+                    : "80% reduction in delays and 95% in errors, generating €200K in annual savings and significantly increasing customer satisfaction."}
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <AnimatedButton 
+                href={`${langPrefix}/projets/yvea`}
+                variant="primary"
+                size="md"
+                icon={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                }
+              >
+                {locale === 'fr' ? 'Explorer ce projet en détail' : 'Explore this project in detail'}
+              </AnimatedButton>
+            </div>
+          </div>
         </div>
       </AnimatedSection>
       
@@ -1234,8 +1688,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6 }}
           >
             {locale === 'fr' 
-              ? 'Parlons de vos produits' 
-              : 'Tell me about your prpducts'}
+              ? 'Recruter un alternant AI Engineer dès maintenant' 
+              : 'Hire an AI Engineer apprentice now'}
           </motion.h2>
           
           <motion.p 
@@ -1246,8 +1700,8 @@ export default function HomeContent({ params }: HomeContentProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {locale === 'fr'
-              ? "Si votre organisation recherche un Digital Product Manager expérimenté capable de porter vos projets IA et technologiques à un niveau supérieur, je suis prêt à apporter mon expertise et mon leadership en interne pour atteindre vos objectifs stratégiques ambitieux."
-              : "If your organization is looking for an experienced Digital Product Manager capable of taking your AI and technological projects to the next level, I am ready to bring my expertise and leadership internally to achieve your ambitious strategic objectives."}
+              ? "J'apporte 9 ans d'expérience produit & marché à votre équipe IA, avec une formation technique de pointe et un rythme d'alternance optimisé (4j/1j). L'aide à l'apprentissage de 6000€ réduit significativement votre investissement."
+              : "I bring 9 years of product & market experience to your AI team, with cutting-edge technical training and an optimized apprenticeship schedule (4d/1d). The €6,000 apprenticeship aid significantly reduces your investment."}
           </motion.p>
           
           <motion.div 
