@@ -1240,8 +1240,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Vision claire et mobilisatrice qui inspire les équipes pluridisciplinaires à atteindre des objectifs ambitieux et créer un impact mesurable."
-                    : "Clear and mobilizing vision that inspires multidisciplinary teams to achieve ambitious goals and create measurable impact."}
+                    ? "Capacité à porter une vision claire dans des contextes d'innovation et à entraîner les équipes autour d'objectifs ambitieux. Leadership reconnu dans des contextes à fort enjeu, y compris en solo sur des projets complexes."
+                    : "Ability to carry a clear vision in innovation contexts and lead teams around ambitious goals. Recognized leadership in high-stakes contexts, including solo on complex projects."}
                 </p>
               </motion.div>
               
@@ -1264,8 +1264,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Communication percutante adaptée aux différentes parties prenantes, facilitant l'alignement et l'adhésion à tous les niveaux organisationnels."
-                    : "Impactful communication adapted to different stakeholders, facilitating alignment and buy-in at all organizational levels."}
+                    ? "Pédagogie et clarté dans l'expression, adaptée aux interlocuteurs techniques ou non-tech. Capacité à vulgariser l'IA et structurer les décisions collectives."
+                    : "Pedagogy and clarity in expression, adapted to technical or non-tech interlocutors. Ability to popularize AI and structure collective decisions."}
                 </p>
               </motion.div>
               
@@ -1288,8 +1288,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Flexibilité et résilience face aux environnements complexes et changeants, permettant de transformer les obstacles en opportunités d'innovation."
-                    : "Flexibility and resilience in complex and changing environments, allowing obstacles to be transformed into innovation opportunities."}
+                    ? "Réactivité face aux contextes changeants, apprentissage autonome rapide (notamment IA). Capacité à pivoter efficacement et à convertir les contraintes en solutions viables."
+                    : "Responsiveness to changing contexts, fast autonomous learning (especially AI). Ability to pivot effectively and convert constraints into viable solutions."}
                 </p>
               </motion.div>
               
@@ -1312,8 +1312,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Capacité à prendre des décisions critiques sous pression, à mobiliser les ressources nécessaires et à maintenir la cohésion d'équipe face à l'adversité."
-                    : "Ability to make critical decisions under pressure, mobilize necessary resources, and maintain team cohesion in the face of adversity."}
+                    ? "Expérience de la prise de décision dans des moments de flou ou d'urgence projet (ex : refonte complète sous délai court avec validation externe). Maintien du cap et des priorités sous pression."
+                    : "Experience in decision-making during moments of uncertainty or project urgency (e.g.: complete overhaul under short deadline with external validation). Maintaining course and priorities under pressure."}
                 </p>
               </motion.div>
               
@@ -1336,8 +1336,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Capacité à définir une vision produit ambitieuse, à prioriser stratégiquement les fonctionnalités et à conduire des équipes vers l'excellence."
-                    : "Ability to define an ambitious product vision, strategically prioritize features and lead teams toward excellence."}
+                    ? "Approche orientée impact : définition de MVP stratégiques, priorisation fondée sur la valeur, et sens du timing marché. Fortes affinités UX / utilisateurs finaux."
+                    : "Impact-oriented approach: definition of strategic MVPs, value-based prioritization, and market timing sense. Strong UX / end-user affinities."}
                 </p>
               </motion.div>
               
@@ -1360,8 +1360,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Forte empathie et compréhension des dynamiques interpersonnelles, permettant de créer des environnements où chacun peut s'épanouir et exceller."
-                    : "Strong empathy and understanding of interpersonal dynamics, creating environments where everyone can thrive and excel."}
+                    ? "Écoute active, compréhension fine des dynamiques d'équipe. Capacité à embarquer sans imposer, à rassurer dans les zones grises, et à travailler en collaboration étroite avec des profils techniques ou business."
+                    : "Active listening, fine understanding of team dynamics. Ability to engage without imposing, reassure in grey areas, and work closely with technical or business profiles."}
                 </p>
               </motion.div>
             </motion.div>
@@ -1395,8 +1395,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Expertise approfondie en définition de roadmap, priorisation stratégique (RICE, ICE) et développement itératif basé sur les retours utilisateurs."
-                    : "Deep expertise in roadmap definition, strategic prioritization (RICE, ICE) and iterative development based on user feedback."}
+                    ? "5+ ans d'expérience en gestion de produit numérique : discovery, roadmapping, cadrage fonctionnel, itération Lean. Méthodologies : OKRs, RICE, JTBD."
+                    : "5+ years of digital product management experience: discovery, roadmapping, functional framing, Lean iteration. Methodologies: OKRs, RICE, JTBD."}
                 </p>
               </motion.div>
               
@@ -1419,8 +1419,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Intégration d'IA générative (GPT-4) et technologies prédictives dans les produits, avec une compréhension avancée des possibilités et limitations."
-                    : "Integration of generative AI (GPT-4) and predictive technologies in products, with advanced understanding of possibilities and limitations."}
+                    ? "Intégration concrète d'IA générative dans des produits (GPT-4, RAG, fine-tuning, OCR, vectorisation). Savoir-faire terrain sur la faisabilité, les limites et la mise en production."
+                    : "Concrete integration of generative AI in products (GPT-4, RAG, fine-tuning, OCR, vectorization). Field expertise on feasibility, limitations, and production deployment."}
                 </p>
               </motion.div>
               
@@ -1443,8 +1443,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Conception centrée utilisateur combinant recherche terrain, prototypage rapide et tests d'usabilité pour des solutions à forte valeur ajoutée."
-                    : "User-centered design combining field research, rapid prototyping and usability testing for high value-added solutions."}
+                    ? "Pratique du design centré utilisateur, prototypage rapide (Figma, Notion, Whimsical), tests utilisateurs. Attention portée à la valeur perçue."
+                    : "User-centered design practice, rapid prototyping (Figma, Notion, Whimsical), user testing. Focus on perceived value."}
                 </p>
               </motion.div>
               
@@ -1467,8 +1467,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Élaboration de stratégies d'acquisition et de rétention, optimisation des tunnels de conversion et analyse des métriques d'engagement."
-                    : "Development of acquisition and retention strategies, optimization of conversion funnels and analysis of engagement metrics."}
+                    ? "Pilotage de stratégies d'activation et conversion dans des environnements SaaS. Suivi des KPIs, cohérence entre produit et cycle de vente."
+                    : "Management of activation and conversion strategies in SaaS environments. KPI tracking, consistency between product and sales cycle."}
                 </p>
               </motion.div>
               
@@ -1491,8 +1491,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Exploitation de données analytiques pour guider les décisions produit, identifier les opportunités d'amélioration et mesurer l'impact des initiatives."
-                    : "Leveraging analytical data to guide product decisions, identify improvement opportunities and measure the impact of initiatives."}
+                    ? "Usage de la donnée pour guider les décisions produit et IA : SQL, tableurs avancés, analyse exploratoire, dashboards de pilotage et mesure d'impact."
+                    : "Using data to guide product and AI decisions: SQL, advanced spreadsheets, exploratory analysis, management dashboards and impact measurement."}
                 </p>
               </motion.div>
               
@@ -1515,8 +1515,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Maîtrise approfondie de Scrum, Kanban, SAFe et OKRs, permettant de délivrer efficacement des produits complexes dans des environnements changeants."
-                    : "In-depth mastery of Scrum, Kanban, SAFe and OKRs, enabling efficient delivery of complex products in changing environments."}
+                    ? "Scrum, Kanban, Scrumban – dans des contextes à forte incertitude. Capacité à cadrer sans sur-processer. Animation d'équipes pluridisciplinaires en autonomie."
+                    : "Scrum, Kanban, Scrumban - in high uncertainty contexts. Ability to frame without over-processing. Independent facilitation of multidisciplinary teams."}
                 </p>
               </motion.div>
             </motion.div>
@@ -1548,8 +1548,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Python, Pandas, SQL, PostgreSQL, Scikit-learn pour l'analyse de données et la transformation à grande échelle"
-                    : "Python, Pandas, SQL, PostgreSQL, Scikit-learn for data analysis and large-scale transformation"}
+                    ? "Bases solides en Python appliqué à l'IA (pandas, SQLAlchemy, scikit-learn, PostgreSQL). Création de pipelines de données automatisés, nettoyage, structuration, intégration dans backend."
+                    : "Solid foundations in Python applied to AI (pandas, SQLAlchemy, scikit-learn, PostgreSQL). Creation of automated data pipelines, cleaning, structuring, integration into backend."}
                 </p>
               </motion.div>
               
@@ -1570,8 +1570,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Azure OpenAI (GPT-4), prompt engineering, RAG, fine-tuning, function calling pour créer des agents IA efficaces"
-                    : "Azure OpenAI (GPT-4), prompt engineering, RAG, fine-tuning, function calling to create efficient AI agents"}
+                    ? "Prompt engineering avancé (GPT-4, Claude), RAG, fine-tuning (via Azure), function calling, design d'agents IA spécialisés. Conception de systèmes IA interagissant avec le back et la base de données."
+                    : "Advanced prompt engineering (GPT-4, Claude), RAG, fine-tuning (via Azure), function calling, specialized AI agent design. Design of AI systems interacting with the backend and database."}
                 </p>
               </motion.div>
               
@@ -1592,86 +1592,15 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Conception REST API, Tesseract OCR, CI/CD, Docker, workflows automatisés, Azure (Foundry), SaaS (Next.js, Node.js)"
-                    : "REST API design, Tesseract OCR, CI/CD, Docker, automated workflows, Azure (Foundry), SaaS (Next.js, Node.js)"}
+                    ? "Conception d'API REST, intégration d'OCR (Tesseract.js), orchestrations avec Bull.js, CI/CD, Docker, déploiement sur Azure. Utilisation d'IA comme copilote technique (Cursor, Claude Code)."
+                    : "REST API design, OCR integration (Tesseract.js), orchestrations with Bull.js, CI/CD, Docker, deployment on Azure. Using AI as a technical copilot (Cursor, Claude Code)."}
                 </p>
               </motion.div>
             </motion.div>
           )}
         </div>
       </AnimatedSection>
-      
-      {/* SECTION: L'IA en action */}
-      <AnimatedSection 
-        className="py-16 bg-white"
-        direction="up"
-        withGrain={true}
-      >
-        <div className="container-custom">
-          <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-6 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-          >
-            {locale === 'fr' ? 'L\'IA en action : Un cas concret' : 'AI in action: A concrete case'}
-          </motion.h2>
-          
-          <div className="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-primary">
-                  {locale === 'fr' ? 'Le problème business' : 'The business problem'}
-                </h3>
-                <p className="text-gray-700">
-                  {locale === 'fr' 
-                    ? "Processus documentaires manuels pour l'export nécessitant 7 jours de traitement et sujets à des erreurs humaines, impactant la compétitivité des entreprises."
-                    : "Manual export documentation processes requiring 7 days of processing and subject to human errors, impacting business competitiveness."}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-primary">
-                  {locale === 'fr' ? 'La solution IA' : 'The AI solution'}
-                </h3>
-                <p className="text-gray-700">
-                  {locale === 'fr' 
-                    ? "Développement d'un SaaS combinant OCR (Tesseract), APIs GPT-4, et scoring IA pour analyser automatiquement la conformité des documents d'export."
-                    : "Development of a SaaS combining OCR (Tesseract), GPT-4 APIs, and AI scoring to automatically analyze the compliance of export documents."}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-primary">
-                  {locale === 'fr' ? 'Impact mesurable' : 'Measurable impact'}
-                </h3>
-                <p className="text-gray-700">
-                  {locale === 'fr' 
-                    ? "Réduction du temps de traitement de 7 jours à 5 heures (gain >82%). Déploiement auprès de 100+ clients avec un taux de satisfaction de 95%."
-                    : "Reduction of processing time from 7 days to 5 hours (>82% gain). Deployment to 100+ clients with a 95% satisfaction rate."}
-                </p>
-              </div>
-            </div>
-            
-            <div className="mt-8 text-center">
-              <AnimatedButton 
-                href={`${langPrefix}/projets/yvea`}
-                variant="primary"
-                size="md"
-                icon={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                }
-              >
-                {locale === 'fr' ? 'Explorer ce projet en détail' : 'Explore this project in detail'}
-              </AnimatedButton>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
-      
+
       {/* CALL TO ACTION SECTION (Updated with warmer tone) */}
       <AnimatedSection 
         className="py-20 bg-gradient-to-b from-white to-primary/5"
