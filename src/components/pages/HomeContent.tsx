@@ -375,7 +375,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       </div>
       
       {/* HERO SECTION (ATTENTION) */}
-      <section className="pt-36 pb-20 md:pt-48 md:pb-32 bg-primary-light/80 relative overflow-hidden">
+      <section className="pt-40 pb-24 md:pt-48 md:pb-32 bg-primary-light/80 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary opacity-5 blur-2xl -translate-y-1/2 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary opacity-5 blur-xl translate-y-1/3 -translate-x-1/4"></div>
@@ -503,13 +503,13 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* SECTION: Ma reconversion vers l'IA */}
       <AnimatedSection 
-        className="py-12 bg-primary-light/80"
+        className="py-24 bg-primary-light/80"
         direction="up"
         withGrain={true}
       >
         <div className="container-custom">
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            className="text-3xl font-unbounded font-bold mb-8 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -582,13 +582,13 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* SECTION: Mon rythme d'alternance */}
       <AnimatedSection 
-        className="py-10 bg-gradient-to-r from-primary/5 to-white"
+        className="py-24 bg-gradient-to-r from-primary/5 to-white"
         direction="up"
         withGrain={true}
       >
         <div className="container-custom">
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            className="text-3xl font-unbounded font-bold mb-8 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -680,7 +680,7 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* MINI SECTION: À PROPOS (using AIDA) */}
       <AnimatedSection 
-        className="py-16 bg-white"
+        className="py-24 bg-white"
         direction="up"
         withGrain={true}
       >
@@ -698,7 +698,7 @@ export default function HomeContent({ params }: HomeContentProps) {
               </motion.span>
               
               <motion.h2 
-                className="text-3xl font-unbounded font-bold mb-6"
+                className="text-3xl font-unbounded font-bold mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -833,14 +833,14 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* PROJETS SECTION */}
       <AnimatedSection 
-        className="py-16 bg-gray-50"
+        className="py-24 bg-gray-50"
         direction="up"
         withGrain={true}
         data-section-id="projets"
       >
         <div id="projets" className="container-custom">
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-3 text-center"
+            className="text-3xl font-unbounded font-bold mb-4 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -850,7 +850,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           </motion.h2>
           
           <motion.p 
-            className="text-lg mb-8 text-center max-w-3xl mx-auto"
+            className="text-lg mb-16 text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -862,7 +862,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           </motion.p>
           
           {/* Tabs Navigation */}
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-16">
             <motion.div 
               className="flex justify-center border-b border-gray-200 mb-8"
               initial={{ opacity: 0, y: 10 }}
@@ -1030,12 +1030,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                       </div>
                     </div>
                     
-                    <div className="p-6 flex-grow flex flex-col">
-                      <h3 className="font-unbounded font-bold text-xl mb-3 text-gray-900 leading-tight">
+                    <div className="p-8 flex-grow flex flex-col">
+                      <h3 className="font-unbounded font-bold text-xl mb-4 text-gray-900 leading-tight">
                         {project.title}
                       </h3>
                       
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.map((tag: string, idx: number) => (
                           <span 
                             key={idx} 
@@ -1046,11 +1046,11 @@ export default function HomeContent({ params }: HomeContentProps) {
                         ))}
                       </div>
                       
-                      <p className="text-gray-700 mb-5 flex-grow leading-relaxed">
+                      <p className="text-gray-700 mb-6 flex-grow leading-relaxed">
                         {project.description}
                       </p>
                       
-                      <div className="mt-auto pt-2">
+                      <div className="mt-auto pt-4">
                         {project.isMainProject ? (
                           // Bouton vers la page dédiée pour YVEA
                           <AnimatedButton 
@@ -1146,7 +1146,7 @@ export default function HomeContent({ params }: HomeContentProps) {
             );
           })()}
           
-          <div className="mt-16 text-center">
+          <div className="mt-24 text-center">
             <AnimatedButton 
               href="https://calendly.com/elmasrymoamen/30min"
               variant="primary"
@@ -1167,13 +1167,13 @@ export default function HomeContent({ params }: HomeContentProps) {
       
       {/* COMPETENCES SECTION */}
       <AnimatedSection 
-        className="py-16 bg-white"
+        className="py-24 bg-white"
         direction="up"
         withGrain={true}
       >
         <div className="container-custom">
           <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-6 text-center"
+            className="text-3xl font-unbounded font-bold mb-8 text-center"
               initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -1183,7 +1183,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           </motion.h2>
           
           {/* Tabs Navigation */}
-          <div className="max-w-3xl mx-auto mb-10">
+          <div className="max-w-3xl mx-auto mb-16">
             <motion.div 
               className="flex justify-center border-b border-gray-200 mb-8"
               initial={{ opacity: 0, y: 10 }}
@@ -1223,19 +1223,19 @@ export default function HomeContent({ params }: HomeContentProps) {
             >
               {/* Leadership Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Leadership inspirant' : 'Inspiring Leadership'}
                 </h3>
                 <p className="text-gray-600">
@@ -1247,19 +1247,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Communication Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Communication stratégique' : 'Strategic Communication'}
                 </h3>
                 <p className="text-gray-600">
@@ -1271,19 +1271,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Adaptabilité Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Adaptabilité agile' : 'Agile Adaptability'}
                 </h3>
                 <p className="text-gray-600">
@@ -1295,19 +1295,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Gestion de crise Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Gestion de crise' : 'Crisis Management'}
                 </h3>
                 <p className="text-gray-600">
@@ -1319,19 +1319,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Innovation Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Leadership produit' : 'Product Leadership'}
                 </h3>
                 <p className="text-gray-600">
@@ -1343,19 +1343,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Négociation Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Intelligence émotionnelle' : 'Emotional Intelligence'}
                 </h3>
                 <p className="text-gray-600">
@@ -1378,19 +1378,19 @@ export default function HomeContent({ params }: HomeContentProps) {
             >
               {/* Agile Methodologies Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Product Management' : 'Product Management'}
                 </h3>
                 <p className="text-gray-600">
@@ -1402,19 +1402,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* SaaS & AI Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'IA & Technologies émergentes' : 'AI & Emerging Technologies'}
                 </h3>
                 <p className="text-gray-600">
@@ -1426,19 +1426,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Cloud Infrastructure Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Design thinking & UX' : 'Design Thinking & UX'}
                 </h3>
                 <p className="text-gray-600">
@@ -1450,19 +1450,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* DevOps Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Growth & Acquisition' : 'Growth & Acquisition'}
                 </h3>
                 <p className="text-gray-600">
@@ -1474,19 +1474,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Data Analysis Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Pilotage Data-Driven' : 'Data-Driven Management'}
                 </h3>
                 <p className="text-gray-600">
@@ -1498,19 +1498,19 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* Project Management Tools Card */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Méthodologies Agiles' : 'Agile Methodologies'}
                 </h3>
                 <p className="text-gray-600">
@@ -1533,17 +1533,17 @@ export default function HomeContent({ params }: HomeContentProps) {
             >
               {/* Python & Data */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <MdDeveloperMode className="w-7 h-7" />
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <MdDeveloperMode className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'Python & Data Engineering' : 'Python & Data Engineering'}
                 </h3>
                 <p className="text-gray-600">
@@ -1555,17 +1555,17 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* LLMs & RAG */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <FaRobot className="w-7 h-7" />
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <FaRobot className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'NLP & LLMs' : 'NLP & LLMs'}
                 </h3>
                 <p className="text-gray-600">
@@ -1577,17 +1577,17 @@ export default function HomeContent({ params }: HomeContentProps) {
               
               {/* MLOps */}
               <motion.div 
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow" 
+                className="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-lg transition-shadow" 
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-5">
-                  <FaTools className="w-7 h-7" />
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <FaTools className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-4">
                   {locale === 'fr' ? 'APIs & Automatisation' : 'APIs & Automation'}
                 </h3>
                 <p className="text-gray-600">
@@ -1601,9 +1601,9 @@ export default function HomeContent({ params }: HomeContentProps) {
         </div>
       </AnimatedSection>
 
-      {/* CALL TO ACTION SECTION (Updated with warmer tone) */}
+      {/* CALL TO ACTION SECTION */}
       <AnimatedSection 
-        className="py-20 bg-gradient-to-b from-white to-primary/5"
+        className="py-24 bg-gradient-to-b from-white to-primary/5"
         direction="up"
         withGrain={true}
       >
@@ -1625,7 +1625,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           </motion.h2>
           
           <motion.p 
-            className="text-xl mb-10 max-w-3xl mx-auto"
+            className="text-xl mb-16 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
