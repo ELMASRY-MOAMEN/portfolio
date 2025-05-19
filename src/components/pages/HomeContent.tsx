@@ -28,31 +28,31 @@ interface HomeContentProps {
 const projectDetails: Record<string, {fr: ProjectDetail, en: ProjectDetail}> = {
   "MAY": {
     fr: {
-      context: "Difficultés internes critiques pour former rapidement les équipes aux procédures export EMEA, entraînant une perte de compétitivité opérationnelle.",
-      role: "Mon rôle de Product Manager : Pilotage produit complet : cadrage fonctionnel détaillé, coordination Agile de l'équipe technique, définition des cas d'usage IA, management rigoureux des tests utilisateurs auprès de 50 utilisateurs pilotes.",
+      context: "Les formations aux procédures export EMEA étaient chronophages et peu scalables, freinant la montée en compétence des équipes internes et partenaires.",
+      role: "Conception, prototypage et déploiement d'un assistant IA privé basé sur GPT-3.5 Turbo (Azure), visant à répondre automatiquement aux questions fréquentes via ingestion de documentation métier.",
       results: [
-        "Temps nécessaire aux formations réduit de 70 %",
-        "Adoption immédiate avec satisfaction utilisateur très élevée (95 %)",
-        "Optimisation des processus internes grâce à l'IA conversationnelle"
+        "Réduction de 70 % du temps moyen de formation constaté sur les cas testés",
+        "Adoption rapide par 50 utilisateurs pilotes avec retour qualitatif très positif",
+        "Réponses générées fiables, cohérentes et non hallucinées sur l'ensemble du périmètre documenté"
       ],
-      lessons: "Apprentissages Produit : Importance cruciale de l'expérience utilisateur intuitive pour faciliter l'adoption d'un produit IA complexe. La gestion agile des retours utilisateurs est un levier clé de réussite.",
+      lessons: "L'ingestion sémantique avec un chunking large améliore la robustesse des réponses. L'expérience utilisateur est essentielle, même sur un outil interne. Le prototypage rapide permet d'itérer et tester sans sur-investir trop tôt.",
       skills: {
-        soft: ["Leadership produit", "Innovation stratégique", "Adaptabilité agile", "Écoute utilisateur"],
-        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Prompt engineering avancé", "Méthodologie Scrum"]
+        soft: ["Conception produit centrée utilisateur", "Test & validation fonctionnelle", "Documentation technique", "Support utilisateur"],
+        hard: ["Azure AI Services (OpenAI, Blob Storage, App Service)", "GPT-3.5 Turbo + RAG sémantique", "Prompt engineering & tuning des paramètres (Top-P, temp…)", "Déploiement prototypal (App Service)"]
       }
     },
     en: {
-      context: "Critical internal difficulties in rapidly training teams on EMEA export procedures, resulting in a loss of operational competitiveness.",
-      role: "My Product Manager role: Complete product management: detailed functional framing, Agile coordination of the technical team, AI use case definition, rigorous management of user testing with 50 pilot users.",
+      context: "EMEA export procedure training was time-consuming and poorly scalable, hindering skill development for internal teams and partners.",
+      role: "Design, prototyping and deployment of a private AI assistant based on GPT-3.5 Turbo (Azure), aimed at automatically answering frequently asked questions through business documentation ingestion.",
       results: [
-        "Time required for training reduced by 70%",
-        "Immediate adoption with very high user satisfaction (95%)",
-        "Optimization of internal processes through conversational AI"
+        "70% reduction in average training time observed on tested cases",
+        "Rapid adoption by 50 pilot users with very positive qualitative feedback",
+        "Reliable, consistent, and non-hallucinated generated responses across the entire documented scope"
       ],
-      lessons: "Product Learnings: Critical importance of intuitive user experience to facilitate the adoption of a complex AI product. Agile management of user feedback is a key success lever.",
+      lessons: "Semantic ingestion with large chunking improves response robustness. User experience is essential, even for internal tools. Rapid prototyping allows iteration and testing without over-investing too early.",
       skills: {
-        soft: ["Product leadership", "Strategic innovation", "Agile adaptability", "User listening"],
-        hard: ["GPT-4 Fine-tuning", "Azure OpenAI services", "Advanced prompt engineering", "Scrum methodology"]
+        soft: ["User-centered product design", "Functional testing & validation", "Technical documentation", "User support"],
+        hard: ["Azure AI Services (OpenAI, Blob Storage, App Service)", "GPT-3.5 Turbo + semantic RAG", "Prompt engineering & parameter tuning (Top-P, temp...)", "Prototype deployment (App Service)"]
       }
     }
   },
@@ -904,13 +904,13 @@ export default function HomeContent({ params }: HomeContentProps) {
               },
               {
                 id: "MAY",
-                title: locale === 'fr' ? "MAY – IA conversationnelle B2B" : "MAY – B2B Conversational AI",
+                title: locale === 'fr' ? "MAY – Assistant IA B2B" : "MAY – B2B AI Assistant",
                 img: "/images/MAY.jpg",
-                tags: ["Product Management", "GPT-4", "UX", "Azure OpenAI", "RAG"],
+                tags: ["GPT-3.5 Turbo", "RAG sémantique", "Azure Foundry", "Prototypage IA"],
                 description: locale === 'fr' 
-                  ? "Création d'un produit IA basé sur GPT-4 (Azure), réduisant de 70 % les temps de formation export et adopté par 50 utilisateurs pilotes grâce à une UX optimisée."
-                  : "Creation of a GPT-4 (Azure) based AI product, reducing export training times by 70% and adopted by 50 pilot users thanks to optimized UX.",
-                dominante: locale === 'fr' ? "Product Management & IA" : "Product Management & AI",
+                  ? "Création d'un assistant IA basé sur GPT-3.5 Turbo (Azure), déployé avec RAG sémantique. Réduction de 70 % des temps de formation export. Adopté par 50 utilisateurs pilotes."
+                  : "Creation of a GPT-3.5 Turbo (Azure) based AI assistant, deployed with semantic RAG. 70% reduction in export training time. Adopted by 50 pilot users.",
+                dominante: locale === 'fr' ? "IA Générative & Prototypage" : "Generative AI & Prototyping",
                 icon: <FaRobot />,
                 type: "tech"
               },
