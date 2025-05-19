@@ -497,7 +497,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </AnimatedButton>
                 
                 <AnimatedButton 
-                  href="/CV_Moamen_Elmasry.pdf"
+                  href="/CV_Moamen_Elmasry_Ingenieur_IA.pdf"
                   variant="outline"
                   size="lg"
                   target="_blank" 
