@@ -848,17 +848,17 @@ export default function HomeContent({ params }: HomeContentProps) {
             {locale === 'fr' ? 'Mes Projets' : 'My Projects'}
           </motion.h2>
           
-            <motion.p 
+          <motion.p 
             className="text-lg mb-12 text-center max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             {locale === 'fr' 
-              ? "Découvrez comment mes expériences se traduisent en projets concrets. Cette section présente, sous forme de carte interactive, les différentes initiatives majeures de mon parcours."
-              : "Discover how my experiences translate into concrete projects. This section presents, in an interactive card format, the major initiatives from my career."}
-            </motion.p>
+              ? "Une sélection de projets illustrant à la fois mes compétences techniques en IA et mes expériences produit sur des missions à fort impact."
+              : "A curated selection of projects highlighting both my technical skills in AI and my product leadership across high-impact missions."}
+          </motion.p>
           
           {(() => {
             // Nouvelle structure enrichie des projets
@@ -872,7 +872,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Product Manager et fondateur d'une solution SaaS pilotée par l'IA, transformant les processus de certification export avec une réduction de 80% des délais opérationnels et 200K€ de financements obtenus."
                   : "Product Manager and founder of an AI-driven SaaS solution, transforming export certification processes with 80% reduction in operational delays and €200K in funding secured.",
                 dominante: locale === 'fr' ? "Stratégie produit & Innovation" : "Product Strategy & Innovation",
-                isMainProject: true
+                isMainProject: true,
+                type: "tech"
               },
               {
                 id: "MAY",
@@ -883,7 +884,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Création d'un produit IA basé sur GPT-4 (Azure), réduisant de 70 % les temps de formation export et adopté par 50 utilisateurs pilotes grâce à une UX optimisée."
                   : "Creation of a GPT-4 (Azure) based AI product, reducing export training times by 70% and adopted by 50 pilot users thanks to optimized UX.",
                 dominante: locale === 'fr' ? "Product Management & IA" : "Product Management & AI",
-                icon: <FaRobot />
+                icon: <FaRobot />,
+                type: "tech"
               },
               {
                 id: "SAMSUNG",
@@ -894,7 +896,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Management terrain et optimisation continue du parcours utilisateur, assurant une expérience fluide à 17K visiteurs quotidiens, avec un taux de satisfaction client à 90 %."
                   : "Field management and continuous optimization of the user journey, ensuring a smooth experience for 17K daily visitors, with a 90% customer satisfaction rate.",
                 dominante: locale === 'fr' ? "Product Experience & Leadership" : "Product Experience & Leadership",
-                icon: <FaUsers />
+                icon: <FaUsers />,
+                type: "business"
               },
               {
                 id: "SGS",
@@ -905,7 +908,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Gestion produit d'une automatisation OCR avancée réduisant de 40 % les délais opérationnels et augmentant de 20 % le CA d'un portefeuille stratégique de 2M€."
                   : "Product management of advanced OCR automation reducing operational delays by 40% and increasing revenue by 20% on a strategic €2M portfolio.",
                 dominante: locale === 'fr' ? "Product Management & Transformation" : "Product Management & Transformation",
-                icon: <FaDatabase />
+                icon: <FaDatabase />,
+                type: "business"
               },
               {
                 id: "XEROX",
@@ -916,7 +920,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Structuration stratégique produit/commerciale d'offres hardware/SaaS sur 200 clients multisites, améliorant de 45 % l'efficacité des déploiements."
                   : "Strategic product/commercial structuring of hardware/SaaS offerings for 200 multi-site clients, improving deployment efficiency by 45%.",
                 dominante: locale === 'fr' ? "Product Strategy & Commercial" : "Product Strategy & Commercial",
-                icon: <FaTools />
+                icon: <FaTools />,
+                type: "business"
               },
               {
                 id: "FRANCIS",
@@ -927,7 +932,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Conception stratégique produit de nouvelles offres digitales B2B, améliorant considérablement la conversion client grâce à une approche de prospection intensive personnalisée."
                   : "Strategic product design of new B2B digital offerings, significantly improving customer conversion through an intensive personalized prospecting approach.",
                 dominante: locale === 'fr' ? "Product Development & Business" : "Product Development & Business",
-                icon: <FaBusinessTime />
+                icon: <FaBusinessTime />,
+                type: "business"
               },
               {
                 id: "DA",
@@ -938,9 +944,14 @@ export default function HomeContent({ params }: HomeContentProps) {
                   ? "Pilotage stratégique de l'entrée produit sur le marché européen pour une entreprise chinoise, atteignant une croissance CA de 120 % en 18 mois."
                   : "Strategic management of product entry into the European market for a Chinese company, achieving 120% revenue growth in 18 months.",
                 dominante: locale === 'fr' ? "Product Strategy & International" : "Product Strategy & International",
-                icon: <FaBusinessTime />
+                icon: <FaBusinessTime />,
+                type: "business"
               }
             ];
+
+            // Filtrer les projets par type
+            const techProjects = projects.filter(project => project.type === "tech");
+            const businessProjects = projects.filter(project => project.type === "business");
 
             // Déterminer si un modal doit être affiché
             const shouldShowModal = selectedDetailProject !== null && selectedDetailProject !== "YVEA";
@@ -955,95 +966,151 @@ export default function HomeContent({ params }: HomeContentProps) {
               ? projects.find(p => p.id === selectedDetailProject)?.title || ""
               : "";
 
-            return (
-              <>
-                {/* Grille de projets */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {projects.map((project) => (
-                    <motion.div
-                      key={project.id}
-                      className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100/80 h-full flex flex-col hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <div className="aspect-video relative bg-gray-100 overflow-hidden group">
-                        {project.img ? (
-                          <>
-                            <Image
-                              src={project.img}
-                              alt={project.title}
-                              fill
-                              className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"></div>
-                          </>
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                          </div>
-                        )}
-                        {/* Badge catégorie - Now positioned at bottom left for better visibility */}
-                        <div className="absolute bottom-3 right-3 bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm shadow-md flex items-center gap-1.5">
-                          {project.icon}
-                          <span>{project.dominante}</span>
+            // Fonction pour rendre une grille de projets
+            const renderProjectsGrid = (projectsList: typeof projects) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projectsList.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100/80 h-full flex flex-col hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="aspect-video relative bg-gray-100 overflow-hidden group">
+                      {project.img ? (
+                        <>
+                          <Image
+                            src={project.img}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"></div>
+                        </>
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
                         </div>
+                      )}
+                      {/* Badge catégorie - Now positioned at bottom left for better visibility */}
+                      <div className="absolute bottom-3 right-3 bg-primary/90 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm shadow-md flex items-center gap-1.5">
+                        {project.icon}
+                        <span>{project.dominante}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="p-6 flex-grow flex flex-col">
+                      <h3 className="font-unbounded font-bold text-xl mb-3 text-gray-900 leading-tight">
+                        {project.title}
+                      </h3>
+                      
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag: string, idx: number) => (
+                          <span 
+                            key={idx} 
+                            className="text-xs px-2.5 py-1 bg-primary/5 text-primary/90 rounded-full border border-primary/10 font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                       
-                      <div className="p-6 flex-grow flex flex-col">
-                        <h3 className="font-unbounded font-bold text-xl mb-3 text-gray-900 leading-tight">
-                          {project.title}
-                        </h3>
-                        
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.tags.map((tag, idx) => (
-                            <span 
-                              key={idx} 
-                              className="text-xs px-2.5 py-1 bg-primary/5 text-primary/90 rounded-full border border-primary/10 font-medium"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        <p className="text-gray-700 mb-5 flex-grow leading-relaxed">
-                          {project.description}
-                        </p>
-                        
-                        <div className="mt-auto pt-2">
-                          {project.isMainProject ? (
-                            // Bouton vers la page dédiée pour YVEA
-                            <AnimatedButton 
-                              href={`${langPrefix}/projets/yvea`}
-                              variant="primary"
-                              size="md"
-                              icon={
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                              }
-                            >
-                              {locale === 'fr' ? 'Explorer le projet' : 'Explore project'}
-                            </AnimatedButton>
-                          ) : (
-                            // Bouton pour ouvrir le modal pour les autres projets
-                            <button 
-                              onClick={() => setSelectedDetailProject(project.id)}
-                              className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-primary/5 text-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium border border-primary/10 hover:border-primary group"
-                            >
-                              {locale === 'fr' ? 'En savoir plus' : 'Learn more'}
-                              <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <p className="text-gray-700 mb-5 flex-grow leading-relaxed">
+                        {project.description}
+                      </p>
+                      
+                      <div className="mt-auto pt-2">
+                        {project.isMainProject ? (
+                          // Bouton vers la page dédiée pour YVEA
+                          <AnimatedButton 
+                            href={`${langPrefix}/projets/yvea`}
+                            variant="primary"
+                            size="md"
+                            icon={
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                               </svg>
-                            </button>
-                          )}
-                        </div>
+                            }
+                          >
+                            {locale === 'fr' ? 'Explorer le projet' : 'Explore project'}
+                          </AnimatedButton>
+                        ) : (
+                          // Bouton pour ouvrir le modal pour les autres projets
+                          <button 
+                            onClick={() => setSelectedDetailProject(project.id)}
+                            className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-primary/5 text-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-300 text-sm font-medium border border-primary/10 hover:border-primary group"
+                          >
+                            {locale === 'fr' ? 'En savoir plus' : 'Learn more'}
+                            <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                        )}
                       </div>
-                    </motion.div>
-                  ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            );
+
+            return (
+              <>
+                {/* Bloc 1: Projets Techs */}
+                <div className="mb-16">
+                  <motion.h3 
+                    className="text-2xl font-unbounded font-bold mb-4 flex items-center justify-center gap-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <span>{locale === 'fr' ? '🧠 Mes projets Techs' : '🧠 My Tech Projects'}</span>
+                  </motion.h3>
+                  
+                  <motion.p 
+                    className="text-lg mb-10 text-center max-w-3xl mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    {locale === 'fr' 
+                      ? "Les projets où j'ai directement contribué à la conception ou au prototypage technique de solutions IA. Stack : GPT-4, LangChain, OCR, REST API…"
+                      : "Projects where I directly contributed to the technical design or prototyping of AI solutions. Stack: GPT-4, LangChain, OCR, REST API…"}
+                  </motion.p>
+                  
+                  {renderProjectsGrid(techProjects)}
+                </div>
+                
+                {/* Bloc 2: Projets Business */}
+                <div className="mt-20">
+                  <motion.h3 
+                    className="text-2xl font-unbounded font-bold mb-4 flex items-center justify-center gap-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <span>{locale === 'fr' ? '💼 Mes projets Business' : '💼 My Business Projects'}</span>
+                  </motion.h3>
+                  
+                  <motion.p 
+                    className="text-lg mb-10 text-center max-w-3xl mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    {locale === 'fr' 
+                      ? "Des missions à fort enjeu produit, automatisation ou go-to-market. J'y ai dirigé des projets complexes, avec une forte composante UX ou data-driven."
+                      : "High-impact product, automation, and go-to-market missions. I led complex initiatives with strong UX or data-driven focus."}
+                  </motion.p>
+                  
+                  {renderProjectsGrid(businessProjects)}
                 </div>
                 
                 {/* Modal pour les détails du projet */}
@@ -1061,7 +1128,7 @@ export default function HomeContent({ params }: HomeContentProps) {
             );
           })()}
           
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <AnimatedButton 
               href="https://calendly.com/elmasrymoamen/30min"
               variant="primary"
