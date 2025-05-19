@@ -713,80 +713,76 @@ export default function HomeContent({ params }: HomeContentProps) {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h3 className="text-lg font-bold text-primary mb-4">
-                  {locale === 'fr' ? 'Mon projet en 4 points clés :' : 'My project in 4 key points:'}
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Formation complète IA' : 'Comprehensive AI training'}
+                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
+                      <span className="text-xl mr-2">🧠</span>
+                      {locale === 'fr' ? 'Formation Bac+5 en ingénierie IA' : 'AI Engineering Master\'s Program'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "Python, LangChain, RAG, MLOps, BentoML - Diplôme Bac+5" 
-                        : "Python, LangChain, RAG, MLOps, BentoML - Master's degree"}
+                        ? "Python, RAG, LangChain, MLOps, BentoML" 
+                        : "Python, RAG, LangChain, MLOps, BentoML"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Double compétence unique' : 'Unique dual competency'}
+                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
+                      <span className="text-xl mr-2">🔁</span>
+                      {locale === 'fr' ? 'Double compétence produit-tech' : 'Dual Product-Tech Skills'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "9 ans d'expérience produit + compétences techniques IA" 
-                        : "9 years of product experience + AI technical skills"}
+                        ? "9 ans d'expérience + compétences IA opérationnelles" 
+                        : "9 years of experience + operational AI skills"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Rythme optimal' : 'Optimal schedule'}
+                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
+                      <span className="text-xl mr-2">📆</span>
+                      {locale === 'fr' ? 'Rythme optimal' : 'Optimal Schedule'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "4 jours en entreprise, 1 jour en formation + aide de 6000€" 
-                        : "4 days in company, 1 day in training + €6000 aid"}
+                        ? "4 jours entreprise / 1 jour école + aide de 6000€" 
+                        : "4 days company / 1 day school + €6000 aid"}
                     </p>
                   </div>
                   
                   <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800">
-                      {locale === 'fr' ? 'Disponibilité immédiate' : 'Immediate availability'}
+                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
+                      <span className="text-xl mr-2">⚡</span>
+                      {locale === 'fr' ? 'Disponibilité immédiate' : 'Immediate Availability'}
                     </h4>
                     <p className="text-gray-600 text-sm">
                       {locale === 'fr' 
-                        ? "Prêt à intégrer vos équipes et apporter une valeur ajoutée dès le premier mois" 
-                        : "Ready to join your teams and add value from the first month"}
+                        ? "Opérationnel dès le premier mois" 
+                        : "Operational from the first month"}
                     </p>
                   </div>
                 </div>
               </motion.div>
               
-              <motion.p 
-                className="text-lg mb-4"
+              <motion.div
+                className="max-w-prose space-y-4 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                {locale === 'fr' 
-                  ? "J'excelle à traduire les enjeux métier en fonctionnalités à fort impact, en maîtrisant les cycles Agile, le pilotage data-driven et la gestion d'équipes internationales."
-                  : "I excel at translating business challenges into high-impact features, mastering Agile cycles, data-driven management, and international team leadership."}
-              </motion.p>
-              
-              <motion.p 
-                className="text-lg mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {locale === 'fr' 
-                  ? "Ma vision : concevoir des produits intelligents, scalables et responsables qui réinventent l'expérience utilisateur et cimentent une croissance durable."
-                  : "My vision: designing intelligent, scalable, and responsible products that reinvent the user experience and cement sustainable growth."}
-              </motion.p>
+                <p className="text-lg text-gray-700">
+                  {locale === 'fr' 
+                    ? "En tant que fondateur et Product Owner, j'ai appris à transformer des besoins métier complexes en solutions concrètes et scalables. Cette expérience m'a forgé une méthode : agilité produit, prototypage rapide, écoute utilisateur, et pilotage par la donnée."
+                    : "As a founder and Product Owner, I've learned to transform complex business needs into concrete, scalable solutions. This experience has forged my method: product agility, rapid prototyping, user listening, and data-driven management."}
+                </p>
+                
+                <p className="text-lg text-gray-700">
+                  {locale === 'fr' 
+                    ? "Aujourd'hui, je me spécialise en ingénierie IA pour allier rigueur technique et vision produit. Mon objectif : concevoir des systèmes IA utiles, compréhensibles et responsables, avec un impact mesurable sur les utilisateurs."
+                    : "Today, I'm specializing in AI engineering to combine technical rigor and product vision. My goal: designing useful, understandable, and responsible AI systems with measurable impact on users."}
+                </p>
+              </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
