@@ -211,6 +211,7 @@ export default function HomeContent({ params }: HomeContentProps) {
   const [selectedProject, setSelectedProject] = useState("YVEA");
   const [selectedSkillTab, setSelectedSkillTab] = useState('hard');
   const [selectedDetailProject, setSelectedDetailProject] = useState<string | null>(null);
+  const [selectedProjectTab, setSelectedProjectTab] = useState('tech'); // Nouvel état pour les onglets de projet
   const locale = params.lang;
   const langPrefix = `/${locale}`;
   
@@ -849,7 +850,7 @@ export default function HomeContent({ params }: HomeContentProps) {
           </motion.h2>
           
           <motion.p 
-            className="text-lg mb-12 text-center max-w-3xl mx-auto"
+            className="text-lg mb-8 text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -859,6 +860,32 @@ export default function HomeContent({ params }: HomeContentProps) {
               ? "Une sélection de projets illustrant à la fois mes compétences techniques en IA et mes expériences produit sur des missions à fort impact."
               : "A curated selection of projects highlighting both my technical skills in AI and my product leadership across high-impact missions."}
           </motion.p>
+          
+          {/* Tabs Navigation */}
+          <div className="max-w-3xl mx-auto mb-12">
+            <motion.div 
+              className="flex justify-center border-b border-gray-200 mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors flex items-center gap-2 ${selectedProjectTab === 'tech' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedProjectTab('tech')}
+              >
+                <span>🧠</span>
+                {locale === 'fr' ? 'Projets Techs' : 'Tech Projects'}
+              </button>
+              <button 
+                className={`py-3 px-6 font-medium text-lg border-b-2 transition-colors flex items-center gap-2 ${selectedProjectTab === 'business' ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
+                onClick={() => setSelectedProjectTab('business')}
+              >
+                <span>💼</span>
+                {locale === 'fr' ? 'Projets Business' : 'Business Projects'}
+              </button>
+            </motion.div>
+          </div>
           
           {(() => {
             // Nouvelle structure enrichie des projets
@@ -1059,59 +1086,50 @@ export default function HomeContent({ params }: HomeContentProps) {
 
             return (
               <>
-                {/* Bloc 1: Projets Techs */}
-                <div className="mb-16">
-                  <motion.h3 
-                    className="text-2xl font-unbounded font-bold mb-4 flex items-center justify-center gap-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <span>{locale === 'fr' ? '🧠 Mes projets Techs' : '🧠 My Tech Projects'}</span>
-                  </motion.h3>
+                {/* Contenu basé sur l'onglet sélectionné */}
+                <motion.div
+                  key={selectedProjectTab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {selectedProjectTab === 'tech' && (
+                    <div>
+                      <motion.p 
+                        className="text-lg mb-10 text-center max-w-3xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      >
+                        {locale === 'fr' 
+                          ? "Les projets où j'ai directement contribué à la conception ou au prototypage technique de solutions IA. Stack : GPT-4, LangChain, OCR, REST API…"
+                          : "Projects where I directly contributed to the technical design or prototyping of AI solutions. Stack: GPT-4, LangChain, OCR, REST API…"}
+                      </motion.p>
+                      
+                      {renderProjectsGrid(techProjects)}
+                    </div>
+                  )}
                   
-                  <motion.p 
-                    className="text-lg mb-10 text-center max-w-3xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    {locale === 'fr' 
-                      ? "Les projets où j'ai directement contribué à la conception ou au prototypage technique de solutions IA. Stack : GPT-4, LangChain, OCR, REST API…"
-                      : "Projects where I directly contributed to the technical design or prototyping of AI solutions. Stack: GPT-4, LangChain, OCR, REST API…"}
-                  </motion.p>
-                  
-                  {renderProjectsGrid(techProjects)}
-                </div>
-                
-                {/* Bloc 2: Projets Business */}
-                <div className="mt-20">
-                  <motion.h3 
-                    className="text-2xl font-unbounded font-bold mb-4 flex items-center justify-center gap-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <span>{locale === 'fr' ? '💼 Mes projets Business' : '💼 My Business Projects'}</span>
-                  </motion.h3>
-                  
-                  <motion.p 
-                    className="text-lg mb-10 text-center max-w-3xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    {locale === 'fr' 
-                      ? "Des missions à fort enjeu produit, automatisation ou go-to-market. J'y ai dirigé des projets complexes, avec une forte composante UX ou data-driven."
-                      : "High-impact product, automation, and go-to-market missions. I led complex initiatives with strong UX or data-driven focus."}
-                  </motion.p>
-                  
-                  {renderProjectsGrid(businessProjects)}
-                </div>
+                  {selectedProjectTab === 'business' && (
+                    <div>
+                      <motion.p 
+                        className="text-lg mb-10 text-center max-w-3xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                      >
+                        {locale === 'fr' 
+                          ? "Des missions à fort enjeu produit, automatisation ou go-to-market. J'y ai dirigé des projets complexes, avec une forte composante UX ou data-driven."
+                          : "High-impact product, automation, and go-to-market missions. I led complex initiatives with strong UX or data-driven focus."}
+                      </motion.p>
+                      
+                      {renderProjectsGrid(businessProjects)}
+                    </div>
+                  )}
+                </motion.div>
                 
                 {/* Modal pour les détails du projet */}
                 {shouldShowModal && currentProjectDetails && (
