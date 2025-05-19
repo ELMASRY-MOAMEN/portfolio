@@ -56,7 +56,7 @@ export default function HeroSection() {
       ariaLabel: locale === 'fr' ? 'En savoir plus sur mon parcours' : 'Learn more about my journey'
     },
     downloadCV: {
-      href: '/CV_Moamen_Elmasry_Ingenieur_IA.pdf',
+      href: '/cv/CV_Moamen_Elmasry_Ingenieur_IA.pdf',
       label: locale === 'fr' ? 'Télécharger CV' : 'Download CV',
       ariaLabel: locale === 'fr' ? 'Télécharger mon CV' : 'Download my resume'
     }

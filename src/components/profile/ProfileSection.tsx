@@ -111,7 +111,7 @@ export default function ProfileSection({ content, langPrefix, locale, isLoaded }
               variants={fadeInUp}
             >
               <AnimatedButton 
-                href={`/CV_Moamen_Elmasry_Ingenieur_IA.pdf`}
+                href={`/cv/CV_Moamen_Elmasry_Ingenieur_IA.pdf`}
                 variant="primary"
                 size="lg"
                 isExternal
