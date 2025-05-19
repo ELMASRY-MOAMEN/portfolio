@@ -220,7 +220,7 @@ export default function HomeContent({ params }: HomeContentProps) {
   // Content based on language
   const pageContent = {
     fr: {
-      heroTitle: "Ingénieur IA en formation",
+      heroTitle: "Ingénieur IA en alternance",
       heroRole: "Formation Bac+5 IA | Spécialisation ML/DL & NLP | Background Product",
       heroSubtitle: [
         "Développement ML/DL avec Python, PyTorch et scikit-learn",
@@ -228,7 +228,7 @@ export default function HomeContent({ params }: HomeContentProps) {
         "Déploiement de modèles IA en production (MLOps)",
         "Vision produit & technique : 9 ans d'expérience"
       ],
-      heroDescription: "En formation d'Ingénieur IA pour combiner expertise technique et vision produit. Actuellement en développement actif sur des projets ML/DL, avec un focus sur le NLP et le Computer Vision. Rythme d'alternance optimisé (4j entreprise/1j formation) et aide financière (6000€).",
+      heroDescription: "Passionné par l'IA appliquée après 9 ans en tech et produit B2B, dont 3 ans comme fondateur d'un SaaS IA (API GPT-4, OCR, Scoring IA). Je développe des projets concrets mêlant ML/DL, RAG et APIs. Disponible en alternance 4j/1j avec aide financière (6000€).",
       ctaBookMeeting: "Réserver un échange",
       ctaContact: "Me contacter",
       ctaDownloadCV: "Télécharger mon CV",
@@ -624,32 +624,32 @@ export default function HomeContent({ params }: HomeContentProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>{locale === 'fr' 
-                    ? "Une vision centrée sur l'impact business et le ROI des solutions IA"
-                    : "A vision centered on business impact and ROI of AI solutions"}</span>
+                    ? "Expérience concrète en conception d'outils d'automatisation IA (GPT-4, OCR, Scoring IA)"
+                    : "Concrete experience in designing AI automation tools (GPT-4, OCR, AI Scoring)"}</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>{locale === 'fr' 
-                    ? "Une capacité à traduire les besoins business en spécifications techniques"
-                    : "An ability to translate business needs into technical specifications"}</span>
+                    ? "Capacité à prototyper rapidement avec l'assistance d'IA générative (vibecoding)"
+                    : "Ability to rapidly prototype with generative AI assistance (vibecoding)"}</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>{locale === 'fr' 
-                    ? "L'expérience de la conduite du changement et de l'adoption utilisateur"
-                    : "Experience in change management and user adoption"}</span>
+                    ? "Expertise produit-tech: conception d'API REST, prompt engineering, fine-tuning"
+                    : "Product-tech expertise: REST API design, prompt engineering, fine-tuning"}</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>{locale === 'fr' 
-                    ? "Une motivation exceptionnelle à apprendre et maîtriser les technologies IA"
-                    : "Exceptional motivation to learn and master AI technologies"}</span>
+                    ? "Capacité à déployer des solutions ayant un impact business mesurable (-82% de délais)"
+                    : "Ability to deploy solutions with measurable business impact (-82% processing time)"}</span>
                 </li>
               </ul>
             </motion.div>
@@ -1541,12 +1541,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   <MdDeveloperMode className="w-7 h-7" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'Python & Data Science' : 'Python & Data Science'}
+                  {locale === 'fr' ? 'Python & Data Engineering' : 'Python & Data Engineering'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "Pandas, NumPy, Scikit-Learn, PostgreSQL pour la préparation et l'analyse de données à grande échelle"
-                    : "Pandas, NumPy, Scikit-Learn, PostgreSQL for large-scale data preparation and analysis"}
+                    ? "Python, Pandas, SQL, PostgreSQL, Scikit-learn pour l'analyse de données et la transformation à grande échelle"
+                    : "Python, Pandas, SQL, PostgreSQL, Scikit-learn for data analysis and large-scale transformation"}
                 </p>
               </motion.div>
               
@@ -1563,12 +1563,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   <FaRobot className="w-7 h-7" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'LLMs & RAG' : 'LLMs & RAG'}
+                  {locale === 'fr' ? 'NLP & LLMs' : 'NLP & LLMs'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "LangChain, Mistral AI, Retrieval Augmented Generation pour créer des agents IA contextuels et efficaces"
-                    : "LangChain, Mistral AI, Retrieval Augmented Generation to create contextual and efficient AI agents"}
+                    ? "Azure OpenAI (GPT-4), prompt engineering, RAG, fine-tuning, function calling pour créer des agents IA efficaces"
+                    : "Azure OpenAI (GPT-4), prompt engineering, RAG, fine-tuning, function calling to create efficient AI agents"}
                 </p>
               </motion.div>
               
@@ -1585,12 +1585,12 @@ export default function HomeContent({ params }: HomeContentProps) {
                   <FaTools className="w-7 h-7" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">
-                  {locale === 'fr' ? 'MLOps & Déploiement' : 'MLOps & Deployment'}
+                  {locale === 'fr' ? 'APIs & Automatisation' : 'APIs & Automation'}
                 </h3>
                 <p className="text-gray-600">
                   {locale === 'fr' 
-                    ? "BentoML, Docker, automatisation des workflows et monitoring de modèles en production"
-                    : "BentoML, Docker, workflow automation and monitoring of models in production"}
+                    ? "Conception REST API, Tesseract OCR, CI/CD, Docker, workflows automatisés, Azure (Foundry), SaaS (Next.js, Node.js)"
+                    : "REST API design, Tesseract OCR, CI/CD, Docker, automated workflows, Azure (Foundry), SaaS (Next.js, Node.js)"}
                 </p>
               </motion.div>
             </motion.div>
@@ -1623,8 +1623,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-700">
                   {locale === 'fr' 
-                    ? "Délais d'exportation trop longs (72h) et erreurs fréquentes (30%) dans les certifications export, impactant directement le CA et la satisfaction client."
-                    : "Export delays too long (72h) and frequent errors (30%) in export certifications, directly impacting revenue and customer satisfaction."}
+                    ? "Processus documentaires manuels pour l'export nécessitant 7 jours de traitement et sujets à des erreurs humaines, impactant la compétitivité des entreprises."
+                    : "Manual export documentation processes requiring 7 days of processing and subject to human errors, impacting business competitiveness."}
                 </p>
               </div>
               
@@ -1634,8 +1634,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-700">
                   {locale === 'fr' 
-                    ? "Système d'extraction OCR couplé à un modèle LLM fine-tuné pour analyser, classifier et valider automatiquement les documents complexes d'exportation."
-                    : "OCR extraction system coupled with a fine-tuned LLM model to automatically analyze, classify and validate complex export documents."}
+                    ? "Développement d'un SaaS combinant OCR (Tesseract), APIs GPT-4, et scoring IA pour analyser automatiquement la conformité des documents d'export."
+                    : "Development of a SaaS combining OCR (Tesseract), GPT-4 APIs, and AI scoring to automatically analyze the compliance of export documents."}
                 </p>
               </div>
               
@@ -1645,8 +1645,8 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </h3>
                 <p className="text-gray-700">
                   {locale === 'fr' 
-                    ? "Réduction de 80% des délais et 95% des erreurs, générant 200K€ d'économies annuelles et augmentant significativement la satisfaction client."
-                    : "80% reduction in delays and 95% in errors, generating €200K in annual savings and significantly increasing customer satisfaction."}
+                    ? "Réduction du temps de traitement de 7 jours à 5 heures (gain >82%). Déploiement auprès de 100+ clients avec un taux de satisfaction de 95%."
+                    : "Reduction of processing time from 7 days to 5 hours (>82% gain). Deployment to 100+ clients with a 95% satisfaction rate."}
                 </p>
               </div>
             </div>
