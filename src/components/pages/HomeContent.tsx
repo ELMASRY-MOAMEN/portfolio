@@ -238,28 +238,6 @@ export default function HomeContent({ params }: HomeContentProps) {
         experience: "9 ans d'expérience produit",
         projects: "Aide alternance 6000€"
       },
-      stats: [
-        { 
-          value: "5+", 
-          label: "Projets ML/DL",
-          icon: <MdDeveloperMode className="w-6 h-6" />
-        },
-        { 
-          value: "3", 
-          label: "Modèles en prod",
-          icon: <FaRobot className="w-6 h-6" />
-        },
-        { 
-          value: "CI/CD", 
-          label: "Pipeline MLOps",
-          icon: <FaTools className="w-6 h-6" />
-        },
-        { 
-          value: "4j/1j", 
-          label: "Disponibilité",
-          icon: <FaBusinessTime className="w-6 h-6" />
-        }
-      ],
       approachTitle: "De Product Manager à Ingénieur IA : une transition stratégique",
       approachDescription1: "J'ai toujours privilégié l'humain et la collaboration comme moteurs de réussite. Ma méthode repose sur une communication transparente, un esprit d'équipe solidement ancré et un leadership bienveillant. En prenant le temps de comprendre les enjeux et la culture de chaque organisation, je facilite l'adhésion et le partage de responsabilités. Ce souci du relationnel me permet de fédérer les équipes, d'anticiper les résistances au changement et de créer un climat propice à l'innovation.",
       approachDescription2: "Sur le terrain, j'ai développé une passion pour l'aspect technique des solutions IA et automatisation. C'est pourquoi je me forme désormais aux technologies Python, LangChain, RAG et MistralAI pour apporter à vos équipes une double compétence unique: vision produit/business et expertise technique IA.",
@@ -306,28 +284,6 @@ export default function HomeContent({ params }: HomeContentProps) {
         experience: "9 years of product experience",
         projects: "Apprenticeship aid €6000"
       },
-      stats: [
-        { 
-          value: "5+", 
-          label: "ML/DL Projects",
-          icon: <MdDeveloperMode className="w-6 h-6" />
-        },
-        { 
-          value: "3", 
-          label: "Models in prod",
-          icon: <FaRobot className="w-6 h-6" />
-        },
-        { 
-          value: "CI/CD", 
-          label: "MLOps Pipeline",
-          icon: <FaTools className="w-6 h-6" />
-        },
-        { 
-          value: "4d/1d", 
-          label: "Availability",
-          icon: <FaBusinessTime className="w-6 h-6" />
-        }
-      ],
       approachTitle: "From Product Manager to AI Engineer: a strategic transition",
       approachDescription1: "I've always prioritized human connection and collaboration as drivers of success. My method is based on transparent communication, a solidly anchored team spirit, and caring leadership. By taking the time to understand the challenges and culture of each organization, I facilitate buy-in and shared responsibility. This focus on relationships allows me to unite teams, anticipate resistance to change, and create an environment conducive to innovation.",
       approachDescription2: "In the field, I developed a passion for the technical aspect of AI solutions and automation. That's why I'm now training in Python, LangChain, RAG, and MistralAI technologies to bring your teams a unique dual competency: product/business vision and AI technical expertise.",
@@ -497,7 +453,7 @@ export default function HomeContent({ params }: HomeContentProps) {
                 </AnimatedButton>
                 
                 <AnimatedButton 
-                  href="/CV_Moamen_Elmasry_Ingenieur_IA.pdf"
+                  href="/cv/CV_Moamen_Elmasry_Ingenieur_IA.pdf"
                   variant="outline"
                   size="lg"
                   target="_blank" 
@@ -543,26 +499,6 @@ export default function HomeContent({ params }: HomeContentProps) {
           </svg>
         </motion.div>
       </section>
-      
-      {/* KEY INDICATORS SECTION (INTEREST) */}
-      <AnimatedSection 
-        className="py-10 bg-white"
-        direction="up"
-        withGrain={true}
-      >
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {content.stats.map((stat, index) => (
-              <AnimatedStatsCard
-                key={index}
-                value={stat.value}
-                label={stat.label}
-                delay={index * 0.1}
-              />
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
       
       {/* SECTION: Ma reconversion vers l'IA */}
       <AnimatedSection 
