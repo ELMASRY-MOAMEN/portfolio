@@ -514,7 +514,7 @@ export default function HomeContent({ params }: HomeContentProps) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
           >
-            {locale === 'fr' ? 'Ma reconversion vers l\'IA' : 'My path to AI Engineering'}
+            {locale === 'fr' ? 'Ma spécialisation vers l\'IA' : 'My path to AI Engineering'}
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -526,20 +526,14 @@ export default function HomeContent({ params }: HomeContentProps) {
             >
               <p className="text-lg mb-4">
                 {locale === 'fr' 
-                  ? "Durant mes 9 années en tant que Product Manager, j'ai identifié un pattern récurrent : les projets IA les plus réussis sont ceux où la communication entre équipes business et techniques est fluide."
-                  : "During my 9 years as a Product Manager, I identified a recurring pattern: the most successful AI projects are those where communication between business and technical teams is seamless."}
+                  ? "En tant que fondateur et Product Owner d'un SaaS combinant GPT-4, OCR et scoring IA, j'ai conçu une solution visant à automatiser les procédures export pour les équipes terrain. Ce projet, validé par une multinationale, a cristallisé mon intérêt pour les technologies IA."
+                  : "As the founder and Product Owner of a SaaS combining GPT-4, OCR, and AI scoring, I designed a solution to automate export procedures for field teams. This project, validated by a multinational company, crystallized my interest in AI technologies."}
               </p>
               
               <p className="text-lg mb-4">
                 {locale === 'fr' 
-                  ? "J'ai piloté plusieurs initiatives d'IA générative et automatisation qui ont transformé des processus métier, et j'ai développé une passion pour l'aspect technique de ces solutions."
-                  : "I've led several generative AI and automation initiatives that transformed business processes, and I've developed a passion for the technical aspect of these solutions."}
-              </p>
-              
-              <p className="text-lg mb-4 font-semibold">
-                {locale === 'fr' 
-                  ? "Aujourd'hui, je souhaite me placer au cœur de cette transformation en développant l'expertise technique qui complète ma vision produit."
-                  : "Today, I want to position myself at the heart of this transformation by developing the technical expertise that complements my product vision."}
+                  ? "J'y ai découvert une appétence concrète pour l'implémentation : intégration d'APIs, structuration de prototypes, prompt engineering. Aujourd'hui, je poursuis une spécialisation technique à travers une formation d'ingénieur IA pour compléter ma vision produit et contribuer de façon opérationnelle à des projets ML/NLP."
+                  : "I discovered a concrete appetite for implementation: API integration, prototype structuring, prompt engineering. Today, I'm pursuing a technical specialization through AI engineering training to complement my product vision and contribute operationally to ML/NLP projects."}
               </p>
             </motion.div>
             
@@ -551,41 +545,33 @@ export default function HomeContent({ params }: HomeContentProps) {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-xl font-bold mb-4 text-primary">
-                {locale === 'fr' ? 'Ce que j\'apporte à votre équipe IA' : 'What I bring to your AI team'}
+                {locale === 'fr' ? 'Ce que j\'apporte :' : 'What I bring to your AI team'}
               </h3>
               
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <span className="text-xl mr-2">🧩</span>
                   <span>{locale === 'fr' 
-                    ? "Expérience concrète en conception d'outils d'automatisation IA (GPT-4, OCR, Scoring IA)"
-                    : "Concrete experience in designing AI automation tools (GPT-4, OCR, AI Scoring)"}</span>
+                    ? "Une expérience produit solide, orientée IA et automatisation (GPT-4, OCR, scoring)"
+                    : "Solid product experience, focused on AI and automation (GPT-4, OCR, scoring)"}</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <span className="text-xl mr-2">💡</span>
                   <span>{locale === 'fr' 
-                    ? "Capacité à prototyper rapidement avec l'assistance d'IA générative (vibecoding)"
-                    : "Ability to rapidly prototype with generative AI assistance (vibecoding)"}</span>
+                    ? "Une culture technique active : APIs, prototypage rapide, compréhension des stacks IA"
+                    : "Active technical culture: APIs, rapid prototyping, understanding of AI stacks"}</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <span className="text-xl mr-2">🤝</span>
                   <span>{locale === 'fr' 
-                    ? "Expertise produit-tech: conception d'API REST, prompt engineering, fine-tuning"
-                    : "Product-tech expertise: REST API design, prompt engineering, fine-tuning"}</span>
+                    ? "Une double compétence business-technique, précieuse pour les projets IA appliqués"
+                    : "A dual business-technical competency, valuable for applied AI projects"}</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <span className="text-xl mr-2">🎯</span>
                   <span>{locale === 'fr' 
-                    ? "Capacité à déployer des solutions ayant un impact business mesurable (-82% de délais)"
-                    : "Ability to deploy solutions with measurable business impact (-82% processing time)"}</span>
+                    ? "Une vraie rigueur d'apprentissage et une motivation à contribuer dès le premier mois"
+                    : "Real learning rigor and motivation to contribute from the first month"}</span>
                 </li>
               </ul>
             </motion.div>
