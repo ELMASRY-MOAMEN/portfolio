@@ -1,0 +1,13 @@
+# Language redirects
+/  /fr  302  Language=fr
+/  /en  302
+
+# Handle API routes
+/api/*  /.netlify/functions/:splat  200
+
+# Handle Next.js dynamic routes
+/fr/*  /fr/:splat  200
+/en/*  /en/:splat  200
+
+# SPA fallback
+/*  /index.html  200 

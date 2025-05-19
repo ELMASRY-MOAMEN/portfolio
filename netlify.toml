@@ -30,9 +30,4 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-# Gestion des SPA et redirection 404
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false 
+# On utilise le fichier _redirects pour les règles de redirection spécifiques à Next.js 
