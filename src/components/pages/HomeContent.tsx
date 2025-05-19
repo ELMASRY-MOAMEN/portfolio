@@ -892,13 +892,13 @@ export default function HomeContent({ params }: HomeContentProps) {
             const projects = [
               {
                 id: "YVEA",
-                title: locale === 'fr' ? "YVEA – SaaS export & IA" : "YVEA – AI Export SaaS",
+                title: locale === 'fr' ? "YVEA – Plateforme OCR & IA pour la certification export" : "YVEA – OCR & AI Platform for Export Certification",
                 img: "/images/YVEA.jpg",
-                tags: ["Product Strategy", "AI", "SaaS", "Agile", "AWS", "React"],
+                tags: ["NestJS", "React", "OCR intelligent", "Azure OpenAI", "Docker", "MinIO", "PostgreSQL"],
                 description: locale === 'fr' 
-                  ? "Product Manager et fondateur d'une solution SaaS pilotée par l'IA, transformant les processus de certification export avec une réduction de 80% des délais opérationnels et 200K€ de financements obtenus."
-                  : "Product Manager and founder of an AI-driven SaaS solution, transforming export certification processes with 80% reduction in operational delays and €200K in funding secured.",
-                dominante: locale === 'fr' ? "Stratégie produit & Innovation" : "Product Strategy & Innovation",
+                  ? "Refonte complète d'une plateforme SaaS modulaire en autonomie complète, guidée par IA générative (ChatGPT, Claude). Architecture front/back réassemblée, ajout d'un moteur OCR (Tesseract) et d'un assistant IA contextuel via Azure OpenAI."
+                  : "Complete redesign of a modular SaaS platform with full autonomy, guided by generative AI (ChatGPT, Claude). Reassembled front/back architecture, addition of an OCR engine (Tesseract) and a contextual AI assistant via Azure OpenAI.",
+                dominante: locale === 'fr' ? "Fullstack, Cloud & IA augmentée" : "Fullstack, Cloud & Augmented AI",
                 isMainProject: true,
                 type: "tech"
               },
