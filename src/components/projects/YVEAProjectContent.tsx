@@ -747,7 +747,7 @@ const YVEAProjectContent = (): JSX.Element => {
                 </AnimatedButton>
                 
                 <AnimatedButton 
-                  href="https://github.com/ELMASRY-MOAMEN" 
+                  href="https://github.com/ELMASRY-MOAMEN/YVEA/blob/main/README.md" 
                   target="_blank"
                   variant="outline"
                   icon={
