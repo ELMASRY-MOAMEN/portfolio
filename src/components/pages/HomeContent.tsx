@@ -501,7 +501,153 @@ export default function HomeContent({ params }: HomeContentProps) {
         </motion.div>
       </section>
       
-      {/* SECTION: Ma reconversion vers l'IA */}
+      {/* SECTION: Qui suis-je? (previously appeared after Ma reconversion) */}
+      <AnimatedSection 
+        className="py-24 bg-white"
+        direction="up"
+        withGrain={true}
+      >
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <motion.span
+                className="inline-block px-3 py-1 bg-primary/10 text-primary font-medium rounded-full mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                {locale === 'fr' ? 'Qui suis-je?' : 'Who am I?'}
+              </motion.span>
+              
+              <motion.h2 
+                className="text-3xl font-unbounded font-bold mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {locale === 'fr' 
+                  ? 'Ingénieur IA (Bac+5) en alternance' 
+                  : 'AI Engineer (Master\'s) in apprenticeship'}
+              </motion.h2>
+              
+              <motion.div
+                className="max-w-prose space-y-4 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <p className="text-lg text-gray-700">
+                  {locale === 'fr' 
+                    ? "Avec 9 ans d'expérience en tech B2B dont 3 ans comme fondateur d'un SaaS IA, je me spécialise dans la conception d'agents intelligents déployables à l'échelle d'une organisation."
+                    : "With 9 years of B2B tech experience including 3 years as founder of an AI SaaS, I specialize in designing intelligent agents that can be deployed across an organization."}
+                </p>
+                
+                <div className="bg-primary/5 p-5 rounded-xl border border-primary/10 my-6">
+                  <p className="font-medium mb-2">
+                    {locale === 'fr' ? "Projet phare" : "Flagship project"}:
+                  </p>
+                  <p className="mb-2">
+                    {locale === 'fr' 
+                      ? "J'ai reconstruit une plateforme SaaS en partant de zéro avec l'aide des LLMs (GPT-4, Claude), en intégrant un OCR intelligent, une base de conformité (PostgreSQL) et un agent IA d'analyse documentaire."
+                      : "I rebuilt a SaaS platform from scratch with the help of LLMs (GPT-4, Claude), integrating intelligent OCR, a compliance database (PostgreSQL) and an AI document analysis agent."}
+                  </p>
+                  <p className="font-medium text-primary">
+                    {locale === 'fr' 
+                      ? "Résultat : –80 % de temps de traitement, adoption en production, validation par une multinationale."
+                      : "Result: 80% reduction in processing time, production adoption, validation by a multinational company."}
+                  </p>
+                </div>
+                
+                <p className="text-lg font-semibold mt-6">
+                  {locale === 'fr' ? "Ce que je peux vous apporter :" : "What I can bring to your team:"}
+                </p>
+                
+                <ul className="space-y-3 mt-4">
+                  <li className="flex items-start">
+                    <span className="text-xl mr-3 text-primary">🔁</span>
+                    <span>
+                      {locale === 'fr' 
+                        ? "Une vision hybride capable de créer des ponts entre métier, IA et technique"
+                        : "A hybrid vision capable of bridging business, AI and technical aspects"}
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-3 text-primary">🛠</span>
+                    <span>
+                      {locale === 'fr' 
+                        ? "Une capacité à construire des agents IA utiles (RAG, OCR, scoring) à l'aide des LLMs"
+                        : "An ability to build useful AI agents (RAG, OCR, scoring) using LLMs"}
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-3 text-primary">📊</span>
+                    <span>
+                      {locale === 'fr' 
+                        ? "Une approche data-driven, avec évaluation des réponses et mesure d'impact"
+                        : "A data-driven approach, with response evaluation and impact measurement"}
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-3 text-primary">🤝</span>
+                    <span>
+                      {locale === 'fr' 
+                        ? "Une compréhension des contraintes terrain, essentielle pour l'adoption des IA"
+                        : "An understanding of field constraints, essential for AI adoption"}
+                    </span>
+                  </li>
+                </ul>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <AnimatedButton 
+                  href="https://calendly.com/elmasrymoamen/30min"
+                  variant="primary"
+                  size="lg"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  }
+                >
+                  {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
+                </AnimatedButton>
+              </motion.div>
+            </div>
+            
+            <div className="order-1 md:order-2">
+              <motion.div
+                className="rounded-2xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Image 
+                  src="/images/about-preview.jpg" 
+                  alt={locale === 'fr' ? "Parcours professionnel" : "Professional journey"} 
+                  className="w-full h-auto object-cover"
+                  width={600}
+                  height={400}
+                  priority={false}
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+      
+      {/* SECTION: Ma reconversion vers l'IA (previously appeared right after HERO) */}
       <AnimatedSection 
         className="py-24 bg-primary-light/80"
         direction="up"
@@ -515,89 +661,31 @@ export default function HomeContent({ params }: HomeContentProps) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6 }}
           >
-            {locale === 'fr' ? 'Ma spécialisation vers l\'IA' : 'My path to AI Engineering'}
+            {locale === 'fr' ? 'Ma spécialisation IA' : 'My AI specialization'}
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.6 }}
+              className="text-lg mb-6"
             >
-              <p className="text-lg mb-4">
+              <p className="mb-4">
                 {locale === 'fr' 
-                  ? "En tant que fondateur et Product Owner d'un SaaS combinant GPT-4, OCR et scoring IA, j'ai conçu une solution visant à automatiser les procédures export pour les équipes terrain. Ce projet, validé par une multinationale, a cristallisé mon intérêt pour les technologies IA."
-                  : "As the founder and Product Owner of a SaaS combining GPT-4, OCR, and AI scoring, I designed a solution to automate export procedures for field teams. This project, validated by a multinational company, crystallized my interest in AI technologies."}
+                  ? "Face à des besoins terrain complexes (SaaS réglementaire), j'ai découvert l'IA comme solution scalable et maintenable."
+                  : "Faced with complex field needs (regulatory SaaS), I discovered AI as a scalable and maintainable solution."}
               </p>
-              
-              <p className="text-lg mb-4">
+              <p className="mb-4">
                 {locale === 'fr' 
-                  ? "J'y ai découvert une appétence concrète pour l'implémentation : intégration d'APIs, structuration de prototypes, prompt engineering. Aujourd'hui, je poursuis une spécialisation technique à travers une formation d'ingénieur IA pour compléter ma vision produit et contribuer de façon opérationnelle à des projets ML/NLP."
-                  : "I discovered a concrete appetite for implementation: API integration, prototype structuring, prompt engineering. Today, I'm pursuing a technical specialization through AI engineering training to complement my product vision and contribute operationally to ML/NLP projects."}
+                  ? "Je structure aujourd'hui mes compétences pour construire des systèmes IA fiables, auditables et utiles à l'échelle de l'entreprise."
+                  : "Today, I'm structuring my skills to build AI systems that are reliable, auditable, and useful at the enterprise scale."}
               </p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white p-6 rounded-xl shadow-md"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-xl font-bold mb-4 text-primary">
-                {locale === 'fr' ? 'Ce que j\'apporte :' : 'What I bring to your AI team'}
-              </h3>
-              
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-xl mr-2">🧩</span>
-                  <span>{locale === 'fr' 
-                    ? "Une expérience produit solide, orientée IA et automatisation (GPT-4, OCR, scoring)"
-                    : "Solid product experience, focused on AI and automation (GPT-4, OCR, scoring)"}</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-xl mr-2">💡</span>
-                  <span>{locale === 'fr' 
-                    ? "Une culture technique active : APIs, prototypage rapide, compréhension des stacks IA"
-                    : "Active technical culture: APIs, rapid prototyping, understanding of AI stacks"}</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-xl mr-2">🤝</span>
-                  <span>{locale === 'fr' 
-                    ? "Une double compétence business-technique, précieuse pour les projets IA appliqués"
-                    : "A dual business-technical competency, valuable for applied AI projects"}</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-xl mr-2">🎯</span>
-                  <span>{locale === 'fr' 
-                    ? "Une vraie rigueur d'apprentissage et une motivation à contribuer dès le premier mois"
-                    : "Real learning rigor and motivation to contribute from the first month"}</span>
-                </li>
-              </ul>
             </motion.div>
           </div>
-        </div>
-      </AnimatedSection>
-      
-      {/* SECTION: Mon rythme d'alternance */}
-      <AnimatedSection 
-        className="py-24 bg-gradient-to-r from-primary/5 to-white"
-        direction="up"
-        withGrain={true}
-      >
-        <div className="container-custom">
-          <motion.h2 
-            className="text-3xl font-unbounded font-bold mb-8 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-          >
-            {locale === 'fr' ? 'Mon rythme d\'alternance' : 'My apprenticeship schedule'}
-          </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-10">
             <motion.div 
               className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
               whileHover={{ y: -5 }}
@@ -674,159 +762,6 @@ export default function HomeContent({ params }: HomeContentProps) {
                 {locale === 'fr' ? 'Durée de la formation' : 'Training duration'}
               </p>
             </motion.div>
-          </div>
-        </div>
-      </AnimatedSection>
-      
-      {/* MINI SECTION: À PROPOS (using AIDA) */}
-      <AnimatedSection 
-        className="py-24 bg-white"
-        direction="up"
-        withGrain={true}
-      >
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1">
-              <motion.span
-                className="inline-block px-3 py-1 bg-primary/10 text-primary font-medium rounded-full mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                {locale === 'fr' ? 'Qui suis-je?' : 'Who am I?'}
-              </motion.span>
-              
-              <motion.h2 
-                className="text-3xl font-unbounded font-bold mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                {locale === 'fr' ? 'Fusion de l\'expertise produit et des compétences d\'ingénierie IA' : 'Merging Product Expertise with AI Engineering Skills'}
-              </motion.h2>
-              
-              <motion.div 
-                className="mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
-                      <span className="text-xl mr-2">🧠</span>
-                      {locale === 'fr' ? 'Formation Bac+5 en ingénierie IA' : 'AI Engineering Master\'s Program'}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {locale === 'fr' 
-                        ? "Python, RAG, LangChain, MLOps, BentoML" 
-                        : "Python, RAG, LangChain, MLOps, BentoML"}
-                    </p>
-                  </div>
-                  
-                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
-                      <span className="text-xl mr-2">🔁</span>
-                      {locale === 'fr' ? 'Double compétence produit-tech' : 'Dual Product-Tech Skills'}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {locale === 'fr' 
-                        ? "9 ans d'expérience + compétences IA opérationnelles" 
-                        : "9 years of experience + operational AI skills"}
-                    </p>
-                  </div>
-                  
-                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
-                      <span className="text-xl mr-2">📆</span>
-                      {locale === 'fr' ? 'Rythme optimal' : 'Optimal Schedule'}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {locale === 'fr' 
-                        ? "4 jours entreprise / 1 jour école + aide de 6000€" 
-                        : "4 days company / 1 day school + €6000 aid"}
-                    </p>
-                  </div>
-                  
-                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 hover:shadow-md transition-all">
-                    <h4 className="font-semibold mb-2 text-gray-800 flex items-center">
-                      <span className="text-xl mr-2">⚡</span>
-                      {locale === 'fr' ? 'Disponibilité immédiate' : 'Immediate Availability'}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {locale === 'fr' 
-                        ? "Opérationnel dès le premier mois" 
-                        : "Operational from the first month"}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                className="max-w-prose space-y-4 mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <p className="text-lg text-gray-700">
-                  {locale === 'fr' 
-                    ? "En tant que fondateur et Product Owner, j'ai appris à transformer des besoins métier complexes en solutions concrètes et scalables. Cette expérience m'a forgé une méthode : agilité produit, prototypage rapide, écoute utilisateur, et pilotage par la donnée."
-                    : "As a founder and Product Owner, I've learned to transform complex business needs into concrete, scalable solutions. This experience has forged my method: product agility, rapid prototyping, user listening, and data-driven management."}
-                </p>
-                
-                <p className="text-lg text-gray-700">
-                  {locale === 'fr' 
-                    ? "Aujourd'hui, je me spécialise en ingénierie IA pour allier rigueur technique et vision produit. Mon objectif : concevoir des systèmes IA utiles, compréhensibles et responsables, avec un impact mesurable sur les utilisateurs."
-                    : "Today, I'm specializing in AI engineering to combine technical rigor and product vision. My goal: designing useful, understandable, and responsible AI systems with measurable impact on users."}
-                </p>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <AnimatedButton 
-                  href="https://calendly.com/elmasrymoamen/30min"
-                  variant="primary"
-                  size="lg"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  }
-                >
-                  {locale === 'fr' ? 'Réserver un échange' : 'Book a meeting'}
-                </AnimatedButton>
-              </motion.div>
-            </div>
-            
-            <div className="order-1 md:order-2">
-              <motion.div
-                className="rounded-2xl overflow-hidden shadow-lg"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image 
-                  src="/images/about-preview.jpg" 
-                  alt={locale === 'fr' ? "Parcours professionnel" : "Professional journey"} 
-                  className="w-full h-auto object-cover"
-                  width={600}
-                  height={400}
-                  priority={false}
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
           </div>
         </div>
       </AnimatedSection>
